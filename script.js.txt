@@ -1,0 +1,3 @@
+function showInfo() {
+  alert("This will be an interactive visual marker soon!");
+}

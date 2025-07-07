@@ -1,0 +1,14 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 2em;
+}
+
+.marker {
+  display: inline-block;
+  background: #ffe;
+  border: 2px dashed #ccc;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}

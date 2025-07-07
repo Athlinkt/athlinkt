@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Athlinkt</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>👋 Welcome to Athlinkt</h1>
+  <p>This site will explore interactive and visual content for movement, sport, and learning.</p>
+  <div class="marker" onclick="showInfo()">🔍 Click here for more</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
