@@ -1,41 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Welcome to Athlinkt</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATHLINKT</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #f9f9f9;
-      text-align: center;
-      padding: 50px;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
     }
+
+    nav {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 0;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #0066cc;
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
     header {
-      margin-bottom: 40px;
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #cce0ff, #e6f0ff);
     }
+
     h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #003366;
     }
+
     p {
-      font-size: 1.2em;
-      color: #555;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
     }
+
     .button {
       display: inline-block;
       padding: 10px 20px;
-      background: #0066cc;
+      background-color: #0066cc;
       color: white;
       text-decoration: none;
       border-radius: 5px;
-      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
+
+  <nav>
+    <ul>
+      <li><a href="#">🏠 Home</a></li>
+      <li><a href="#about">👤 About</a></li>
+      <li><a href="#features">🧩 Features</a></li>
+      <li><a href="#contact">✉️ Contact</a></li>
+    </ul>
+  </nav>
+
   <header>
-    <h1>Welcome to Athlinkt</h1>
-    <p>This site is under construction — but we’re building something great.</p>
-    <a class="button" href="#about">Learn More</a>
+    <h1>Welcome to ATHLINKT</h1>
+    <p>Where ideas move, link, and grow.</p>
+    <a href="#features" class="button">Get Started</a>
   </header>
-</body>
-</html>
+
+  <footer>
+    <p>&copy; 2025 ATHLINKT. All rights reserved.</p>
+  </footer>
