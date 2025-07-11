@@ -1,4 +1,4 @@
-## Hi there 👋
+## Under construction! Hang tight for some new updates. 👋
 
 <!--
 **Athlinkt/athlinkt** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
