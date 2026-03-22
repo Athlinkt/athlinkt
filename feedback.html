@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athlinkt — Share Your Feedback</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0e0e0e; --white: #fafaf8; --green: #1D9E75; --green-dark: #0F6E56;
+    --green-light: #E1F5EE; --gray: #6b6b6b; --gray-light: #f2f0eb;
+    --border: #e2e0d8; --border-dark: #2a2a2a;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(14,14,14,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-dark);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;}
+  .nav-logo{font-family:'DM Serif Display',serif;font-size:22px;color:var(--white);text-decoration:none;letter-spacing:0.04em;}
+  .nav-logo span{color:var(--green);}
+  .nav-links{display:flex;gap:0;}
+  .nav-links a{color:#888;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.04em;padding:0.5rem 1rem;border-radius:6px;transition:color 0.2s,background 0.2s;}
+  .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06);}
+  .nav-back{display:inline-flex;align-items:center;gap:6px;color:#888;text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+  .nav-back:hover{color:var(--white);}
+
+  /* HERO */
+  .hero{background:var(--black);padding:9rem 2rem 5rem;text-align:center;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(29,158,117,0.07) 0%,transparent 70%);pointer-events:none;}
+  .hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(29,158,117,0.15);border:1px solid rgba(29,158,117,0.3);color:var(--green);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:5px 14px;border-radius:999px;margin-bottom:1.5rem;}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,5vw,3.8rem);color:var(--white);line-height:1.15;max-width:620px;margin:0 auto 1rem;}
+  .hero h1 em{font-style:italic;color:var(--green);}
+  .hero p{color:#888;font-size:16px;max-width:500px;margin:0 auto;line-height:1.75;}
+
+  /* FORM SECTION */
+  .form-section{padding:5rem 2rem 6rem;background:var(--white);}
+  .form-container{max-width:680px;margin:0 auto;}
+
+  /* AUDIENCE SELECTOR */
+  .field-group{margin-bottom:2rem;}
+  .field-label{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:10px;display:block;}
+  .audience-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+  .audience-card{border:1.5px solid var(--border);border-radius:10px;padding:1rem;cursor:pointer;transition:all 0.15s;text-align:center;background:var(--white);}
+  .audience-card:hover{border-color:var(--green);background:var(--green-light);}
+  .audience-card.selected{border-color:var(--green);background:var(--green-light);}
+  .audience-card.selected .ac-icon{background:var(--green);color:var(--white);}
+  .ac-icon{width:36px;height:36px;border-radius:50%;background:var(--gray-light);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:16px;transition:all 0.15s;}
+  .ac-label{font-size:13px;font-weight:600;color:var(--black);line-height:1.3;}
+  .ac-sub{font-size:11px;color:var(--gray);margin-top:2px;line-height:1.4;}
+
+  /* INPUTS */
+  .input-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .input-wrap{display:flex;flex-direction:column;gap:6px;}
+  .input-wrap label{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray);}
+  .input-wrap input,
+  .input-wrap textarea,
+  .input-wrap select{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--black);background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;outline:none;transition:border-color 0.2s;width:100%;}
+  .input-wrap input:focus,
+  .input-wrap textarea:focus,
+  .input-wrap select:focus{border-color:var(--green);}
+  .input-wrap textarea{resize:vertical;min-height:140px;line-height:1.6;}
+  .input-wrap input::placeholder,
+  .input-wrap textarea::placeholder{color:#bbb;}
+  .optional{font-size:11px;color:#bbb;font-weight:400;text-transform:lowercase;letter-spacing:0;}
+
+  /* RATING */
+  .rating-row{display:flex;gap:8px;align-items:center;}
+  .rating-btn{width:40px;height:40px;border-radius:8px;border:1.5px solid var(--border);background:var(--white);font-size:14px;font-weight:600;color:var(--gray);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;}
+  .rating-btn:hover{border-color:var(--green);color:var(--green);}
+  .rating-btn.selected{background:var(--green);border-color:var(--green);color:var(--white);}
+  .rating-labels{display:flex;justify-content:space-between;font-size:11px;color:#bbb;margin-top:6px;}
+
+  /* DIVIDER */
+  .form-divider{height:1px;background:var(--border);margin:2.5rem 0;}
+
+  /* SUBMIT */
+  .submit-area{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:2rem;}
+  .submit-note{font-size:12px;color:#bbb;max-width:300px;line-height:1.6;}
+  .btn-submit{background:var(--green);color:var(--white);border:none;padding:14px 32px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s,transform 0.15s;letter-spacing:0.02em;}
+  .btn-submit:hover{background:var(--green-dark);transform:translateY(-1px);}
+  .btn-submit:disabled{background:#ccc;cursor:not-allowed;transform:none;}
+
+  /* SUCCESS */
+  .success-state{display:none;text-align:center;padding:4rem 2rem;}
+  .success-icon{width:64px;height:64px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;}
+  .success-state h2{font-family:'DM Serif Display',serif;font-size:2rem;margin-bottom:0.75rem;}
+  .success-state h2 em{font-style:italic;color:var(--green);}
+  .success-state p{font-size:15px;color:var(--gray);line-height:1.7;max-width:420px;margin:0 auto 2rem;}
+  .btn-ghost{background:transparent;color:var(--gray);border:1.5px solid var(--border);padding:11px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green-dark);}
+
+  /* SETUP NOTICE */
+  .setup-banner{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-bottom:3rem;display:flex;gap:1rem;align-items:flex-start;}
+  .setup-banner-icon{width:36px;height:36px;background:rgba(29,158,117,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+  .setup-banner-text h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+  .setup-banner-text p{font-size:12px;color:#666;line-height:1.6;}
+  .setup-banner-text a{color:var(--green);text-decoration:none;}
+
+  footer{background:var(--black);border-top:1px solid #1a1a1a;padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+  .footer-logo{font-family:'DM Serif Display',serif;font-size:16px;color:#444;text-decoration:none;letter-spacing:0.04em;}
+  .footer-logo span{color:var(--green);}
+  .footer-copy{font-size:12px;color:#444;}
+  .footer-copy a{color:var(--green);text-decoration:none;}
+
+  @media(max-width:640px){
+    nav{padding:0 1.25rem;}
+    .hero{padding:8rem 1.25rem 4rem;}
+    .form-section{padding:3rem 1.25rem 4rem;}
+    .input-row{grid-template-columns:1fr;}
+    .audience-grid{grid-template-columns:1fr 1fr;}
+    .submit-area{flex-direction:column;align-items:stretch;}
+    .btn-submit{text-align:center;}
+    footer{flex-direction:column;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">ATH<span>LINKT</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Home
+    </a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">Your Voice Matters</div>
+  <h1>Share your<br><em>productive feedback</em></h1>
+  <p>Help shape what Athlinkt becomes. Whether you're a family, coach, or former student-athlete — your perspective builds this.</p>
+</div>
+
+<section class="form-section">
+  <div class="form-container">
+
+
+
+    <!-- FORM -->
+    <form id="feedback-form" onsubmit="handleSubmit(event)">
+
+      <!-- AUDIENCE -->
+      <div class="field-group">
+        <span class="field-label">Who are you? <span style="color:#bbb;font-weight:400;text-transform:lowercase;letter-spacing:0;font-size:11px;">(select one)</span></span>
+        <div class="audience-grid">
+          <div class="audience-card" onclick="selectAudience('Family', this)">
+            <div class="ac-icon">🏠</div>
+            <div class="ac-label">Family</div>
+            <div class="ac-sub">Parent or caregiver of a student-athlete</div>
+          </div>
+          <div class="audience-card" onclick="selectAudience('Student-Athlete', this)">
+            <div class="ac-icon">🏀</div>
+            <div class="ac-label">Student-Athlete</div>
+            <div class="ac-sub">Current, future, or former</div>
+          </div>
+          <div class="audience-card" onclick="selectAudience('Coach', this)">
+            <div class="ac-icon">📋</div>
+            <div class="ac-label">Coach</div>
+            <div class="ac-sub">Youth, high school, or college</div>
+          </div>
+          <div class="audience-card" onclick="selectAudience('Leader', this)">
+            <div class="ac-icon">🎯</div>
+            <div class="ac-label">Leader</div>
+            <div class="ac-sub">Administrator, educator, or program builder</div>
+          </div>
+        </div>
+        <input type="hidden" id="audience-input" name="audience" required>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <!-- NAME + EMAIL -->
+      <div class="field-group">
+        <div class="input-row">
+          <div class="input-wrap">
+            <label>Your name <span class="optional">(optional)</span></label>
+            <input type="text" name="name" placeholder="First name or full name" autocomplete="name">
+          </div>
+          <div class="input-wrap">
+            <label>Email <span class="optional">(optional)</span></label>
+            <input type="email" name="email" placeholder="you@example.com" autocomplete="email">
+          </div>
+        </div>
+      </div>
+
+      <!-- RATING -->
+      <div class="field-group">
+        <span class="field-label">How useful is Athlinkt to you right now?</span>
+        <div class="rating-row" id="rating-row">
+          <button type="button" class="rating-btn" onclick="selectRating(1, this)">1</button>
+          <button type="button" class="rating-btn" onclick="selectRating(2, this)">2</button>
+          <button type="button" class="rating-btn" onclick="selectRating(3, this)">3</button>
+          <button type="button" class="rating-btn" onclick="selectRating(4, this)">4</button>
+          <button type="button" class="rating-btn" onclick="selectRating(5, this)">5</button>
+        </div>
+        <div class="rating-labels"><span>Not yet useful</span><span>Extremely useful</span></div>
+        <input type="hidden" id="rating-input" name="rating">
+      </div>
+
+      <div class="form-divider"></div>
+
+      <!-- FEEDBACK -->
+      <div class="field-group">
+        <div class="input-wrap">
+          <label>Your productive feedback</label>
+          <textarea name="feedback" placeholder="What's working? What's missing? What would make Athlinkt more valuable to you? Be direct — this is meant to be productive." required></textarea>
+        </div>
+      </div>
+
+      <!-- WHAT MATTERS MOST -->
+      <div class="field-group">
+        <div class="input-wrap">
+          <label>What topic matters most to you right now? <span class="optional">(optional)</span></label>
+          <select name="topic">
+            <option value="" disabled selected>Select a topic...</option>
+            <option value="Development">Development mindset</option>
+            <option value="Recruiting">Recruiting & college pathways</option>
+            <option value="Boundaries">Parent behavior & boundaries</option>
+            <option value="Communication">Coach communication</option>
+            <option value="Wellness">Athlete wellness & safety</option>
+            <option value="Accessibility">Deaf/HH & ASL resources</option>
+            <option value="Opportunities">Opportunities & NIL</option>
+            <option value="Other">Something else</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-area">
+        <p class="submit-note">Your feedback goes directly to the Athlinkt team. No spam, ever. Name and email are always optional.</p>
+        <button type="submit" class="btn-submit" id="submit-btn">Send Feedback →</button>
+      </div>
+
+    </form>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-state" id="success-state">
+      <div class="success-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h2>Feedback <em>received.</em></h2>
+      <p>Thank you for taking the time to help shape Athlinkt. Every piece of feedback goes directly to building something better for young people and those who support them.</p>
+      <a href="index.html" class="btn-ghost">← Back to Athlinkt</a>
+    </div>
+
+  </div>
+</section>
+
+
+
+<footer>
+  <a class="footer-logo" href="index.html">ATH<span>LINKT</span></a>
+  <p class="footer-copy">© 2026 ATHLINKT. All rights reserved. &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#b5d4c1ddd9dcdbdec1f5d2d8d4dcd99bd6dad8"><span class="__cf_email__" data-cfemail="5b3a2f33373235302f1b3c363a323775383436">[email&#160;protected]</span></a></p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const GOOGLE_FORM_URL = "https://forms.gle/ZtCmtfV9ddeNGoE28";
+
+  // Field name mappings - update these after creating your Google Form
+  // Find entry IDs by viewing your form source or using the pre-fill link
+  const FIELD_IDS = {
+    name:     "entry.000000001",
+    email:    "entry.000000002",
+    audience: "entry.000000003",
+    rating:   "entry.000000004",
+    feedback: "entry.000000005",
+    topic:    "entry.000000006",
+  };
+
+  let selectedAudience = "";
+  let selectedRating = "";
+
+  function selectAudience(val, el) {
+    document.querySelectorAll('.audience-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedAudience = val;
+    document.getElementById('audience-input').value = val;
+  }
+
+  function selectRating(val, el) {
+    document.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedRating = val;
+    document.getElementById('rating-input').value = val;
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('feedback-form');
+    const btn = document.getElementById('submit-btn');
+
+    if (!selectedAudience) {
+      alert('Please select who you are before submitting.');
+      return;
+    }
+
+    if (GOOGLE_FORM_URL === "PASTE_YOUR_GOOGLE_FORM_URL_HERE") {
+      // Demo mode - just show success
+      showSuccess();
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const data = new FormData(form);
+    const params = new URLSearchParams();
+    params.append(FIELD_IDS.name, data.get('name') || '');
+    params.append(FIELD_IDS.email, data.get('email') || '');
+    params.append(FIELD_IDS.audience, selectedAudience);
+    params.append(FIELD_IDS.rating, selectedRating);
+    params.append(FIELD_IDS.feedback, data.get('feedback') || '');
+    params.append(FIELD_IDS.topic, data.get('topic') || '');
+
+    const submitURL = GOOGLE_FORM_URL.replace('/viewform', '/formResponse');
+
+    fetch(submitURL + '?' + params.toString(), {
+      method: 'POST', mode: 'no-cors'
+    }).then(() => showSuccess()).catch(() => showSuccess());
+  }
+
+  function showSuccess() {
+    document.getElementById('feedback-form').styl

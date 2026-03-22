@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athlinkt — Resource Library</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0e0e0e;
+    --white: #fafaf8;
+    --green: #1D9E75;
+    --green-dark: #0F6E56;
+    --green-light: #E1F5EE;
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+    --amber: #BA7517;
+    --amber-light: #FAEEDA;
+    --gray: #6b6b6b;
+    --gray-light: #f2f0eb;
+    --border: #e2e0d8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--black);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .logo span { color: var(--green); }
+  nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 2rem;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    border-bottom: 1px solid #222;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--green-dark);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    color: var(--white);
+    line-height: 1.15;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green);
+  }
+  .hero p {
+    color: #888;
+    font-size: 16px;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-section {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 2rem;
+    position: sticky;
+    top: 64px;
+    z-index: 90;
+  }
+  .filter-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .filter-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-right: 4px;
+  }
+  .pill-group { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pill {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .pill:hover { border-color: var(--green); color: var(--green-dark); }
+  .pill.active { background: var(--green); border-color: var(--green); color: white; font-weight: 600; }
+  .divider { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
+
+  /* ── SEARCH ── */
+  .search-wrap {
+    max-width: 1200px;
+    margin: 1.5rem auto 0;
+    padding: 0 2rem;
+  }
+  .search-input {
+    width: 100%;
+    max-width: 420px;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--black);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input:focus { border-color: var(--green); }
+  .search-input::placeholder { color: #bbb; }
+
+  /* ── MAIN GRID ── */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .results-meta {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+  }
+  .results-meta strong { color: var(--black); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.3s ease both;
+  }
+  .card:hover {
+    border-color: var(--green);
+    box-shadow: 0 4px 20px rgba(29,158,117,0.08);
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .card-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .badge-audience-Families    { background: var(--purple-light); color: var(--purple); }
+  .badge-audience-Athlete   { background: var(--green-light); color: var(--green-dark); }
+  .badge-audience-Student-Athletes { background: var(--green-light); color: var(--green-dark); }
+  .badge-audience-Coach     { background: var(--amber-light); color: var(--amber); }
+  .badge-audience-Administrator { background: #FEF3C7; color: #92400E; }
+  .badge-audience-Community { background: #F1EFE8; color: #5F5E5A; }
+  .badge-type { background: var(--gray-light); color: var(--gray); }
+  .badge-access-Deaf\/HH    { background: #EFF6FF; color: #1e40af; }
+  .badge-access-Inclusive   { background: #F0FDF4; color: #166534; }
+  .badge-access-ASL\/Bilingual { background: #FDF4FF; color: #7e22ce; }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    line-height: 1.35;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .card-summary {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 14px;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .card-meta { font-size: 11px; color: #bbb; }
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: gap 0.15s;
+  }
+  .card-link:hover { gap: 8px; }
+  .card-link svg { width: 12px; height: 12px; }
+
+  /* ── EMPTY STATE ── */
+  .empty {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 5rem 0;
+  }
+  .empty h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .empty p { font-size: 14px; color: var(--gray); }
+
+  /* ── LOADING ── */
+  .loading {
+    text-align: center;
+    padding: 5rem 0;
+    color: var(--gray);
+    font-size: 14px;
+  }
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--border);
+    border-top-color: var(--green);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto 1rem;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 4rem;
+  }
+  footer a { color: var(--green); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 3rem 1.25rem 2.5rem; }
+    .filter-section { padding: 1rem 1.25rem; }
+    .main { padding: 1.25rem; }
+    .search-wrap { padding: 0 1.25rem; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://athlinkt.com">ATH<span>LINKT</span></a>
+  <nav>
+    <a href="https://athlinkt.com">Home</a>
+    <a href="https://athlinkt.com/#about">About</a>
+    <a href="/cdn-cgi/l/email-protection#6e0f1a06020700051a2e09030f0702400d0103">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-tag">Resource Library</div>
+  <h1>Tools for parents, coaches,<br>and <em>those building athletes</em></h1>
+  <p>Vetted resources for families, student-athletes, coaches, and the ASL &amp; Bilingual community — curated across recruiting, development, equity, wellness, and Deaf/HH pathways.</p>
+</div>
+
+<div class="filter-section">
+  <div class="filter-inner">
+    <span class="filter-label">Audience</span>
+    <div class="pill-group" id="audience-filters">
+      <div class="pill active" data-filter="audience" data-value="all">All</div>
+      <div class="pill" data-filter="audience" data-value="Parent">Families</div>
+      <div class="pill" data-filter="audience" data-value="Athlete">Student-Athletes</div>
+      <div class="pill" data-filter="audience" data-value="Coach">Coach</div>
+      <div class="pill" data-filter="audience" data-value="Administrator">Admin</div>
+    </div>
+    <div class="divider"></div>
+    <span class="filter-label">Topic</span>
+    <div class="pill-group" id="topic-filters">
+      <div class="pill active" data-filter="topic" data-value="all">All</div>
+      <div class="pill" data-filter="topic" data-value="Recruiting">Recruiting</div>
+      <div class="pill" data-filter="topic" data-value="Development">Development</div>
+      <div class="pill" data-filter="topic" data-value="Wellness">Wellness</div>
+      <div class="pill" data-filter="topic" data-value="Opportunities">Opportunities</div>
+      <div class="pill" data-filter="topic" data-value="Accessibility">Accessibility</div>
+      <div class="pill" data-filter="topic" data-value="Boundaries">Boundaries</div>
+      <div class="pill" data-filter="topic" data-value="Rules">Rules</div>
+    </div>
+    <div class="divider"></div>
+    <span class="filter-label">Community</span>
+    <div class="pill-group" id="access-filters">
+      <div class="pill active" data-filter="access" data-value="all">All</div>
+      <div class="pill" data-filter="access" data-value="Deaf/HH">Deaf / HH</div>
+      <div class="pill" data-filter="access" data-value="ASL/Bilingual">ASL &amp; Bilingual</div>
+    </div>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <input class="search-input" type="text" id="search" placeholder="Search resources..." />
+</div>
+
+<main class="main">
+  <div class="results-meta" id="results-meta"></div>
+  <div class="grid" id="grid">
+    <div class="loading">
+      <div class="spinner"></div>
+      Loading resources...
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Athlinkt. All rights reserved. &nbsp;·&nbsp;
+  <a href="https://athlinkt.com">athlinkt.com</a> &nbsp;·&nbsp;
+  <a href="/cdn-cgi/l/email-protection#305144585c595e5b4470575d51595c1e535f5d"><span class="__cf_email__" data-cfemail="29485d41454047425d694e44484045074a4644">[email&#160;protected]</span></a>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTnlz-eYVI17K9wiYY3GDgnzlZbW1Gkr-opWEWjufDGDdgW9AXuAryfo3t9ixFRtFVbP-M4YL8hFHjW/pub?output=csv";
+
+let allRecords = [];
+let activeAudience = "all";
+let activeTopic = "all";
+let activeAccess = "all";
+let searchQuery = "";
+
+function parseCSV(text) {
+  const lines = text.trim().split("\n");
+  const headers = lines[0].split(",").map(h => h.replace(/"/g, "").trim());
+  return lines.slice(1).map(line => {
+    const vals = [];
+    let cur = "", inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { vals.push(cur.trim()); cur = ""; }
+      else { cur += c; }
+    }
+    vals.push(cur.trim());
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = (vals[i] || "").replace(/^"|"$/g, ""));
+    return obj;
+  }).filter(r => r.Title && r.Title.length > 0);
+}
+
+function getBadgeClass(type, value) {
+  if (type === "audience") return `badge badge badge-audience-${value === 'Parent' ? 'Families' : value === 'Athlete' ? 'Student-Athletes' : value}`;
+  if (type === "access") return `badge badge-access-${value.replace("/","\\/")}`;
+  return "badge badge-type";
+}
+
+function renderCards(records) {
+  const grid = document.getElementById("grid");
+  const meta = document.getElementById("results-meta");
+
+  if (records.length === 0) {
+    grid.innerHTML = `<div class="empty"><h3>No resources found</h3><p>Try adjusting your filters or search.</p></div>`;
+    meta.innerHTML = "";
+    return;
+  }
+
+  meta.innerHTML = `Showing <strong>${records.length}</strong> resource${records.length !== 1 ? "s" : ""}`;
+
+  grid.innerHTML = records.map((r, i) => {
+    const accessBadge = r.Access_Focus && r.Access_Focus !== "General"
+      ? `<span class="${getBadgeClass("access", r.Access_Focus)}">${r.Access_Focus}</span>` : "";
+    const typeBadge = r.Content_Type
+      ? `<span class="badge badge-type">${r.Content_Type}</span>` : "";
+
+    return `
+      <div class="card" style="animation-delay:${i * 0.03}s">
+        <div class="card-badges">
+          <span class="${getBadgeClass("audience", r.Audience)}">${r.Audience}</span>
+          ${typeBadge}
+          ${accessBadge}
+        </div>
+        <div class="card-title">${r.Title}</div>
+        <div class="card-summary">${r.Summary || r.Why_It_Matters || ""}</div>
+        <div class="card-footer">
+          <span class="card-meta">${r.Topic || ""} · ${r.Sport || ""}</span>
+          <a class="card-link" href="${r.Link}" target="_blank" rel="noopener">
+            View resource
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 10L10 2M4 2h6v6"/>
+            </svg>
+          </a>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+function applyFilters() {
+  let filtered = allRecords;
+  if (activeAudience !== "all") filtered = filtered.filter(r => r.Audience === activeAudience);
+  if (activeTopic !== "all") filtered = filtered.filter(r => r.Topic === activeTopic);
+  if (activeAccess !== "all") filtered = filtered.filter(r => r.Access_Focus === activeAccess);
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    filtered = filtered.filter(r =>
+      (r.Title || "").toLowerCase().includes(q) ||
+      (r.Summary || "").toLowerCase().includes(q) ||
+      (r.Topic || "").toLowerCase().includes(q) ||
+      (r.Audience || "").toLowerCase().includes(q)
+    );
+  }
+  renderCards(filtered);
+}
+
+// Filter pills
+document.querySelectorAll(".pill").forEach(pill => {
+  pill.addEventListener("click", () => {
+    const filter = pill.dataset.filter;
+    const value = pill.dataset.value;
+    if (filter === "audience") {
+      document.querySelectorAll('[data-filter="audience"]').forEach(p => p.classList.remove("active"));
+      activeAudience = value;
+    } else if (filter === "topic") {
+      document.querySelectorAll('[data-filter="topic"]').forEach(p => p.classList.remove("active"));
+      activeTopic = value;
+    } else if (filter === "access") {
+      document.querySelectorAll('[data-filter="access"]').forEach(p => p.classList.remove("active"));
+      activeAccess = value;
+    }
+    pill.classList.add("active");
+    applyFilters();
+  });
+});
+
+// Search
+document.getElementById("search").addEventListener("input", e => {
+  searchQuery = e.target.value;
+  applyFilters();
+});
+
+// Load data
+fetch(SHEET_CSV)
+  .then(r
