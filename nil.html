@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NIL Resource Hub — Rules, money sources, athlete education, sport-by-sport breakdowns, and a sample agreement. Built for every college athlete at every division.">
+<meta name="theme-color" content="#111111">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta property="og:title" content="NIL Resource Hub | ATHLINKT">
+<meta property="og:description" content="Name, Image & Likeness — rules, money sources, sport breakdowns, and tools for every college athlete.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athlinkt.com/nil.html">
+<title>NIL Resource Hub | ATHLINKT — Beyond the Finish Line</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#2EBD8E;--gold-light:#3DD4A5;--gold-dim:rgba(46,189,142,0.1);--gold-glow:rgba(46,189,142,0.06);
+  --dark:#111111;--dark-2:#1A1A1A;--dark-3:#222222;--dark-4:#2A2A2A;
+  --white:#FFFFFF;--gray:#888888;--gray-light:#C8C8C8;
+  --bg:var(--dark);--bg-2:var(--dark-2);--bg-3:var(--dark-3);
+  --text:var(--white);--text-muted:var(--gray-light);--text-dim:var(--gray);
+  --border:rgba(46,189,142,0.15);
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-elegant:'Playfair Display',serif;
+  --transition:0.25s ease;--radius:6px;--max:1100px;
+}
+body.light-mode{
+  --dark:#FFFFFF;--dark-2:#F2F2F2;--dark-3:#E6E6E6;--dark-4:#D8D8D8;
+  --white:#0D0D0D;--gray:#555555;--gray-light:#1A1A1A;
+  --gold:#1A8F68;--gold-light:#2EBD8E;
+  --gold-dim:rgba(26,143,104,0.08);--gold-glow:rgba(26,143,104,0.05);
+  --border:rgba(26,143,104,0.2);
+}
+body.light-mode nav{background:rgba(255,255,255,0.97);border-bottom:1px solid rgba(26,143,104,0.15)}
+body.light-mode .nav-links{background:rgba(255,255,255,0.99)}
+body.light-mode .nav-toggle span{background:var(--white)}
+body.light-mode .nil-section-card{background:var(--dark-2)}
+body.light-mode .sport-item{background:var(--dark-2)}
+body.light-mode .sport-body{background:var(--dark-3)}
+body.light-mode .link-card{background:var(--dark-2)}
+body.light-mode .disclaimer-bar{background:var(--dark-2)}
+
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:var(--font-body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.5}
+
+/* SKIP */
+.skip-link{position:absolute;top:-100px;left:16px;background:var(--gold);color:var(--dark);padding:10px 20px;font-family:var(--font-body);font-weight:700;font-size:14px;border-radius:var(--radius);z-index:1000;text-decoration:none;transition:top var(--transition)}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(17,17,17,0.97);border-bottom:1px solid rgba(46,189,142,0.1);transition:background 0.3s}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.nav-logo svg{width:30px;height:30px}
+.nav-wordmark{font-family:var(--font-display);font-size:20px;color:var(--white);letter-spacing:3px}
+.nav-wordmark .g{color:#2EBD8E}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;flex:1;justify-content:center;flex-wrap:nowrap}
+.nav-links a{color:var(--gray-light);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:6px 10px;border-radius:4px;transition:color var(--transition),background var(--transition);white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px;flex-shrink:0}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
+.nav-tagline{position:absolute;left:0;right:0;text-align:center;font-family:var(--font-elegant);font-size:12px;font-style:italic;color:var(--white);letter-spacing:3px;white-space:nowrap;pointer-events:none;opacity:0.8;z-index:-1}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.mode-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;background:none;border:1px solid rgba(46,189,142,0.3);border-radius:20px;padding:6px 14px;transition:all var(--transition);flex-shrink:0}
+.mode-toggle:hover{border-color:var(--gold)}
+.mode-toggle-icon{font-size:14px;line-height:1}
+.mode-toggle-label{font-size:12px;font-family:var(--font-body);font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gray-light);white-space:nowrap}
+.mode-toggle-mobile{display:none;width:100%;justify-content:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(46,189,142,0.15)}
+
+/* DISCLAIMER BAR */
+.disclaimer-bar{background:var(--dark-2);border-bottom:1px solid rgba(46,189,142,0.12);padding:10px 32px;text-align:center;font-size:12px;color:var(--gray);letter-spacing:0.5px;position:relative;z-index:1}
+.disclaimer-bar a{color:var(--gold);text-decoration:none}
+.disclaimer-bar a:hover{text-decoration:underline}
+
+/* PAGE WRAP */
+.nil-page{padding-top:64px;position:relative;z-index:1}
+
+/* HERO */
+.nil-hero{padding:72px 48px 56px;max-width:var(--max);margin:0 auto;position:relative}
+.nil-hero-glow{position:absolute;top:0;left:40%;width:500px;height:400px;background:radial-gradient(ellipse,var(--gold-glow) 0%,transparent 70%);pointer-events:none;z-index:-1}
+.nil-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
+.nil-h1{font-family:var(--font-display);font-size:clamp(52px,7vw,96px);letter-spacing:4px;line-height:1;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .25s}
+.nil-h1 span{color:var(--gold)}
+.nil-hero-p{font-size:17px;color:var(--gray-light);font-weight:300;line-height:1.8;max-width:680px;margin-bottom:32px;opacity:0;animation:fadeUp .8s ease forwards .4s}
+.nil-hero-tags{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:fadeUp .8s ease forwards .55s}
+.nil-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(46,189,142,0.3);border-radius:20px;padding:5px 14px;font-weight:500}
+
+/* SECTION NAV (scroll anchors) */
+.nil-nav{background:var(--dark-2);border-bottom:1px solid rgba(46,189,142,0.1);position:sticky;top:64px;z-index:100;overflow-x:auto;scrollbar-width:none}
+.nil-nav::-webkit-scrollbar{display:none}
+.nil-nav-inner{display:flex;gap:0;max-width:var(--max);margin:0 auto}
+.nil-nav-btn{flex-shrink:0;padding:14px 22px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all var(--transition);white-space:nowrap;text-decoration:none;display:flex;align-items:center}
+.nil-nav-btn:hover{color:var(--gold)}
+.nil-nav-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* SECTION SHARED */
+.nil-sec{padding:64px 48px;position:relative;z-index:1}
+.nil-sec-inner{max-width:var(--max);margin:0 auto}
+.nil-sec-label{display:block;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+.nil-sec-h{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);letter-spacing:3px;line-height:1.05;margin-bottom:24px}
+.nil-sec-p{font-size:16px;color:var(--gray-light);line-height:1.85;font-weight:300;margin-bottom:16px;max-width:780px}
+hr.gd{border:none;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);opacity:0.2;margin:0}
+
+/* SECTION CARD */
+.nil-section-card{background:var(--dark-2);border-radius:10px;border:1px solid rgba(46,189,142,0.1);overflow:hidden;margin-bottom:12px;transition:border-color var(--transition)}
+.nil-section-card:hover{border-color:rgba(46,189,142,0.25)}
+
+/* ACCORDION */
+.acc-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;padding:24px 28px;gap:16px;text-align:left}
+.acc-toggle:hover .acc-title{color:var(--gold)}
+.acc-title{font-family:var(--font-display);font-size:22px;letter-spacing:2px;color:var(--white);transition:color var(--transition)}
+.acc-label{font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.acc-left{display:flex;flex-direction:column;gap:2px}
+.acc-arrow{width:20px;height:20px;flex-shrink:0;transition:transform .3s ease;color:var(--gold)}
+.acc-arrow.open{transform:rotate(180deg)}
+.acc-body{display:none;padding:0 28px 28px;border-top:1px solid rgba(46,189,142,0.08)}
+.acc-body.open{display:block;animation:fadeUp .35s ease}
+.acc-body-inner{padding-top:24px}
+.acc-body p{font-size:15px;color:var(--gray-light);line-height:1.8;font-weight:300;margin-bottom:14px}
+.acc-body p:last-child{margin-bottom:0}
+.acc-body strong{color:var(--white);font-weight:600}
+
+/* RULE PILLS */
+.rule-list{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.rule-item{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:var(--dark-3);border-radius:var(--radius);border-left:3px solid var(--gold)}
+.rule-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+.rule-text{font-size:14px;color:var(--gray-light);line-height:1.6}
+.rule-text strong{color:var(--white);display:block;margin-bottom:2px;font-size:13px;letter-spacing:.5px}
+
+/* DIVISION GRID */
+.div-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.div-card{background:var(--dark-3);border-radius:8px;padding:22px 20px;border:1px solid rgba(46,189,142,0.1);transition:all var(--transition)}
+.div-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.div-label{font-family:var(--font-display);font-size:28px;letter-spacing:2px;color:var(--gold);margin-bottom:4px}
+.div-name{font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.div-items{display:flex;flex-direction:column;gap:7px}
+.div-item{font-size:13px;color:var(--gray-light);padding-left:14px;position:relative;line-height:1.5}
+.div-item::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:11px}
+
+/* MONEY PILLARS */
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.pillar{background:var(--dark-3);border-radius:8px;padding:28px 22px;border-top:3px solid var(--gold);transition:all var(--transition)}
+.pillar:hover{background:var(--dark-4);transform:translateY(-2px)}
+.pillar-num{font-family:var(--font-display);font-size:48px;color:var(--gold);line-height:1;margin-bottom:8px;opacity:.3}
+.pillar-title{font-family:var(--font-display);font-size:20px;letter-spacing:2px;color:var(--white);margin-bottom:10px}
+.pillar-p{font-size:13px;color:var(--gray-light);line-height:1.65;font-weight:300}
+
+/* SPORTS LIST */
+.sports-list{display:flex;flex-direction:column;gap:8px;margin-top:20px}
+.sport-item{background:var(--dark-2);border:1px solid rgba(46,189,142,0.1);border-radius:8px;overflow:hidden;transition:border-color var(--transition)}
+.sport-item:hover{border-color:rgba(46,189,142,0.3)}
+.sport-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;padding:18px 22px;gap:16px;text-align:left}
+.sport-toggle:hover .sport-name{color:var(--gold)}
+.sport-left{display:flex;align-items:center;gap:16px}
+.sport-icon{width:36px;height:36px;border-radius:50%;background:var(--gold-dim);border:1px solid rgba(46,189,142,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.sport-name{font-family:var(--font-display);font-size:18px;letter-spacing:1.5px;color:var(--white);transition:color var(--transition)}
+.sport-meta{font-size:11px;color:var(--gray);letter-spacing:1px}
+.sport-arrow{width:18px;height:18px;flex-shrink:0;transition:transform .3s;color:var(--gold)}
+.sport-arrow.open{transform:rotate(180deg)}
+.sport-body{display:none;padding:0 22px 22px;border-top:1px solid rgba(46,189,142,0.08);background:var(--dark-3)}
+.sport-body.open{display:grid;grid-template-columns:1fr 1fr;gap:20px;animation:fadeUp .3s ease;padding-top:20px}
+.sport-col-label{font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:10px}
+.sport-col-items{display:flex;flex-direction:column;gap:7px}
+.sport-col-item{font-size:13px;color:var(--gray-light);padding-left:14px;position:relative;line-height:1.5}
+.sport-col-item::before{content:'›';position:absolute;left:0;color:var(--gold)}
+.sport-links{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.sport-link{display:flex;align-items:center;gap:8px;color:var(--gold);text-decoration:none;font-size:13px;font-weight:500;transition:opacity var(--transition)}
+.sport-link:hover{opacity:.75}
+.sport-link::before{content:'↗';font-size:11px;flex-shrink:0}
+
+/* EDUCATION CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.check-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;background:var(--dark-3);border-radius:var(--radius)}
+.check-box{width:22px;height:22px;border-radius:4px;border:2px solid rgba(46,189,142,0.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.check-box svg{width:12px;height:12px;color:var(--gold);opacity:0}
+.check-text{font-size:14px;color:var(--gray-light);line-height:1.6}
+.check-text strong{color:var(--white);display:block;margin-bottom:2px;font-size:13px;letter-spacing:.3px}
+.red-flag{border-left:3px solid #E24B4A}
+.red-flag .check-box{border-color:rgba(226,75,74,0.4)}
+
+/* SAMPLE AGREEMENT */
+.agreement-wrap{background:var(--dark-3);border:1px solid rgba(46,189,142,0.15);border-radius:10px;padding:32px;margin-top:20px}
+.agreement-section{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(46,189,142,0.08)}
+.agreement-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.ag-label{font-size:10px;color:var(--gold);letter-spacing:4px;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.ag-title{font-family:var(--font-display);font-size:20px;letter-spacing:1.5px;color:var(--white);margin-bottom:10px}
+.ag-text{font-size:14px;color:var(--gray-light);line-height:1.75;font-weight:300}
+.ag-field{display:inline-block;background:rgba(46,189,142,0.08);border:1px dashed rgba(46,189,142,0.3);border-radius:4px;padding:2px 10px;font-size:13px;color:var(--gold);margin:0 4px}
+.ag-disclaimer{background:rgba(226,75,74,0.08);border:1px solid rgba(226,75,74,0.2);border-radius:8px;padding:18px 22px;margin-top:24px}
+.ag-disclaimer p{font-size:13px;color:#E8888A;line-height:1.65;margin:0}
+.ag-disclaimer strong{color:#E24B4A}
+
+/* LINK CARDS */
+.link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+.link-card{background:var(--dark-2);border:1px solid rgba(46,189,142,0.1);border-radius:8px;padding:22px;transition:all var(--transition);text-decoration:none;display:flex;flex-direction:column;gap:6px}
+.link-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.link-card-label{font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-weight:600}
+.link-card-title{font-family:var(--font-display);font-size:18px;letter-spacing:1.5px;color:var(--white)}
+.link-card-desc{font-size:13px;color:var(--gray);font-weight:300;line-height:1.5}
+.link-card-arrow{font-size:12px;color:var(--gold);margin-top:4px}
+
+/* FOOTER */
+footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189,142,0.1);position:relative;z-index:1}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.footer-logo svg{width:22px;height:22px}
+.footer-wm{font-family:var(--font-display);font-size:16px;color:var(--white);letter-spacing:3px}
+.footer-wm .g{color:#2EBD8E}
+.footer-tag{font-family:var(--font-elegant);font-size:12px;color:var(--gray);font-style:italic;letter-spacing:2px}
+.footer-copy{font-size:11px;color:var(--gray)}
+.footer-back{color:var(--gold);text-decoration:none;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:6px;transition:opacity var(--transition)}
+.footer-back:hover{opacity:.75}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .nav-tagline{display:none}
+  .mode-toggle-mobile{display:flex}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--dark);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:199}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:18px;padding:10px 20px}
+  .nav-toggle{display:flex}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .div-grid{grid-template-columns:1fr}
+  .pillar-grid{grid-template-columns:1fr}
+  .link-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .nil-sec{padding:48px 24px}
+  .nil-hero{padding:48px 24px 40px}
+  .sport-body.open{grid-template-columns:1fr}
+  .disclaimer-bar{padding:10px 24px}
+  footer{padding:32px 24px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body class="light-mode">
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="ATHLINKT Home">
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" stroke="#2EBD8E" stroke-width="1.5"/>
+      <line x1="11" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="29" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="13.5" y1="22" x2="18.5" y2="19.5" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
+      <line x1="26.5" y1="22" x2="21.5" y2="19.5" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
+      <polygon points="20,15.5 15.5,19.5 20,23.5 24.5,19.5" fill="#2EBD8E"/>
+    </svg>
+    <span class="nav-wordmark"><span class="g">A</span>THLINKT</span>
+  </a>
+  <span class="nav-tagline" aria-hidden="true">Beyond the Finish Line</span>
+  <ul class="nav-links" id="navLinks" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="nil.html" class="active">NIL</a></li>
+    <li><a href="index.html#transfer">Transfer Portal</a></li>
+    <li><a href="index.html#career">Career Match</a></li>
+    <li><a href="index.html#resources">Resources</a></li>
+    <li><a href="index.html#community">Community</a></li>
+    <li><a href="index.html#story">Our Story</a></li>
+    <li class="mode-toggle-mobile">
+      <button class="mode-toggle" id="modeToggleMobile" aria-label="Toggle light and dark mode">
+        <span class="mode-toggle-icon" id="modeIconMobile">🌙</span>
+        <span class="mode-toggle-label" id="modeLabelMobile">Dark Mode</span>
+      </button>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <button class="mode-toggle" id="modeToggleDesktop" aria-label="Toggle light and dark mode">
+      <span class="mode-toggle-icon" id="modeIconDesktop">🌙</span>
+      <span class="mode-toggle-label" id="modeLabelDesktop">Dark</span>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- DISCLAIMER BAR -->
+<div class="disclaimer-bar" role="note">
+  For educational purposes only. Not legal, financial, or compliance advice. Always consult your school's compliance office before signing any NIL agreement. Rules evolve — verify current requirements at <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">ncaa.org</a> and <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener">collegesportscommission.org</a>.
+</div>
+
+<main id="main-content" class="nil-page">
+
+  <!-- HERO -->
+  <section class="nil-hero" aria-label="NIL Resource Hub">
+    <div class="nil-hero-glow" aria-hidden="true"></div>
+    <span class="nil-eyebrow">Name · Image · Likeness</span>
+    <h1 class="nil-h1">NIL <span>RESOURCE</span><br>HUB</h1>
+    <p class="nil-hero-p">Everything a college athlete needs to understand, protect, and act on their NIL rights — rules, money sources, sport-specific context, and tools to move forward. Every sport. Every division.</p>
+    <div class="nil-hero-tags">
+      <span class="nil-tag">Division I · II · III</span>
+      <span class="nil-tag">All Sports</span>
+      <span class="nil-tag">Updated 2025–26</span>
+      <span class="nil-tag">Verified Links</span>
+    </div>
+  </section>
+
+  <!-- SECTION NAV -->
+  <nav class="nil-nav" aria-label="NIL sections">
+    <div class="nil-nav-inner">
+      <a href="#nil-what" class="nil-nav-btn active">What Is NIL</a>
+      <a href="#nil-rules" class="nil-nav-btn">Know the Rules</a>
+      <a href="#nil-money" class="nil-nav-btn">Your Money</a>
+      <a href="#nil-sports" class="nil-nav-btn">By Sport</a>
+      <a href="#nil-education" class="nil-nav-btn">Education</a>
+      <a href="#nil-agreement" class="nil-nav-btn">Sample Agreement</a>
+      <a href="#nil-support" class="nil-nav-btn">Find Support</a>
+    </div>
+  </nav>
+
+  <!-- ══ SECTION 1: WHAT IS NIL ══ -->
+  <section id="nil-what" class="nil-sec" aria-labelledby="what-h">
+    <div class="nil-sec-inner">
+      <span class="nil-sec-label">Section 01</span>
+      <h2 class="nil-sec-h" id="what-h">WHAT IS <span style="color:var(--gold)">NIL?</span></h2>
+      <p class="nil-sec-p">NIL stands for Name, Image, and Likeness. It is your legal right to earn money from who you are — your face, your name, your story, your brand — while remaining eligible to compete in college athletics.</p>
+      <p class="nil-sec-p">Since July 2021, the NCAA has allowed all college athletes across every division to pursue NIL opportunities. The 2025 House v. NCAA settlement took that further, allowing Division I schools to pay athletes directly for the first time in history.</p>
+
+      <div style="margin-top:32px;display:flex;flex-direction:column;gap:10px">
+
+        <div class="nil-section-card">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-timeline">
+            <div class="acc-left">
+              <span class="acc-title">The NIL Timeline</span>
+              <span class="acc-label">2014 to today — how we got here</span>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body" id="acc-timeline">
+            <div class="acc-body-inner">
+              <div class="rule-list">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>2014 — O'Bannon v. NCAA</strong> Former UCLA basketball player Ed O'Bannon won a lawsuit against the NCAA for using his likeness in a video game without compensation. The first crack in the amateurism wall.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>2019 — California Acts First</strong> California passed the Fair Pay to Play Act, becoming the first state to give college athletes the right to earn NIL compensation. Other states followed quickly.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>June 2021 — Supreme Court Rules</strong> In NCAA v. Alston, the Supreme Court ruled unanimously that the NCAA's restrictions on athlete benefits violated antitrust law. Days later, the NCAA suspended its NIL ban entirely.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>July 2021 — NIL Era Begins</strong> All NCAA athletes across every division can now earn money from their name, image, and likeness without losing eligibility. NIL collectives form rapidly at major programs.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>June 2025 — House Settlement Approved</strong> U.S. District Judge Claudia Wilken approved the $2.576 billion House v. NCAA settlement, allowing Division I schools to pay athletes directly for the first time. Revenue sharing begins July 1, 2025.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>July 2025 — New Era Begins</strong> Schools can now distribute up to $20.5 million annually in direct payments to athletes. NIL Go (Deloitte) launches as the clearinghouse for all third-party deals over $600. The College Sports Commission becomes the enforcement body.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>October 2025 — Enforcement Expands</strong> The NCAA Division I Board of Directors adopts new reporting amendments extending NIL obligations to all DI athletes, including high school prospects, JUCO transfers, and portal entrants.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nil-section-card">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-glossary">
+            <div class="acc-left">
+              <span class="acc-title">Key Terms Glossary</span>
+              <span class="acc-label">NIL, collective, NIL Go, CSC, pay-for-play and more</span>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body" id="acc-glossary">
+            <div class="acc-body-inner">
+              <div class="rule-list">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL (Name, Image, Likeness)</strong> Your legal right to earn money from your personal identity — your name, face, voice, social media presence, and public persona — for commercial purposes.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL Deal</strong> Any agreement where you receive compensation (money, products, or services) in exchange for allowing a business or individual to use your name, image, or likeness to promote their goods or services.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL Collective</strong> A third-party organization — typically funded by alumni, donors, and boosters — that pools money and facilitates NIL deals for athletes at a specific school. Collectives operate independently from universities.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Revenue Sharing</strong> Beginning July 1, 2025, Division I schools that opt into the House settlement can pay athletes directly from athletic revenue — up to $20.5 million per school annually in 2025–26.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL Go</strong> The online clearinghouse portal built by Deloitte and operated by the College Sports Commission (CSC). All DI athletes must report third-party NIL deals of $600 or more through NIL Go within five business days of signing.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>College Sports Commission (CSC)</strong> The independent enforcement body created under the House settlement to oversee NIL compliance, revenue sharing caps, and roster limits. Led by former MLB executive Bryan Seeley.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Valid Business Purpose</strong> A CSC requirement that all NIL deals must be tied to actual commercial activity — promoting a real product or service to the public for profit. The athlete's NIL must be genuinely used in the promotion.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Pay-for-Play</strong> Prohibited under all circumstances. Paying an athlete to attend a specific school, stay at a school, or as a reward for athletic performance. Not the same as legitimate NIL compensation for promotional services.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>CAPS</strong> The Compensation and Administrative Platform System — operated by LBi under CSC oversight — where institutions upload revenue sharing agreements and manage benefits cap reporting.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Benefits Cap</strong> The ceiling on total revenue sharing and benefits a DI institution can provide to athletes in an academic year. Set at $20.5 million for 2025–26 and will grow by up to 4% annually over ten years.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 2: KNOW THE RULES ══ -->
+  <section id="nil-rules" class="nil-sec" style="background:var(--dark-2)" aria-labelledby="rules-h">
+    <div class="nil-sec-inner">
+      <span class="nil-sec-label">Section 02</span>
+      <h2 class="nil-sec-h" id="rules-h">KNOW THE <span style="color:var(--gold)">RULES</span></h2>
+      <p class="nil-sec-p">The rules changed significantly in 2025 and are still evolving. What you need to know depends on your division and your situation. Start here.</p>
+
+      <div class="div-grid">
+        <div class="div-card">
+          <div class="div-label">DI</div>
+          <div class="div-name">Division I</div>
+          <div class="div-items">
+            <div class="div-item">Revenue sharing active — up to $20.5M per school</div>
+            <div class="div-item">All third-party deals $600+ must be reported through NIL Go within 5 business days</div>
+            <div class="div-item">Deals reviewed for valid business purpose and market-rate compensation</div>
+            <div class="div-item">No verbal or written guarantees of third-party NIL from schools (as of July 1, 2025)</div>
+            <div class="div-item">Pre-enrollment NIL negotiations now permitted</div>
+            <div class="div-item">Transfer portal athletes must report deals from the moment they enter the portal</div>
+            <div class="div-item">FTC disclosure rules apply to all sponsored social content</div>
+          </div>
+        </div>
+        <div class="div-card">
+          <div class="div-label">DII</div>
+          <div class="div-name">Division II</div>
+          <div class="div-items">
+            <div class="div-item">NIL is permitted — no revenue sharing under the House settlement (DI only)</div>
+            <div class="div-item">No NIL Go reporting requirement unless transferring to a DI institution</div>
+            <div class="div-item">Must follow state NIL law where your school is located</div>
+            <div class="div-item">Only ~22% of DII schools have a formal NIL policy — check with your compliance office</div>
+            <div class="div-item">Local brand deals, social media, camps and clinics are primary pathways</div>
+            <div class="div-item">Pay-for-play and recruiting inducements remain prohibited</div>
+          </div>
+        </div>
+        <div class="div-card">
+          <div class="div-label">DIII</div>
+          <div class="div-name">Division III</div>
+          <div class="div-items">
+            <div class="div-item">NIL is permitted — no athletic scholarships at DIII level</div>
+            <div class="div-item">No NIL Go reporting requirement</div>
+            <div class="div-item">State law and school policy govern — no uniform national framework</div>
+            <div class="div-item">NIL activity compliant with state law does not affect eligibility</div>
+            <div class="div-item">DIII schools have limited NIL infrastructure — most lack dedicated NIL staff</div>
+            <div class="div-item">Community partnerships and digital platforms are the main NIL pathways</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;display:flex;flex-direction:column;gap:10px">
+
+        <div class="nil-section-card">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-nilgo">
+            <div class="acc-left">
+              <span class="acc-title">How NIL Go Works (DI)</span>
+              <span class="acc-label">The deal review process explained step by step</span>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body" id="acc-nilgo">
+            <div class="acc-body-inner">
+              <p>NIL Go is the CSC's online clearinghouse, built with Deloitte, where all DI athletes submit third-party NIL deals of $600 or more for review before or shortly after signing. You get access when you register at your DI institution.</p>
+              <div class="rule-list">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Step 1 — Submit the deal</strong> Upload a PDF of the agreement (even unsigned) and provide details about the paying party. If the company isn't in the system, they will receive an invitation to register.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Step 2 — Three-part review</strong> NIL Go evaluates every deal on: (1) Payor Association — the business's relationship to your school; (2) Valid Business Purpose — does the deal promote a real product or service?; (3) Range of Compensation — is the pay fair for your market value?</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Step 3 — Result</strong> Cleared (green) — you are good to proceed. Flagged for Review (yellow) — sent for additional CSC evaluation. Not Cleared (red) — the deal fails the review; you may adjust and resubmit, or request neutral arbitration.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Critical reminder</strong> Do not post about or activate a deal before it is cleared. Promotion before clearance puts your eligibility at risk. Report early, not after the fact.</div></div>
+              </div>
+              <p style="margin-top:16px">Access NIL Go and learn more at the <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener" style="color:var(--gold)">College Sports Commission NIL page</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="nil-section-card">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-statelaw">
+            <div class="acc-left">
+              <span class="acc-title">State NIL Laws</span>
+              <span class="acc-label">Your state's rules may add requirements beyond NCAA policy</span>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body" id="acc-statelaw">
+            <div class="acc-body-inner">
+              <p>Every state has its own NIL laws, and you must follow the law where your school is located — not where you grew up. State laws vary widely on disclosure timelines, prohibited deal categories, agent licensing, and school involvement. NCAA policy applies on top of, not instead of, your state's law.</p>
+              <p>Common themes across state laws include: mandatory disclosure of contracts to your school, prohibitions on deals involving alcohol, gambling, cannabis, adult entertainment, or tobacco, and requirements that deal terms not conflict with your institution's existing contracts.</p>
+              <p>For a full breakdown of NIL law in your state, visit the <a href="https://www.nilnetwork.com/nil-laws-by-state/" target="_blank" rel="noopener" style="color:var(--gold)">NIL Network State Laws Directory</a>. As of early 2026, no single federal NIL statute has been enacted — Congress is still debating the SAFE Act and SCORE Act — so state-by-state differences remain active.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="nil-section-card">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-ftc">
+            <div class="acc-left">
+              <span class="acc-title">FTC Rules for Social Media</span>
+              <span class="acc-label">Disclosure requirements for sponsored content</span>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body" id="acc-ftc">
+            <div class="acc-body-inner">
+              <p>The Federal Trade Commission actively monitors NIL-related social media content. If you are being paid to promote a product or brand, you must clearly disclose that relationship in every post. This is federal law — not just a guideline — and violations can result in penalties for both you and the brand.</p>
+              <div class="rule-list">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Required disclosures</strong> Use clear labels: #ad, #sponsored, or #partner. The disclosure must be prominent — not buried in a string of hashtags or visible only when expanded.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Applies to all platforms</strong> Instagram, TikTok, X, YouTube, Twitch, podcasts — every format and channel where you promote a brand for compensation requires disclosure.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your NIL contract should include this</strong> Any reputable brand contract will have an FTC compliance clause requiring you to disclose. If it doesn't, add it before signing.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:28px">
+        <p class="nil-sec-p" style="font-size:14px">Official sources: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Page</a> · <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener" style="color:var(--gold)">College Sports Commission</a> · <a href="https://sportsepreneur.com/nil-rules-athletes-parents-coaches/" target="_blank" rel="noopener" style="color:var(--gold)">NIL Rules 2026 Guide (updated March 2026)</a></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 3: YOUR MONEY ══ -->
+  <section id="nil-money" class="nil-sec" aria-labelledby="money-h">
+    <div class="nil-sec-inner">
+      <span class="nil-sec-label">Section 03</span>
+      <h2 class="nil-sec-h" id="money-h">YOUR <span style="color:var(--gold)">MONEY</span></h2>
+      <p class="nil-sec-p">As a DI athlete in the 2025–26 era, you can draw from three distinct compensation sources — each with its own rules and access requirements.</p>
+
+      <div class="pillar-grid">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div class="pillar-title">ATHLETIC SCHOLARSHIP</div>
+          <p class="pillar-p">Tuition, room and board, books, and related educational expenses covered by your institution. Under the House settlement, athletes on financial aid at the time of the ruling cannot have that aid reduced or canceled due to roster limit changes. This is your baseline — protected.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div class="pillar-title">SCHOOL REVENUE SHARE</div>
+          <p class="pillar-p">Direct payments from your institution for use of your NIL. Schools that opt into the House settlement can distribute up to $20.5 million annually across their athletic programs. Payments must be documented in signed agreements, uploaded to CAPS within five business days, and are tied to your eligibility status. DI only.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div class="pillar-title">THIRD-PARTY NIL DEALS</div>
+          <p class="pillar-p">Endorsements, appearances, social media campaigns, camps and clinics, merchandise, licensing deals — arranged with brands, local businesses, collectives, or individual sponsors. DI athletes must report these through NIL Go. DII and DIII athletes follow state law and school policy. This pillar is available to athletes at every division.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;display:flex;flex-direction:column;gap:10px">
+
+        <div class="nil-section-card">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-collectives">
+            <div class="acc-left">
+              <span class="acc-title">NIL Collectives in 2025–26</span>
+              <span class="acc-label">What changed, what remains, and what to know</span>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body" id="acc-collectives">
+            <div class="acc-body-inner">
+              <p>NIL collectives are third-party organizations — typically funded by alumni, fans, and donors — that pool money and arrange paid opportunities for athletes at specific schools. They operate independently from universities and have played a major role since 2021.</p>
+              <p>With the arrival of direct revenue sharing in 2025, the landscape for collectives has shifted significantly. Schools are now competing directly for that fundraising attention, and many donor contributions that previously flowed to collectives are being redirected to help schools meet their revenue sharing obligations.</p>
+              <p>Critically, Deloitte data shared with athletic directors shows that approximately 70% of the payment structures common in pre-2025 collectives — essentially pay-for-attendance arrangements — would fail the CSC's valid business purpose review today. Collectives must now structure deals around real commercial deliverables: appearances, promotions, social media campaigns, autograph signings with a genuine promotional purpose.</p>
+              <p>Collectives are not going away. Athletes at participating programs can still draw from all three compensation sources simultaneously. However, the deals must be structured correctly and submitted through NIL Go for review.</p>
+              <p>To find your school's collective or explore options: <a href="https://businessofcollegesports.com/tracker-university-specific-nil-collectives/" target="_blank" rel="noopener" style="color:var(--gold)">Business of College Sports Collective Tracker</a> · <a href="https://nil-ncaa.com/collectives/" target="_blank" rel="noopener" style="color:var(--gold)">NIL-NCAA Collectives Overview</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="nil-section-card">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-taxes">
+            <div class="acc-left">
+              <span class="acc-title">NIL & Taxes</span>
+              <span class="acc-label">Your NIL income is taxable. Here is what to know.</span>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body" id="acc-taxes">
+            <div class="acc-body-inner">
+              <p>All NIL compensation — whether from third-party deals, collectives, or school revenue sharing — is taxable income. This includes payments in cash and non-cash benefits such as free products, gift cards, housing subsidies, or car leases above fair market value.</p>
+              <div class="rule-list">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>1099 forms</strong> If a company or collective pays you $600 or more in a tax year, they are required to issue a 1099 form. No taxes are withheld from these payments — you are responsible for paying them yourself.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Set aside 20–30%</strong> A general guideline is to set aside 20–30% of NIL income for federal and state taxes. The exact amount depends on your total income and tax situation.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Business expenses may be deductible</strong> Equipment, software, travel required for NIL work, and professional service fees may be deductible. Keep all receipts and records.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Consult a professional</strong> NIL tax situations are genuinely complex. Use the NIL Assist platform to find vetted tax advisors experienced with athlete income.</div></div>
+              </div>
+              <p style="margin-top:16px">Tax education resources: <a href="https://nilassist.ncaa.org/education/" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Assist Education Library</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="nil-section-card">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-equity">
+            <div class="acc-left">
+              <span class="acc-title">NIL & Gender Equity</span>
+              <span class="acc-label">What every athlete deserves to know about the gap</span>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body" id="acc-equity">
+            <div class="acc-body-inner">
+              <p>Historically, the vast majority of NIL collective money has flowed to football and men's basketball — with estimates suggesting well over 90% of collective dollars have gone to male athletes. This disparity has raised active Title IX concerns that remain unresolved.</p>
+              <p>The commercial NIL market tells a different story: women's basketball, gymnastics, and volleyball have produced some of the highest-earning individual athletes in all of college sports, with top earners in women's basketball now outpacing the median WNBA salary. The market for female athletes with strong social media followings and authentic personal brands is real and growing.</p>
+              <p>What this means for you: your earning potential in the commercial NIL space is real regardless of sport. The collective gap is a structural challenge tied to donor behavior — not a reflection of your value. Build your brand, document your story, and access the commercial marketplace directly. The <a href="https://opendorse.com" target="_blank" rel="noopener" style="color:var(--gold)">Opendorse marketplace</a> and <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" style="color:var(--gold)">On3 deal tracker</a> are open to every sport.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 4: BY SPORT ══ -->
+  <section id="nil-sports" class="nil-sec" style="background:var(--dark-2)" aria-labelledby="sports-h">
+    <div class="nil-sec-inner">
+      <span class="nil-sec-label">Section 04</span>
+      <h2 class="nil-sec-h" id="sports-h">NIL BY <span style="color:var(--gold)">SPORT</span></h2>
+      <p class="nil-sec-p">Every sport has a different NIL landscape. Click any sport to see deal types, division context, and direct marketplace links. Ordered by NCAA participation.</p>
+
+      <div class="sports-list" id="sportsList">
+
+        <!-- FOOTBALL -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🏈</div><div><div class="sport-name">Football</div><div class="sport-meta">~64,000 athletes · Highest NIL volume</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Largest collective spending — Power 4 programs dominate</div>
+                <div class="sport-col-item">Revenue sharing heavily concentrated here at most DI schools</div>
+                <div class="sport-col-item">Major brand deals: apparel, food/beverage, automotive, financial</div>
+                <div class="sport-col-item">Social media reach drives commercial deal value significantly</div>
+                <div class="sport-col-item">DII/DIII players have access to commercial and local deals</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com/football" target="_blank" rel="noopener" class="sport-link">Opendorse Football Marketplace</a>
+                <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="sport-link">On3 NIL Deal Tracker</a>
+                <a href="https://www.nilnewsstand.com/nil-deal-tracker" target="_blank" rel="noopener" class="sport-link">NIL Newsstand Deal Tracker</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRACK & FIELD -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🏃</div><div><div class="sport-name">Track & Field</div><div class="sport-meta">~46,000 athletes · Strong brand deal potential</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Strong alignment with athletic footwear and apparel brands</div>
+                <div class="sport-col-item">Sports nutrition, supplement, and wellness brand partnerships common</div>
+                <div class="sport-col-item">Performance training and equipment deals growing</div>
+                <div class="sport-col-item">Olympic pipeline athletes attract significant brand attention</div>
+                <div class="sport-col-item">Active across all three divisions — large total athlete pool</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com/track-and-field" target="_blank" rel="noopener" class="sport-link">Opendorse Track & Field Marketplace</a>
+                <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="sport-link">On3 NIL Deal Tracker</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BASEBALL / SOFTBALL -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">⚾</div><div><div class="sport-name">Baseball & Softball</div><div class="sport-meta">~47,000 combined · Scholarship expansion in softball</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Baseball has climbed to third in collective compensation nationally</div>
+                <div class="sport-col-item">Softball scholarship limits expand 12 → 25 under new roster rules — more athletes in the NIL pool</div>
+                <div class="sport-col-item">Equipment, apparel, and sports training brands are core partners</div>
+                <div class="sport-col-item">Strong fan bases in certain regions create local deal value</div>
+                <div class="sport-col-item">Social media content around game day drives commercial interest</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com/baseball" target="_blank" rel="noopener" class="sport-link">Opendorse Baseball Marketplace</a>
+                <a href="https://opendorse.com/softball" target="_blank" rel="noopener" class="sport-link">Opendorse Softball Marketplace</a>
+                <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="sport-link">On3 NIL Deal Tracker</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOCCER -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">⚽</div><div><div class="sport-name">Soccer</div><div class="sport-meta">~43,000 athletes · Fastest growing in NIL commercial market</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Growing rapidly in commercial NIL — strong brand alignment with athletic lifestyle</div>
+                <div class="sport-col-item">Local and regional business partnerships are accessible entry points</div>
+                <div class="sport-col-item">Strong international athlete presence creates global brand appeal</div>
+                <div class="sport-col-item">Sports nutrition, footwear, and apparel are primary deal categories</div>
+                <div class="sport-col-item">Content creators in soccer have found significant social media audiences</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com/soccer" target="_blank" rel="noopener" class="sport-link">Opendorse Soccer Marketplace</a>
+                <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="sport-link">On3 NIL Deal Tracker</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BASKETBALL -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🏀</div><div><div class="sport-name">Basketball</div><div class="sport-meta">~32,000 athletes · #2 commercial NIL sport</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Second only to football in commercial NIL compensation</div>
+                <div class="sport-col-item">Top earners in women's basketball now exceed the median WNBA salary</div>
+                <div class="sport-col-item">Major brands: Jordan Brand, Nike, adidas, Under Armour, national retailers</div>
+                <div class="sport-col-item">March Madness generates enormous exposure windows for active athletes</div>
+                <div class="sport-col-item">Revenue sharing most concentrated in men's basketball per roster spot</div>
+                <div class="sport-col-item">Strong social media following multiplies deal value significantly</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com/basketball" target="_blank" rel="noopener" class="sport-link">Opendorse Basketball Marketplace</a>
+                <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="sport-link">On3 NIL Deal Tracker</a>
+                <a href="https://www.nilnewsstand.com/general-manager-tracker-womens-basketball" target="_blank" rel="noopener" class="sport-link">NIL Newsstand Women's Basketball GM Tracker</a>
+                <a href="https://www.nilnewsstand.com/general-manager-tracker-mens-basketball" target="_blank" rel="noopener" class="sport-link">NIL Newsstand Men's Basketball GM Tracker</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CROSS COUNTRY -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🌲</div><div><div class="sport-name">Cross Country</div><div class="sport-meta">~25,000 athletes · Endurance and wellness brands</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Strong alignment with endurance, wellness, and nutrition brands</div>
+                <div class="sport-col-item">Athletic footwear companies actively recruit competitive distance runners</div>
+                <div class="sport-col-item">Lifestyle and outdoor brand partnerships available across all divisions</div>
+                <div class="sport-col-item">Training content on social media builds engaged niche audiences</div>
+                <div class="sport-col-item">Athletes with dedicated fitness/running audiences attract supplement brands</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com/track-and-field" target="_blank" rel="noopener" class="sport-link">Opendorse Track/XC Marketplace</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SWIMMING & DIVING -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🏊</div><div><div class="sport-name">Swimming & Diving</div><div class="sport-meta">~20,000 athletes · Scholarship expansion under new rules</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Growing NIL market — fitness, wellness, and health brand alignment is strong</div>
+                <div class="sport-col-item">Olympic pipeline athletes draw major brand attention pre-Games</div>
+                <div class="sport-col-item">Swimwear, training equipment, and performance tech brands are natural partners</div>
+                <div class="sport-col-item">Scholarship expansion in rowing (20 → 68 equivalencies) — similar structural changes benefit adjacent aquatic programs</div>
+                <div class="sport-col-item">Social media content around training, recovery, and competition builds audiences</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com/swimming" target="_blank" rel="noopener" class="sport-link">Opendorse Swimming Marketplace</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VOLLEYBALL -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🏐</div><div><div class="sport-name">Volleyball</div><div class="sport-meta">Strong DI/DII/DIII presence · Top earner NIL sport</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Top earning volleyball players average nearly 90 commercial deals per year</div>
+                <div class="sport-col-item">One of the fastest-growing NIL sports for female athletes</div>
+                <div class="sport-col-item">Strong social media reach — large, engaged fan bases at major programs</div>
+                <div class="sport-col-item">Apparel, sports nutrition, athletic footwear, and lifestyle brands</div>
+                <div class="sport-col-item">Nebraska Volleyball Day (100,000+ attendance) shows market scale</div>
+                <div class="sport-col-item">Beach volleyball growing rapidly as a separate NIL category</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com/volleyball" target="_blank" rel="noopener" class="sport-link">Opendorse Volleyball Marketplace</a>
+                <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="sport-link">On3 NIL Deal Tracker</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GOLF -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">⛳</div><div><div class="sport-name">Golf</div><div class="sport-meta">Large DI/II/III presence · Premium brand partnerships</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Premium brand alignment — equipment, apparel, lifestyle, and automotive</div>
+                <div class="sport-col-item">Pro pipeline creates strong brand storytelling opportunities</div>
+                <div class="sport-col-item">Individual sport visibility — tournament coverage provides media exposure</div>
+                <div class="sport-col-item">NIL has helped retain top prospects who might otherwise turn pro early</div>
+                <div class="sport-col-item">Course appearances and instructional content deals are common</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com/golf" target="_blank" rel="noopener" class="sport-link">Opendorse Golf Marketplace</a>
+                <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="sport-link">On3 NIL Deal Tracker</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TENNIS -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🎾</div><div><div class="sport-name">Tennis</div><div class="sport-meta">Strong across all divisions · Equipment and lifestyle brands</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Racquet equipment, apparel, and court gear brands are natural partners</div>
+                <div class="sport-col-item">Individual visibility from match coverage creates personal brand moments</div>
+                <div class="sport-col-item">High-profile social media athletes in tennis have secured major brand deals</div>
+                <div class="sport-col-item">International athlete representation brings global brand exposure</div>
+                <div class="sport-col-item">Instructional content and clinics are strong local deal opportunities</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com" target="_blank" rel="noopener" class="sport-link">Opendorse NIL Marketplace</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LACROSSE -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🥍</div><div><div class="sport-name">Lacrosse</div><div class="sport-meta">Fastest growing sport · Strong East Coast market</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Sport-specific equipment brands are primary partnership targets</div>
+                <div class="sport-col-item">Fast-growing fan base creates expanding commercial NIL opportunity</div>
+                <div class="sport-col-item">Strong DI and DIII presence — more athletes in the NIL pool than commonly recognized</div>
+                <div class="sport-col-item">East Coast regional market depth supports local business partnerships</div>
+                <div class="sport-col-item">PLL pro league creates pipeline storytelling for top prospects</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com" target="_blank" rel="noopener" class="sport-link">Opendorse NIL Marketplace</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WRESTLING -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🤼</div><div><div class="sport-name">Wrestling</div><div class="sport-meta">Growing fast · Inaugural women's NCAA championship 2025–26</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Women's wrestling held its inaugural NCAA championship in 2025–26 — new visibility driving NIL interest</div>
+                <div class="sport-col-item">Combat sports adjacent brands are active NIL partners</div>
+                <div class="sport-col-item">Strength and conditioning, nutrition, and recovery brands align naturally</div>
+                <div class="sport-col-item">Strong personal brand potential — individual athlete storytelling resonates</div>
+                <div class="sport-col-item">Loyal fan communities at program level support local deals</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com" target="_blank" rel="noopener" class="sport-link">Opendorse NIL Marketplace</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GYMNASTICS -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🤸</div><div><div class="sport-name">Gymnastics</div><div class="sport-meta">High social media leverage · Top women's NIL earners</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Some of the highest NIL deal volumes per athlete of any women's sport</div>
+                <div class="sport-col-item">TikTok and Instagram presence drives massive commercial brand interest</div>
+                <div class="sport-col-item">Apparel, beauty, lifestyle, and athletic brands actively seek gymnasts</div>
+                <div class="sport-col-item">Olympic pipeline athletes generate significant pre-Games interest</div>
+                <div class="sport-col-item">Competition content and training videos attract large, engaged audiences</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com" target="_blank" rel="noopener" class="sport-link">Opendorse NIL Marketplace</a>
+                <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="sport-link">On3 NIL Deal Tracker</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ICE HOCKEY -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🏒</div><div><div class="sport-name">Ice Hockey</div><div class="sport-meta">Regional markets · Strong equipment brand partnerships</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Deep regional market strength in New England, upper Midwest, and Northeast</div>
+                <div class="sport-col-item">Equipment brands (skates, sticks, protective gear) are primary partners</div>
+                <div class="sport-col-item">NHL draft pipeline athletes draw significant pre-draft brand attention</div>
+                <div class="sport-col-item">Women's hockey growing — inaugural top-level championships increasing visibility</div>
+                <div class="sport-col-item">Loyal, passionate fan bases at program level support local business deals</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com/ice-hockey" target="_blank" rel="noopener" class="sport-link">Opendorse Ice Hockey Marketplace</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROWING -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🚣</div><div><div class="sport-name">Rowing</div><div class="sport-meta">Scholarship equivalency expanding 20 → 68 under new rules</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Scholarship equivalency expanding dramatically — more athletes with stronger institutional ties</div>
+                <div class="sport-col-item">Endurance sport alignment with nutrition, wellness, and athletic gear brands</div>
+                <div class="sport-col-item">Olympic sport visibility — Games cycles create significant exposure windows</div>
+                <div class="sport-col-item">Training and lifestyle content builds strong niche social media audiences</div>
+                <div class="sport-col-item">Large team rosters mean more total athletes in the NIL marketplace</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com" target="_blank" rel="noopener" class="sport-link">Opendorse NIL Marketplace</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIELD HOCKEY -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🏑</div><div><div class="sport-name">Field Hockey</div><div class="sport-meta">Strong DI East Coast presence · Equipment and athletic brands</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">Sport-specific equipment partnerships are the primary entry point</div>
+                <div class="sport-col-item">Strong DI presence in Northeast — regional market depth supports local deals</div>
+                <div class="sport-col-item">Olympic sport alignment drives visibility in non-traditional media cycles</div>
+                <div class="sport-col-item">Athleisure and wellness brands increasingly targeting female athlete audiences</div>
+                <div class="sport-col-item">Mid-major programs are finding NIL success through community partnerships</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com" target="_blank" rel="noopener" class="sport-link">Opendorse NIL Marketplace</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OTHER SPORTS CATCH-ALL -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🏅</div><div><div class="sport-name">All Other Sports</div><div class="sport-meta">Water polo · Fencing · Skiing · Rifle · Bowling · Flag football · Equestrian · Stunt · Triathlon & more</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Access for Every Sport</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item">NIL rights apply to every NCAA athlete in every sport at every division — there are no excluded sports</div>
+                <div class="sport-col-item">Your personal brand, social media presence, and community connections have value regardless of your sport's visibility</div>
+                <div class="sport-col-item">Local businesses, sport-specific equipment brands, and niche online communities are accessible starting points</div>
+                <div class="sport-col-item">Olympic sports athletes have unique pre-Games NIL windows — plan around your cycle</div>
+                <div class="sport-col-item">Emerging sports like flag football and stunt are building NIL markets from the ground up — early movers have advantages</div>
+                <div class="sport-col-item">Use Opendorse and the NCAA NIL Assist platform to find opportunities across any sport</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Universal Resources</div>
+              <div class="sport-links">
+                <a href="https://opendorse.com" target="_blank" rel="noopener" class="sport-link">Opendorse NIL Marketplace (all sports)</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+                <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="sport-link">On3 NIL Deal Tracker (all sports)</a>
+                <a href="https://www.nilnewsstand.com/nil-deal-tracker" target="_blank" rel="noopener" class="sport-link">NIL Newsstand Deal Tracker</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 5: EDUCATION ══ -->
+  <section id="nil-education" class="nil-sec" aria-labelledby="edu-h">
+    <div class="nil-sec-inner">
+      <span class="nil-sec-label">Section 05</span>
+      <h2 class="nil-sec-h" id="edu-h">BEFORE YOU <span style="color:var(--gold)">SIGN</span></h2>
+      <p class="nil-sec-p">Every athlete has a brand. Not every athlete knows how to protect it. Run through this checklist before engaging any NIL deal — and watch for the red flags.</p>
+
+      <div class="nil-section-card" style="margin-bottom:16px">
+        <button class="acc-toggle" aria-expanded="true" aria-controls="acc-checklist">
+          <div class="acc-left">
+            <span class="acc-title">Pre-Deal Checklist</span>
+            <span class="acc-label">Steps to take before signing anything</span>
+          </div>
+          <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="acc-body open" id="acc-checklist">
+          <div class="acc-body-inner">
+            <div class="checklist">
+              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Talk to your compliance office first</strong>Before you sign, before you verbally agree — run it by your school's compliance office. They exist to protect you. This step is not optional for DI athletes.</div></div>
+              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Understand exactly what you are agreeing to</strong>Read the deliverables section completely. How many posts? What type of content? By when? What approvals does the brand require? Vague deliverables create disputes.</div></div>
+              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Confirm it has a valid business purpose (DI)</strong>The brand must offer a real product or service to the public for profit, and your NIL must be genuinely used to promote it. If the deal looks like payment to stay at or go to a school, it will not clear NIL Go.</div></div>
+              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Verify the compensation is market-rate</strong>Research comparable deals using the NCAA NIL Assist Data Dashboard and Opendorse. Compensation well above your market value is a red flag — it may indicate a hidden inducement.</div></div>
+              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Check for conflicts with team or school contracts</strong>Does your school have an exclusive apparel deal? Does your deal involve a competing brand? Does it require using school logos or facilities without prior approval? Flag any of these before signing.</div></div>
+              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Plan for taxes before the money arrives</strong>Set aside 20–30% of your NIL income. A 1099 means no tax was withheld. You will owe it at filing. Don't get caught short.</div></div>
+              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Submit through NIL Go before activating (DI)</strong>Report the deal to NIL Go within five business days of signing. Do not post, appear, or activate any promotion until the deal is cleared. Activation before clearance risks eligibility.</div></div>
+              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Include FTC disclosure language in social posts</strong>Every sponsored post needs a clear disclosure — #ad, #sponsored, or #partner — prominently placed, not buried. Make this a habit, not an afterthought.</div></div>
+              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Keep records of everything</strong>Save every contract, every payment, every deliverable you complete. Cleared deals in NIL Go create an audit trail. Your paper trail is your protection.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nil-section-card">
+        <button class="acc-toggle" aria-expanded="false" aria-controls="acc-redflags">
+          <div class="acc-left">
+            <span class="acc-title">Red Flags to Watch For</span>
+            <span class="acc-label">Signs a deal may put your eligibility at risk</span>
+          </div>
+          <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="acc-body" id="acc-redflags">
+          <div class="acc-body-inner">
+            <div class="checklist">
+              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>Verbal guarantees of NIL money tied to your school choice</strong>If someone is promising you NIL money to attend or stay at a specific school — and there is no real commercial deliverable attached — that is pay-for-play. It is prohibited and will not clear CSC review.</div></div>
+              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>Compensation far above your market value with no clear reason</strong>If a deal pays dramatically more than comparable athletes earn and the justification is vague, that gap will draw scrutiny at NIL Go. High pay is not automatically a problem — but it needs a legitimate explanation.</div></div>
+              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>No defined deliverables in the contract</strong>A contract that pays you but does not specify what you are doing in return is not an NIL deal — it is a payment. The CSC will reject it.</div></div>
+              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>Pressure to sign quickly without reviewing the full terms</strong>Legitimate NIL partners give you time to review, consult your compliance office, and have an attorney look at the contract. Anyone rushing you to sign immediately deserves skepticism.</div></div>
+              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>Exclusivity clauses you do not fully understand</strong>Some contracts restrict you from working with any competing brands for the duration. Know exactly what you are giving up. An overly broad exclusivity clause can block better opportunities down the road.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px">
+        <p class="nil-sec-p" style="font-size:14px">Full education library: <a href="https://nilassist.ncaa.org/education/" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Assist Education</a> · <a href="https://nilassist.ncaa.org/student-athletes/" target="_blank" rel="noopener" style="color:var(--gold)">NIL Assist for Student-Athletes</a></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 6: SAMPLE AGREEMENT ══ -->
+  <section id="nil-agreement" class="nil-sec" style="background:var(--dark-2)" aria-labelledby="agreement-h">
+    <div class="nil-sec-inner">
+      <span class="nil-sec-label">Section 06</span>
+      <h2 class="nil-sec-h" id="agreement-h">SAMPLE NIL <span style="color:var(--gold)">AGREEMENT</span></h2>
+      <p class="nil-sec-p">A plain-language educational template showing the core components of an NIL contract. Use this to understand what you should expect to see — and ask about — before you sign anything real.</p>
+
+      <div class="ag-disclaimer">
+        <p><strong>Important:</strong> This is an educational reference only. It is not a legal document and does not constitute legal advice. It does not account for your school's specific policies, your state's NIL laws, or current NCAA bylaws. Before signing any NIL contract, always consult your institution's compliance office and consider working with a licensed attorney.</p>
+      </div>
+
+      <div class="agreement-wrap">
+
+        <div class="agreement-section">
+          <div class="ag-label">Section 1</div>
+          <div class="ag-title">PARTIES</div>
+          <p class="ag-text">This Name, Image, and Likeness Agreement ("Agreement") is entered into as of <span class="ag-field">[Date]</span> between <span class="ag-field">[Athlete Full Name]</span> ("Athlete"), a student-athlete at <span class="ag-field">[Institution Name]</span>, and <span class="ag-field">[Company / Brand / Individual Name]</span> ("Company"), a <span class="ag-field">[type of entity, e.g., limited liability company]</span> organized under the laws of <span class="ag-field">[State]</span>.</p>
+        </div>
+
+        <div class="agreement-section">
+          <div class="ag-label">Section 2</div>
+          <div class="ag-title">NIL RIGHTS GRANTED</div>
+          <p class="ag-text">Athlete grants Company a non-exclusive, limited license to use Athlete's name, image, photograph, likeness, voice, and social media handles solely for the purposes described in Section 3 (Deliverables) during the Term of this Agreement. No other use is permitted without Athlete's prior written consent. This license does not grant Company any rights to use Athlete's institution's name, logo, marks, facilities, or uniform without separate written approval from the institution.</p>
+        </div>
+
+        <div class="agreement-section">
+          <div class="ag-label">Section 3</div>
+          <div class="ag-title">DELIVERABLES</div>
+          <p class="ag-text">In exchange for the compensation described in Section 4, Athlete agrees to complete the following deliverables during the Term:</p>
+          <div class="rule-list" style="margin-top:12px">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><span class="ag-field">[Number]</span> sponsored social media posts on <span class="ag-field">[Platform(s)]</span>, promoting <span class="ag-field">[specific product/service]</span>, to be posted by <span class="ag-field">[date]</span></div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><span class="ag-field">[Optional: personal appearance at (event), date, duration, location]</span></div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><span class="ag-field">[Optional: other deliverables]</span></div></div>
+          </div>
+          <p class="ag-text" style="margin-top:12px">All social media content must include a clear disclosure of the sponsored relationship using the language: <em>#ad</em> or <em>#sponsored</em>, in compliance with FTC guidelines. Athlete retains creative control over content subject to Company's reasonable approval rights.</p>
+        </div>
+
+        <div class="agreement-section">
+          <div class="ag-label">Section 4</div>
+          <div class="ag-title">COMPENSATION & PAYMENT</div>
+          <p class="ag-text">Company agrees to pay Athlete a total of <span class="ag-field">[$amount]</span> for full and timely completion of all deliverables. Payment will be made via <span class="ag-field">[method]</span> within <span class="ag-field">[number]</span> days of execution of this Agreement / completion of deliverables <span class="ag-field">[choose one]</span>. Athlete acknowledges that this compensation constitutes taxable income and is solely responsible for any applicable taxes.</p>
+        </div>
+
+        <div class="agreement-section">
+          <div class="ag-label">Section 5</div>
+          <div class="ag-title">TERM</div>
+          <p class="ag-text">This Agreement commences on <span class="ag-field">[Start Date]</span> and terminates on <span class="ag-field">[End Date]</span>, unless terminated earlier in accordance with Section 8.</p>
+        </div>
+
+        <div class="agreement-section">
+          <div class="ag-label">Section 6</div>
+          <div class="ag-title">NCAA & COMPLIANCE OBLIGATIONS</div>
+          <p class="ag-text">Athlete represents that they have disclosed or will disclose this Agreement to their institution's compliance office and, if required by applicable NCAA bylaws, will report this Agreement through the NIL Go platform within the required timeframe. This Agreement shall not constitute or be used as a recruiting inducement. Compensation under this Agreement is tied solely to Athlete's NIL activities as specified herein and is in no way conditioned upon Athlete's enrollment at, continued attendance at, or athletic performance for any institution.</p>
+        </div>
+
+        <div class="agreement-section">
+          <div class="ag-label">Section 7</div>
+          <div class="ag-title">FTC COMPLIANCE</div>
+          <p class="ag-text">Athlete agrees to comply with all applicable Federal Trade Commission guidelines regarding endorsement disclosures. All content created under this Agreement that constitutes a sponsored endorsement must include a clear and conspicuous disclosure (e.g., #ad, #sponsored, or #partner) placed prominently within the content, not buried in hashtags or visible only upon expansion.</p>
+        </div>
+
+        <div class="agreement-section">
+          <div class="ag-label">Section 8</div>
+          <div class="ag-title">TERMINATION</div>
+          <p class="ag-text">Either party may terminate this Agreement with <span class="ag-field">[number, e.g. 14]</span> days written notice. Company may terminate immediately if Athlete engages in conduct that materially damages Company's reputation. Athlete may terminate immediately if Company uses Athlete's NIL in a manner inconsistent with this Agreement or outside the scope of the granted license. In the event of termination, Company shall pay Athlete for deliverables completed prior to the termination date.</p>
+        </div>
+
+        <div class="agreement-section">
+          <div class="ag-label">Section 9</div>
+          <div class="ag-title">GOVERNING LAW</div>
+          <p class="ag-text">This Agreement shall be governed by the laws of the State of <span class="ag-field">[State where Athlete's institution is located]</span>. Any disputes shall first be subject to good-faith negotiation. If unresolved, disputes may be submitted to binding arbitration in accordance with applicable rules.</p>
+        </div>
+
+        <div class="agreement-section">
+          <div class="ag-label">Section 10</div>
+          <div class="ag-title">SIGNATURES</div>
+          <p class="ag-text">By signing below, both parties confirm they have read, understood, and agreed to all terms of this Agreement.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px">
+            <div>
+              <p class="ag-text" style="font-size:13px;color:var(--gray);margin-bottom:6px">ATHLETE</p>
+              <p class="ag-text">Signature: <span class="ag-field">_______________</span></p>
+              <p class="ag-text">Printed Name: <span class="ag-field">_______________</span></p>
+              <p class="ag-text">Date: <span class="ag-field">_______________</span></p>
+            </div>
+            <div>
+              <p class="ag-text" style="font-size:13px;color:var(--gray);margin-bottom:6px">COMPANY REPRESENTATIVE</p>
+              <p class="ag-text">Signature: <span class="ag-field">_______________</span></p>
+              <p class="ag-text">Printed Name: <span class="ag-field">_______________</span></p>
+              <p class="ag-text">Title: <span class="ag-field">_______________</span></p>
+              <p class="ag-text">Date: <span class="ag-field">_______________</span></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 7: FIND SUPPORT ══ -->
+  <section id="nil-support" class="nil-sec" aria-labelledby="support-h">
+    <div class="nil-sec-inner">
+      <span class="nil-sec-label">Section 07</span>
+      <h2 class="nil-sec-h" id="support-h">FIND <span style="color:var(--gold)">SUPPORT</span></h2>
+      <p class="nil-sec-p">Every link below has been verified as of March 2026. Start with your school's compliance office — every other resource is a supplement to that conversation, not a replacement for it.</p>
+
+      <div class="link-grid">
+        <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">Official Policy</span>
+          <span class="link-card-title">NCAA NIL Main Page</span>
+          <span class="link-card-desc">Official NCAA resource covering what is allowed, reporting requirements, and FAQs for all divisions.</span>
+          <span class="link-card-arrow">↗ ncaa.org</span>
+        </a>
+        <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">Enforcement & Clearance</span>
+          <span class="link-card-title">College Sports Commission</span>
+          <span class="link-card-desc">The independent body overseeing NIL compliance under the House settlement. Access NIL Go here.</span>
+          <span class="link-card-arrow">↗ collegesportscommission.org</span>
+        </a>
+        <a href="https://nilassist.ncaa.org/education/" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">Free Education</span>
+          <span class="link-card-title">NCAA NIL Assist — Education</span>
+          <span class="link-card-desc">Free education library covering taxes, contracts, personal branding, social media, and more. Built for athletes.</span>
+          <span class="link-card-arrow">↗ nilassist.ncaa.org</span>
+        </a>
+        <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">Market Data</span>
+          <span class="link-card-title">NIL Assist Data Dashboard</span>
+          <span class="link-card-desc">Public dashboard showing average and median NIL deal values, filterable by sport, position, and division.</span>
+          <span class="link-card-arrow">↗ nilassist.ncaa.org</span>
+        </a>
+        <a href="https://opendorse.com" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">Brand Deals</span>
+          <span class="link-card-title">Opendorse Marketplace</span>
+          <span class="link-card-desc">NIL marketplace where athletes connect with brands. Searchable by sport. Open to all divisions.</span>
+          <span class="link-card-arrow">↗ opendorse.com</span>
+        </a>
+        <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">Deal Tracking</span>
+          <span class="link-card-title">On3 NIL Deal Tracker</span>
+          <span class="link-card-desc">Live tracker of reported NIL deals across all NCAA divisions, sports, and schools. Updated continuously.</span>
+          <span class="link-card-arrow">↗ on3.com</span>
+        </a>
+        <a href="https://www.nilnewsstand.com/nil-deal-tracker" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">Deal Tracking</span>
+          <span class="link-card-title">NIL Newsstand Deal Tracker</span>
+          <span class="link-card-desc">Weekly updated NIL deal recap covering verified partnerships by athlete, brand, and school.</span>
+          <span class="link-card-arrow">↗ nilnewsstand.com</span>
+        </a>
+        <a href="https://businessofcollegesports.com/tracker-university-specific-nil-collectives/" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">Collectives Directory</span>
+          <span class="link-card-title">College Sports Collective Tracker</span>
+          <span class="link-card-desc">University-specific NIL collective directory tracking organizations by school. Find your program's collective.</span>
+          <span class="link-card-arrow">↗ businessofcollegesports.com</span>
+        </a>
+        <a href="https://www.nilnetwork.com/nil-laws-by-state/" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">State Laws</span>
+          <span class="link-card-title">NIL Laws by State</span>
+          <span class="link-card-desc">Full breakdown of active state-level NIL legislation, organized state by state. Know the law where your school is located.</span>
+          <span class="link-card-arrow">↗ nilnetwork.com</span>
+        </a>
+        <a href="https://nilassist.ncaa.org/student-athletes/" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">Service Providers</span>
+          <span class="link-card-title">NIL Assist — Find a Provider</span>
+          <span class="link-card-desc">Registry of vetted NIL service providers including tax advisors, attorneys, marketing agents, and financial experts.</span>
+          <span class="link-card-arrow">↗ nilassist.ncaa.org</span>
+        </a>
+        <a href="https://sportsepreneur.com/nil-rules-athletes-parents-coaches/" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">Rules Reference</span>
+          <span class="link-card-title">NIL Rules 2026 — Updated Guide</span>
+          <span class="link-card-desc">Comprehensive, independently maintained NIL rules guide for athletes, families, and coaches. Updated March 2026.</span>
+          <span class="link-card-arrow">↗ sportsepreneur.com</span>
+        </a>
+        <a href="https://www.collegeathletecompensation.com/" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card-label">House Settlement</span>
+          <span class="link-card-title">College Athlete Compensation</span>
+          <span class="link-card-desc">Official House v. NCAA settlement site. If you competed in DI from 2016 forward, check your eligibility for back-pay claims.</span>
+          <span class="link-card-arrow">↗ collegeathletecompensation.com</span>
+        </a>
+      </div>
+
+      <div style="margin-top:40px;padding:28px 32px;background:var(--dark-2);border:1px solid rgba(46,189,142,0.15);border-radius:10px;border-left:4px solid var(--gold)">
+        <p style="font-size:14px;color:var(--gray-light);line-height:1.8;font-weight:300;margin:0"><strong style="color:var(--white);display:block;margin-bottom:8px;font-family:var(--font-display);font-size:18px;letter-spacing:1.5px">YOUR FIRST CALL IS TO YOUR COMPLIANCE OFFICE.</strong>Every resource on this page is an educational supplement. The person who knows your school's specific policies, your conference rules, and your state's law is your compliance officer. They are there to help you — not penalize you for asking. Use them before you sign anything, before you verbally commit to anything, and before you activate any deal.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo" aria-label="ATHLINKT Home">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="18.5" stroke="#2EBD8E" stroke-width="1.5"/>
+        <line x1="11" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+        <line x1="29" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+        <line x1="13.5" y1="22" x2="18.5" y2="19.5" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
+        <line x1="26.5" y1="22" x2="21.5" y2="19.5" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
+        <polygon points="20,15.5 15.5,19.5 20,23.5 24.5,19.5" fill="#2EBD8E"/>
+      </svg>
+      <div>
+        <div class="footer-wm"><span class="g">A</span>THLINKT</div>
+        <div class="footer-tag">Beyond the Finish Line</div>
+      </div>
+    </a>
+    <a href="index.html" class="footer-back">← Back to ATHLINKT</a>
+    <p class="footer-copy">© 2025–26 ATHLINKT · For educational purposes only · Not legal advice</p>
+  </div>
+</footer>
+
+<script>
+// ── HAMBURGER ──
+var navToggle = document.getElementById('navToggle');
+var navLinks = document.getElementById('navLinks');
+if(navToggle && navLinks){
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+  });
+}
+
+// ── DARK/LIGHT MODE ──
+var isDark = false;
+function updateToggleUI(){
+  var icon = isDark ? '☀️' : '🌙';
+  var label = isDark ? 'Light' : 'Dark';
+  ['Desktop','Mobile'].forEach(function(s){
+    var i = document.getElementById('modeIcon'+s);
+    var l = document.getElementById('modeLabel'+s);
+    if(i) i.textContent = icon;
+    if(l) l.textContent = s==='Desktop' ? label : (isDark?'Light':'Dark')+' Mode';
+  });
+}
+function toggleMode(){
+  isDark = !isDark;
+  document.body.classList.toggle('light-mode', !isDark);
+  updateToggleUI();
+  try{ localStorage.setItem('athlinkt-mode', isDark?'dark':'light'); }catch(e){}
+}
+try{
+  if(localStorage.getItem('athlinkt-mode')==='dark'){
+    isDark=true; document.body.classList.remove('light-mode'); updateToggleUI();
+  }
+}catch(e){}
+document.getElementById('modeToggleDesktop').addEventListener('click', toggleMode);
+var mob = document.getElementById('modeToggleMobile');
+if(mob) mob.addEventListener('click', toggleMode);
+
+// ── ACCORDIONS (section cards) ──
+document.querySelectorAll('.acc-toggle').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var bodyId = this.getAttribute('aria-controls');
+    var body = document.getElementById(bodyId);
+    var arrow = this.querySelector('.acc-arrow');
+    var isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    arrow.classList.toggle('open', !isOpen);
+    this.setAttribute('aria-expanded', !isOpen);
+  });
+});
+
+// ── SPORT ACCORDIONS ──
+document.querySelectorAll('.sport-toggle').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = this.closest('.sport-item');
+    var body = item.querySelector('.sport-body');
+    var arrow = this.querySelector('.sport-arrow');
+    var isOpen = body.classList.contains('open');
+    // Close all others
+    document.querySelectorAll('.sport-body.open').forEach(function(b){
+      b.classList.remove('open');
+    });
+    document.querySelectorAll('.sport-arrow.open').forEach(function(a){
+      a.classList.remove('open');
+    });
+    document.querySelectorAll('.sport-toggle').forEach(function(t){
+      t.setAttribute('aria-expanded','false');
+    });
+    // Open clicked if it was closed
+    if(!isOpen){
+      body.classList.add('open');
+      arrow.classList.add('open');
+      this.setAttribute('aria-expanded','true');
+    }
+  });
+});
+
+// ── SECTION NAV ACTIVE STATE ──
+var secNavBtns = document.querySelectorAll('.nil-nav-btn');
+var sections = document.querySelectorAll('section[id]');
+function onScroll(){
+  var scrollPos = window.scrollY + 140;
+  sections.forEach(function(sec){
+    var top = sec.offsetTop;
+    var bottom = top + sec.offsetHeight;
+    if(scrollPos >= top && scrollPos < bottom){
+      secNavBtns.forEach(function(btn){
+        btn.classList.toggle('active', btn.getAttribute('href')==='#'+sec.id);
+      });
+    }
+  });
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+
+// ── SCROLL ANIMATIONS ──
+if('IntersectionObserver' in window){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.style.opacity='1';
+        e.target.style.transform='translateY(0)';
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.nil-section-card,.div-card,.pillar,.sport-item,.link-card').forEach(function(el){
+    el.style.opacity='0';
+    el.style.transform='translateY(16px)';
+    el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+    obs.observe(el);
+  });
+}
+</script>
+</body>
+</html>
