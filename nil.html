@@ -90,7 +90,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;d
 .nil-h1 span{color:var(--gold)}
 .nil-hero-p{font-size:17px;color:var(--gray-light);font-weight:300;line-height:1.8;max-width:680px;margin-bottom:32px;opacity:0;animation:fadeUp .8s ease forwards .4s}
 .nil-hero-tags{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:fadeUp .8s ease forwards .55s}
-.nil-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(46,189,142,0.3);border-radius:20px;padding:5px 14px;font-weight:500}
+.nil-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#1A8F68;border:1.5px solid #1A8F68;border-radius:20px;padding:6px 16px;font-weight:600;background:rgba(46,189,142,0.06)}
+body:not(.light-mode) .nil-tag{color:#2EBD8E;border-color:rgba(46,189,142,0.45);background:rgba(46,189,142,0.08)}
 
 /* SECTION NAV (scroll anchors) */
 .nil-nav{background:var(--dark-2);border-bottom:1px solid rgba(46,189,142,0.1);position:sticky;top:64px;z-index:100;overflow-x:auto;scrollbar-width:none}
@@ -221,14 +222,104 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
+/* DIVISION FILTER */
+.div-filter{background:var(--dark-3);border:1px solid rgba(46,189,142,0.15);border-radius:10px;padding:20px 24px;margin-bottom:16px}
+.div-filter-row{display:flex;flex-wrap:wrap;gap:24px;margin-bottom:12px}
+.div-filter-group{display:flex;flex-direction:column;gap:8px}
+.div-filter-label{font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-weight:600}
+.div-filter-btns{display:flex;gap:6px;flex-wrap:wrap}
+.div-btn{padding:6px 16px;border-radius:20px;border:1px solid rgba(46,189,142,0.25);background:none;color:var(--gray-light);font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all var(--transition)}
+.div-btn:hover{border-color:var(--gold);color:var(--gold)}
+.div-btn.active{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+.div-filter-info{font-size:13px;color:var(--gray);border-top:1px solid rgba(46,189,142,0.08);padding-top:12px;margin-top:4px}
+.div-filter-info strong{color:var(--gold)}
+
+/* CONTEXT BANNER */
+.div-context-banner{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;background:rgba(46,189,142,0.06);border:1px solid rgba(46,189,142,0.2);border-radius:8px;margin-bottom:16px}
+.dcb-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:rgba(46,189,142,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gold);font-weight:700;margin-top:1px}
+.dcb-text{font-size:14px;color:var(--gray-light);line-height:1.65;margin:0}
+
+/* AGREEMENT ACTIONS */
+.ag-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px;padding:16px 20px;background:var(--dark-3);border-radius:8px;border:1px solid rgba(46,189,142,0.15)}
+.ag-btn-print{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--dark);border:none;border-radius:var(--radius);padding:10px 20px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all var(--transition)}
+.ag-btn-print svg{width:16px;height:16px;flex-shrink:0}
+.ag-btn-print:hover{background:var(--gold-light);transform:translateY(-1px)}
+.ag-btn-clear{background:none;border:1px solid rgba(46,189,142,0.25);color:var(--gray-light);border-radius:var(--radius);padding:10px 18px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all var(--transition)}
+.ag-btn-clear:hover{border-color:var(--gold);color:var(--gold)}
+.ag-tip{font-size:12px;color:var(--gray);font-style:italic;margin-left:4px}
+
+/* FILLABLE INPUTS */
+.ag-input{display:inline-block;background:transparent;border:none;border-bottom:1.5px solid rgba(46,189,142,0.4);border-radius:0;padding:2px 6px;font-family:var(--font-body);font-size:16px;color:var(--white);outline:none;transition:border-color var(--transition);min-width:100px;vertical-align:baseline}
+.ag-input:focus{border-bottom-color:var(--gold);background:rgba(46,189,142,0.05)}
+.ag-input::placeholder{color:rgba(46,189,142,0.5);font-style:italic;font-size:12px}
+.ag-input-sm{min-width:60px}
+.ag-input-lg{min-width:180px}
+.ag-input-xl{min-width:100%;display:block;margin-top:4px}
+.ag-input-full{width:100%;display:block}
+.ag-select{display:inline-block;background:var(--dark-3);border:1px solid rgba(46,189,142,0.3);border-radius:4px;padding:3px 8px;font-family:var(--font-body);font-size:16px;color:var(--white);outline:none;cursor:pointer;vertical-align:baseline;transition:border-color var(--transition)}
+.ag-select:focus{border-color:var(--gold)}
+.ag-select option{background:var(--dark-2)}
+
+/* SIGNATURE GRID */
+.ag-sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:20px}
+.ag-sig-col{display:flex;flex-direction:column;gap:14px}
+.ag-sig-field{display:flex;flex-direction:column;gap:4px}
+.ag-sig-label{font-size:11px;color:var(--gray);letter-spacing:1.5px;text-transform:uppercase}
+.ag-sig-line{border-bottom:1px solid rgba(46,189,142,0.3);height:28px;width:100%}
+
+/* PRINT STYLES */
+@media print{
+  nav,.nil-nav,.disclaimer-bar,.ag-actions,footer,hr.gd,.ag-btn-print,.ag-btn-clear,.ag-tip{display:none!important}
+  body{background:#fff!important;color:#000!important}
+  .nil-page{padding-top:0!important}
+  .nil-sec{padding:20px!important}
+  section:not(#nil-agreement){display:none!important}
+  .agreement-wrap{border:1px solid #ccc!important;background:#fff!important;padding:24px!important}
+  .ag-disclaimer{display:block!important;border:1px solid #e88!important;background:#fff5f5!important}
+  .agreement-section{border-bottom:1px solid #eee!important}
+  .ag-label{color:#1A8F68!important}
+  .ag-title{color:#000!important}
+  .ag-text{color:#222!important}
+  .ag-input{border-bottom:1px solid #999!important;color:#000!important;min-width:80px}
+  .ag-input::placeholder{color:#aaa!important}
+  .ag-select{border:1px solid #999!important;color:#000!important;background:#fff!important}
+  .ag-sig-line{border-bottom:1px solid #999!important}
+  .ag-sig-label{color:#666!important}
+  .ag-sig-grid{grid-template-columns:1fr 1fr!important}
+  .nil-sec-label,.nil-sec-h,.nil-sec-p,.ag-disclaimer{display:block!important}
+  .nil-hero,.nil-sec:not(#nil-agreement){display:none!important}
+}
+
+@media(max-width:600px){
+  .ag-sig-grid{grid-template-columns:1fr}
+  .ag-input-lg{min-width:140px}
+}
+.thoughts-form{background:var(--dark-3);border-radius:10px;padding:32px;margin-top:8px}
+.gform-placeholder-nil{padding:40px 24px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.thoughts-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.thoughts-field{display:flex;flex-direction:column;gap:6px}
+.thoughts-field-full{grid-column:1/-1}
+.thoughts-label{font-size:11px;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-weight:600}
+.thoughts-input,.thoughts-select,.thoughts-textarea{width:100%;background:var(--dark-2);border:1px solid rgba(46,189,142,0.2);border-radius:var(--radius);padding:12px 16px;font-family:var(--font-body);font-size:16px;color:var(--white);outline:none;transition:border-color var(--transition);-webkit-appearance:none}
+.thoughts-input:focus,.thoughts-select:focus,.thoughts-textarea:focus{border-color:var(--gold)}
+.thoughts-input::placeholder,.thoughts-textarea::placeholder{color:var(--gray)}
+.thoughts-select option{background:var(--dark-2);color:var(--white)}
+.thoughts-textarea{min-height:110px;resize:vertical}
+.thoughts-submit{background:var(--gold);color:var(--dark);border:none;border-radius:var(--radius);padding:13px 32px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all var(--transition);margin-top:8px}
+.thoughts-submit:hover{background:var(--gold-light);transform:translateY(-1px)}
+.thoughts-success{display:none;text-align:center;padding:40px 24px;background:var(--dark-2);border:1px solid rgba(46,189,142,0.2);border-radius:10px}
+.thoughts-success h3{font-family:var(--font-display);font-size:32px;letter-spacing:2px;color:var(--gold);margin-bottom:10px}
+.thoughts-success p{font-size:14px;color:var(--gray-light);font-weight:300}
+
 /* RESPONSIVE */
 @media(max-width:960px){
   nav{padding:0 24px}
   .nav-tagline{display:none}
   .mode-toggle-mobile{display:flex}
-  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--dark);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:199}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--dark);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:201;list-style:none}
   .nav-links.open{display:flex}
-  .nav-links a{font-size:18px;padding:10px 20px}
+  .nav-links a{font-size:18px;padding:12px 24px;display:block;width:100%;text-align:center}
+  .nav-links li{width:100%;text-align:center}
   .nav-toggle{display:flex}
   .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .nav-toggle.open span:nth-child(2){opacity:0}
@@ -236,6 +327,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   .div-grid{grid-template-columns:1fr}
   .pillar-grid{grid-template-columns:1fr}
   .link-grid{grid-template-columns:1fr}
+  .nil-nav{top:64px}
 }
 @media(max-width:700px){
   .nil-sec{padding:48px 24px}
@@ -243,6 +335,9 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   .sport-body.open{grid-template-columns:1fr}
   .disclaimer-bar{padding:10px 24px}
   footer{padding:32px 24px}
+  .div-filter-row{flex-direction:column;gap:16px}
+  .thoughts-grid{grid-template-columns:1fr}
+  .thoughts-field-full{grid-column:1}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
@@ -607,7 +702,37 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
     <div class="nil-sec-inner">
       <span class="nil-sec-label">Section 04</span>
       <h2 class="nil-sec-h" id="sports-h">NIL BY <span style="color:var(--gold)">SPORT</span></h2>
-      <p class="nil-sec-p">Every sport has a different NIL landscape. Click any sport to see deal types, division context, and direct marketplace links. Ordered by NCAA participation.</p>
+      <p class="nil-sec-p">Every sport has a different NIL landscape. Click any sport to see deal types, division context, and direct marketplace links. Filter by your association and division.</p>
+
+      <!-- DIVISION FILTER -->
+      <div class="div-filter" role="group" aria-label="Filter by division">
+        <div class="div-filter-row">
+          <div class="div-filter-group">
+            <span class="div-filter-label">Association</span>
+            <div class="div-filter-btns">
+              <button class="div-btn active" data-assoc="all">All</button>
+              <button class="div-btn" data-assoc="ncaa">NCAA</button>
+              <button class="div-btn" data-assoc="naia">NAIA</button>
+            </div>
+          </div>
+          <div class="div-filter-group" id="ncaaDivFilter">
+            <span class="div-filter-label">NCAA Division</span>
+            <div class="div-filter-btns">
+              <button class="div-btn active" data-div="all">All</button>
+              <button class="div-btn" data-div="d1">DI</button>
+              <button class="div-btn" data-div="d2">DII</button>
+              <button class="div-btn" data-div="d3">DIII</button>
+            </div>
+          </div>
+        </div>
+        <div class="div-filter-info">Showing: <strong id="divFilterLabel">all athletes — all associations</strong></div>
+      </div>
+
+      <!-- CONTEXT BANNER -->
+      <div class="div-context-banner" id="divContextBanner">
+        <div class="dcb-icon">ℹ</div>
+        <p class="dcb-text" id="divContextText">Select your association and division above to see context specific to your situation. Sport information below applies across all divisions unless noted.</p>
+      </div>
 
       <div class="sports-list" id="sportsList">
 
@@ -1162,12 +1287,21 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         <p><strong>Important:</strong> This is an educational reference only. It is not a legal document and does not constitute legal advice. It does not account for your school's specific policies, your state's NIL laws, or current NCAA bylaws. Before signing any NIL contract, always consult your institution's compliance office and consider working with a licensed attorney.</p>
       </div>
 
-      <div class="agreement-wrap">
+      <div class="ag-actions">
+        <button class="ag-btn-print" onclick="window.print()" aria-label="Print or save agreement as PDF">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7V3h10v4M5 15H3V9h14v6h-2M5 11h10v6H5v-6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          Print / Save as PDF
+        </button>
+        <button class="ag-btn-clear" onclick="clearAgreement()" aria-label="Clear all fields">Clear All Fields</button>
+        <span class="ag-tip">Fill in the fields below, then print or save as PDF.</span>
+      </div>
+
+      <div class="agreement-wrap" id="agreementDoc">
 
         <div class="agreement-section">
           <div class="ag-label">Section 1</div>
           <div class="ag-title">PARTIES</div>
-          <p class="ag-text">This Name, Image, and Likeness Agreement ("Agreement") is entered into as of <span class="ag-field">[Date]</span> between <span class="ag-field">[Athlete Full Name]</span> ("Athlete"), a student-athlete at <span class="ag-field">[Institution Name]</span>, and <span class="ag-field">[Company / Brand / Individual Name]</span> ("Company"), a <span class="ag-field">[type of entity, e.g., limited liability company]</span> organized under the laws of <span class="ag-field">[State]</span>.</p>
+          <p class="ag-text">This Name, Image, and Likeness Agreement ("Agreement") is entered into as of <input class="ag-input" id="ag-date" placeholder="Date" aria-label="Agreement date"> between <input class="ag-input ag-input-lg" id="ag-athlete" placeholder="Athlete Full Name" aria-label="Athlete full name"> ("Athlete"), a student-athlete at <input class="ag-input ag-input-lg" id="ag-institution" placeholder="Institution Name" aria-label="Institution name">, and <input class="ag-input ag-input-lg" id="ag-company" placeholder="Company / Brand / Individual Name" aria-label="Company name"> ("Company"), a <input class="ag-input" id="ag-entity" placeholder="e.g. LLC, Corporation" aria-label="Entity type"> organized under the laws of <input class="ag-input" id="ag-state1" placeholder="State" aria-label="State of organization">.</p>
         </div>
 
         <div class="agreement-section">
@@ -1181,9 +1315,9 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
           <div class="ag-title">DELIVERABLES</div>
           <p class="ag-text">In exchange for the compensation described in Section 4, Athlete agrees to complete the following deliverables during the Term:</p>
           <div class="rule-list" style="margin-top:12px">
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><span class="ag-field">[Number]</span> sponsored social media posts on <span class="ag-field">[Platform(s)]</span>, promoting <span class="ag-field">[specific product/service]</span>, to be posted by <span class="ag-field">[date]</span></div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><span class="ag-field">[Optional: personal appearance at (event), date, duration, location]</span></div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><span class="ag-field">[Optional: other deliverables]</span></div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><input class="ag-input ag-input-sm" id="ag-posts" placeholder="Number" aria-label="Number of posts"> sponsored social media post(s) on <input class="ag-input" id="ag-platforms" placeholder="Platform(s), e.g. Instagram, TikTok" aria-label="Platforms">, promoting <input class="ag-input ag-input-lg" id="ag-product" placeholder="Specific product / service" aria-label="Product or service">, to be posted by <input class="ag-input" id="ag-post-date" placeholder="Date" aria-label="Post by date"></div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><input class="ag-input ag-input-xl" id="ag-appearance" placeholder="Optional: personal appearance details (event, date, duration, location)" aria-label="Appearance details"></div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><input class="ag-input ag-input-xl" id="ag-other" placeholder="Optional: other deliverables" aria-label="Other deliverables"></div></div>
           </div>
           <p class="ag-text" style="margin-top:12px">All social media content must include a clear disclosure of the sponsored relationship using the language: <em>#ad</em> or <em>#sponsored</em>, in compliance with FTC guidelines. Athlete retains creative control over content subject to Company's reasonable approval rights.</p>
         </div>
@@ -1191,13 +1325,13 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         <div class="agreement-section">
           <div class="ag-label">Section 4</div>
           <div class="ag-title">COMPENSATION & PAYMENT</div>
-          <p class="ag-text">Company agrees to pay Athlete a total of <span class="ag-field">[$amount]</span> for full and timely completion of all deliverables. Payment will be made via <span class="ag-field">[method]</span> within <span class="ag-field">[number]</span> days of execution of this Agreement / completion of deliverables <span class="ag-field">[choose one]</span>. Athlete acknowledges that this compensation constitutes taxable income and is solely responsible for any applicable taxes.</p>
+          <p class="ag-text">Company agrees to pay Athlete a total of <input class="ag-input" id="ag-amount" placeholder="$ Amount" aria-label="Payment amount"> for full and timely completion of all deliverables. Payment will be made via <input class="ag-input" id="ag-method" placeholder="Payment method, e.g. check, ACH" aria-label="Payment method"> within <input class="ag-input ag-input-sm" id="ag-days" placeholder="# days" aria-label="Payment days"> days of <select class="ag-select" id="ag-when" aria-label="Payment trigger"><option value="">select...</option><option>execution of this Agreement</option><option>completion of deliverables</option><option>the first deliverable date</option></select>. Athlete acknowledges that this compensation constitutes taxable income and is solely responsible for any applicable taxes.</p>
         </div>
 
         <div class="agreement-section">
           <div class="ag-label">Section 5</div>
           <div class="ag-title">TERM</div>
-          <p class="ag-text">This Agreement commences on <span class="ag-field">[Start Date]</span> and terminates on <span class="ag-field">[End Date]</span>, unless terminated earlier in accordance with Section 8.</p>
+          <p class="ag-text">This Agreement commences on <input class="ag-input" id="ag-start" placeholder="Start Date" aria-label="Start date"> and terminates on <input class="ag-input" id="ag-end" placeholder="End Date" aria-label="End date">, unless terminated earlier in accordance with Section 8.</p>
         </div>
 
         <div class="agreement-section">
@@ -1215,32 +1349,32 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         <div class="agreement-section">
           <div class="ag-label">Section 8</div>
           <div class="ag-title">TERMINATION</div>
-          <p class="ag-text">Either party may terminate this Agreement with <span class="ag-field">[number, e.g. 14]</span> days written notice. Company may terminate immediately if Athlete engages in conduct that materially damages Company's reputation. Athlete may terminate immediately if Company uses Athlete's NIL in a manner inconsistent with this Agreement or outside the scope of the granted license. In the event of termination, Company shall pay Athlete for deliverables completed prior to the termination date.</p>
+          <p class="ag-text">Either party may terminate this Agreement with <input class="ag-input ag-input-sm" id="ag-notice" placeholder="e.g. 14" aria-label="Notice days"> days written notice. Company may terminate immediately if Athlete engages in conduct that materially damages Company's reputation. Athlete may terminate immediately if Company uses Athlete's NIL in a manner inconsistent with this Agreement or outside the scope of the granted license. In the event of termination, Company shall pay Athlete for deliverables completed prior to the termination date.</p>
         </div>
 
         <div class="agreement-section">
           <div class="ag-label">Section 9</div>
           <div class="ag-title">GOVERNING LAW</div>
-          <p class="ag-text">This Agreement shall be governed by the laws of the State of <span class="ag-field">[State where Athlete's institution is located]</span>. Any disputes shall first be subject to good-faith negotiation. If unresolved, disputes may be submitted to binding arbitration in accordance with applicable rules.</p>
+          <p class="ag-text">This Agreement shall be governed by the laws of the State of <input class="ag-input" id="ag-govstate" placeholder="State of institution" aria-label="Governing state">. Any disputes shall first be subject to good-faith negotiation. If unresolved, disputes may be submitted to binding arbitration in accordance with applicable rules.</p>
         </div>
 
         <div class="agreement-section">
           <div class="ag-label">Section 10</div>
           <div class="ag-title">SIGNATURES</div>
           <p class="ag-text">By signing below, both parties confirm they have read, understood, and agreed to all terms of this Agreement.</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px">
-            <div>
-              <p class="ag-text" style="font-size:13px;color:var(--gray);margin-bottom:6px">ATHLETE</p>
-              <p class="ag-text">Signature: <span class="ag-field">_______________</span></p>
-              <p class="ag-text">Printed Name: <span class="ag-field">_______________</span></p>
-              <p class="ag-text">Date: <span class="ag-field">_______________</span></p>
+          <div class="ag-sig-grid">
+            <div class="ag-sig-col">
+              <p class="ag-text" style="font-size:12px;color:var(--gray);margin-bottom:10px;letter-spacing:1px;text-transform:uppercase">Athlete</p>
+              <div class="ag-sig-field"><label class="ag-sig-label">Signature</label><div class="ag-sig-line"></div></div>
+              <div class="ag-sig-field"><label class="ag-sig-label">Printed Name</label><input class="ag-input ag-input-full" id="ag-ath-name" placeholder="Athlete full name" aria-label="Athlete printed name"></div>
+              <div class="ag-sig-field"><label class="ag-sig-label">Date</label><input class="ag-input" id="ag-ath-date" placeholder="Date" aria-label="Athlete signature date"></div>
             </div>
-            <div>
-              <p class="ag-text" style="font-size:13px;color:var(--gray);margin-bottom:6px">COMPANY REPRESENTATIVE</p>
-              <p class="ag-text">Signature: <span class="ag-field">_______________</span></p>
-              <p class="ag-text">Printed Name: <span class="ag-field">_______________</span></p>
-              <p class="ag-text">Title: <span class="ag-field">_______________</span></p>
-              <p class="ag-text">Date: <span class="ag-field">_______________</span></p>
+            <div class="ag-sig-col">
+              <p class="ag-text" style="font-size:12px;color:var(--gray);margin-bottom:10px;letter-spacing:1px;text-transform:uppercase">Company Representative</p>
+              <div class="ag-sig-field"><label class="ag-sig-label">Signature</label><div class="ag-sig-line"></div></div>
+              <div class="ag-sig-field"><label class="ag-sig-label">Printed Name</label><input class="ag-input ag-input-full" id="ag-co-name" placeholder="Representative full name" aria-label="Company rep printed name"></div>
+              <div class="ag-sig-field"><label class="ag-sig-label">Title</label><input class="ag-input ag-input-full" id="ag-co-title" placeholder="Title" aria-label="Company rep title"></div>
+              <div class="ag-sig-field"><label class="ag-sig-label">Date</label><input class="ag-input" id="ag-co-date" placeholder="Date" aria-label="Company rep date"></div>
             </div>
           </div>
         </div>
@@ -1339,6 +1473,35 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
     </div>
   </section>
 
+  <hr class="gd">
+
+  <!-- ══ SHARE YOUR THOUGHTS ══ -->
+  <section class="nil-sec" style="background:var(--dark-2)" aria-labelledby="thoughts-h">
+    <div class="nil-sec-inner">
+      <span class="nil-sec-label">Your Voice Matters</span>
+      <h2 class="nil-sec-h" id="thoughts-h">SHARE YOUR <span style="color:var(--gold)">THOUGHTS</span></h2>
+      <p class="nil-sec-p">Is something missing? Something unclear? Have a question or experience worth sharing? This hub improves because athletes and administrators tell us what they need.</p>
+
+      <div id="thoughtsFormWrap">
+        <div class="thoughts-form">
+          <!-- Google Form embed — replace placeholder div below with your iframe when ready -->
+          <!-- <iframe src="YOUR_GOOGLE_FORM_EMBED_URL" width="100%" height="900" frameborder="0" title="ATHLINKT NIL Feedback">Loading…</iframe> -->
+          <div class="gform-placeholder-nil">
+            <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true" style="margin-bottom:14px;opacity:0.4"><rect x="6" y="4" width="28" height="32" rx="3" stroke="#2EBD8E" stroke-width="1.5"/><line x1="12" y1="13" x2="28" y2="13" stroke="#2EBD8E" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="19" x2="28" y2="19" stroke="#2EBD8E" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="25" x2="20" y2="25" stroke="#2EBD8E" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <p style="font-family:var(--font-display);font-size:20px;letter-spacing:2px;color:var(--gray);margin-bottom:10px">FEEDBACK FORM COMING SOON</p>
+            <p style="font-size:14px;color:var(--gray);margin-bottom:16px;font-weight:300">In the meantime, email us directly —</p>
+            <a href="mailto:athlinkt@gmail.com" style="color:var(--gold);font-size:16px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(46,189,142,0.3);padding-bottom:2px">athlinkt@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="thoughts-success" id="thoughtsSuccess">
+        <h3>RECEIVED</h3>
+        <p>Thank you for taking the time to share your feedback. Every submission helps make this resource better for every athlete who comes after you.</p>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <!-- FOOTER -->
@@ -1364,14 +1527,23 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 </footer>
 
 <script>
-// ── HAMBURGER ──
+// ── HAMBURGER — close on link tap too ──
 var navToggle = document.getElementById('navToggle');
 var navLinks = document.getElementById('navLinks');
+function closeNav(){
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+}
 if(navToggle && navLinks){
   navToggle.addEventListener('click', function(){
     var open = navLinks.classList.toggle('open');
     navToggle.classList.toggle('open', open);
-    navToggle.setAttribute('aria-expanded', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  // Close when any nav link is tapped on mobile
+  navLinks.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', closeNav);
   });
 }
 
@@ -1402,16 +1574,17 @@ document.getElementById('modeToggleDesktop').addEventListener('click', toggleMod
 var mob = document.getElementById('modeToggleMobile');
 if(mob) mob.addEventListener('click', toggleMode);
 
-// ── ACCORDIONS (section cards) ──
+// ── SECTION ACCORDIONS ──
 document.querySelectorAll('.acc-toggle').forEach(function(btn){
   btn.addEventListener('click', function(){
     var bodyId = this.getAttribute('aria-controls');
     var body = document.getElementById(bodyId);
     var arrow = this.querySelector('.acc-arrow');
+    if(!body) return;
     var isOpen = body.classList.contains('open');
     body.classList.toggle('open', !isOpen);
     arrow.classList.toggle('open', !isOpen);
-    this.setAttribute('aria-expanded', !isOpen);
+    this.setAttribute('aria-expanded', String(!isOpen));
   });
 });
 
@@ -1422,22 +1595,74 @@ document.querySelectorAll('.sport-toggle').forEach(function(btn){
     var body = item.querySelector('.sport-body');
     var arrow = this.querySelector('.sport-arrow');
     var isOpen = body.classList.contains('open');
-    // Close all others
-    document.querySelectorAll('.sport-body.open').forEach(function(b){
-      b.classList.remove('open');
-    });
-    document.querySelectorAll('.sport-arrow.open').forEach(function(a){
-      a.classList.remove('open');
-    });
-    document.querySelectorAll('.sport-toggle').forEach(function(t){
-      t.setAttribute('aria-expanded','false');
-    });
-    // Open clicked if it was closed
+    document.querySelectorAll('.sport-body.open').forEach(function(b){ b.classList.remove('open'); });
+    document.querySelectorAll('.sport-arrow.open').forEach(function(a){ a.classList.remove('open'); });
+    document.querySelectorAll('.sport-toggle').forEach(function(t){ t.setAttribute('aria-expanded','false'); });
     if(!isOpen){
       body.classList.add('open');
       arrow.classList.add('open');
       this.setAttribute('aria-expanded','true');
     }
+  });
+});
+
+// ── DIVISION FILTER ──
+var currentAssoc = 'all';
+var currentDiv = 'all';
+
+var assocMsgs = {
+  all: 'all athletes — all associations',
+  ncaa: 'NCAA athletes',
+  naia: 'NAIA athletes'
+};
+var divMsgs = {
+  all: 'all NCAA divisions',
+  d1: 'NCAA Division I',
+  d2: 'NCAA Division II',
+  d3: 'NCAA Division III'
+};
+
+var contextContent = {
+  'ncaa-all': 'NCAA NIL rules apply across all three divisions. DI athletes have the most formal requirements (NIL Go reporting, revenue sharing). DII and DIII athletes follow state law and school policy with fewer centralized requirements.',
+  'ncaa-d1': 'As a Division I athlete, NIL Go reporting is required for all third-party deals of $600 or more. Revenue sharing from your school (up to $20.5M cap) is available if your school opted in. The College Sports Commission oversees compliance and enforcement.',
+  'ncaa-d2': 'Division II athletes can pursue NIL fully — but the House settlement revenue sharing applies to DI only. Your NIL rights are governed by your state\'s law and your school\'s policy. Only ~22% of DII schools have a formal NIL policy — start with your compliance office.',
+  'ncaa-d3': 'Division III athletes can pursue NIL without affecting eligibility, as long as you follow state law and school policy. No athletic scholarships exist at DIII, and there is no NIL Go reporting requirement. Your compliance office and state law are your primary guides.',
+  'naia-all': 'NAIA athletes can pursue NIL opportunities. The NAIA has its own NIL framework separate from the NCAA — there is no NIL Go requirement, and rules are set at the institutional and state level. Check with your school\'s athletic department for specific policies.',
+  'all-all': 'Select your association and division above to see context specific to your situation. Sport information below applies across all divisions unless noted.'
+};
+
+function updateFilter(){
+  var assoc = currentAssoc;
+  var div = currentDiv;
+  var label = assocMsgs[assoc] || 'all athletes';
+  if(assoc === 'ncaa' && div !== 'all') label = divMsgs[div];
+  document.getElementById('divFilterLabel').textContent = label;
+
+  var key = assoc+'-'+(assoc==='ncaa'?div:'all');
+  var ctx = contextContent[key] || contextContent['all-all'];
+  document.getElementById('divContextText').textContent = ctx;
+
+  // Show/hide NCAA div filter
+  var ncaaDivFilter = document.getElementById('ncaaDivFilter');
+  if(ncaaDivFilter) ncaaDivFilter.style.opacity = assoc==='naia' ? '0.4' : '1';
+  if(assoc==='naia'){ currentDiv='all'; document.querySelectorAll('[data-div]').forEach(function(b){ b.classList.toggle('active',b.dataset.div==='all'); }); }
+}
+
+document.querySelectorAll('[data-assoc]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    currentAssoc = this.dataset.assoc;
+    document.querySelectorAll('[data-assoc]').forEach(function(b){ b.classList.remove('active'); });
+    this.classList.add('active');
+    updateFilter();
+  });
+});
+document.querySelectorAll('[data-div]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    if(currentAssoc==='naia') return;
+    currentDiv = this.dataset.div;
+    document.querySelectorAll('[data-div]').forEach(function(b){ b.classList.remove('active'); });
+    this.classList.add('active');
+    updateFilter();
   });
 });
 
@@ -1457,6 +1682,13 @@ function onScroll(){
   });
 }
 window.addEventListener('scroll', onScroll, {passive:true});
+
+// ── AGREEMENT CLEAR ──
+window.clearAgreement = function(){
+  document.querySelectorAll('#agreementDoc input, #agreementDoc select').forEach(function(el){
+    el.value = '';
+  });
+};
 
 // ── SCROLL ANIMATIONS ──
 if('IntersectionObserver' in window){
