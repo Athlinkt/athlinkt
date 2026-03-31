@@ -154,7 +154,8 @@ hr.gd{border:none;height:1px;background:linear-gradient(to right,transparent,var
 .pillar-p{font-size:13px;color:var(--gray-light);line-height:1.65;font-weight:300}
 
 /* SPORTS LIST */
-.sports-list{display:flex;flex-direction:column;gap:8px;margin-top:20px}
+.sports-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:20px}
+@media(max-width:700px){.sports-list{grid-template-columns:1fr}}
 .sport-item{background:var(--dark-2);border:1px solid rgba(46,189,142,0.1);border-radius:8px;overflow:hidden;transition:border-color var(--transition)}
 .sport-item:hover{border-color:rgba(46,189,142,0.3)}
 .sport-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;padding:18px 22px;gap:16px;text-align:left}
@@ -391,7 +392,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
 <!-- DISCLAIMER BAR -->
 <div class="disclaimer-bar" role="note">
-  For educational purposes only. Not legal, financial, or compliance advice. Always consult your school's compliance office before signing any NIL agreement. Rules evolve — verify current requirements at <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">ncaa.org</a> and <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener">collegesportscommission.org</a>.
+  For educational purposes only. Not legal, financial, or compliance advice. Always consult your school's compliance office before signing any NIL agreement. Rules evolve — verify current requirements at <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">ncaa.org</a> and <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener">collegesportscommission.org</a>. &nbsp;·&nbsp; <strong style="color:var(--gold)">Last reviewed: March 2026</strong>
 </div>
 
 <main id="main-content" class="nil-page">
@@ -734,6 +735,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         <p class="dcb-text" id="divContextText">Select your association and division above to see context specific to your situation. Sport information below applies across all divisions unless noted.</p>
       </div>
 
+      <!-- SPORTS LIST — 2 column grid -->
       <div class="sports-list" id="sportsList">
 
         <!-- FOOTBALL -->
@@ -1182,7 +1184,58 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         <!-- OTHER SPORTS CATCH-ALL -->
         <div class="sport-item">
           <button class="sport-toggle" aria-expanded="false">
-            <div class="sport-left"><div class="sport-icon">🏅</div><div><div class="sport-name">All Other Sports</div><div class="sport-meta">Water polo · Fencing · Skiing · Rifle · Bowling · Flag football · Equestrian · Stunt · Triathlon & more</div></div></div>
+        <!-- ALL OTHER NCAA CHAMPIONSHIP SPORTS -->
+        <div class="sport-item">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🏅</div><div><div class="sport-name">All Other NCAA Championship Sports</div><div class="sport-meta">Water polo · Fencing · Skiing · Rifle · Stunt</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">NIL Landscape</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item"><strong>Water Polo</strong> — NCAA championship since 2000. Niche but growing brand deal access through athletic and wellness brands.</div>
+                <div class="sport-col-item"><strong>Fencing</strong> — Established NCAA championship. Equipment and training brands are primary NIL partners.</div>
+                <div class="sport-col-item"><strong>Skiing</strong> — NCAA championship sport. Apparel, outdoor, and equipment brands actively seek ski athletes.</div>
+                <div class="sport-col-item"><strong>Rifle</strong> — NCAA championship sport. Specialized equipment and brand partnerships available.</div>
+                <div class="sport-col-item"><strong>Stunt</strong> — Voted NCAA championship January 2026. First championship spring 2027. NIL rights fully active now.</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+                <a href="https://opendorse.com" target="_blank" rel="noopener" class="sport-link">Opendorse NIL Marketplace</a>
+                <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="sport-link">On3 NIL Deal Tracker</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EMERGING SPORTS -->
+        <div class="sport-item" style="border-color:rgba(46,189,142,0.25)">
+          <button class="sport-toggle" aria-expanded="false">
+            <div class="sport-left"><div class="sport-icon">🌱</div><div><div class="sport-name">Emerging Sports</div><div class="sport-meta">Flag Football · Triathlon — growing toward full NCAA championship status</div></div></div>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="sport-body">
+            <div>
+              <div class="sport-col-label">What Emerging Sports Means</div>
+              <div class="sport-col-items">
+                <div class="sport-col-item"><strong>Flag Football</strong> — Added to NCAA Emerging Sports for Women program January 2026. Needs 40 varsity programs to become a full championship. NIL rights are active now for all participating athletes.</div>
+                <div class="sport-col-item"><strong>Triathlon</strong> — Active NCAA emerging sport. Growing toward championship status. NIL rights are active for all competing athletes regardless of championship status.</div>
+                <div class="sport-col-item">Emerging sport status does not limit NIL eligibility. Any college athlete in any NCAA-affiliated sport can pursue NIL opportunities.</div>
+              </div>
+            </div>
+            <div>
+              <div class="sport-col-label">Resources</div>
+              <div class="sport-links">
+                <a href="https://www.ncaa.org/sports/2014/10/6/emerging-sports-for-women.aspx" target="_blank" rel="noopener" class="sport-link">NCAA Emerging Sports for Women</a>
+                <a href="https://nilassist.ncaa.org/data-dashboard/" target="_blank" rel="noopener" class="sport-link">NCAA NIL Assist Data Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
             <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="sport-body">
@@ -1209,7 +1262,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
           </div>
         </div>
 
-      </div>
+      </div><!-- end sports-list grid -->
+
+      <p style="margin-top:20px;font-size:13px;color:var(--gray);font-style:italic;text-align:center">
+        Not seeing your sport? That's because it's not yet verified NCAA Championship status. NIL rights still apply to all college athletes — <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">learn more at ncaa.org</a>.
+      </p>
     </div>
   </section>
 
@@ -1490,7 +1547,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
             <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true" style="margin-bottom:14px;opacity:0.4"><rect x="6" y="4" width="28" height="32" rx="3" stroke="#2EBD8E" stroke-width="1.5"/><line x1="12" y1="13" x2="28" y2="13" stroke="#2EBD8E" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="19" x2="28" y2="19" stroke="#2EBD8E" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="25" x2="20" y2="25" stroke="#2EBD8E" stroke-width="1.5" stroke-linecap="round"/></svg>
             <p style="font-family:var(--font-display);font-size:20px;letter-spacing:2px;color:var(--gray);margin-bottom:10px">FEEDBACK FORM COMING SOON</p>
             <p style="font-size:14px;color:var(--gray);margin-bottom:16px;font-weight:300">In the meantime, email us directly —</p>
-            <a href="mailto:athlinkt@gmail.com" style="color:var(--gold);font-size:16px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(46,189,142,0.3);padding-bottom:2px">athlinkt@gmail.com</a>
+            <a href="/cdn-cgi/l/email-protection#6302170b0f0a0d081723040e020a0f4d000c0e" style="color:var(--gold);font-size:16px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(46,189,142,0.3);padding-bottom:2px"><span class="__cf_email__" data-cfemail="7a1b0e12161314110e3a1d171b131654191517">[email&#160;protected]</span></a>
           </div>
         </div>
       </div>
@@ -1526,7 +1583,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── HAMBURGER — close on link tap too ──
 var navToggle = document.getElementById('navToggle');
 var navLinks = document.getElementById('navLinks');
@@ -1701,11 +1758,8 @@ if('IntersectionObserver' in window){
       }
     });
   },{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
-  document.querySelectorAll('.nil-section-card,.div-card,.pillar,.sport-item,.link-card').forEach(function(el){
-    el.style.opacity='0';
-    el.style.transform='translateY(16px)';
-    el.style.transition='opacity 0.5s ease, transform 0.5s ease';
-    obs.observe(el);
+  document.querySelectorAll('.nil-section-card,.div-card,.pillar,.sport-item,.link-card,.checklist .check-item').forEach(function(el){
+    el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);
   });
 }
 </script>
