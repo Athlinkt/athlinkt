@@ -3,499 +3,1070 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Athlinkt — Resource Library</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="ATHLINKT Resource Library — Verified resources for NIL, transfer portal, career, mental health, financial literacy, and accessibility. Built for every college athlete.">
+<meta name="theme-color" content="#111111">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta property="og:title" content="Resource Library | ATHLINKT — Beyond the Finish Line">
+<meta property="og:description" content="Verified resources for every college athlete — NIL, transfer, career, mental health, financial, and accessibility.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athlinkt.com/resources.html">
+<title>Resource Library | ATHLINKT — Beyond the Finish Line</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --black: #0e0e0e;
-    --white: #fafaf8;
-    --green: #1D9E75;
-    --green-dark: #0F6E56;
-    --green-light: #E1F5EE;
-    --purple: #534AB7;
-    --purple-light: #EEEDFE;
-    --amber: #BA7517;
-    --amber-light: #FAEEDA;
-    --gray: #6b6b6b;
-    --gray-light: #f2f0eb;
-    --border: #e2e0d8;
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#2EBD8E;--gold-light:#3DD4A5;--gold-dim:rgba(46,189,142,0.1);--gold-glow:rgba(46,189,142,0.06);
+  --dark:#111111;--dark-2:#1A1A1A;--dark-3:#222222;--dark-4:#2A2A2A;
+  --white:#FFFFFF;--gray:#888888;--gray-light:#C8C8C8;
+  --border:rgba(46,189,142,0.15);
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-elegant:'Playfair Display',serif;
+  --transition:0.25s ease;--radius:6px;--max:1100px;
+}
+body.light-mode{
+  --dark:#FFFFFF;--dark-2:#F2F2F2;--dark-3:#E6E6E6;--dark-4:#D8D8D8;
+  --white:#0D0D0D;--gray:#555555;--gray-light:#1A1A1A;
+  --gold:#1A8F68;--gold-light:#2EBD8E;
+  --gold-dim:rgba(26,143,104,0.08);--gold-glow:rgba(26,143,104,0.05);
+  --border:rgba(26,143,104,0.2);
+}
+body.light-mode nav{background:rgba(255,255,255,0.97);border-bottom:1px solid rgba(26,143,104,0.15)}
+body.light-mode .nav-links{background:rgba(255,255,255,0.99)}
+body.light-mode .nav-toggle span{background:var(--white)}
+body.light-mode .res-card{background:var(--dark-2)}
+body.light-mode .res-section-card{background:var(--dark-2)}
+body.light-mode .disclaimer-bar{background:var(--dark-2)}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:var(--font-body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.5}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--white);
-    color: var(--black);
-    min-height: 100vh;
-  }
+/* SKIP */
+.skip-link{position:absolute;top:-100px;left:16px;background:var(--gold);color:var(--dark);padding:10px 20px;font-family:var(--font-body);font-weight:700;font-size:14px;border-radius:var(--radius);z-index:1000;text-decoration:none;transition:top var(--transition)}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
 
-  /* ── HEADER ── */
-  header {
-    background: var(--black);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    color: var(--white);
-    letter-spacing: 0.04em;
-    text-decoration: none;
-  }
-  .logo span { color: var(--green); }
-  nav a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    margin-left: 2rem;
-    letter-spacing: 0.03em;
-    transition: color 0.2s;
-  }
-  nav a:hover { color: var(--white); }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(17,17,17,0.97);border-bottom:1px solid rgba(46,189,142,0.1);transition:background 0.3s}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.nav-logo svg{width:30px;height:30px}
+.nav-wordmark{font-family:var(--font-display);font-size:20px;color:var(--white);letter-spacing:3px}
+.nav-wordmark .g{color:#2EBD8E}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;flex:1;justify-content:center;flex-wrap:nowrap}
+.nav-links a{color:var(--gray-light);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:6px 10px;border-radius:4px;transition:color var(--transition);white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px;flex-shrink:0}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
+.nav-tagline{position:absolute;left:0;right:0;text-align:center;font-family:var(--font-elegant);font-size:12px;font-style:italic;color:var(--white);letter-spacing:3px;white-space:nowrap;pointer-events:none;opacity:0.8;z-index:-1}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.mode-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;background:none;border:1px solid rgba(46,189,142,0.3);border-radius:20px;padding:6px 14px;transition:all var(--transition);flex-shrink:0}
+.mode-toggle:hover{border-color:var(--gold)}
+.mode-toggle-icon{font-size:14px;line-height:1}
+.mode-toggle-label{font-size:12px;font-family:var(--font-body);font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gray-light);white-space:nowrap}
+.mode-toggle-mobile{display:none;width:100%;justify-content:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(46,189,142,0.15)}
 
-  /* ── HERO ── */
-  .hero {
-    background: var(--black);
-    padding: 5rem 2rem 4rem;
-    text-align: center;
-    border-bottom: 1px solid #222;
-  }
-  .hero-tag {
-    display: inline-block;
-    background: var(--green-dark);
-    color: var(--white);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border-radius: 999px;
-    margin-bottom: 1.5rem;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    color: var(--white);
-    line-height: 1.15;
-    max-width: 700px;
-    margin: 0 auto 1rem;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--green);
-  }
-  .hero p {
-    color: #888;
-    font-size: 16px;
-    max-width: 520px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
+/* DISCLAIMER */
+.disclaimer-bar{background:var(--dark-2);border-bottom:1px solid rgba(46,189,142,0.12);padding:10px 32px;text-align:center;font-size:12px;color:var(--gray);letter-spacing:0.5px;position:relative;z-index:1}
+.disclaimer-bar a{color:var(--gold);text-decoration:none}
+.disclaimer-bar a:hover{text-decoration:underline}
 
-  /* ── FILTER BAR ── */
-  .filter-section {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 1.25rem 2rem;
-    position: sticky;
-    top: 64px;
-    z-index: 90;
-  }
-  .filter-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .filter-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-right: 4px;
-  }
-  .pill-group { display: flex; gap: 6px; flex-wrap: wrap; }
-  .pill {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 5px 14px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--white);
-    color: var(--gray);
-    cursor: pointer;
-    transition: all 0.15s;
-    white-space: nowrap;
-  }
-  .pill:hover { border-color: var(--green); color: var(--green-dark); }
-  .pill.active { background: var(--green); border-color: var(--green); color: white; font-weight: 600; }
-  .divider { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
+/* PAGE */
+.res-page{padding-top:64px;position:relative;z-index:1}
 
-  /* ── SEARCH ── */
-  .search-wrap {
-    max-width: 1200px;
-    margin: 1.5rem auto 0;
-    padding: 0 2rem;
-  }
-  .search-input {
-    width: 100%;
-    max-width: 420px;
-    padding: 10px 16px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: var(--black);
-    background: var(--white);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .search-input:focus { border-color: var(--green); }
-  .search-input::placeholder { color: #bbb; }
+/* HERO */
+.res-hero{padding:72px 48px 56px;max-width:var(--max);margin:0 auto;position:relative}
+.res-hero-glow{position:absolute;top:0;left:40%;width:500px;height:400px;background:radial-gradient(ellipse,var(--gold-glow) 0%,transparent 70%);pointer-events:none;z-index:-1}
+.res-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
+.res-h1{font-family:var(--font-display);font-size:clamp(52px,7vw,96px);letter-spacing:4px;line-height:1;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .25s}
+.res-h1 span{color:var(--gold)}
+.res-hero-p{font-size:17px;color:var(--gray-light);font-weight:300;line-height:1.8;max-width:680px;margin-bottom:32px;opacity:0;animation:fadeUp .8s ease forwards .4s}
+.res-hero-tags{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:fadeUp .8s ease forwards .55s}
+.res-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;border:1.5px solid rgba(46,189,142,0.45);border-radius:20px;padding:6px 16px;font-weight:600;color:#2EBD8E;background:rgba(46,189,142,0.08)}
+body.light-mode .res-tag{color:#1A8F68;border-color:#1A8F68}
 
-  /* ── MAIN GRID ── */
-  .main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  .results-meta {
-    font-size: 13px;
-    color: var(--gray);
-    margin-bottom: 1.5rem;
-  }
-  .results-meta strong { color: var(--black); }
+/* SECTION NAV */
+.res-nav{background:var(--dark-2);border-bottom:1px solid rgba(46,189,142,0.1);position:sticky;top:64px;z-index:100;overflow-x:auto;scrollbar-width:none}
+.res-nav::-webkit-scrollbar{display:none}
+.res-nav-inner{display:flex;gap:0;max-width:var(--max);margin:0 auto}
+.res-nav-btn{flex-shrink:0;padding:14px 22px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all var(--transition);white-space:nowrap;text-decoration:none;display:flex;align-items:center}
+.res-nav-btn:hover{color:var(--gold)}
+.res-nav-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 16px;
-  }
+/* SECTION SHARED */
+.res-sec{padding:64px 48px;position:relative;z-index:1}
+.res-sec-inner{max-width:var(--max);margin:0 auto}
+.res-sec-label{display:block;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+.res-sec-h{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);letter-spacing:3px;line-height:1.05;margin-bottom:24px}
+.res-sec-p{font-size:16px;color:var(--gray-light);line-height:1.85;font-weight:300;margin-bottom:16px;max-width:780px}
+hr.gd{border:none;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);opacity:0.2;margin:0}
 
-  /* ── CARD ── */
-  .card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    animation: fadeUp 0.3s ease both;
-  }
-  .card:hover {
-    border-color: var(--green);
-    box-shadow: 0 4px 20px rgba(29,158,117,0.08);
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .card-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
-  .badge {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 3px 9px;
-    border-radius: 999px;
-  }
-  .badge-audience-Families    { background: var(--purple-light); color: var(--purple); }
-  .badge-audience-Athlete   { background: var(--green-light); color: var(--green-dark); }
-  .badge-audience-Student-Athletes { background: var(--green-light); color: var(--green-dark); }
-  .badge-audience-Coach     { background: var(--amber-light); color: var(--amber); }
-  .badge-audience-Administrator { background: #FEF3C7; color: #92400E; }
-  .badge-audience-Community { background: #F1EFE8; color: #5F5E5A; }
-  .badge-type { background: var(--gray-light); color: var(--gray); }
-  .badge-access-Deaf\/HH    { background: #EFF6FF; color: #1e40af; }
-  .badge-access-Inclusive   { background: #F0FDF4; color: #166534; }
-  .badge-access-ASL\/Bilingual { background: #FDF4FF; color: #7e22ce; }
+/* SECTION CARD / ACCORDION */
+.res-section-card{background:var(--dark-2);border-radius:10px;border:1px solid rgba(46,189,142,0.1);overflow:hidden;margin-bottom:12px;transition:border-color var(--transition)}
+.res-section-card:hover{border-color:rgba(46,189,142,0.25)}
+.acc-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;padding:24px 28px;gap:16px;text-align:left}
+.acc-toggle:hover .acc-title{color:var(--gold)}
+.acc-title{font-family:var(--font-display);font-size:22px;letter-spacing:2px;color:var(--white);transition:color var(--transition)}
+.acc-label{font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.acc-left{display:flex;flex-direction:column;gap:2px}
+.acc-arrow{width:20px;height:20px;flex-shrink:0;transition:transform .3s ease;color:var(--gold)}
+.acc-arrow.open{transform:rotate(180deg)}
+.acc-body{display:none;padding:0 28px 28px;border-top:1px solid rgba(46,189,142,0.08)}
+.acc-body.open{display:block;animation:fadeUp .35s ease}
+.acc-body-inner{padding-top:24px}
+.acc-body p{font-size:15px;color:var(--gray-light);line-height:1.8;font-weight:300;margin-bottom:14px}
+.acc-body p:last-child{margin-bottom:0}
+.acc-body strong{color:var(--white);font-weight:600}
 
-  .card-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px;
-    line-height: 1.35;
-    color: var(--black);
-    margin-bottom: 8px;
-  }
-  .card-summary {
-    font-size: 13px;
-    color: var(--gray);
-    line-height: 1.65;
-    flex: 1;
-    margin-bottom: 14px;
-  }
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-  }
-  .card-meta { font-size: 11px; color: #bbb; }
-  .card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--green-dark);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: gap 0.15s;
-  }
-  .card-link:hover { gap: 8px; }
-  .card-link svg { width: 12px; height: 12px; }
+/* LINK CARDS */
+.link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+.link-card{background:var(--dark-3);border:1px solid rgba(46,189,142,0.1);border-radius:8px;padding:22px;transition:all var(--transition);text-decoration:none;display:flex;flex-direction:column;gap:6px}
+.link-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.link-card-label{font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-weight:600}
+.link-card-title{font-family:var(--font-display);font-size:18px;letter-spacing:1.5px;color:var(--white)}
+.link-card-desc{font-size:13px;color:var(--gray);font-weight:300;line-height:1.5}
+.link-card-arrow{font-size:12px;color:var(--gold);margin-top:4px}
 
-  /* ── EMPTY STATE ── */
-  .empty {
-    grid-column: 1/-1;
-    text-align: center;
-    padding: 5rem 0;
-  }
-  .empty h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 24px;
-    color: var(--black);
-    margin-bottom: 8px;
-  }
-  .empty p { font-size: 14px; color: var(--gray); }
+/* RULE LIST */
+.rule-list{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.rule-item{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:var(--dark-3);border-radius:var(--radius);border-left:3px solid var(--gold)}
+.rule-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+.rule-text{font-size:14px;color:var(--gray-light);line-height:1.6}
+.rule-text strong{color:var(--white);display:block;margin-bottom:2px;font-size:13px;letter-spacing:.5px}
 
-  /* ── LOADING ── */
-  .loading {
-    text-align: center;
-    padding: 5rem 0;
-    color: var(--gray);
-    font-size: 14px;
-  }
-  .spinner {
-    width: 32px;
-    height: 32px;
-    border: 2px solid var(--border);
-    border-top-color: var(--green);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    margin: 0 auto 1rem;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+/* ACCESS GRID */
+.access-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:20px}
+.access-card{background:var(--dark-3);border:1px solid rgba(46,189,142,0.12);border-radius:10px;padding:28px 24px;transition:all var(--transition)}
+.access-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.access-icon{font-size:28px;margin-bottom:12px;display:block}
+.access-title{font-family:var(--font-display);font-size:22px;letter-spacing:2px;color:var(--gold);margin-bottom:10px}
+.access-p{font-size:13px;color:var(--gray-light);line-height:1.65;font-weight:300;margin-bottom:14px}
 
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem;
-    text-align: center;
-    font-size: 12px;
-    color: #bbb;
-    margin-top: 4rem;
-  }
-  footer a { color: var(--green); text-decoration: none; }
+/* FOOTER */
+footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189,142,0.1);position:relative;z-index:1}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.footer-logo svg{width:22px;height:22px}
+.footer-wm{font-family:var(--font-display);font-size:16px;color:var(--white);letter-spacing:3px}
+.footer-wm .g{color:#2EBD8E}
+.footer-tag{font-family:var(--font-elegant);font-size:12px;color:var(--gray);font-style:italic;letter-spacing:2px}
+.footer-copy{font-size:11px;color:var(--gray)}
+.footer-back{color:var(--gold);text-decoration:none;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:6px;transition:opacity var(--transition)}
+.footer-back:hover{opacity:.75}
 
-  @media (max-width: 640px) {
-    .hero { padding: 3rem 1.25rem 2.5rem; }
-    .filter-section { padding: 1rem 1.25rem; }
-    .main { padding: 1.25rem; }
-    .search-wrap { padding: 0 1.25rem; }
-    nav { display: none; }
-  }
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .nav-tagline{display:none}
+  .mode-toggle-mobile{display:flex}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--dark);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:201;list-style:none}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:18px;padding:12px 24px;display:block;width:100%;text-align:center}
+  .nav-toggle{display:flex}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .link-grid{grid-template-columns:1fr}
+  .access-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .res-sec{padding:48px 24px}
+  .res-hero{padding:48px 24px 40px}
+  .disclaimer-bar{padding:10px 24px}
+  footer{padding:32px 24px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
-<body>
+<body class="light-mode">
 
-<header>
-  <a class="logo" href="https://athlinkt.com">ATH<span>LINKT</span></a>
-  <nav>
-    <a href="https://athlinkt.com">Home</a>
-    <a href="https://athlinkt.com/#about">About</a>
-    <a href="/cdn-cgi/l/email-protection#6e0f1a06020700051a2e09030f0702400d0103">Contact</a>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="ATHLINKT Home">
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" stroke="#2EBD8E" stroke-width="1.5"/>
+      <line x1="11" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="29" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="13.5" y1="22" x2="18.5" y2="19.5" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
+      <line x1="26.5" y1="22" x2="21.5" y2="19.5" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
+      <polygon points="20,15.5 15.5,19.5 20,23.5 24.5,19.5" fill="#2EBD8E"/>
+    </svg>
+    <span class="nav-wordmark"><span class="g">A</span>THLINKT</span>
+  </a>
+  <span class="nav-tagline" aria-hidden="true">Beyond the Finish Line</span>
+  <ul class="nav-links" id="navLinks" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="nil.html">NIL</a></li>
+    <li><a href="transfer.html">Transfer Portal</a></li>
+    <li><a href="career.html">Career Match</a></li>
+    <li><a href="resources.html" class="active">Resources</a></li>
+    <li><a href="community.html">Community</a></li>
+    <li><a href="index.html">Our Story</a></li>
+    <li class="mode-toggle-mobile">
+      <button class="mode-toggle" id="modeToggleMobile" aria-label="Toggle light and dark mode">
+        <span class="mode-toggle-icon" id="modeIconMobile"></span>
+        <span class="mode-toggle-label" id="modeLabelMobile">Dark Mode</span>
+      </button>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <button class="mode-toggle" id="modeToggleDesktop" aria-label="Toggle light and dark mode">
+      <span class="mode-toggle-icon" id="modeIconDesktop"></span>
+      <span class="mode-toggle-label" id="modeLabelDesktop">Dark</span>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer-bar" role="note">
+  All resources link to verified government, NCAA, or nonprofit sources. Not legal, financial, or compliance advice. Always verify current requirements with your school's compliance office. &nbsp;·&nbsp; <strong style="color:var(--gold)">Last reviewed: March 2026</strong>
+</div>
+
+<main id="main-content" class="res-page">
+
+  <!-- HERO -->
+  <section class="res-hero" aria-label="Resource Library">
+    <div class="res-hero-glow" aria-hidden="true"></div>
+    <span class="res-eyebrow">Verified · Free · Built for Athletes</span>
+    <h1 class="res-h1">RESOURCE <span>LIBRARY</span></h1>
+    <p class="res-hero-p">Every resource here links directly to a verified government, NCAA, or nonprofit source. Nothing paid. Nothing promotional. Everything an athlete actually needs — in one place.</p>
+    <div class="res-hero-tags">
+      <span class="res-tag">All Divisions</span>
+      <span class="res-tag">All Sports</span>
+      <span class="res-tag">Verified Links</span>
+      <span class="res-tag">Free Resources</span>
+      <span class="res-tag">Updated 2025–26</span>
+    </div>
+  </section>
+
+  <!-- SECTION NAV -->
+  <nav class="res-nav" aria-label="Resource sections">
+    <div class="res-nav-inner">
+      <a href="#res-nil" class="res-nav-btn active">NIL</a>
+      <a href="#res-transfer" class="res-nav-btn">Transfer Portal</a>
+      <a href="#res-career" class="res-nav-btn">Career</a>
+      <a href="#res-mental" class="res-nav-btn">Mental Health</a>
+      <a href="#res-financial" class="res-nav-btn">Financial & Tax</a>
+      <a href="#res-access" class="res-nav-btn">Accessibility & Opportunity</a>
+      <a href="#res-titleix" class="res-nav-btn">Title IX</a>
+    </div>
   </nav>
-</header>
 
-<div class="hero">
-  <div class="hero-tag">Resource Library</div>
-  <h1>Tools for parents, coaches,<br>and <em>those building athletes</em></h1>
-  <p>Vetted resources for families, student-athletes, coaches, and the ASL &amp; Bilingual community — curated across recruiting, development, equity, wellness, and Deaf/HH pathways.</p>
-</div>
+  <!-- ══ SECTION 1: NIL ══ -->
+  <section id="res-nil" class="res-sec" aria-labelledby="nil-h">
+    <div class="res-sec-inner">
+      <span class="res-sec-label">Section 01</span>
+      <h2 class="res-sec-h" id="nil-h">NIL <span style="color:var(--gold)">RESOURCES</span></h2>
+      <p class="res-sec-p">The rules changed significantly in 2025. Start with the official sources — then use the full NIL Resource Hub for deep dives on rules, money, and sport-specific guidance.</p>
 
-<div class="filter-section">
-  <div class="filter-inner">
-    <span class="filter-label">Audience</span>
-    <div class="pill-group" id="audience-filters">
-      <div class="pill active" data-filter="audience" data-value="all">All</div>
-      <div class="pill" data-filter="audience" data-value="Parent">Families</div>
-      <div class="pill" data-filter="audience" data-value="Athlete">Student-Athletes</div>
-      <div class="pill" data-filter="audience" data-value="Coach">Coach</div>
-      <div class="pill" data-filter="audience" data-value="Administrator">Admin</div>
-    </div>
-    <div class="divider"></div>
-    <span class="filter-label">Topic</span>
-    <div class="pill-group" id="topic-filters">
-      <div class="pill active" data-filter="topic" data-value="all">All</div>
-      <div class="pill" data-filter="topic" data-value="Recruiting">Recruiting</div>
-      <div class="pill" data-filter="topic" data-value="Development">Development</div>
-      <div class="pill" data-filter="topic" data-value="Wellness">Wellness</div>
-      <div class="pill" data-filter="topic" data-value="Opportunities">Opportunities</div>
-      <div class="pill" data-filter="topic" data-value="Accessibility">Accessibility</div>
-      <div class="pill" data-filter="topic" data-value="Boundaries">Boundaries</div>
-      <div class="pill" data-filter="topic" data-value="Rules">Rules</div>
-    </div>
-    <div class="divider"></div>
-    <span class="filter-label">Community</span>
-    <div class="pill-group" id="access-filters">
-      <div class="pill active" data-filter="access" data-value="all">All</div>
-      <div class="pill" data-filter="access" data-value="Deaf/HH">Deaf / HH</div>
-      <div class="pill" data-filter="access" data-value="ASL/Bilingual">ASL &amp; Bilingual</div>
-    </div>
-  </div>
-</div>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-nil-official">
+            <div class="acc-left"><span class="acc-title">Official NCAA & Governing Body Sources</span><span class="acc-label">The source of truth — start here</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-nil-official">
+            <div class="acc-body-inner">
+              <div class="link-grid">
+                <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA</span>
+                  <span class="link-card-title">NCAA NIL Hub</span>
+                  <span class="link-card-desc">Official NCAA NIL guidance, rules, and division-specific information.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+                <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">College Sports Commission</span>
+                  <span class="link-card-title">CSC NIL Compliance</span>
+                  <span class="link-card-desc">NIL Go reporting, valid business purpose rules, and enforcement framework.</span>
+                  <span class="link-card-arrow">↗ collegesportscommission.org</span>
+                </a>
+                <a href="https://www.naia.org/student-athlete-services/nil/index" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NAIA</span>
+                  <span class="link-card-title">NAIA NIL Framework</span>
+                  <span class="link-card-desc">NIL guidance specific to NAIA athletes — separate from NCAA rules.</span>
+                  <span class="link-card-arrow">↗ naia.org</span>
+                </a>
+                <a href="https://nilgo.com" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">Deloitte / CSC</span>
+                  <span class="link-card-title">NIL Go Clearinghouse</span>
+                  <span class="link-card-desc">Required reporting portal for all DI athletes with third-party NIL deals over $600.</span>
+                  <span class="link-card-arrow">↗ nilgo.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<div class="search-wrap">
-  <input class="search-input" type="text" id="search" placeholder="Search resources..." />
-</div>
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-nil-state">
+            <div class="acc-left"><span class="acc-title">State NIL Laws</span><span class="acc-label">Your state may have additional rules beyond NCAA policy</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-nil-state">
+            <div class="acc-body-inner">
+              <p>State NIL laws vary significantly. Some states provide broader rights than the NCAA framework. Always know what your state permits — it may give you more options than the NCAA minimum.</p>
+              <div class="link-grid">
+                <a href="https://www.ncsl.org/education/name-image-and-likeness-state-laws" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">National Conference of State Legislatures</span>
+                  <span class="link-card-title">State NIL Law Tracker</span>
+                  <span class="link-card-desc">Comprehensive tracker of every state NIL law — updated regularly.</span>
+                  <span class="link-card-arrow">↗ ncsl.org</span>
+                </a>
+                <a href="https://ballotpedia.org/Name,_image,_and_likeness_(NIL)_legislation" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">Ballotpedia</span>
+                  <span class="link-card-title">NIL Legislation Database</span>
+                  <span class="link-card-desc">State-by-state NIL legislation with bill text and status.</span>
+                  <span class="link-card-arrow">↗ ballotpedia.org</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<main class="main">
-  <div class="results-meta" id="results-meta"></div>
-  <div class="grid" id="grid">
-    <div class="loading">
-      <div class="spinner"></div>
-      Loading resources...
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-nil-deep">
+            <div class="acc-left"><span class="acc-title">Full NIL Resource Hub</span><span class="acc-label">Rules, money sources, sport breakdowns, sample agreement</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-nil-deep">
+            <div class="acc-body-inner">
+              <p>The ATHLINKT NIL Resource Hub goes deep — timeline, glossary, division-specific rules, where the money actually comes from, sport-by-sport NIL breakdowns, an education checklist, and a printable sample agreement.</p>
+              <div style="margin-top:16px">
+                <a href="nil.html" class="link-card" style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);border-color:var(--gold);padding:14px 24px;border-radius:var(--radius);text-decoration:none">
+                  <span style="font-family:var(--font-display);font-size:16px;letter-spacing:2px;color:var(--dark)">OPEN NIL RESOURCE HUB</span>
+                  <span style="color:var(--dark);font-size:14px">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 2: TRANSFER PORTAL ══ -->
+  <section id="res-transfer" class="res-sec" style="background:var(--dark-2)" aria-labelledby="transfer-h">
+    <div class="res-sec-inner">
+      <span class="res-sec-label">Section 02</span>
+      <h2 class="res-sec-h" id="transfer-h">TRANSFER <span style="color:var(--gold)">PORTAL</span></h2>
+      <p class="res-sec-p">The portal moves fast. These are the official sources you need before you make any decisions. Know your rules, know your windows, know your rights.</p>
+
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-transfer-rules">
+            <div class="acc-left"><span class="acc-title">Official Transfer Rules</span><span class="acc-label">NCAA, NAIA, and JUCO transfer eligibility</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-transfer-rules">
+            <div class="acc-body-inner">
+              <div class="link-grid">
+                <a href="https://www.ncaa.org/sports/2021/7/1/transfer-portal.aspx" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA</span>
+                  <span class="link-card-title">NCAA Transfer Portal</span>
+                  <span class="link-card-desc">Official transfer portal rules, windows, and eligibility requirements.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+                <a href="https://web3.ncaa.org/transfer/service" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA</span>
+                  <span class="link-card-title">Transfer Eligibility Center</span>
+                  <span class="link-card-desc">Check your transfer eligibility status directly through the NCAA.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+                <a href="https://www.naia.org/eligibility/transfer/index" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NAIA</span>
+                  <span class="link-card-title">NAIA Transfer Rules</span>
+                  <span class="link-card-desc">Transfer eligibility and requirements specific to NAIA institutions.</span>
+                  <span class="link-card-arrow">↗ naia.org</span>
+                </a>
+                <a href="https://www.njcaa.org/eligibility/transfer_rules/p1" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NJCAA</span>
+                  <span class="link-card-title">JUCO Transfer Rules</span>
+                  <span class="link-card-desc">NJCAA transfer eligibility rules for community and junior college athletes.</span>
+                  <span class="link-card-arrow">↗ njcaa.org</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-transfer-windows">
+            <div class="acc-left"><span class="acc-title">Transfer Windows by Sport</span><span class="acc-label">When you can enter — varies by sport and division</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-transfer-windows">
+            <div class="acc-body-inner">
+              <p>Transfer windows are sport-specific and change annually. Always verify current windows directly with the NCAA before making any decisions.</p>
+              <div class="rule-list">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Football</strong> Winter window: Dec 9 – Jan 2. Spring window: May 1–15. Players have one free transfer with immediate eligibility.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Men's & Women's Basketball</strong> Spring window: April 1 – May 1. All other sports follow general windows — verify at ncaa.org for current year dates.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>All Other Sports</strong> One-time transfer rule applies — athletes may transfer once and receive immediate eligibility without a waiver. Verify sport-specific windows at ncaa.org.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Important</strong> Entering the portal does not require you to transfer. However, once entered, your current school may revoke athletic aid. Know your situation before you enter.</div></div>
+              </div>
+              <div style="margin-top:16px">
+                <a href="https://www.ncaa.org/sports/2021/7/1/transfer-portal.aspx" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA — Always Verify Current Windows</span>
+                  <span class="link-card-title">Current Transfer Windows</span>
+                  <span class="link-card-desc">Official current-year transfer windows for all sports.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 3: CAREER ══ -->
+  <section id="res-career" class="res-sec" aria-labelledby="career-h">
+    <div class="res-sec-inner">
+      <span class="res-sec-label">Section 03</span>
+      <h2 class="res-sec-h" id="career-h">CAREER <span style="color:var(--gold)">& LIFE AFTER SPORT</span></h2>
+      <p class="res-sec-p">Every skill you built as an athlete translates. These verified tools help you understand your options, explore careers, and see where other athletes have gone.</p>
+
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-career-data">
+            <div class="acc-left"><span class="acc-title">Career Data & Exploration Tools</span><span class="acc-label">Real salary data, real career pathways — powered by the U.S. government</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-career-data">
+            <div class="acc-body-inner">
+              <div class="link-grid">
+                <a href="https://www.onetonline.org" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Dept of Labor</span>
+                  <span class="link-card-title">O*NET Online</span>
+                  <span class="link-card-desc">The nation's largest occupational database. Every career, every skill, every salary range. Free and public.</span>
+                  <span class="link-card-arrow">↗ onetonline.org</span>
+                </a>
+                <a href="https://www.bls.gov/ooh/" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">Bureau of Labor Statistics</span>
+                  <span class="link-card-title">Occupational Outlook Handbook</span>
+                  <span class="link-card-desc">Real salary data, job demand projections, and what workers actually do — updated annually.</span>
+                  <span class="link-card-arrow">↗ bls.gov</span>
+                </a>
+                <a href="https://www.careeronestop.org" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Dept of Labor</span>
+                  <span class="link-card-title">CareerOneStop</span>
+                  <span class="link-card-desc">Career exploration, skills assessment, salary finder, and job search tools. Government-funded and free.</span>
+                  <span class="link-card-arrow">↗ careeronestop.org</span>
+                </a>
+                <a href="https://www.myskillsmyfuture.org" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Dept of Labor</span>
+                  <span class="link-card-title">My Skills My Future</span>
+                  <span class="link-card-desc">Enter your current skills and see matching career options with salary and demand data.</span>
+                  <span class="link-card-arrow">↗ myskillsmyfuture.org</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-career-athlete">
+            <div class="acc-left"><span class="acc-title">Athlete Career Transition Resources</span><span class="acc-label">Built specifically for athletes moving beyond sport</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-career-athlete">
+            <div class="acc-body-inner">
+              <div class="link-grid">
+                <a href="https://www.ncaa.org/sports/2014/10/6/career-center.aspx" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA</span>
+                  <span class="link-card-title">NCAA Career Center</span>
+                  <span class="link-card-desc">Career resources built specifically for current and former NCAA student-athletes.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+                <a href="https://www.usopa.org" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">Nonprofit</span>
+                  <span class="link-card-title">US Olympic & Paralympic Alumni</span>
+                  <span class="link-card-desc">Career transition support for elite athletes. Programs, mentorship, and professional development.</span>
+                  <span class="link-card-arrow">↗ usopa.org</span>
+                </a>
+                <a href="https://www.apprenticeship.gov" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Dept of Labor</span>
+                  <span class="link-card-title">Apprenticeship.gov</span>
+                  <span class="link-card-desc">Earn while you learn — paid apprenticeship programs across industries. Athletes thrive in structured environments.</span>
+                  <span class="link-card-arrow">↗ apprenticeship.gov</span>
+                </a>
+                <a href="https://www.grad.ncaa.org" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA</span>
+                  <span class="link-card-title">NCAA Graduate Student Resources</span>
+                  <span class="link-card-desc">Resources for athletes pursuing graduate education, including scholarships and academic support.</span>
+                  <span class="link-card-arrow">↗ grad.ncaa.org</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 4: MENTAL HEALTH ══ -->
+  <section id="res-mental" class="res-sec" style="background:var(--dark-2)" aria-labelledby="mental-h">
+    <div class="res-sec-inner">
+      <span class="res-sec-label">Section 04</span>
+      <h2 class="res-sec-h" id="mental-h">MENTAL HEALTH <span style="color:var(--gold)">& IDENTITY</span></h2>
+      <p class="res-sec-p">The identity shift when sport ends is real. So is the pressure while you're competing. These resources are built for athletes — not generic wellness content.</p>
+
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-mental-support">
+            <div class="acc-left"><span class="acc-title">Athlete Mental Health Support</span><span class="acc-label">NCAA, crisis resources, and athlete-specific support</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-mental-support">
+            <div class="acc-body-inner">
+              <div class="rule-list" style="margin-bottom:16px">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Crisis Line — 988 Suicide & Crisis Lifeline</strong> Call or text 988. Available 24/7. Free, confidential support for anyone in emotional distress.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Crisis Text Line</strong> Text HOME to 741741. Free, 24/7, confidential. Text-based crisis support.</div></div>
+              </div>
+              <div class="link-grid">
+                <a href="https://www.ncaa.org/sports/2014/10/6/mental-health-resources.aspx" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA</span>
+                  <span class="link-card-title">NCAA Mental Health Resources</span>
+                  <span class="link-card-desc">Mental health resources and support built specifically for student-athletes.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+                <a href="https://www.spsp.org/athlete-mental-health" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">Society for Sport & Exercise</span>
+                  <span class="link-card-title">Sport Psychology Resources</span>
+                  <span class="link-card-desc">Performance psychology, identity transition, and mental performance resources for athletes.</span>
+                  <span class="link-card-arrow">↗ spsp.org</span>
+                </a>
+                <a href="https://adaa.org/living-with-anxiety/college-students" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">Anxiety & Depression Association</span>
+                  <span class="link-card-title">College Student Mental Health</span>
+                  <span class="link-card-desc">Anxiety, depression, and stress resources for college students and athletes.</span>
+                  <span class="link-card-arrow">↗ adaa.org</span>
+                </a>
+                <a href="https://www.activeminds.org" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">Active Minds</span>
+                  <span class="link-card-title">Mental Health on Campus</span>
+                  <span class="link-card-desc">Student mental health advocacy and campus resources. Find a chapter at your school.</span>
+                  <span class="link-card-arrow">↗ activeminds.org</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-mental-eating">
+            <div class="acc-left"><span class="acc-title">Eating Disorders & Body Image</span><span class="acc-label">Athletes face elevated risk — real support resources</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-mental-eating">
+            <div class="acc-body-inner">
+              <div class="link-grid">
+                <a href="https://www.allianceforeatingdisorders.com" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">National Alliance for Eating Disorders</span>
+                  <span class="link-card-title">Eating Disorder Helpline</span>
+                  <span class="link-card-desc">Call 1-866-662-1235. Free helpline staffed by clinical professionals. Athletes-specific support available.</span>
+                  <span class="link-card-arrow">↗ allianceforeatingdisorders.com</span>
+                </a>
+                <a href="https://www.ncaa.org/sports/2014/10/6/nutrition-and-performance.aspx" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA</span>
+                  <span class="link-card-title">NCAA Nutrition & Performance</span>
+                  <span class="link-card-desc">Athlete nutrition resources including body image, fueling, and performance wellness.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 5: FINANCIAL & TAX ══ -->
+  <section id="res-financial" class="res-sec" aria-labelledby="financial-h">
+    <div class="res-sec-inner">
+      <span class="res-sec-label">Section 05</span>
+      <h2 class="res-sec-h" id="financial-h">FINANCIAL <span style="color:var(--gold)">& TAX</span></h2>
+      <p class="res-sec-p">NIL income is taxable. Most athletes find out too late. Every resource here is from a verified government or nonprofit source — no financial influencers, no paid promotions.</p>
+
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-tax">
+            <div class="acc-left"><span class="acc-title">Tax Resources for Athletes</span><span class="acc-label">NIL income, self-employment tax, filing — official IRS guidance</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-tax">
+            <div class="acc-body-inner">
+              <div class="rule-list" style="margin-bottom:16px">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL income is taxable income</strong> Whether you receive cash, products, or services — if it has value, the IRS considers it income. You are responsible for reporting it.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Self-employment tax applies</strong> If you receive NIL payments as an independent contractor (most do), you owe self-employment tax in addition to income tax — currently 15.3% on net earnings.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Quarterly estimated payments</strong> If you expect to owe more than $1,000 in taxes, the IRS requires quarterly estimated tax payments. Missing these results in penalties.</div></div>
+              </div>
+              <div class="link-grid">
+                <a href="https://www.irs.gov/individuals/students" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">IRS.gov</span>
+                  <span class="link-card-title">IRS Student & NIL Tax Guidance</span>
+                  <span class="link-card-desc">Official IRS tax guidance for students including NIL income, self-employment, and filing requirements.</span>
+                  <span class="link-card-arrow">↗ irs.gov</span>
+                </a>
+                <a href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">IRS.gov</span>
+                  <span class="link-card-title">Self-Employment Tax Explained</span>
+                  <span class="link-card-desc">How self-employment tax works, what you owe, and how to calculate it.</span>
+                  <span class="link-card-arrow">↗ irs.gov</span>
+                </a>
+                <a href="https://www.irs.gov/payments/pay-as-you-go-so-you-wont-owe" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">IRS.gov</span>
+                  <span class="link-card-title">Estimated Tax Payments</span>
+                  <span class="link-card-desc">Quarterly estimated tax payments — when you owe them, how to calculate and pay.</span>
+                  <span class="link-card-arrow">↗ irs.gov</span>
+                </a>
+                <a href="https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">IRS.gov — Free</span>
+                  <span class="link-card-title">IRS Free File</span>
+                  <span class="link-card-desc">Free federal tax filing for eligible filers. If your income is under the threshold — file for free directly through the IRS.</span>
+                  <span class="link-card-arrow">↗ irs.gov</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-financial-literacy">
+            <div class="acc-left"><span class="acc-title">Financial Literacy Resources</span><span class="acc-label">Budgeting, credit, saving — from verified nonprofit and government sources</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-financial-literacy">
+            <div class="acc-body-inner">
+              <div class="link-grid">
+                <a href="https://www.consumerfinance.gov/consumer-tools/money-as-you-grow/young-adults/" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">CFPB — U.S. Government</span>
+                  <span class="link-card-title">Consumer Financial Protection Bureau</span>
+                  <span class="link-card-desc">Budgeting, credit, student loans, and financial basics for young adults. Free, unbiased, government-backed.</span>
+                  <span class="link-card-arrow">↗ consumerfinance.gov</span>
+                </a>
+                <a href="https://www.mymoney.gov" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Government</span>
+                  <span class="link-card-title">MyMoney.gov</span>
+                  <span class="link-card-desc">Official U.S. government financial literacy portal. Budgeting tools, savings guides, and financial planning basics.</span>
+                  <span class="link-card-arrow">↗ mymoney.gov</span>
+                </a>
+                <a href="https://www.usa.gov/financial-assistance" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">USA.gov</span>
+                  <span class="link-card-title">Financial Assistance & Benefits</span>
+                  <span class="link-card-desc">Government financial programs, benefits, and assistance resources available to college students.</span>
+                  <span class="link-card-arrow">↗ usa.gov</span>
+                </a>
+                <a href="https://www.ncaa.org/sports/2014/10/6/financial-wellness.aspx" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA</span>
+                  <span class="link-card-title">NCAA Financial Wellness</span>
+                  <span class="link-card-desc">Financial wellness resources and education specifically for student-athletes.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 6: ACCESSIBILITY & OPPORTUNITY ══ -->
+  <section id="res-access" class="res-sec" style="background:var(--dark-2)" aria-labelledby="access-h">
+    <div class="res-sec-inner">
+      <span class="res-sec-label">Section 06</span>
+      <h2 class="res-sec-h" id="access-h">ACCESSIBILITY <span style="color:var(--gold)">& OPPORTUNITY</span></h2>
+      <p class="res-sec-p">ATHLINKT is built for every athlete. That means Deaf and Hard of Hearing athletes, adaptive and Paralympic athletes, first generation students, and international athletes all have a place here — with resources built specifically for them.</p>
+
+      <div class="access-grid" style="margin-top:24px">
+
+        <div class="access-card">
+          <span class="access-icon"></span>
+          <div class="access-title">DEAF & HARD OF HEARING</div>
+          <p class="access-p">Resources for Deaf, Hard of Hearing, and ASL-using athletes in collegiate athletics.</p>
+          <div class="link-grid" style="margin-top:0;grid-template-columns:1fr">
+            <a href="https://www.gallaudet.edu/athletics" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">Gallaudet University</span>
+              <span class="link-card-title">Gallaudet Athletics</span>
+              <span class="link-card-desc">The premier Deaf university and athletic program. Resources, community, and pathways.</span>
+              <span class="link-card-arrow">↗ gallaudet.edu</span>
+            </a>
+            <a href="https://www.deaflympics.com" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">International</span>
+              <span class="link-card-title">Deaflympics</span>
+              <span class="link-card-desc">International athletic competition for Deaf athletes. Pathways beyond college sport.</span>
+              <span class="link-card-arrow">↗ deaflympics.com</span>
+            </a>
+            <a href="https://www.nad.org" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">National Association of the Deaf</span>
+              <span class="link-card-title">NAD — Rights & Resources</span>
+              <span class="link-card-desc">Legal rights, accommodations, and advocacy resources for Deaf and Hard of Hearing individuals.</span>
+              <span class="link-card-arrow">↗ nad.org</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="access-card">
+          <span class="access-icon"></span>
+          <div class="access-title">ADAPTIVE & PARALYMPIC</div>
+          <p class="access-p">Resources for athletes with disabilities competing at the collegiate and elite level.</p>
+          <div class="link-grid" style="margin-top:0;grid-template-columns:1fr">
+            <a href="https://www.usopc.org/paralympics" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">U.S. Olympic & Paralympic Committee</span>
+              <span class="link-card-title">US Paralympics</span>
+              <span class="link-card-desc">Paralympic pathways, athlete development, and classification resources.</span>
+              <span class="link-card-arrow">↗ usopc.org</span>
+            </a>
+            <a href="https://www.disabledsportsusa.org" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">Nonprofit</span>
+              <span class="link-card-title">Disabled Sports USA</span>
+              <span class="link-card-desc">Adaptive sport programs, resources, and community for athletes with disabilities nationwide.</span>
+              <span class="link-card-arrow">↗ disabledsportsusa.org</span>
+            </a>
+            <a href="https://www.ncaa.org/sports/2014/10/6/student-athlete-disability-resources.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA</span>
+              <span class="link-card-title">NCAA Disability Resources</span>
+              <span class="link-card-desc">Eligibility, accommodations, and support resources for student-athletes with disabilities.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="access-card">
+          <span class="access-icon"></span>
+          <div class="access-title">FIRST GENERATION</div>
+          <p class="access-p">Resources for first generation college students navigating athletics, academics, and opportunity.</p>
+          <div class="link-grid" style="margin-top:0;grid-template-columns:1fr">
+            <a href="https://www.ncaa.org/sports/2014/10/6/first-generation-student-athlete.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA</span>
+              <span class="link-card-title">NCAA First Generation Resources</span>
+              <span class="link-card-desc">Scholarships, programs, and support specifically for first generation student-athletes.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+            <a href="https://www.firstscholars.org" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">Nonprofit</span>
+              <span class="link-card-title">First Scholars</span>
+              <span class="link-card-desc">National network supporting first generation college students — mentorship, resources, and community.</span>
+              <span class="link-card-arrow">↗ firstscholars.org</span>
+            </a>
+            <a href="https://studentaid.gov" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">U.S. Government</span>
+              <span class="link-card-title">Federal Student Aid</span>
+              <span class="link-card-desc">FAFSA, grants, loans, and financial aid — the official U.S. government student aid portal.</span>
+              <span class="link-card-arrow">↗ studentaid.gov</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="access-card">
+          <span class="access-icon">🌍</span>
+          <div class="access-title">INTERNATIONAL ATHLETES</div>
+          <p class="access-p">Navigating eligibility, visas, NIL, and campus life as an international student-athlete.</p>
+          <div class="link-grid" style="margin-top:0;grid-template-columns:1fr">
+            <a href="https://www.ncaa.org/sports/2014/10/6/international-student-athletes.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA</span>
+              <span class="link-card-title">NCAA International Student-Athlete Guide</span>
+              <span class="link-card-desc">Eligibility, amateurism, and academic requirements for international athletes.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+            <a href="https://studyinthestates.dhs.gov" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">U.S. Dept of Homeland Security</span>
+              <span class="link-card-title">Study in the States</span>
+              <span class="link-card-desc">Official U.S. government resource for international students — visa guidance, student status, and compliance.</span>
+              <span class="link-card-arrow">↗ studyinthestates.dhs.gov</span>
+            </a>
+            <a href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">USCIS</span>
+              <span class="link-card-title">Student Visa & Work Authorization</span>
+              <span class="link-card-desc">Official guidance on work authorization, NIL implications, and student visa status for F-1 and J-1 holders.</span>
+              <span class="link-card-arrow">↗ uscis.gov</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:32px">
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-ada">
+            <div class="acc-left"><span class="acc-title">Disability Rights in College Athletics</span><span class="acc-label">ADA, Section 504, and accommodation rights for student-athletes</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-ada">
+            <div class="acc-body-inner">
+              <div class="rule-list" style="margin-bottom:16px">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Americans with Disabilities Act (ADA)</strong> Prohibits discrimination against people with disabilities in all areas of public life, including colleges and universities.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Section 504 of the Rehabilitation Act</strong> Requires colleges receiving federal funding to provide equal access and accommodations for students with disabilities. This includes student-athletes.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your Right to Accommodations</strong> You have the right to request academic and athletic accommodations. Contact your school's disability services office — and your athletic academic advisor — to understand your options.</div></div>
+              </div>
+              <div class="link-grid">
+                <a href="https://www.ada.gov" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Government</span>
+                  <span class="link-card-title">ADA.gov — Official ADA Resource</span>
+                  <span class="link-card-desc">Your rights under the Americans with Disabilities Act. Plain language guides, enforcement, and complaint process.</span>
+                  <span class="link-card-arrow">↗ ada.gov</span>
+                </a>
+                <a href="https://www2.ed.gov/about/offices/list/ocr/504faq.html" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Dept of Education</span>
+                  <span class="link-card-title">Section 504 — Student Rights</span>
+                  <span class="link-card-desc">Official FAQ on Section 504 rights for students in educational settings including accommodations.</span>
+                  <span class="link-card-arrow">↗ ed.gov</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="gd">
+
+  <!-- ══ SECTION 7: TITLE IX ══ -->
+  <section id="res-titleix" class="res-sec" aria-labelledby="titleix-h">
+    <div class="res-sec-inner">
+      <span class="res-sec-label">Section 07</span>
+      <h2 class="res-sec-h" id="titleix-h">TITLE <span style="color:var(--gold)">IX</span></h2>
+      <p class="res-sec-p">Title IX is a federal civil rights law that prohibits sex-based discrimination in any school or education program receiving federal funding. In athletics, it means equal opportunity — equal access to participation, scholarships, facilities, and support. Every college athlete needs to know their rights.</p>
+
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-titleix-basics">
+            <div class="acc-left"><span class="acc-title">What Title IX Means For Athletes</span><span class="acc-label">Your rights — plain language</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-titleix-basics">
+            <div class="acc-body-inner">
+              <div class="rule-list">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Equal participation opportunity</strong> Schools must provide participation opportunities proportional to the student body, or demonstrate a history of expanding opportunities for the underrepresented sex, or fully and effectively accommodate the interests of the underrepresented sex.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Athletic financial assistance</strong> Scholarship dollars must be awarded proportional to the ratio of male to female athletes. If 40% of athletes are women, approximately 40% of scholarship money must go to women's sports.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Equal treatment and benefits</strong> Equipment, supplies, scheduling, travel, coaching, facilities, tutoring, publicity, and recruitment support must be equivalent — not necessarily identical — for men's and women's programs.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Protection from retaliation</strong> You cannot be retaliated against for filing a Title IX complaint or participating in a Title IX investigation. Retaliation is itself a Title IX violation.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Sexual harassment and assault</strong> Title IX also covers sexual harassment, assault, and gender-based discrimination in educational settings. Every school must have a Title IX Coordinator — find yours.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-titleix-links">
+            <div class="acc-left"><span class="acc-title">Official Title IX Resources</span><span class="acc-label">Federal, NCAA, and athlete-specific resources</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-titleix-links">
+            <div class="acc-body-inner">
+              <div class="link-grid">
+                <a href="https://www2.ed.gov/about/offices/list/ocr/frontpage/faq/title9.html" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Dept of Education</span>
+                  <span class="link-card-title">Title IX — Official FAQ</span>
+                  <span class="link-card-desc">Official U.S. government Title IX FAQ covering athletics, sexual harassment, and how to file a complaint.</span>
+                  <span class="link-card-arrow">↗ ed.gov</span>
+                </a>
+                <a href="https://titleix.gov" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Government</span>
+                  <span class="link-card-title">TitleIX.gov</span>
+                  <span class="link-card-desc">The official U.S. government Title IX resource — your rights, how the law works, and how to get help.</span>
+                  <span class="link-card-arrow">↗ titleix.gov</span>
+                </a>
+                <a href="https://www.ncaa.org/sports/2014/10/6/title-ix-resources.aspx" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA</span>
+                  <span class="link-card-title">NCAA Title IX Resources</span>
+                  <span class="link-card-desc">NCAA-specific Title IX resources including athletics equity, gender equity reporting, and institutional compliance.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+                <a href="https://www2.ed.gov/about/offices/list/ocr/complaintintro.html" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Dept of Education — OCR</span>
+                  <span class="link-card-title">File a Title IX Complaint</span>
+                  <span class="link-card-desc">How to file a complaint with the Office for Civil Rights if you believe your Title IX rights have been violated.</span>
+                  <span class="link-card-arrow">↗ ed.gov</span>
+                </a>
+                <a href="https://www.womenssportsfoundation.org/advocacy/title-ix-know-your-rights/" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">Women's Sports Foundation</span>
+                  <span class="link-card-title">Title IX — Know Your Rights</span>
+                  <span class="link-card-desc">Athlete-focused Title IX rights guide from the Women's Sports Foundation. Practical, clear, and actionable.</span>
+                  <span class="link-card-arrow">↗ womenssportsfoundation.org</span>
+                </a>
+                <a href="https://www.aclu.org/know-your-rights/title-ix-and-gender-equity-in-athletics" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">ACLU</span>
+                  <span class="link-card-title">Title IX & Gender Equity in Athletics</span>
+                  <span class="link-card-desc">Your legal rights under Title IX in athletic settings — ACLU plain-language guide.</span>
+                  <span class="link-card-arrow">↗ aclu.org</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-titleix-find">
+            <div class="acc-left"><span class="acc-title">Find Your Title IX Coordinator</span><span class="acc-label">Every school is required to have one — know who they are</span></div>
+            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body open" id="acc-titleix-find">
+            <div class="acc-body-inner">
+              <p>Every college and university that receives federal funding is required by law to designate a Title IX Coordinator. This person is responsible for overseeing the school's compliance with Title IX — including in athletics.</p>
+              <div class="rule-list">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>How to find them</strong> Check your school's website under Student Affairs, Human Resources, or Athletics. The coordinator's name and contact info must be publicly posted. If you can't find it — ask your athletic academic advisor or compliance office.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What they do</strong> They investigate complaints, coordinate training, and ensure the school follows Title IX. You can go to them directly — you do not need to go through coaches or athletics staff first.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Confidential reporting options</strong> Many schools also have confidential advisors separate from the Title IX Coordinator. Ask what confidential reporting options exist at your school before deciding how to proceed.</div></div>
+              </div>
+              <div style="margin-top:16px">
+                <a href="https://www2.ed.gov/about/offices/list/ocr/frontpage/faq/title9.html" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">U.S. Dept of Education</span>
+                  <span class="link-card-title">Title IX Coordinator Requirements</span>
+                  <span class="link-card-desc">Federal requirements for Title IX Coordinators — what they must do and how to reach them.</span>
+                  <span class="link-card-arrow">↗ ed.gov</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="res-sec" aria-label="Start your profile">
+    <div class="res-sec-inner" style="text-align:center;max-width:640px;margin:0 auto">
+      <span class="res-sec-label">Your Next Step</span>
+      <h2 class="res-sec-h">GET YOUR <span style="color:var(--gold)">PERSONALIZED</span> PICTURE</h2>
+      <p class="res-sec-p" style="margin:0 auto 28px">These resources are the foundation. Your ATHLINKT profile takes them further — matching them to your specific sport, division, major, and situation.</p>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--dark);padding:16px 36px;border-radius:var(--radius);font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all var(--transition)">Start Your Profile →</a>
+    </div>
+  </section>
+
 </main>
 
-<footer>
-  © 2026 Athlinkt. All rights reserved. &nbsp;·&nbsp;
-  <a href="https://athlinkt.com">athlinkt.com</a> &nbsp;·&nbsp;
-  <a href="/cdn-cgi/l/email-protection#305144585c595e5b4470575d51595c1e535f5d"><span class="__cf_email__" data-cfemail="29485d41454047425d694e44484045074a4644">[email&#160;protected]</span></a>
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo" aria-label="ATHLINKT Home">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="18.5" stroke="#2EBD8E" stroke-width="1.5"/>
+        <line x1="11" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="29" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="13.5" y1="22" x2="18.5" y2="19.5" stroke="#2EBD8E" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="26.5" y1="22" x2="21.5" y2="19.5" stroke="#2EBD8E" stroke-width="1.5" stroke-linecap="round"/>
+        <polygon points="20,15.5 15.5,19.5 20,23.5 24.5,19.5" fill="#2EBD8E"/>
+      </svg>
+      <span class="footer-wm"><span class="g">A</span>THLINKT</span>
+    </a>
+    <span class="footer-tag">Beyond the Finish Line</span>
+    <a href="index.html" class="footer-back">← Back to Home</a>
+    <span class="footer-copy">© 2025 ATHLINKT. Built for every athlete.</span>
+  </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTnlz-eYVI17K9wiYY3GDgnzlZbW1Gkr-opWEWjufDGDdgW9AXuAryfo3t9ixFRtFVbP-M4YL8hFHjW/pub?output=csv";
-
-let allRecords = [];
-let activeAudience = "all";
-let activeTopic = "all";
-let activeAccess = "all";
-let searchQuery = "";
-
-function parseCSV(text) {
-  const lines = text.trim().split("\n");
-  const headers = lines[0].split(",").map(h => h.replace(/"/g, "").trim());
-  return lines.slice(1).map(line => {
-    const vals = [];
-    let cur = "", inQ = false;
-    for (let i = 0; i < line.length; i++) {
-      const c = line[i];
-      if (c === '"') { inQ = !inQ; }
-      else if (c === ',' && !inQ) { vals.push(cur.trim()); cur = ""; }
-      else { cur += c; }
-    }
-    vals.push(cur.trim());
-    const obj = {};
-    headers.forEach((h, i) => obj[h] = (vals[i] || "").replace(/^"|"$/g, ""));
-    return obj;
-  }).filter(r => r.Title && r.Title.length > 0);
+<script>
+function toggleSection(bodyId,arrowId){
+  var body=document.getElementById(bodyId);
+  var arrow=document.getElementById(arrowId);
+  if(!body)return;
+  var isHidden=body.hasAttribute('hidden');
+  if(isHidden){body.removeAttribute('hidden');if(arrow)arrow.classList.add('open');}
+  else{body.setAttribute('hidden','');if(arrow)arrow.classList.remove('open');}
 }
-
-function getBadgeClass(type, value) {
-  if (type === "audience") return `badge badge badge-audience-${value === 'Parent' ? 'Families' : value === 'Athlete' ? 'Student-Athletes' : value}`;
-  if (type === "access") return `badge badge-access-${value.replace("/","\\/")}`;
-  return "badge badge-type";
-}
-
-function renderCards(records) {
-  const grid = document.getElementById("grid");
-  const meta = document.getElementById("results-meta");
-
-  if (records.length === 0) {
-    grid.innerHTML = `<div class="empty"><h3>No resources found</h3><p>Try adjusting your filters or search.</p></div>`;
-    meta.innerHTML = "";
-    return;
-  }
-
-  meta.innerHTML = `Showing <strong>${records.length}</strong> resource${records.length !== 1 ? "s" : ""}`;
-
-  grid.innerHTML = records.map((r, i) => {
-    const accessBadge = r.Access_Focus && r.Access_Focus !== "General"
-      ? `<span class="${getBadgeClass("access", r.Access_Focus)}">${r.Access_Focus}</span>` : "";
-    const typeBadge = r.Content_Type
-      ? `<span class="badge badge-type">${r.Content_Type}</span>` : "";
-
-    return `
-      <div class="card" style="animation-delay:${i * 0.03}s">
-        <div class="card-badges">
-          <span class="${getBadgeClass("audience", r.Audience)}">${r.Audience}</span>
-          ${typeBadge}
-          ${accessBadge}
-        </div>
-        <div class="card-title">${r.Title}</div>
-        <div class="card-summary">${r.Summary || r.Why_It_Matters || ""}</div>
-        <div class="card-footer">
-          <span class="card-meta">${r.Topic || ""} · ${r.Sport || ""}</span>
-          <a class="card-link" href="${r.Link}" target="_blank" rel="noopener">
-            View resource
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M2 10L10 2M4 2h6v6"/>
-            </svg>
-          </a>
-        </div>
-      </div>`;
-  }).join("");
-}
-
-function applyFilters() {
-  let filtered = allRecords;
-  if (activeAudience !== "all") filtered = filtered.filter(r => r.Audience === activeAudience);
-  if (activeTopic !== "all") filtered = filtered.filter(r => r.Topic === activeTopic);
-  if (activeAccess !== "all") filtered = filtered.filter(r => r.Access_Focus === activeAccess);
-  if (searchQuery) {
-    const q = searchQuery.toLowerCase();
-    filtered = filtered.filter(r =>
-      (r.Title || "").toLowerCase().includes(q) ||
-      (r.Summary || "").toLowerCase().includes(q) ||
-      (r.Topic || "").toLowerCase().includes(q) ||
-      (r.Audience || "").toLowerCase().includes(q)
-    );
-  }
-  renderCards(filtered);
-}
-
-// Filter pills
-document.querySelectorAll(".pill").forEach(pill => {
-  pill.addEventListener("click", () => {
-    const filter = pill.dataset.filter;
-    const value = pill.dataset.value;
-    if (filter === "audience") {
-      document.querySelectorAll('[data-filter="audience"]').forEach(p => p.classList.remove("active"));
-      activeAudience = value;
-    } else if (filter === "topic") {
-      document.querySelectorAll('[data-filter="topic"]').forEach(p => p.classList.remove("active"));
-      activeTopic = value;
-    } else if (filter === "access") {
-      document.querySelectorAll('[data-filter="access"]').forEach(p => p.classList.remove("active"));
-      activeAccess = value;
-    }
-    pill.classList.add("active");
-    applyFilters();
+// ACCORDIONS
+document.querySelectorAll('.acc-toggle').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var bodyId=this.getAttribute('aria-controls');
+    var body=document.getElementById(bodyId);
+    var arrow=this.querySelector('.acc-arrow');
+    if(!body)return;
+    var isOpen=body.classList.contains('open');
+    body.classList.toggle('open',!isOpen);
+    arrow.classList.toggle('open',!isOpen);
+    this.setAttribute('aria-expanded',String(!isOpen));
   });
 });
-
-// Search
-document.getElementById("search").addEventListener("input", e => {
-  searchQuery = e.target.value;
-  applyFilters();
-});
-
-// Load data
-fetch(SHEET_CSV)
-  .then(r
+// SECTION NAV ACTIVE
+var resNavBtns=document.querySelectorAll('.res-nav-btn');
+var sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',function(){
+  var scrollPos=window.scrollY+140;
+  sections.forEach(function(sec){
+    var top=sec.offsetTop;
+    var bottom=top+sec.offsetHeight;
+    if(scrollPos>=top&&scrollPos<bottom){
+      resNavBtns.forEach(function(btn){btn.classList.toggle('active',btn.getAttribute('href')==='#'+sec.id);});
+    }
+  });
+},{passive:true});
+// NAV TOGGLE
+var toggle=document.getElementById('navToggle');
+var navLinks=document.getElementById('navLinks');
+var nav=document.querySelector('nav');
+if(toggle&&navLinks){
+  toggle.addEventListener('click',function(){
+    var isOpen=navLinks.classList.contains('open');
+    navLinks.classList.toggle('open');
+    toggle.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',String(!isOpen));
+  });
+  document.addEventListener('click',function(e){
+    if(nav&&!nav.contains(e.target)){navLinks.classList.remove('open');toggle.classList.remove('open');toggle.setAttribute('aria-expanded','false');}
+  });
+}
+// DARK/LIGHT MODE
+var isDark=false;
+function updateToggleUI(){
+  var icon=isDark?'️':'';
+  var label=isDark?'Light':'Dark';
+  var iD=document.getElementById('modeIconDesktop');
+  var lD=document.getElementById('modeLabelDesktop');
+  var iM=document.getElementById('modeIconMobile');
+  var lM=document.getElementById('modeLabelMobile');
+  if(iD)iD.textContent=icon;
+  if(lD)lD.textContent=label;
+  if(iM)iM.textContent=icon;
+  if(lM)lM.textContent=(isDark?'Light':'Dark')+' Mode';
+}
+function toggleMode(){
+  isDark=!isDark;
+  document.body.classList.toggle('light-mode',!isDark);
+  updateToggleUI();
+  try{localStorage.setItem('athlinkt-mode',isDark?'dark':'light');}catch(e){}
+}
+try{if(localStorage.getItem('athlinkt-mode')==='dark'){isDark=true;document.body.classList.remove('light-mode');updateToggleUI();}}catch(e){}
+document.getElementById('modeToggleDesktop').addEventListener('click',toggleMode);
+var mob=document.getElementById('modeToggleMobile');
+if(mob)mob.addEventListener('click',toggleMode);
+// SCROLL ANIMATIONS
+if('IntersectionObserver' in window){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';obs.unobserve(e.target);}
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.res-section-card,.link-card,.access-card').forEach(function(el){
+    el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);
+  });
+}
+</script>
+</body>
+</html>
