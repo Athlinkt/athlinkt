@@ -334,6 +334,21 @@ hr.gd{border:none;height:1px;background:linear-gradient(to right,transparent,var
 .form-group{display:flex;flex-direction:column;gap:6px}
 .form-label{font-size:12px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:600}
 .form-input,.form-textarea,.form-select-full{width:100%;background:var(--dark-2);border:1px solid rgba(46,189,142,0.2);border-radius:var(--radius);padding:14px 18px;font-family:var(--font-body);font-size:15px;color:var(--white);outline:none;transition:border-color var(--transition)}
+/* RATING + CHECKBOXES */
+.rating-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px}
+.rating-label-text{font-size:12px;color:var(--gray);font-style:italic}
+.rating-options{display:flex;gap:8px}
+.rating-opt{display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.rating-opt input{display:none}
+.rating-opt span{width:36px;height:36px;border-radius:50%;border:1px solid rgba(46,189,142,0.25);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--gray-light);transition:all var(--transition);cursor:pointer}
+.rating-opt input:checked + span{background:var(--gold);border-color:var(--gold);color:var(--dark);font-weight:700}
+.rating-opt:hover span{border-color:var(--gold);color:var(--gold)}
+.checkbox-group{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.check-opt{display:flex;align-items:center;gap:12px;cursor:pointer;padding:10px 14px;border:1px solid rgba(46,189,142,0.15);border-radius:var(--radius);transition:all var(--transition)}
+.check-opt:hover{border-color:rgba(46,189,142,0.4);background:var(--gold-dim)}
+.check-opt input{width:16px;height:16px;accent-color:var(--gold);flex-shrink:0;cursor:pointer}
+.check-opt span{font-size:14px;color:var(--gray-light);font-weight:400}
+.check-opt input:checked ~ span{color:var(--white)}
 .form-input:focus,.form-textarea:focus,.form-select-full:focus{border-color:var(--gold)}
 .form-input::placeholder,.form-textarea::placeholder{color:var(--gray)}
 .form-textarea{min-height:120px;resize:vertical}
@@ -1122,44 +1137,83 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
     <h1>FEEDBACK</h1>
     <p>ATHLINKT is built for athletes — which means athletes help shape it. Tell us what you need, what's missing, and what would make this more useful for you.</p>
 
-    <div class="feedback-form" id="feedbackForm">
+    <form class="feedback-form" id="feedbackForm" action="https://formspree.io/f/mgopkged" method="POST">
+
       <div class="form-group">
-        <label class="form-label" for="fb-audience">Who Are You?</label>
-        <select class="form-select-full" id="fb-audience">
+        <label class="form-label" for="fb-audience">Who are you in this space?</label>
+        <select class="form-select-full" id="fb-audience" name="Who Are You" required>
           <option value="">— Select your role —</option>
-          <option>Student-Athlete — Current</option>
-          <option>Student-Athlete — Transfer Portal</option>
+          <option>Student-Athlete — Currently Competing</option>
+          <option>Student-Athlete — Considering Transfer</option>
           <option>Student-Athlete — Post-Eligibility</option>
+          <option>Post-Career Athlete</option>
           <option>Coach</option>
-          <option>Athletic Administrator / AD</option>
+          <option>Athletic Administrator / AD / SWA</option>
           <option>Family Member</option>
+          <option>Deaf / Hard of Hearing Athlete or Family</option>
+          <option>Adaptive / Paralympic Athlete</option>
+          <option>International Athlete</option>
+          <option>First Generation College Student-Athlete</option>
           <option>Community / Other</option>
         </select>
-        <input class="form-input" type="text" id="fb-audience-other" placeholder="Tell us who you are..." style="display:none;margin-top:10px" aria-label="Describe your role">
+        <input class="form-input" type="text" id="fb-audience-other" name="Who Are You (Other)" placeholder="Tell us who you are..." style="display:none;margin-top:10px" aria-label="Describe your role">
       </div>
+
       <div class="form-group">
-        <label class="form-label" for="fb-sport">Sport & Division</label>
-        <input class="form-input" type="text" id="fb-sport" placeholder="e.g. Women's Basketball, D1">
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="fb-type">Type of Feedback</label>
-        <select class="form-select-full" id="fb-type">
+        <label class="form-label" for="fb-found">How did you find ATHLINKT?</label>
+        <select class="form-select-full" id="fb-found" name="How Did You Find ATHLINKT">
           <option value="">— Select —</option>
-          <option>Something is missing that I need</option>
-          <option>Something isn't working right</option>
-          <option>I have a suggestion</option>
-          <option>I love something specific</option>
-          <option>General thoughts</option>
+          <option>Social media</option>
+          <option>A coach or administrator shared it</option>
+          <option>A teammate or friend</option>
+          <option>Google search</option>
+          <option>Other</option>
         </select>
       </div>
-      <div class="form-group">
-        <label class="form-label" for="fb-message">Your Feedback</label>
-        <textarea class="form-textarea" id="fb-message" placeholder="Tell us what's on your mind. No fluff required."></textarea>
-      </div>
-      <button class="btn btn-grn" onclick="submitFeedback()" style="align-self:flex-start">Submit Feedback</button>
-    </div>
 
-    <div class="feedback-success" id="feedbackSuccess">
+      <div class="form-group">
+        <label class="form-label" for="fb-useful">How useful is ATHLINKT to you right now?</label>
+        <div class="rating-row">
+          <span class="rating-label-text">Just Found It</span>
+          <div class="rating-options">
+            <label class="rating-opt"><input type="radio" name="Usefulness" value="1" required><span>1</span></label>
+            <label class="rating-opt"><input type="radio" name="Usefulness" value="2"><span>2</span></label>
+            <label class="rating-opt"><input type="radio" name="Usefulness" value="3"><span>3</span></label>
+            <label class="rating-opt"><input type="radio" name="Usefulness" value="4"><span>4</span></label>
+            <label class="rating-opt"><input type="radio" name="Usefulness" value="5"><span>5</span></label>
+          </div>
+          <span class="rating-label-text">Can't Play Without It</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">What topics matter most to you right now? <span style="font-size:11px;opacity:0.6">(select all that apply)</span></label>
+        <div class="checkbox-group">
+          <label class="check-opt"><input type="checkbox" name="Topics" value="NIL"><span>NIL — understanding my value and opportunities</span></label>
+          <label class="check-opt"><input type="checkbox" name="Topics" value="Transfer Portal"><span>Transfer Portal — making the right decision</span></label>
+          <label class="check-opt"><input type="checkbox" name="Topics" value="Career"><span>Career — what comes after sport</span></label>
+          <label class="check-opt"><input type="checkbox" name="Topics" value="Mental Health"><span>Mental health and athlete identity</span></label>
+          <label class="check-opt"><input type="checkbox" name="Topics" value="Financial"><span>Financial literacy and tax</span></label>
+          <label class="check-opt"><input type="checkbox" name="Topics" value="Community"><span>Community — connecting with other athletes</span></label>
+          <label class="check-opt"><input type="checkbox" name="Topics" value="Deaf/HH"><span>Deaf/HH & ASL Resources</span></label>
+          <label class="check-opt"><input type="checkbox" name="Topics" value="Other"><span>Other</span></label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="fb-message">Tell us what you need, what's missing, or what's working.</label>
+        <textarea class="form-textarea" id="fb-message" name="Feedback" placeholder="No fluff required." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="fb-followup">Want us to follow up? Drop your email or handle. <span style="font-size:11px;opacity:0.6">(optional)</span></label>
+        <input class="form-input" type="text" id="fb-followup" name="Follow Up Contact" placeholder="email or @handle">
+      </div>
+
+      <button type="submit" class="btn btn-grn" style="align-self:flex-start;margin-top:8px">Submit Feedback</button>
+    </form>
+
+    <div class="feedback-success" id="feedbackSuccess" style="display:none">
       <h3>THANK YOU.</h3>
       <p>Your feedback was received. Every response shapes what ATHLINKT becomes. This is how it gets built right.</p>
     </div>
@@ -1478,12 +1532,29 @@ window.joinWaitlist = function(){
 };
 
 // ── FEEDBACK ──
-window.submitFeedback = function(){
-  var form = document.getElementById('feedbackForm');
-  var success = document.getElementById('feedbackSuccess');
-  if(form){ form.style.display = 'none'; }
-  if(success){ success.style.display = 'block'; }
-};
+// ── FEEDBACK FORM — Formspree ──
+var fbForm = document.getElementById('feedbackForm');
+if(fbForm){
+  fbForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var data = new FormData(fbForm);
+    fetch('https://formspree.io/f/mgopkged', {
+      method:'POST',
+      body: data,
+      headers:{'Accept':'application/json'}
+    }).then(function(r){
+      if(r.ok){
+        fbForm.style.display = 'none';
+        var s = document.getElementById('feedbackSuccess');
+        if(s) s.style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    }).catch(function(){
+      alert('Something went wrong. Please try again.');
+    });
+  });
+}
 
 // ── FEEDBACK AUDIENCE TOGGLE ──
 var fbAudience = document.getElementById('fb-audience');
