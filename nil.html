@@ -81,7 +81,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;d
 .disclaimer-bar a:hover{text-decoration:underline}
 
 /* PAGE WRAP */
-.nil-page{padding-top:64px;position:relative;z-index:1}
+.nil-page{padding-top:64px;position:relative;z-index:1;width:100%;box-sizing:border-box}
 
 /* HERO */
 .nil-hero{padding:72px 48px 56px;max-width:var(--max);margin:0 auto;position:relative}
@@ -109,13 +109,15 @@ body:not(.light-mode) .nil-tag{color:#2EBD8E;border-color:rgba(46,189,142,0.45);
 .nil-sec-h{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);letter-spacing:3px;line-height:1.05;margin-bottom:12px}
 .nil-sec-p{font-size:15px;color:var(--gray-light);line-height:1.75;font-weight:300;margin-bottom:12px;max-width:780px}
 /* ── 2-COLUMN GRID ── */
-.nil-sections-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:0;width:100%}
-.nil-grid-cell{display:block !important;width:100% !important;min-width:0 !important;align-self:start;background:var(--dark);overflow:hidden}
+.nil-sections-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:0;width:100% !important;max-width:100% !important;box-sizing:border-box}
+.nil-grid-cell{display:block !important;width:100% !important;min-width:0 !important;box-sizing:border-box !important;align-self:start;background:var(--dark);overflow:hidden}
+.nil-grid-cell:nth-child(odd){grid-column:1}
+.nil-grid-cell:nth-child(even){grid-column:2}
 .nil-grid-cell:nth-child(4n+2),.nil-grid-cell:nth-child(4n+3){background:var(--dark-2)}
-.nil-grid-cell:nth-child(odd){border-right:1px solid rgba(46,189,142,0.08)}
+.nil-grid-cell:nth-child(odd){border-right:1px solid rgba(46,189,142,0.08);grid-column:1}
 .nil-grid-cell:not(:nth-last-child(-n+2)){border-bottom:1px solid rgba(46,189,142,0.08)}
 .nil-grid-cell .nil-sec{padding:36px 32px !important;width:100% !important;box-sizing:border-box !important;position:static !important;z-index:auto !important}
-@media(max-width:900px){.nil-sections-grid{grid-template-columns:1fr !important}.nil-grid-cell:nth-child(odd){border-right:none}.nil-grid-cell{border-bottom:1px solid rgba(46,189,142,0.08)}}
+@media(max-width:900px){.nil-sections-grid{grid-template-columns:1fr !important}.nil-grid-cell,.nil-grid-cell:nth-child(odd),.nil-grid-cell:nth-child(even){grid-column:1 !important;border-right:none}.nil-grid-cell{border-bottom:1px solid rgba(46,189,142,0.08)}}
 hr.gd{border:none;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);opacity:0.2;margin:0}
 /* SECTION ACCORDION */
 .sec-acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding-bottom:12px;border-bottom:1px solid rgba(46,189,142,0.1);margin-bottom:0;user-select:none}
@@ -1601,11 +1603,12 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── HAMBURGER — close on link tap too ──
+<script>
+// ── HAMBURGER ──
 var navToggle = document.getElementById('navToggle');
 var navLinks = document.getElementById('navLinks');
 function closeNav(){
+  if(!navLinks||!navToggle) return;
   navLinks.classList.remove('open');
   navToggle.classList.remove('open');
   navToggle.setAttribute('aria-expanded','false');
