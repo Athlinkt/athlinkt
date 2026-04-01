@@ -104,24 +104,26 @@ body:not(.light-mode) .nil-tag{color:#2EBD8E;border-color:rgba(46,189,142,0.45);
 
 /* SECTION SHARED */
 .nil-sec{padding:64px 48px;position:relative;z-index:1}
-.nil-sections-grid .nil-grid-cell .nil-sec-inner{max-width:100%}
 .nil-sec-inner{max-width:var(--max);margin:0 auto}
 .nil-sec-label{display:block;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
 .nil-sec-h{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);letter-spacing:3px;line-height:1.05;margin-bottom:12px}
 .nil-sec-p{font-size:15px;color:var(--gray-light);line-height:1.75;font-weight:300;margin-bottom:12px;max-width:780px}
-.nil-sections-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;z-index:1;align-items:start}
-.nil-sections-grid .nil-grid-cell{align-self:start;background:var(--dark);width:100%;min-width:0}.nil-sections-grid .nil-grid-cell:nth-child(4n+2),.nil-sections-grid .nil-grid-cell:nth-child(4n+3){background:var(--dark-2)}.nil-sections-grid .nil-grid-cell .nil-sec{padding:36px 32px !important;width:100%;box-sizing:border-box}
-.nil-sections-grid .nil-grid-cell:nth-child(odd){border-right:1px solid rgba(46,189,142,0.08)}
-.nil-sections-grid .nil-grid-cell:not(:nth-last-child(-n+2)){border-bottom:1px solid rgba(46,189,142,0.08)}
-@media(max-width:900px){.nil-sections-grid{grid-template-columns:1fr}.nil-sections-grid .nil-grid-cell:nth-child(odd){border-right:none}.nil-sections-grid .nil-grid-cell{border-bottom:1px solid rgba(46,189,142,0.08)}}
+/* ── 2-COLUMN GRID ── */
+.nil-sections-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:0;width:100%}
+.nil-grid-cell{display:block !important;width:100% !important;min-width:0 !important;align-self:start;background:var(--dark);overflow:hidden}
+.nil-grid-cell:nth-child(4n+2),.nil-grid-cell:nth-child(4n+3){background:var(--dark-2)}
+.nil-grid-cell:nth-child(odd){border-right:1px solid rgba(46,189,142,0.08)}
+.nil-grid-cell:not(:nth-last-child(-n+2)){border-bottom:1px solid rgba(46,189,142,0.08)}
+.nil-grid-cell .nil-sec{padding:36px 32px !important;width:100% !important;box-sizing:border-box !important;position:static !important;z-index:auto !important}
+@media(max-width:900px){.nil-sections-grid{grid-template-columns:1fr !important}.nil-grid-cell:nth-child(odd){border-right:none}.nil-grid-cell{border-bottom:1px solid rgba(46,189,142,0.08)}}
 hr.gd{border:none;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);opacity:0.2;margin:0}
 /* SECTION ACCORDION */
 .sec-acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding-bottom:12px;border-bottom:1px solid rgba(46,189,142,0.1);margin-bottom:0;user-select:none}
 .sec-acc-header:hover .nil-sec-h{color:var(--gold-light)}
 .sec-acc-arrow{width:22px;height:22px;flex-shrink:0;color:var(--gold);transition:transform .3s ease;margin-left:12px}
 .sec-acc-arrow.open{transform:rotate(180deg)}
-.sec-acc-body{display:none;padding-top:20px}
-.sec-acc-body.open{display:block}
+.sec-acc-body{display:none !important;padding-top:20px}
+.sec-acc-body.open{display:block !important}
 
 
 /* SECTION CARD */
@@ -446,10 +448,9 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
   <!-- ══ SECTION 1: WHAT IS NIL ══ -->
   <div class="nil-grid-cell"><div id="nil-what" class="nil-sec" aria-labelledby="what-h">
-    <div class="nil-sec-inner">
       <div class="sec-acc-header" onclick="toggleSecAcc('nil-what')" aria-expanded="false" aria-controls="body-nil-what">
         <div>
-          <span class="nil-sec-label">Section 01</span>
+          <span class="nil-sec-label">Section 01 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: March 2026</span></span>
           <h2 class="nil-sec-h" id="what-h">WHAT IS <span style="color:var(--gold)">NIL?</span></h2>
         </div>
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -511,15 +512,13 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
       </div>
       </div><!-- end sec-acc-body -->
-    </div>
   </div></div>
 
   <!-- ══ SECTION 2: KNOW THE RULES ══ -->
   <div class="nil-grid-cell"><div id="nil-rules" class="nil-sec" aria-labelledby="rules-h">
-    <div class="nil-sec-inner">
       <div class="sec-acc-header" onclick="toggleSecAcc('nil-rules')" aria-expanded="false" aria-controls="body-nil-rules">
         <div>
-          <span class="nil-sec-label">Section 02</span>
+          <span class="nil-sec-label">Section 02 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: March 2026</span></span>
           <h2 class="nil-sec-h" id="rules-h">KNOW THE <span style="color:var(--gold)">RULES</span></h2>
         </div>
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -634,15 +633,13 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         <p class="nil-sec-p" style="font-size:14px">Official sources: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Page</a> · <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener" style="color:var(--gold)">College Sports Commission</a> · <a href="https://sportsepreneur.com/nil-rules-athletes-parents-coaches/" target="_blank" rel="noopener" style="color:var(--gold)">NIL Rules 2026 Guide (updated March 2026)</a></p>
       </div>
       </div><!-- end sec-acc-body -->
-    </div>
   </div></div>
 
   <!-- ══ SECTION 3: YOUR MONEY ══ -->
   <div class="nil-grid-cell"><div id="nil-money" class="nil-sec" aria-labelledby="money-h">
-    <div class="nil-sec-inner">
       <div class="sec-acc-header" onclick="toggleSecAcc('nil-money')" aria-expanded="false" aria-controls="body-nil-money">
         <div>
-          <span class="nil-sec-label">Section 03</span>
+          <span class="nil-sec-label">Section 03 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: March 2026</span></span>
           <h2 class="nil-sec-h" id="money-h">YOUR <span style="color:var(--gold)">MONEY</span></h2>
         </div>
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -760,15 +757,13 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
       </div>
       </div><!-- end sec-acc-body -->
-    </div>
   </div></div>
 
   <!-- ══ SECTION 4: BY SPORT ══ -->
   <div class="nil-grid-cell"><div id="nil-sports" class="nil-sec" aria-labelledby="sports-h">
-    <div class="nil-sec-inner">
       <div class="sec-acc-header" onclick="toggleSecAcc('nil-sports')" aria-expanded="false" aria-controls="body-nil-sports">
         <div>
-          <span class="nil-sec-label">Section 04</span>
+          <span class="nil-sec-label">Section 04 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: March 2026</span></span>
           <h2 class="nil-sec-h" id="sports-h">NIL BY <span style="color:var(--gold)">SPORT</span></h2>
         </div>
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -1284,15 +1279,13 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         Not seeing your sport? That's because it's not yet verified NCAA Championship status. NIL rights still apply to all college athletes — <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">learn more at ncaa.org</a>.
       </p>
       </div><!-- end sec-acc-body -->
-    </div>
   </div></div>
 
   <!-- ══ SECTION 5: EDUCATION ══ -->
   <div class="nil-grid-cell"><div id="nil-education" class="nil-sec" aria-labelledby="edu-h">
-    <div class="nil-sec-inner">
       <div class="sec-acc-header" onclick="toggleSecAcc('nil-education')" aria-expanded="false" aria-controls="body-nil-education">
         <div>
-          <span class="nil-sec-label">Section 05</span>
+          <span class="nil-sec-label">Section 05 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: March 2026</span></span>
           <h2 class="nil-sec-h" id="edu-h">BEFORE YOU <span style="color:var(--gold)">SIGN</span></h2>
         </div>
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -1350,15 +1343,13 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         <p class="nil-sec-p" style="font-size:14px">Full education library: <a href="https://nilassist.ncaa.org/education/" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Assist Education</a> · <a href="https://nilassist.ncaa.org/student-athletes/" target="_blank" rel="noopener" style="color:var(--gold)">NIL Assist for Student-Athletes</a></p>
       </div>
       </div><!-- end sec-acc-body -->
-    </div>
   </div></div>
 
   <!-- ══ SECTION 6: SAMPLE AGREEMENT ══ -->
   <div class="nil-grid-cell"><div id="nil-agreement" class="nil-sec" aria-labelledby="agreement-h">
-    <div class="nil-sec-inner">
       <div class="sec-acc-header" onclick="toggleSecAcc('nil-agreement')" aria-expanded="false" aria-controls="body-nil-agreement">
         <div>
-          <span class="nil-sec-label">Section 06</span>
+          <span class="nil-sec-label">Section 06 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: March 2026</span></span>
           <h2 class="nil-sec-h" id="agreement-h">SAMPLE NIL <span style="color:var(--gold)">AGREEMENT</span></h2>
         </div>
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -1464,15 +1455,13 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
       </div>
       </div><!-- end sec-acc-body -->
-    </div>
   </div></div>
 
   <!-- ══ SECTION 7: FIND SUPPORT ══ -->
   <div class="nil-grid-cell"><div id="nil-support" class="nil-sec" aria-labelledby="support-h">
-    <div class="nil-sec-inner">
       <div class="sec-acc-header" onclick="toggleSecAcc('nil-support')" aria-expanded="false" aria-controls="body-nil-support">
         <div>
-          <span class="nil-sec-label">Section 07</span>
+          <span class="nil-sec-label">Section 07 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: March 2026</span></span>
           <h2 class="nil-sec-h" id="support-h">FIND <span style="color:var(--gold)">SUPPORT</span></h2>
         </div>
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -1559,12 +1548,10 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         <p style="font-size:14px;color:var(--gray-light);line-height:1.8;font-weight:300;margin:0"><strong style="color:var(--white);display:block;margin-bottom:8px;font-family:var(--font-display);font-size:18px;letter-spacing:1.5px">YOUR FIRST CALL IS TO YOUR COMPLIANCE OFFICE.</strong>Every resource on this page is an educational supplement. The person who knows your school's specific policies, your conference rules, and your state's law is your compliance officer. They are there to help you — not penalize you for asking. Use them before you sign anything, before you verbally commit to anything, and before you activate any deal.</p>
       </div>
       </div><!-- end sec-acc-body -->
-    </div>
   </div></div>
 
   <!-- ══ SHARE YOUR THOUGHTS (cell 8) ══ -->
   <div class="nil-grid-cell"><div class="nil-sec" aria-labelledby="thoughts-h">
-    <div class="nil-sec-inner">
       <span class="nil-sec-label">Your Voice Matters</span>
       <h2 class="nil-sec-h" id="thoughts-h">SHARE YOUR <span style="color:var(--gold)">THOUGHTS</span></h2>
       <p class="nil-sec-p">Is something missing? Something unclear? Have a question or experience worth sharing? This hub improves because student athletes and their supporters tell us what they need.</p>
@@ -1586,7 +1573,6 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         <h3>RECEIVED</h3>
         <p>Thank you for taking the time to share your feedback. Every submission helps make this resource better for every athlete who comes after you.</p>
       </div>
-    </div>
   </div></div>
 
 </div><!-- end nil-sections-grid -->
