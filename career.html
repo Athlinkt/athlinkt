@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Career Match for college athletes — free verified tools for life after NCAA participation. Current athletes, former athletes, any point in your journey.">
+  <meta property="og:title" content="Career Match | ATHLINKT — Beyond the Finish Line">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <title>Career Match | ATHLINKT — Beyond the Finish Line</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#2EBD8E;--gold-light:#3DD4A5;--gold-dim:rgba(46,189,142,0.1);--gold-glow:rgba(46,189,142,0.06);
+  --dark:#111111;--dark-2:#1A1A1A;--dark-3:#222222;--dark-4:#2A2A2A;
+  --white:#FFFFFF;--gray:#888888;--gray-light:#C8C8C8;
+  --border:rgba(46,189,142,0.15);
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-elegant:'Playfair Display',serif;
+  --transition:0.25s ease;--radius:6px;--max:1100px;
+}
+body.light-mode{
+  --dark:#FFFFFF;--dark-2:#F2F2F2;--dark-3:#E6E6E6;--dark-4:#D8D8D8;
+  --white:#0D0D0D;--gray:#555555;--gray-light:#1A1A1A;
+  --gold:#1A8F68;--gold-light:#2EBD8E;
+  --border:rgba(26,143,104,0.2);
+}
+body.light-mode nav{background:rgba(255,255,255,0.97)}
+body.light-mode .nav-links{background:rgba(255,255,255,0.99)}
+body.light-mode .nav-toggle span{background:var(--white)}
+body.light-mode .disclaimer-bar{background:var(--dark-2)}
+body.light-mode .cm-card{background:var(--dark-2)}
+body.light-mode .link-card{background:var(--dark-2)}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{background:var(--dark);color:var(--white);font-family:var(--font-body);line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
+.skip-link{position:absolute;top:-100px;left:16px;background:var(--gold);color:var(--dark);padding:10px 20px;font-family:var(--font-body);font-weight:700;font-size:14px;border-radius:var(--radius);z-index:1000;text-decoration:none;transition:top var(--transition)}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(17,17,17,0.97);border-bottom:1px solid rgba(46,189,142,0.1);transition:background 0.3s}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.nav-logo svg{width:30px;height:30px}
+.nav-wordmark{font-family:var(--font-display);font-size:20px;color:var(--white);letter-spacing:3px}
+.nav-wordmark .g{color:#2EBD8E}
+.nav-tagline{display:none}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;flex:1;justify-content:center;flex-wrap:nowrap}
+.nav-links a{color:var(--gray-light);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;padding:6px 8px;border-radius:4px;transition:color var(--transition);white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px;flex-shrink:0}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.mode-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;background:none;border:1px solid rgba(46,189,142,0.3);border-radius:20px;padding:6px 14px;transition:all var(--transition);flex-shrink:0}
+.mode-toggle:hover{border-color:var(--gold)}
+.mode-toggle-icon{font-size:14px;line-height:1}
+.mode-toggle-label{font-size:12px;font-family:var(--font-body);font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gray-light);white-space:nowrap}
+.mode-toggle-mobile{display:none;width:100%;justify-content:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(46,189,142,0.15)}
+.nav-has-dropdown{position:relative}
+.nav-star{font-size:8px;color:var(--gold);opacity:0;transition:opacity 0.2s ease;vertical-align:middle;margin-left:3px}
+.nav-has-dropdown>a:hover .nav-star,.nav-has-dropdown:focus-within .nav-star{opacity:1}
+.nav-has-dropdown>a:hover{color:var(--gold)}
+.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding:8px 0;opacity:0;visibility:hidden;transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+.nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
+.nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
+.ticker-bar{display:none;width:100%;background:#0d2e1e;border-bottom:2px solid var(--gold);position:sticky;top:64px;z-index:198;overflow:hidden;height:42px;max-height:42px}
+.ticker-bar.active{display:flex;align-items:stretch;height:42px}
+.ticker-label{background:var(--gold);color:var(--dark);font-family:var(--font-display);font-size:11px;letter-spacing:2.5px;padding:0 16px;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;height:42px}
+.ticker-track{flex:1;overflow:hidden;display:flex;align-items:center}
+.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tickerScroll 30s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:12px;color:#e8f5f0;white-space:nowrap;flex-shrink:0;height:42px}
+.ticker-item-badge{font-family:var(--font-display);font-size:10px;letter-spacing:2px;color:var(--gold);background:rgba(46,189,142,0.12);border:1px solid rgba(46,189,142,0.3);border-radius:3px;padding:2px 7px;flex-shrink:0}
+.ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0}
+.ticker-item-text a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(46,189,142,0.3)}
+.ticker-sep{color:rgba(46,189,142,0.3);padding:0 8px;font-size:16px;flex-shrink:0}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+body.light-mode .ticker-bar{background:#0a2419}
+body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0}
+.disclaimer-bar{background:var(--dark-2);border-bottom:1px solid rgba(46,189,142,0.12);padding:10px 32px;text-align:center;font-size:12px;color:var(--gray);letter-spacing:0.5px}
+.disclaimer-bar a{color:var(--gold);text-decoration:none}
+.cm-page{padding-top:64px}
+.cm-hero{padding:72px 48px 56px;max-width:var(--max);margin:0 auto}
+.cm-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
+.cm-h1{font-family:var(--font-display);font-size:clamp(56px,8vw,96px);letter-spacing:4px;line-height:1.0;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .25s}
+.cm-h1 span{color:var(--gold)}
+.cm-hero-p{font-size:16px;color:var(--gray-light);line-height:1.75;font-weight:300;max-width:680px;margin-bottom:8px;opacity:0;animation:fadeUp .8s ease forwards .4s}
+.cm-hero-sub{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gray);letter-spacing:1px;margin-bottom:24px;opacity:0;animation:fadeUp .8s ease forwards .5s}
+.cm-tags{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:fadeUp .8s ease forwards .55s}
+.cm-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#1A8F68;border:1.5px solid #1A8F68;border-radius:20px;padding:6px 16px;font-weight:600;background:rgba(46,189,142,0.06)}
+body:not(.light-mode) .cm-tag{color:#2EBD8E;border-color:rgba(46,189,142,0.45);background:rgba(46,189,142,0.08)}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:translateY(0)}}
+.cm-nav{background:var(--dark-2);border-bottom:1px solid rgba(46,189,142,0.1);position:sticky;top:106px;z-index:100}
+.cm-nav-inner{display:flex;gap:0;max-width:var(--max);margin:0 auto;overflow-x:auto;scrollbar-width:none}
+.cm-nav-inner::-webkit-scrollbar{display:none}
+.cm-nav-btn{flex-shrink:0;padding:14px 20px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all var(--transition);white-space:nowrap;text-decoration:none;display:flex;align-items:center}
+.cm-nav-btn:hover,.cm-nav-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.cm-sections-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:0;width:100% !important;max-width:100% !important;box-sizing:border-box}
+.cm-grid-cell{display:block !important;width:100% !important;min-width:0 !important;box-sizing:border-box !important;align-self:start;background:var(--dark);overflow:hidden}
+.cm-grid-cell:nth-child(odd){grid-column:1;border-right:1px solid rgba(46,189,142,0.08)}
+.cm-grid-cell:nth-child(even){grid-column:2}
+.cm-grid-cell:nth-child(4n+2),.cm-grid-cell:nth-child(4n+3){background:var(--dark-2)}
+.cm-grid-cell:not(:nth-last-child(-n+2)){border-bottom:1px solid rgba(46,189,142,0.08)}
+.cm-sec{padding:36px 32px !important;width:100% !important;box-sizing:border-box !important;position:static !important}
+.cm-sec-label{display:block;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
+.cm-sec-h{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);letter-spacing:3px;line-height:1.05;margin-bottom:12px}
+.cm-sec-p{font-size:15px;color:var(--gray-light);line-height:1.75;font-weight:300;margin-bottom:12px}
+.sec-acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding-bottom:12px;border-bottom:1px solid rgba(46,189,142,0.1);margin-bottom:0;user-select:none}
+.sec-acc-header:hover .cm-sec-h{color:var(--gold-light)}
+.sec-acc-arrow{width:22px;height:22px;flex-shrink:0;color:var(--gold);transition:transform .3s ease;margin-left:12px}
+.sec-acc-arrow.open{transform:rotate(180deg)}
+.sec-acc-body{display:none !important;padding-top:20px}
+.sec-acc-body.open{display:block !important}
+.cm-card{background:var(--dark-2);border-radius:10px;border:1px solid rgba(46,189,142,0.1);overflow:hidden;margin-bottom:8px;transition:border-color var(--transition)}
+.cm-card:hover{border-color:rgba(46,189,142,0.25)}
+.acc-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;padding:16px 20px;gap:16px;text-align:left}
+.acc-left{display:flex;flex-direction:column;gap:3px}
+.acc-title{font-family:var(--font-display);font-size:18px;letter-spacing:2px;color:var(--white);transition:color var(--transition)}
+.acc-label{font-size:10px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.acc-arrow{width:20px;height:20px;flex-shrink:0;color:var(--gold);transition:transform .3s ease}
+.acc-arrow.open{transform:rotate(180deg)}
+.acc-toggle:hover .acc-title{color:var(--gold)}
+.acc-body{display:none;padding:0 20px 20px;border-top:1px solid rgba(46,189,142,0.08)}
+.acc-body.open{display:block}
+.acc-body-inner{padding-top:16px;font-size:14px;color:var(--gray-light);line-height:1.7}
+.rule-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.rule-item{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:var(--dark-3);border-radius:var(--radius);border-left:3px solid var(--gold)}
+.rule-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+.rule-text{font-size:13px;color:var(--gray-light);line-height:1.65}
+.rule-text strong{color:var(--white);display:block;margin-bottom:2px;font-size:13px;letter-spacing:.5px}
+.link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+.link-card{display:flex;flex-direction:column;gap:6px;padding:16px 18px;background:var(--dark-3);border-radius:var(--radius);border:1px solid rgba(46,189,142,0.1);text-decoration:none;transition:border-color var(--transition),background var(--transition)}
+.link-card:hover{border-color:rgba(46,189,142,0.3);background:rgba(46,189,142,0.04)}
+.link-card-label{font-size:10px;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-weight:600}
+.link-card-title{font-size:14px;color:var(--white);font-weight:600;letter-spacing:0.3px}
+.link-card-desc{font-size:12px;color:var(--gray);line-height:1.5}
+.link-card-arrow{font-size:11px;color:var(--gold);letter-spacing:1px;margin-top:4px}
+.source-note{font-size:11px;color:var(--gray);font-style:italic;margin-top:12px;padding-top:8px;border-top:1px solid rgba(46,189,142,0.08)}
+.source-note a{color:var(--gold);text-decoration:none}
+.alert-box{background:rgba(46,189,142,0.06);border:1px solid rgba(46,189,142,0.25);border-left:4px solid var(--gold);border-radius:8px;padding:20px 24px;margin-bottom:20px}
+.alert-box-title{font-family:var(--font-display);font-size:16px;letter-spacing:2px;color:var(--gold);margin-bottom:8px}
+.alert-box p{font-size:14px;color:var(--gray-light);line-height:1.7;margin:0}
+.coming-badge{display:inline-block;font-family:var(--font-display);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);background:var(--dark-3);border:1px solid rgba(46,189,142,0.2);border-radius:4px;padding:3px 10px;margin-bottom:12px}
+footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);padding:32px 48px}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.footer-wm{font-family:var(--font-display);font-size:16px;letter-spacing:3px;color:var(--white)}
+.footer-wm .g{color:#2EBD8E}
+.footer-tag{font-family:var(--font-elegant);font-size:11px;font-style:italic;color:var(--gray);letter-spacing:2px}
+.footer-back{font-size:12px;color:var(--gray);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color var(--transition)}
+.footer-back:hover{color:var(--gold)}
+.footer-copy{font-size:11px;color:var(--gray);letter-spacing:0.5px}
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--dark);flex-direction:column;align-items:center;justify-content:flex-start;padding-top:32px;gap:8px;z-index:199;list-style:none;overflow-y:auto}
+  .nav-links.open{display:flex}
+  .nav-links>li>a{font-size:18px;padding:12px 24px;display:block;width:100%;text-align:center}
+  .nav-toggle{display:flex}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mode-toggle-mobile{display:flex}
+  .nav-dropdown{position:static;transform:none !important;opacity:1;visibility:visible;background:transparent;border:none;box-shadow:none;padding:0 0 8px 16px;pointer-events:auto;display:none;width:100%}
+  .nav-has-dropdown.mob-open .nav-dropdown{display:block}
+  .nav-dropdown li a{font-size:14px;padding:8px 12px;border-left:none;text-align:left}
+  .nav-star{display:inline-block;opacity:0.5;font-size:9px;transition:transform 0.2s}
+  .nav-has-dropdown.mob-open .nav-star{transform:rotate(90deg);opacity:1}
+  .cm-sections-grid{grid-template-columns:1fr !important}
+  .cm-grid-cell,.cm-grid-cell:nth-child(odd),.cm-grid-cell:nth-child(even){grid-column:1 !important;border-right:none}
+  .cm-grid-cell{border-bottom:1px solid rgba(46,189,142,0.08)}
+  .cm-hero{padding:40px 24px 32px}
+  .cm-sec{padding:28px 20px !important}
+  .link-grid{grid-template-columns:1fr}
+  footer{padding:28px 24px}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="ATHLINKT Home">
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" stroke="#2EBD8E" stroke-width="1.5"/>
+      <line x1="11" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="29" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="13.5" y1="22" x2="18.5" y2="19.5" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
+      <line x1="26.5" y1="22" x2="21.5" y2="19.5" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
+      <polygon points="20,15.5 15.5,19.5 20,23.5 24.5,19.5" fill="#2EBD8E"/>
+    </svg>
+    <span class="nav-wordmark"><span class="g">A</span>THLINKT</span>
+  </a>
+  <ul class="nav-links" id="navLinks" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li class="nav-has-dropdown">
+      <a href="nil.html">NIL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="nil.html#nil-what">What Is NIL</a></li>
+        <li><a href="nil.html#nil-rules">Know the Rules</a></li>
+        <li><a href="nil.html#nil-money">Your Money</a></li>
+        <li><a href="nil.html#nil-sports">NIL By Sport</a></li>
+        <li><a href="nil.html#nil-education">Before You Sign</a></li>
+        <li><a href="nil.html#nil-agreement">Sample Agreement</a></li>
+        <li><a href="nil.html#nil-support">Find Support</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="transfer.html">Transfer Portal <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="transfer.html#tp-first">Talk to Your Coach First</a></li>
+        <li><a href="transfer.html#tp-how">How It Works</a></li>
+        <li><a href="transfer.html#tp-windows">Windows by Sport</a></li>
+        <li><a href="transfer.html#tp-ghost">Ghost Transfer Rule</a></li>
+        <li><a href="transfer.html#tp-financial">Financial Aid</a></li>
+        <li><a href="transfer.html#tp-naia">NAIA Rules</a></li>
+        <li><a href="transfer.html#tp-juco">JUCO Rules</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="career.html" class="active">Career Match <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="#cm-strengths">Know Your Strengths</a></li>
+        <li><a href="#cm-tools">Career Exploration Tools</a></li>
+        <li><a href="#cm-life">Life After the Sport</a></li>
+        <li><a href="#cm-internships">Internship Pathways</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="resources.html">Resources <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="resources.html#res-nil">NIL Resources</a></li>
+        <li><a href="resources.html#res-transfer">Transfer Portal</a></li>
+        <li><a href="resources.html#res-career">Career & Life</a></li>
+        <li><a href="resources.html#res-mental">Mental Health</a></li>
+        <li><a href="resources.html#res-financial">Financial & Tax</a></li>
+        <li><a href="resources.html#res-access">Accessibility</a></li>
+        <li><a href="resources.html#res-titleix">Title IX</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="community.html">Community <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="community.html#commitment">Our Commitment</a></li>
+        <li><a href="community.html#beyond">Beyond the Finish Line</a></li>
+      </ul>
+    </li>
+    <li><a href="feedback.html">Feedback</a></li>
+    <li class="mode-toggle-mobile">
+      <button class="mode-toggle" id="modeToggleMobile" aria-label="Toggle light and dark mode">
+        <span class="mode-toggle-icon" id="modeIconMobile">🌙</span>
+        <span class="mode-toggle-label" id="modeLabelMobile">Dark Mode</span>
+      </button>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <button class="mode-toggle" id="modeToggleDesktop" aria-label="Toggle light and dark mode">
+      <span class="mode-toggle-icon" id="modeIconDesktop">🌙</span>
+      <span class="mode-toggle-label" id="modeLabelDesktop">Dark</span>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ BREAKING NEWS TICKER ══ -->
+<div class="ticker-bar" id="tickerBar" role="region" aria-label="Breaking news" aria-live="polite">
+  <span class="ticker-label">&#9646; LATEST</span>
+  <div class="ticker-track">
+    <div class="ticker-inner" id="tickerInner"></div>
+  </div>
+</div>
+
+<!-- DISCLAIMER BAR -->
+<div class="disclaimer-bar" role="note">
+  For educational purposes only. All tools listed are free, publicly accessible, and from verified government or nonprofit sources. &nbsp;·&nbsp; <strong style="color:var(--gold)">Last reviewed: April 2026</strong>
+</div>
+
+<main id="main-content" class="cm-page">
+
+  <!-- HERO -->
+  <section class="cm-hero" aria-label="Career Match">
+    <span class="cm-eyebrow">Career Match</span>
+    <h1 class="cm-h1">LIFE AFTER <span>NCAA PARTICIPATION</span></h1>
+    <p class="cm-hero-p">Most athletes become civilians after their NCAA participation ends — not everyone coaches, and this is not about graduate school. Whether you are still competing, just finished, or years removed and ready for a career change: these tools are for you at any stage.</p>
+    <p class="cm-hero-sub">Current athlete &nbsp;·&nbsp; Former athlete &nbsp;·&nbsp; Returning for a career change at any point — you are welcome here</p>
+    <div class="cm-tags">
+      <span class="cm-tag">All Divisions</span>
+      <span class="cm-tag">Current Athletes</span>
+      <span class="cm-tag">Former Athletes</span>
+      <span class="cm-tag">Free Tools Only</span>
+      <span class="cm-tag">Verified Sources</span>
+      <span class="cm-tag">U.S. Government Resources</span>
+    </div>
+  </section>
+
+  <!-- SECTION NAV -->
+  <nav class="cm-nav" aria-label="Career Match sections">
+    <div class="cm-nav-inner">
+      <a href="#cm-strengths" class="cm-nav-btn active">Know Your Strengths</a>
+      <a href="#cm-tools" class="cm-nav-btn">Exploration Tools</a>
+      <a href="#cm-life" class="cm-nav-btn">Life After the Sport</a>
+      <a href="#cm-ncaa" class="cm-nav-btn">NCAA Resources</a>
+      <a href="#cm-internships" class="cm-nav-btn">Internship Pathways</a>
+    </div>
+  </nav>
+
+  <!-- 2-COLUMN GRID -->
+  <div class="cm-sections-grid">
+
+    <!-- Cell 1: Know Your Strengths -->
+    <div class="cm-grid-cell">
+      <div id="cm-strengths" class="cm-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('cm-strengths-body')" aria-expanded="false" aria-controls="cm-strengths-body">
+          <div>
+            <span class="cm-sec-label">Section 01 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="cm-sec-h">KNOW YOUR <span style="color:var(--gold)">STRENGTHS</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="cm-strengths-body">
+          <p class="cm-sec-p" style="margin-top:12px">You have spent years developing skills that most people never build. The problem is not that you lack skills — it is that no one has taught you to name them, own them, and translate them to a workplace.</p>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Transferable skills you already have</strong> Discipline, time management under extreme pressure, team dynamics, performance under stress, coaching and receiving coaching, goal-setting, film study (pattern recognition), physical and mental recovery, competition strategy. These are not soft skills — they are leadership and professional skills.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The identity challenge is real</strong> Research from Grand Valley State University (2025) confirms that student-athletes struggle with career readiness partly because athletic identity makes it hard to envision a future without sport. Acknowledging this is the first step — not a weakness.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Start early — not your senior year</strong> The athletes who transition best are the ones who started exploring during their sophomore or junior year. If you are reading this as a freshman, you are ahead. If you are a former athlete reading this years later — you are not late, you are ready.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Use the tools below to name what you already know</strong> The O*NET Interest Profiler and CareerOneStop Skills Matcher are built specifically to help people identify what they are good at and match it to careers. They are free, from the U.S. Department of Labor, and take less than 30 minutes.</div></div>
+          </div>
+          <p class="source-note">Research reference: Gibbs, E.M. (2025). "From Student-Athlete to Working Professional: Career Readiness for College Athletes." Grand Valley State University. <a href="https://scholarworks.gvsu.edu/gradprojects/543/" target="_blank" rel="noopener">scholarworks.gvsu.edu</a>. All content on this page is paraphrased and attributed — not reproduced.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 2: Career Exploration Tools -->
+    <div class="cm-grid-cell">
+      <div id="cm-tools" class="cm-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('cm-tools-body')" aria-expanded="false" aria-controls="cm-tools-body">
+          <div>
+            <span class="cm-sec-label">Section 02 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="cm-sec-h">CAREER EXPLORATION <span style="color:var(--gold)">TOOLS</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="cm-tools-body">
+          <div class="alert-box" style="margin-top:12px">
+            <div class="alert-box-title">All tools listed here are free, public, and from verified U.S. government or nonprofit sources.</div>
+            <p>No LinkedIn. No Facebook. No algorithm deciding what you see. These are structured tools designed to help you think clearly about what you want to do next.</p>
+          </div>
+
+          <div class="cm-card">
+            <button class="acc-toggle" aria-expanded="false" aria-controls="acc-onet">
+              <div class="acc-left">
+                <span class="acc-title">O*NET Interest Profiler</span>
+                <span class="acc-label">U.S. Dept of Labor · Free · No account needed</span>
+              </div>
+              <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="acc-body" id="acc-onet">
+              <div class="acc-body-inner">
+                <p>A 60-question interest assessment from the U.S. Department of Labor that identifies what types of work you would enjoy and connects you to matching careers. Takes about 20 minutes. No account, no email, completely free.</p>
+                <p>This is one of the most widely used career assessment tools in the country — used by workforce development programs, veterans services, and universities nationwide.</p>
+                <div class="link-grid">
+                  <a href="https://www.mynextmove.org/explore/ip" target="_blank" rel="noopener" class="link-card">
+                    <span class="link-card-label">U.S. Dept of Labor — Free</span>
+                    <span class="link-card-title">O*NET Interest Profiler</span>
+                    <span class="link-card-desc">60 questions. No account. Free. Identifies your interests and matches them to 900+ careers.</span>
+                    <span class="link-card-arrow">↗ mynextmove.org</span>
+                  </a>
+                </div>
+                <p class="source-note">Source: <a href="https://www.dol.gov/agencies/eta/onet/tools" target="_blank" rel="noopener">U.S. Department of Labor — O*NET Career Exploration Tools</a>. Free public resource.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cm-card">
+            <button class="acc-toggle" aria-expanded="false" aria-controls="acc-mynext">
+              <div class="acc-left">
+                <span class="acc-title">My Next Move</span>
+                <span class="acc-label">U.S. Dept of Labor · Free · 900+ careers</span>
+              </div>
+              <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="acc-body" id="acc-mynext">
+              <div class="acc-body-inner">
+                <p>A streamlined career search and discovery tool from the U.S. Department of Labor. Search by keyword, browse by industry, or take the built-in interest assessment. Each career profile includes what the job involves, what skills it requires, salary data, and training pathways — all on one clear page.</p>
+                <div class="link-grid">
+                  <a href="https://www.mynextmove.org" target="_blank" rel="noopener" class="link-card">
+                    <span class="link-card-label">U.S. Dept of Labor — Free</span>
+                    <span class="link-card-title">My Next Move</span>
+                    <span class="link-card-desc">Search 900+ careers by interest, keyword, or industry. Clear, one-page career profiles.</span>
+                    <span class="link-card-arrow">↗ mynextmove.org</span>
+                  </a>
+                </div>
+                <p class="source-note">Source: <a href="https://www.mynextmove.org" target="_blank" rel="noopener">U.S. Department of Labor — My Next Move</a>. Powered by O*NET. Free public resource.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cm-card">
+            <button class="acc-toggle" aria-expanded="false" aria-controls="acc-careeronestop">
+              <div class="acc-left">
+                <span class="acc-title">CareerOneStop Skills Matcher</span>
+                <span class="acc-label">U.S. Dept of Labor · Free · Match skills to careers</span>
+              </div>
+              <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="acc-body" id="acc-careeronestop">
+              <div class="acc-body-inner">
+                <p>Select the skills you already have — including transferable skills from athletics — and the Skills Matcher returns careers that align with your profile. Helpful for athletes who know what they are good at but do not know what job titles match.</p>
+                <div class="link-grid">
+                  <a href="https://www.careeronestop.org/Toolkit/Skills/skills-matcher.aspx" target="_blank" rel="noopener" class="link-card">
+                    <span class="link-card-label">U.S. Dept of Labor — Free</span>
+                    <span class="link-card-title">CareerOneStop Skills Matcher</span>
+                    <span class="link-card-desc">Select your skills and match them to career options. Includes salary data and job openings.</span>
+                    <span class="link-card-arrow">↗ careeronestop.org</span>
+                  </a>
+                  <a href="https://www.bls.gov/ooh/" target="_blank" rel="noopener" class="link-card">
+                    <span class="link-card-label">U.S. Bureau of Labor Statistics — Free</span>
+                    <span class="link-card-title">Occupational Outlook Handbook</span>
+                    <span class="link-card-desc">Salary ranges, job growth projections, what the work actually requires — for every major career.</span>
+                    <span class="link-card-arrow">↗ bls.gov/ooh</span>
+                  </a>
+                </div>
+                <p class="source-note">Sources: <a href="https://www.careeronestop.org" target="_blank" rel="noopener">CareerOneStop.org</a> · <a href="https://www.bls.gov/ooh/" target="_blank" rel="noopener">Bureau of Labor Statistics</a>. Both free U.S. government resources.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 3: Life After the Sport -->
+    <div class="cm-grid-cell">
+      <div id="cm-life" class="cm-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('cm-life-body')" aria-expanded="false" aria-controls="cm-life-body">
+          <div>
+            <span class="cm-sec-label">Section 03 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="cm-sec-h">LIFE AFTER <span style="color:var(--gold)">NCAA PARTICIPATION</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="cm-life-body">
+          <p class="cm-sec-p" style="margin-top:12px">This section is not about graduate school — it is about what comes after your athletic participation ends. Whether that was last season or fifteen years ago, whether you need a first career or a second one: career change is not failure. Coming back to this at any point is strength.</p>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>You are not starting over</strong> Every year of athletic experience counts. The discipline, the team experience, the adversity, the commitment — those are credentials. The work is learning to articulate them in terms that employers recognize.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The transition is hard — and that is normal</strong> Research is clear: athletes often struggle with identity after sport ends. The structure disappears. The team disappears. The goal disappears. If this describes you right now, you are not broken — you are between chapters. Use the mental health resources on the Resources page alongside these career tools.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Former athletes returning for a career change</strong> If you are years removed from sport and need a new direction, the same tools apply. The O*NET Profiler and My Next Move have no eligibility requirements. They work at any stage of life.</div></div>
+          </div>
+          <div class="link-grid">
+            <a href="https://www.ncaa.org/sports/2021/7/9/preparing-for-your-career.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA.org — Free</span>
+              <span class="link-card-title">Preparing for Your Career</span>
+              <span class="link-card-desc">Official NCAA career preparation resources for student-athletes — current and former.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+            <a href="https://www.grad.ncaa.org" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA — Free</span>
+              <span class="link-card-title">NCAA Grad School Resources</span>
+              <span class="link-card-desc">Graduate school options, preparation, and scholarships for student-athletes considering advanced degrees.</span>
+              <span class="link-card-arrow">↗ grad.ncaa.org</span>
+            </a>
+          </div>
+          <p class="source-note">Sources: <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a>. Last reviewed April 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 4: NCAA Career Resources -->
+    <div class="cm-grid-cell">
+      <div id="cm-ncaa" class="cm-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('cm-ncaa-body')" aria-expanded="false" aria-controls="cm-ncaa-body">
+          <div>
+            <span class="cm-sec-label">Section 04 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="cm-sec-h">NCAA <span style="color:var(--gold)">RESOURCES</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="cm-ncaa-body">
+          <p class="cm-sec-p" style="margin-top:12px">The NCAA offers free career and academic resources for student-athletes. These are official, verified, and specifically designed for athletes at every division level.</p>
+          <div class="link-grid">
+            <a href="https://www.ncaa.org/sports/2021/7/9/preparing-for-your-career.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA.org — Official</span>
+              <span class="link-card-title">Preparing for Your Career</span>
+              <span class="link-card-desc">Career preparation guidance, internship resources, and employer connections for NCAA athletes.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+            <a href="https://www.ncaa.org/sports/2021/7/9/your-journey.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA.org — Official</span>
+              <span class="link-card-title">Your Journey</span>
+              <span class="link-card-desc">Academic and personal development resources for student-athletes throughout their college career.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+            <a href="https://www.grad.ncaa.org" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA — Official</span>
+              <span class="link-card-title">NCAA Grad School Resources</span>
+              <span class="link-card-desc">Graduate school preparation, scholarships, and academic pathways after your athletic career.</span>
+              <span class="link-card-arrow">↗ grad.ncaa.org</span>
+            </a>
+            <a href="https://www.ncaa.org/sports/2021/5/3/membership-directory.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA.org — Official</span>
+              <span class="link-card-title">NCAA Membership Directory</span>
+              <span class="link-card-desc">Find your school's division, conference, and member status. DI, DII, DIII, Active Members, HBCU members, and more. Source: NCAA.org</span>
+              <span class="link-card-arrow">↗ ncaa.org Membership Directory</span>
+            </a>
+          </div>
+          <p class="source-note">All links above: Source <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a> — Official NCAA resources. Free and publicly accessible. Last reviewed April 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 5: Internship Pathways -->
+    <div class="cm-grid-cell">
+      <div id="cm-internships" class="cm-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('cm-internships-body')" aria-expanded="false" aria-controls="cm-internships-body">
+          <div>
+            <span class="cm-sec-label">Section 05 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="cm-sec-h">INTERNSHIP <span style="color:var(--gold)">PATHWAYS</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="cm-internships-body">
+          <p class="cm-sec-p" style="margin-top:12px">Internship experience has a strong correlation to finding employment in a desired career. Athletes face schedule challenges that make traditional internship timelines hard. These resources help navigate that.</p>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Talk to your athletic department first</strong> Many schools have career services specifically for athletes, sometimes called an Athletics Career Center or Athletic Academic Center. They can connect you with employers who already value the athlete skill set and understand your schedule.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Federal internship and job search tools — free</strong> CareerOneStop (U.S. Dept of Labor) includes job search tools, apprenticeship finders, and local workforce resources — all free, no account required.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Off-season is your window</strong> If internship timing conflicts with your season, use the off-season strategically. A part-time or virtual internship during a semester may be possible — ask your academic advisor and compliance office about any restrictions.</div></div>
+          </div>
+          <div class="link-grid">
+            <a href="https://www.careeronestop.org/JobSearch/FindJobs/find-jobs.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">U.S. Dept of Labor — Free</span>
+              <span class="link-card-title">CareerOneStop Job Finder</span>
+              <span class="link-card-desc">Search job and internship openings by location and keyword. Free government tool — no account needed.</span>
+              <span class="link-card-arrow">↗ careeronestop.org</span>
+            </a>
+            <a href="https://www.apprenticeship.gov" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">U.S. Dept of Labor — Free</span>
+              <span class="link-card-title">Apprenticeship.gov</span>
+              <span class="link-card-desc">Official U.S. apprenticeship finder — paid, structured training pathways across industries.</span>
+              <span class="link-card-arrow">↗ apprenticeship.gov</span>
+            </a>
+          </div>
+          <div style="margin-top:20px;padding:16px 20px;background:var(--dark-2);border:1px solid rgba(46,189,142,0.15);border-radius:8px;border-left:3px solid rgba(46,189,142,0.4)">
+            <p style="font-size:13px;color:var(--gray-light);line-height:1.7;margin:0"><strong style="color:var(--gold);font-family:var(--font-display);font-size:14px;letter-spacing:1.5px;display:block;margin-bottom:6px">COMING: CONNECT WITH PEOPLE WILLING TO GIVE THEIR TIME</strong>This space is reserved for a future Community feature — athletes connecting with professionals and former athletes willing to offer informal mentorship, informational interviews, and time. Not LinkedIn. Not Facebook. Something built specifically for this community. Watch this space.</p>
+          </div>
+          <p class="source-note">Sources: <a href="https://www.careeronestop.org" target="_blank" rel="noopener">CareerOneStop.org</a> · <a href="https://www.apprenticeship.gov" target="_blank" rel="noopener">Apprenticeship.gov</a>. Both U.S. Department of Labor. Free public resources. Last reviewed April 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 6: Your Voice Matters -->
+    <div class="cm-grid-cell">
+      <div class="cm-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('cm-voice-body')" aria-expanded="false" aria-controls="cm-voice-body">
+          <div>
+            <span class="cm-sec-label">Your Voice Matters</span>
+            <h2 class="cm-sec-h">SHARE YOUR <span style="color:var(--gold)">THOUGHTS</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="cm-voice-body">
+          <p class="cm-sec-p" style="margin-top:12px">Is a tool missing? Something unclear? Have a resource that helped you that should be here? This page improves because student athletes and their supporters tell us what they need.</p>
+          <div style="margin-top:16px;padding:24px;background:var(--dark-2);border-radius:10px;text-align:center">
+            <p style="font-size:14px;color:var(--gray);margin-bottom:16px;font-weight:300">Share your feedback directly —</p>
+            <a href="mailto:athlinkt&#64;gmail&#46;com" style="color:var(--gold);font-size:16px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(46,189,142,0.3);padding-bottom:2px">athlinkt&#64;gmail&#46;com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end cm-sections-grid -->
+
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo" aria-label="ATHLINKT Home">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" style="width:28px;height:28px">
+        <circle cx="20" cy="20" r="18.5" stroke="#2EBD8E" stroke-width="1.5"/>
+        <line x1="11" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+        <line x1="29" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="20,15.5 15.5,19.5 20,23.5 24.5,19.5" fill="#2EBD8E"/>
+      </svg>
+      <div>
+        <div class="footer-wm"><span class="g">A</span>THLINKT</div>
+        <div class="footer-tag">Beyond the Finish Line</div>
+      </div>
+    </a>
+    <a href="index.html" class="footer-back">← Back to ATHLINKT</a>
+    <p class="footer-copy">© 2025–26 ATHLINKT · For educational purposes only · All tools verified free public resources · Sources cited per section</p>
+  </div>
+</footer>
+
+<script>
+var navToggle = document.getElementById('navToggle');
+var navLinks = document.getElementById('navLinks');
+function closeNav(){
+  if(!navLinks||!navToggle) return;
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+  document.querySelectorAll('.nav-has-dropdown').forEach(function(el){ el.classList.remove('mob-open'); });
+}
+if(navToggle && navLinks){
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  document.querySelectorAll('.nav-has-dropdown>a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(window.innerWidth <= 960){
+        e.preventDefault();
+        var li = a.closest('.nav-has-dropdown');
+        var wasOpen = li.classList.contains('mob-open');
+        document.querySelectorAll('.nav-has-dropdown').forEach(function(el){ el.classList.remove('mob-open'); });
+        if(!wasOpen) li.classList.add('mob-open');
+      }
+    });
+  });
+  navLinks.querySelectorAll('a:not(.nav-has-dropdown>a)').forEach(function(link){
+    link.addEventListener('click', closeNav);
+  });
+}
+var isDark = false;
+function updateToggleUI(){
+  var icon = isDark ? '🌙' : '☀️';
+  var label = isDark ? 'Dark' : 'Light';
+  ['Desktop','Mobile'].forEach(function(s){
+    var i = document.getElementById('modeIcon'+s);
+    var l = document.getElementById('modeLabel'+s);
+    if(i) i.textContent = icon;
+    if(l) l.textContent = s === 'Mobile' ? label+' Mode' : label;
+  });
+}
+function toggleMode(){
+  isDark = !isDark;
+  document.body.classList.toggle('light-mode', !isDark);
+  localStorage.setItem('athlinkt-mode', isDark ? 'dark' : 'light');
+  updateToggleUI();
+}
+(function(){
+  var saved = localStorage.getItem('athlinkt-mode');
+  isDark = saved ? saved === 'dark' : true;
+  document.body.classList.toggle('light-mode', !isDark);
+  updateToggleUI();
+})();
+['Desktop','Mobile'].forEach(function(s){
+  var btn = document.getElementById('modeToggle'+s);
+  if(btn) btn.addEventListener('click', toggleMode);
+});
+function toggleSecAcc(bodyId){
+  var body = document.getElementById(bodyId);
+  var header = body ? body.previousElementSibling : null;
+  var arrow = header ? header.querySelector('.sec-acc-arrow') : null;
+  if(!body) return;
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  if(arrow) arrow.classList.toggle('open', !isOpen);
+  if(header) header.setAttribute('aria-expanded', String(!isOpen));
+}
+function openSecAcc(bodyId){
+  var body = document.getElementById(bodyId);
+  var header = body ? body.previousElementSibling : null;
+  var arrow = header ? header.querySelector('.sec-acc-arrow') : null;
+  if(!body) return;
+  body.classList.add('open');
+  if(arrow) arrow.classList.add('open');
+  if(header) header.setAttribute('aria-expanded','true');
+}
+document.querySelectorAll('.cm-nav-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var href = btn.getAttribute('href');
+    if(href && href.startsWith('#cm-')){
+      openSecAcc(href.slice(1)+'-body');
+    }
+  });
+});
+document.querySelectorAll('.sec-acc-header').forEach(function(el){
+  el.setAttribute('tabindex','0');
+  el.addEventListener('keydown', function(e){
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); var id=el.getAttribute('aria-controls'); if(id) toggleSecAcc(id); }
+  });
+});
+document.querySelectorAll('.acc-toggle').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var id = btn.getAttribute('aria-controls');
+    var body = document.getElementById(id);
+    var arrow = btn.querySelector('.acc-arrow');
+    if(!body) return;
+    var open = body.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    if(arrow) arrow.classList.toggle('open', open);
+  });
+  btn.addEventListener('keydown', function(e){
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); btn.click(); }
+  });
+});
+var TICKER_NEWS = [
+  {
+    label: "TRANSFER PORTAL",
+    text: 'Ghost transfer rule: Programs signing transfers who bypassed the portal face automatic 50% coach suspension + 20% budget fine. All DI sports. Effective Feb. 25, 2026. <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener">Read on NCAA.org \u2197</a>',
+    date: "2026-04-01T15:00:00"
+  }
+];
+(function(){
+  var now = Date.now();
+  var HOURS_48 = 48*60*60*1000;
+  var active = TICKER_NEWS.filter(function(item){ return (now - new Date(item.date).getTime()) < HOURS_48; });
+  var bar = document.getElementById('tickerBar');
+  var inner = document.getElementById('tickerInner');
+  if(!bar||!inner||active.length===0) return;
+  var html = '';
+  var items = active.concat(active);
+  items.forEach(function(item,i){
+    html += '<span class="ticker-item"><span class="ticker-item-badge">'+item.label+'</span><span class="ticker-item-text">'+item.text+'</span>';
+    if(i<items.length-1) html += '<span class="ticker-sep">&#9632;</span>';
+    html += '</span>';
+  });
+  inner.innerHTML = html;
+  bar.classList.add('active');
+  requestAnimationFrame(function(){
+    var speed = Math.max(20, inner.scrollWidth/2/80);
+    inner.style.animationDuration = speed+'s';
+  });
+})();
+</script>
+</body>
+</html>

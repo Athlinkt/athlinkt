@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Transfer Portal guide for college athletes — official rules, windows, ghost transfer rule, NAIA, JUCO, and what to do before you enter.">
+  <meta property="og:title" content="Transfer Portal | ATHLINKT — Beyond the Finish Line">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <title>Transfer Portal | ATHLINKT — Beyond the Finish Line</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#2EBD8E;--gold-light:#3DD4A5;--gold-dim:rgba(46,189,142,0.1);--gold-glow:rgba(46,189,142,0.06);
+  --dark:#111111;--dark-2:#1A1A1A;--dark-3:#222222;--dark-4:#2A2A2A;
+  --white:#FFFFFF;--gray:#888888;--gray-light:#C8C8C8;
+  --bg:var(--dark);--bg-2:var(--dark-2);
+  --border:rgba(46,189,142,0.15);
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-elegant:'Playfair Display',serif;
+  --transition:0.25s ease;--radius:6px;--max:1100px;
+}
+body.light-mode{
+  --dark:#FFFFFF;--dark-2:#F2F2F2;--dark-3:#E6E6E6;--dark-4:#D8D8D8;
+  --white:#0D0D0D;--gray:#555555;--gray-light:#1A1A1A;
+  --gold:#1A8F68;--gold-light:#2EBD8E;
+  --border:rgba(26,143,104,0.2);
+}
+body.light-mode nav{background:rgba(255,255,255,0.97);border-bottom:1px solid rgba(26,143,104,0.15)}
+body.light-mode .nav-links{background:rgba(255,255,255,0.99)}
+body.light-mode .nav-toggle span{background:var(--white)}
+body.light-mode .disclaimer-bar{background:var(--dark-2)}
+body.light-mode .tp-section-card{background:var(--dark-2)}
+body.light-mode .link-card{background:var(--dark-2)}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{background:var(--dark);color:var(--white);font-family:var(--font-body);line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
+.skip-link{position:absolute;top:-100px;left:16px;background:var(--gold);color:var(--dark);padding:10px 20px;font-family:var(--font-body);font-weight:700;font-size:14px;border-radius:var(--radius);z-index:1000;text-decoration:none;transition:top var(--transition)}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(17,17,17,0.97);border-bottom:1px solid rgba(46,189,142,0.1);transition:background 0.3s}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.nav-logo svg{width:30px;height:30px}
+.nav-wordmark{font-family:var(--font-display);font-size:20px;color:var(--white);letter-spacing:3px}
+.nav-wordmark .g{color:#2EBD8E}
+.nav-tagline{display:none}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;flex:1;justify-content:center;flex-wrap:nowrap}
+.nav-links a{color:var(--gray-light);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;padding:6px 8px;border-radius:4px;transition:color var(--transition),background var(--transition);white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px;flex-shrink:0}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.mode-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;background:none;border:1px solid rgba(46,189,142,0.3);border-radius:20px;padding:6px 14px;transition:all var(--transition);flex-shrink:0}
+.mode-toggle:hover{border-color:var(--gold)}
+.mode-toggle-icon{font-size:14px;line-height:1}
+.mode-toggle-label{font-size:12px;font-family:var(--font-body);font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gray-light);white-space:nowrap}
+.mode-toggle-mobile{display:none;width:100%;justify-content:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(46,189,142,0.15)}
+
+/* NAV DROPDOWN */
+.nav-has-dropdown{position:relative}
+.nav-star{font-size:8px;color:var(--gold);opacity:0;transition:opacity 0.2s ease;vertical-align:middle;margin-left:3px}
+.nav-has-dropdown>a:hover .nav-star,.nav-has-dropdown:focus-within .nav-star{opacity:1}
+.nav-has-dropdown>a:hover{color:var(--gold)}
+.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding:8px 0;opacity:0;visibility:hidden;transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+.nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
+.nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
+
+/* TICKER */
+.ticker-bar{display:none;width:100%;background:#0d2e1e;border-bottom:2px solid var(--gold);position:sticky;top:64px;z-index:198;overflow:hidden;height:42px;max-height:42px}
+.ticker-bar.active{display:flex;align-items:stretch;height:42px}
+.ticker-label{background:var(--gold);color:var(--dark);font-family:var(--font-display);font-size:11px;letter-spacing:2.5px;padding:0 16px;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;height:42px}
+.ticker-track{flex:1;overflow:hidden;display:flex;align-items:center;position:relative}
+.ticker-inner{display:flex;align-items:center;gap:0;white-space:nowrap;animation:tickerScroll 30s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:12px;color:#e8f5f0;letter-spacing:0.3px;white-space:nowrap;flex-shrink:0;height:42px}
+.ticker-item-badge{font-family:var(--font-display);font-size:10px;letter-spacing:2px;color:var(--gold);background:rgba(46,189,142,0.12);border:1px solid rgba(46,189,142,0.3);border-radius:3px;padding:2px 7px;flex-shrink:0}
+.ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0}
+.ticker-item-text a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(46,189,142,0.3)}
+.ticker-sep{color:rgba(46,189,142,0.3);padding:0 8px;font-size:16px;flex-shrink:0}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+body.light-mode .ticker-bar{background:#0a2419}
+body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0}
+
+/* DISCLAIMER */
+.disclaimer-bar{background:var(--dark-2);border-bottom:1px solid rgba(46,189,142,0.12);padding:10px 32px;text-align:center;font-size:12px;color:var(--gray);letter-spacing:0.5px}
+.disclaimer-bar a{color:var(--gold);text-decoration:none}
+
+/* PAGE */
+.tp-page{padding-top:64px}
+
+/* HERO */
+.tp-hero{padding:72px 48px 56px;max-width:var(--max);margin:0 auto;position:relative}
+.tp-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
+.tp-h1{font-family:var(--font-display);font-size:clamp(56px,8vw,96px);letter-spacing:4px;line-height:1.0;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .25s}
+.tp-h1 span{color:var(--gold)}
+.tp-hero-p{font-size:16px;color:var(--gray-light);line-height:1.75;font-weight:300;max-width:640px;margin-bottom:24px;opacity:0;animation:fadeUp .8s ease forwards .4s}
+.tp-hero-tags{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:fadeUp .8s ease forwards .55s}
+.tp-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#1A8F68;border:1.5px solid #1A8F68;border-radius:20px;padding:6px 16px;font-weight:600;background:rgba(46,189,142,0.06)}
+body:not(.light-mode) .tp-tag{color:#2EBD8E;border-color:rgba(46,189,142,0.45);background:rgba(46,189,142,0.08)}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:translateY(0)}}
+
+/* SECTION NAV */
+.tp-nav{background:var(--dark-2);border-bottom:1px solid rgba(46,189,142,0.1);position:sticky;top:106px;z-index:100}
+.tp-nav-inner{display:flex;gap:0;max-width:var(--max);margin:0 auto;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+.tp-nav-inner::-webkit-scrollbar{display:none}
+.tp-nav-btn{flex-shrink:0;padding:14px 20px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all var(--transition);white-space:nowrap;text-decoration:none;display:flex;align-items:center}
+.tp-nav-btn:hover,.tp-nav-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* 2-COLUMN GRID */
+.tp-sections-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:0;width:100% !important;max-width:100% !important;box-sizing:border-box}
+.tp-grid-cell{display:block !important;width:100% !important;min-width:0 !important;box-sizing:border-box !important;align-self:start;background:var(--dark);overflow:hidden}
+.tp-grid-cell:nth-child(odd){grid-column:1;border-right:1px solid rgba(46,189,142,0.08)}
+.tp-grid-cell:nth-child(even){grid-column:2}
+.tp-grid-cell:nth-child(4n+2),.tp-grid-cell:nth-child(4n+3){background:var(--dark-2)}
+.tp-grid-cell:not(:nth-last-child(-n+2)){border-bottom:1px solid rgba(46,189,142,0.08)}
+
+/* SECTION STYLES */
+.tp-sec{padding:36px 32px !important;width:100% !important;box-sizing:border-box !important;position:static !important;z-index:auto !important}
+.tp-sec-label{display:block;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
+.tp-sec-h{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);letter-spacing:3px;line-height:1.05;margin-bottom:12px}
+.tp-sec-p{font-size:15px;color:var(--gray-light);line-height:1.75;font-weight:300;margin-bottom:12px}
+
+/* SECTION ACCORDION */
+.sec-acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding-bottom:12px;border-bottom:1px solid rgba(46,189,142,0.1);margin-bottom:0;user-select:none}
+.sec-acc-header:hover .tp-sec-h{color:var(--gold-light)}
+.sec-acc-arrow{width:22px;height:22px;flex-shrink:0;color:var(--gold);transition:transform .3s ease;margin-left:12px}
+.sec-acc-arrow.open{transform:rotate(180deg)}
+.sec-acc-body{display:none !important;padding-top:20px}
+.sec-acc-body.open{display:block !important}
+
+/* INNER ACCORDIONS */
+.tp-card{background:var(--dark-2);border-radius:10px;border:1px solid rgba(46,189,142,0.1);overflow:hidden;margin-bottom:8px;transition:border-color var(--transition)}
+.tp-card:hover{border-color:rgba(46,189,142,0.25)}
+.acc-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;padding:16px 20px;gap:16px;text-align:left}
+.acc-left{display:flex;flex-direction:column;gap:3px}
+.acc-title{font-family:var(--font-display);font-size:18px;letter-spacing:2px;color:var(--white);transition:color var(--transition)}
+.acc-label{font-size:10px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.acc-arrow{width:20px;height:20px;flex-shrink:0;color:var(--gold);transition:transform .3s ease}
+.acc-arrow.open{transform:rotate(180deg)}
+.acc-toggle:hover .acc-title{color:var(--gold)}
+.acc-body{display:none;padding:0 20px 20px;border-top:1px solid rgba(46,189,142,0.08)}
+.acc-body.open{display:block}
+.acc-body-inner{padding-top:16px;font-size:14px;color:var(--gray-light);line-height:1.7}
+.acc-body-inner p{margin-bottom:12px}
+
+/* RULE LIST */
+.rule-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.rule-item{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:var(--dark-3);border-radius:var(--radius);border-left:3px solid var(--gold)}
+.rule-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+.rule-text{font-size:13px;color:var(--gray-light);line-height:1.65}
+.rule-text strong{color:var(--white);display:block;margin-bottom:2px;font-size:13px;letter-spacing:.5px}
+
+/* ALERT BOX */
+.alert-box{background:rgba(46,189,142,0.06);border:1px solid rgba(46,189,142,0.25);border-left:4px solid var(--gold);border-radius:8px;padding:20px 24px;margin-bottom:20px}
+.alert-box-title{font-family:var(--font-display);font-size:16px;letter-spacing:2px;color:var(--gold);margin-bottom:8px}
+.alert-box p{font-size:14px;color:var(--gray-light);line-height:1.7;margin:0}
+
+/* LINK GRID */
+.link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+.link-card{display:flex;flex-direction:column;gap:6px;padding:16px 18px;background:var(--dark-3);border-radius:var(--radius);border:1px solid rgba(46,189,142,0.1);text-decoration:none;transition:border-color var(--transition),background var(--transition)}
+.link-card:hover{border-color:rgba(46,189,142,0.3);background:rgba(46,189,142,0.04)}
+.link-card-label{font-size:10px;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-weight:600}
+.link-card-title{font-size:14px;color:var(--white);font-weight:600;letter-spacing:0.3px}
+.link-card-desc{font-size:12px;color:var(--gray);line-height:1.5}
+.link-card-arrow{font-size:11px;color:var(--gold);letter-spacing:1px;margin-top:4px}
+
+/* SOURCE CITATION */
+.source-note{font-size:11px;color:var(--gray);font-style:italic;margin-top:12px;padding-top:8px;border-top:1px solid rgba(46,189,142,0.08)}
+.source-note a{color:var(--gold);text-decoration:none}
+
+/* FOOTER */
+footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);padding:32px 48px}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.footer-wm{font-family:var(--font-display);font-size:16px;letter-spacing:3px;color:var(--white)}
+.footer-wm .g{color:#2EBD8E}
+.footer-tag{font-family:var(--font-elegant);font-size:11px;font-style:italic;color:var(--gray);letter-spacing:2px}
+.footer-back{font-size:12px;color:var(--gray);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color var(--transition)}
+.footer-back:hover{color:var(--gold)}
+.footer-copy{font-size:11px;color:var(--gray);letter-spacing:0.5px}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--dark);flex-direction:column;align-items:center;justify-content:flex-start;padding-top:32px;gap:8px;z-index:199;list-style:none;overflow-y:auto}
+  .nav-links.open{display:flex}
+  .nav-links>li>a{font-size:18px;padding:12px 24px;display:block;width:100%;text-align:center}
+  .nav-toggle{display:flex}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mode-toggle-mobile{display:flex}
+  /* Mobile dropdowns */
+  .nav-dropdown{position:static;transform:none !important;opacity:1;visibility:visible;background:transparent;border:none;box-shadow:none;padding:0 0 8px 16px;pointer-events:auto;display:none;width:100%}
+  .nav-has-dropdown.mob-open .nav-dropdown{display:block}
+  .nav-dropdown li a{font-size:14px;padding:8px 12px;letter-spacing:1px;border-left:none;color:var(--gray-light);text-align:left}
+  .nav-star{display:inline-block;opacity:0.5;font-size:9px;transition:transform 0.2s}
+  .nav-has-dropdown.mob-open .nav-star{transform:rotate(90deg);opacity:1}
+  /* Grid: single column on mobile */
+  .tp-sections-grid{grid-template-columns:1fr !important}
+  .tp-grid-cell,.tp-grid-cell:nth-child(odd),.tp-grid-cell:nth-child(even){grid-column:1 !important;border-right:none}
+  .tp-grid-cell{border-bottom:1px solid rgba(46,189,142,0.08)}
+  .tp-hero{padding:40px 24px 32px}
+  .tp-sec{padding:28px 20px !important}
+  .disclaimer-bar{padding:10px 20px;font-size:11px}
+  footer{padding:28px 24px}
+  .link-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .tp-nav-btn{padding:12px 14px;font-size:10px}
+  .ticker-item{padding:0 16px}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="ATHLINKT Home">
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" stroke="#2EBD8E" stroke-width="1.5"/>
+      <line x1="11" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="29" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="13.5" y1="22" x2="18.5" y2="19.5" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
+      <line x1="26.5" y1="22" x2="21.5" y2="19.5" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
+      <polygon points="20,15.5 15.5,19.5 20,23.5 24.5,19.5" fill="#2EBD8E"/>
+    </svg>
+    <span class="nav-wordmark"><span class="g">A</span>THLINKT</span>
+  </a>
+  <ul class="nav-links" id="navLinks" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li class="nav-has-dropdown">
+      <a href="nil.html">NIL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="nil.html#nil-what">What Is NIL</a></li>
+        <li><a href="nil.html#nil-rules">Know the Rules</a></li>
+        <li><a href="nil.html#nil-money">Your Money</a></li>
+        <li><a href="nil.html#nil-sports">NIL By Sport</a></li>
+        <li><a href="nil.html#nil-education">Before You Sign</a></li>
+        <li><a href="nil.html#nil-agreement">Sample Agreement</a></li>
+        <li><a href="nil.html#nil-support">Find Support</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="transfer.html" class="active">Transfer Portal <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="#tp-first">Talk to Your Coach First</a></li>
+        <li><a href="#tp-how">How the Portal Works</a></li>
+        <li><a href="#tp-windows">Windows by Sport</a></li>
+        <li><a href="#tp-ghost">Ghost Transfer Rule</a></li>
+        <li><a href="#tp-financial">Financial Aid & Transfers</a></li>
+        <li><a href="#tp-naia">NAIA Transfer Rules</a></li>
+        <li><a href="#tp-juco">JUCO Transfer Rules</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="career.html">Career Match <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="career.html#cm-strengths">Know Your Strengths</a></li>
+        <li><a href="career.html#cm-tools">Career Exploration Tools</a></li>
+        <li><a href="career.html#cm-life">Life After the Sport</a></li>
+        <li><a href="career.html#cm-internships">Internship Pathways</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="resources.html">Resources <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="resources.html#res-nil">NIL Resources</a></li>
+        <li><a href="resources.html#res-transfer">Transfer Portal</a></li>
+        <li><a href="resources.html#res-career">Career & Life</a></li>
+        <li><a href="resources.html#res-mental">Mental Health</a></li>
+        <li><a href="resources.html#res-financial">Financial & Tax</a></li>
+        <li><a href="resources.html#res-access">Accessibility</a></li>
+        <li><a href="resources.html#res-titleix">Title IX</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="community.html">Community <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="community.html#commitment">Our Commitment</a></li>
+        <li><a href="community.html#beyond">Beyond the Finish Line</a></li>
+      </ul>
+    </li>
+    <li><a href="feedback.html">Feedback</a></li>
+    <li class="mode-toggle-mobile">
+      <button class="mode-toggle" id="modeToggleMobile" aria-label="Toggle light and dark mode">
+        <span class="mode-toggle-icon" id="modeIconMobile">🌙</span>
+        <span class="mode-toggle-label" id="modeLabelMobile">Dark Mode</span>
+      </button>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <button class="mode-toggle" id="modeToggleDesktop" aria-label="Toggle light and dark mode">
+      <span class="mode-toggle-icon" id="modeIconDesktop">🌙</span>
+      <span class="mode-toggle-label" id="modeLabelDesktop">Dark</span>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ BREAKING NEWS TICKER ══ -->
+<div class="ticker-bar" id="tickerBar" role="region" aria-label="Breaking news" aria-live="polite">
+  <span class="ticker-label">&#9646; LATEST</span>
+  <div class="ticker-track">
+    <div class="ticker-inner" id="tickerInner"></div>
+  </div>
+</div>
+
+<!-- DISCLAIMER BAR -->
+<div class="disclaimer-bar" role="note">
+  For educational purposes only. Not legal or compliance advice. Always talk to your compliance office and head coach before entering the portal. Verify current windows at <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener">ncaa.org</a>. &nbsp;·&nbsp; <strong style="color:var(--gold)">Last reviewed: April 2026</strong>
+</div>
+
+<main id="main-content" class="tp-page">
+
+  <!-- HERO -->
+  <section class="tp-hero" aria-label="Transfer Portal">
+    <span class="tp-eyebrow">Transfer Portal</span>
+    <h1 class="tp-h1">TRANSFER <span>PORTAL</span></h1>
+    <p class="tp-hero-p">Before you enter. Before you tell another coach anything. Before you post, sign, or decide — talk to your <strong style="color:var(--gold)">compliance office</strong> and have an <strong style="color:var(--gold)">in-person conversation with your head coach</strong>. We are educating, not just linking. Every division. Every sport.</p>
+    <div class="tp-hero-tags">
+      <span class="tp-tag">All Divisions</span>
+      <span class="tp-tag">Division I · II · III</span>
+      <span class="tp-tag">NAIA</span>
+      <span class="tp-tag">JUCO</span>
+      <span class="tp-tag">Updated April 2026</span>
+      <span class="tp-tag">Verified Links</span>
+    </div>
+  </section>
+
+  <!-- SECTION NAV -->
+  <nav class="tp-nav" aria-label="Transfer Portal sections">
+    <div class="tp-nav-inner">
+      <a href="#tp-first" class="tp-nav-btn active">Talk First</a>
+      <a href="#tp-how" class="tp-nav-btn">How It Works</a>
+      <a href="#tp-windows" class="tp-nav-btn">Windows</a>
+      <a href="#tp-ghost" class="tp-nav-btn">Ghost Transfer Rule</a>
+      <a href="#tp-financial" class="tp-nav-btn">Financial Aid</a>
+      <a href="#tp-naia" class="tp-nav-btn">NAIA</a>
+      <a href="#tp-juco" class="tp-nav-btn">JUCO</a>
+      <a href="#tp-support" class="tp-nav-btn">Find Support</a>
+    </div>
+  </nav>
+
+  <!-- 2-COLUMN GRID -->
+  <div class="tp-sections-grid">
+
+    <!-- Cell 1: Talk First -->
+    <div class="tp-grid-cell">
+      <div id="tp-first" class="tp-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('tp-first-body')" aria-expanded="false" aria-controls="tp-first-body">
+          <div>
+            <span class="tp-sec-label">Before Anything &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="tp-sec-h">TALK TO YOUR <span style="color:var(--gold)">COACH FIRST</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="tp-first-body">
+          <div class="alert-box" style="margin-top:16px">
+            <div class="alert-box-title">Your compliance office. Your head coach. In person. First.</div>
+            <p>Before you enter the transfer portal — before you tell another coach, before you post anything, before you sign anything — you need two conversations: one with your <strong style="color:var(--white)">compliance office</strong> and one <strong style="color:var(--white)">in-person conversation with your head coach</strong>. Not a text. Not an email. In person. We are here to educate you on your options — not to shortcut the conversations that protect you.</p>
+          </div>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your compliance office exists to protect you</strong> They know your school's specific rules, your conference rules, and your state's laws. They are not there to penalize you for asking — they are there to make sure you don't lose eligibility by accident. Call them first.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Have an honest conversation with your head coach</strong> Your coach should hear it from you directly — not through a portal notification, not through another coach, not through social media. This is about your integrity and your relationships, regardless of what happens next.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Know your window before you move</strong> Entering the portal at the wrong time — or before you have all the information — can cost you a scholarship, eligibility, or both. There is no urgency that justifies skipping these steps.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>You can explore without entering</strong> Talking to your compliance office does not mean you are transferring. It means you are informed. That is always the right first step.</div></div>
+          </div>
+          <div class="link-grid">
+            <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA.org — Official</span>
+              <span class="link-card-title">Want to Transfer?</span>
+              <span class="link-card-desc">Official NCAA guide to the transfer process — start here before any other step.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+            <a href="https://web3.ncaa.org/transfer/service" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA — Transfer Center</span>
+              <span class="link-card-title">Transfer Eligibility Center</span>
+              <span class="link-card-desc">Official NCAA transfer eligibility system — enter and track your transfer request.</span>
+              <span class="link-card-arrow">↗ ncaa.org Transfer Center</span>
+            </a>
+          </div>
+          <p class="source-note">Source: <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a> — Official transfer guidance. Last reviewed April 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 2: How It Works -->
+    <div class="tp-grid-cell">
+      <div id="tp-how" class="tp-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('tp-how-body')" aria-expanded="false" aria-controls="tp-how-body">
+          <div>
+            <span class="tp-sec-label">Section 01 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="tp-sec-h">HOW THE PORTAL <span style="color:var(--gold)">WORKS</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="tp-how-body">
+          <p class="tp-sec-p" style="margin-top:12px">The NCAA Transfer Portal is the official online system that allows college athletes to declare intent to transfer and be contacted by other schools. Entering the portal does not mean you are committed to leaving — but it is a formal step with real consequences.</p>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>DI — Enter during your sport's official window</strong> Your school has 2 business days to enter you into the portal after you notify them. Schools can contact you once you are in. As of 2024, there is no limit on the number of times you can transfer if academically eligible. Source: <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener" style="color:var(--gold)">NCAA.org</a></div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>DII &amp; DIII</strong> DII athletes follow similar portal procedures to DI. DIII now requires portal use following the January 2026 NCAA Convention vote — previously optional. Each division has its own windows and release processes. Verify with your compliance office.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Coaching change exception</strong> If your head coach leaves, a 15-day portal window opens 5 days after the new coach is hired or publicly announced. This applies to all DI sports (football rules differ slightly).</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Scholarship is not guaranteed at a new school</strong> Entering the portal does not transfer your scholarship. If you enter and do not receive an offer, you may be responsible for tuition at your current school in the next term. Ask your compliance office about scholarship protection before entering.</div></div>
+          </div>
+          <p class="source-note">Source: <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener">NCAA.org — Want to Transfer?</a> · <a href="https://web3.ncaa.org/transfer/service" target="_blank" rel="noopener">NCAA Transfer Center</a>. Last reviewed April 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 3: Windows by Sport -->
+    <div class="tp-grid-cell">
+      <div id="tp-windows" class="tp-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('tp-windows-body')" aria-expanded="false" aria-controls="tp-windows-body">
+          <div>
+            <span class="tp-sec-label">Section 02 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="tp-sec-h">TRANSFER <span style="color:var(--gold)">WINDOWS</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="tp-windows-body">
+          <p class="tp-sec-p" style="margin-top:12px">Transfer windows vary by sport. These are the current 2025–26 windows for Division I. Always verify with your compliance office — windows can shift following NCAA votes.</p>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Football (DI)</strong> One window only: January 2–16, 2026. The spring portal window was eliminated in 2025. No spring window for 2026. CFP participants receive a 5-day window after their final postseason game. Source: <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener" style="color:var(--gold)">NCAA.org</a></div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Men's &amp; Women's Basketball (DI)</strong> Window opens after the championship game. Men's: April 7–21, 2026 (15 days). Women's: April 6–20, 2026 (15 days). Shorter windows than prior years — decisions must be made quickly.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>All Other Fall Sports (DI)</strong> 30-day window beginning 7 days after championship selections, plus May 1–15 spring window. Confirm your sport's specific dates with your compliance office.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Winter &amp; Spring Sports (DI)</strong> Windows open after championship selections for your sport. Track &amp; Field: indoor-season window removed as of January 2026. Men's Wrestling: April 1–30. Men's Ice Hockey: April 13–27.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Graduate transfers</strong> Athletes graduating with remaining eligibility are exempt from transfer windows and may enter at any time.</div></div>
+          </div>
+          <div class="link-grid">
+            <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA.org — Official</span>
+              <span class="link-card-title">Current Transfer Windows</span>
+              <span class="link-card-desc">Official NCAA transfer portal windows by sport — always verify here before acting.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+          </div>
+          <p class="source-note">Source: <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a>. Windows updated January 2026 NCAA Convention. Last reviewed April 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 4: Ghost Transfer Rule -->
+    <div class="tp-grid-cell">
+      <div id="tp-ghost" class="tp-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('tp-ghost-body')" aria-expanded="false" aria-controls="tp-ghost-body">
+          <div>
+            <span class="tp-sec-label">Breaking — April 1, 2026 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">DI Only</span></span>
+            <h2 class="tp-sec-h">GHOST TRANSFER <span style="color:var(--gold)">RULE</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="tp-ghost-body">
+          <div class="alert-box" style="margin-top:16px">
+            <div class="alert-box-title">Effective immediately — all DI sports</div>
+            <p>The NCAA Division I Cabinet adopted emergency legislation on April 1, 2026. Retroactive to February 25, 2026.</p>
+          </div>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What is a ghost transfer?</strong> When an athlete leaves their school and joins another without entering the official transfer portal — bypassing the required process entirely. Also called a "blind transfer."</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Automatic penalties for programs</strong> If a school signs, adds to roster, or allows participation by a transfer who did not enter the portal: the head coach is suspended for 50% of the season from all coaching, recruiting, and administrative duties AND the school is fined 20% of that sport's budget. No investigation required — penalties are automatic.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What this means for you as an athlete</strong> You are protected by this rule. No DI coach can legally add you to their roster without you properly entering the portal. If a coach suggests otherwise, that is a compliance violation — contact your compliance office immediately.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>DI only</strong> This rule applies to NCAA Division I only. NAIA and JUCO have their own separate transfer rules and procedures.</div></div>
+          </div>
+          <div class="link-grid">
+            <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA.org — Official</span>
+              <span class="link-card-title">DI Cabinet: Ghost Transfer Rule</span>
+              <span class="link-card-desc">Official NCAA announcement — penalties, scope, and effective date for all DI sports.</span>
+              <span class="link-card-arrow">↗ ncaa.org — April 1, 2026</span>
+            </a>
+          </div>
+          <p class="source-note">Source: <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener">NCAA.org</a>. Adopted April 1, 2026. Last reviewed April 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 5: Financial Aid -->
+    <div class="tp-grid-cell">
+      <div id="tp-financial" class="tp-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('tp-financial-body')" aria-expanded="false" aria-controls="tp-financial-body">
+          <div>
+            <span class="tp-sec-label">Section 03 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="tp-sec-h">FINANCIAL AID <span style="color:var(--gold)">&amp; TRANSFERS</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="tp-financial-body">
+          <p class="tp-sec-p" style="margin-top:12px">Transferring affects your financial aid. These are not hypotheticals — they are things athletes face every transfer cycle.</p>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your scholarship does not transfer with you</strong> Athletic scholarships are awarded by the institution, not the NCAA. When you leave, your scholarship stays. Your new school is under no obligation to match it.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>If you enter the portal and don't land anywhere</strong> Your current scholarship may be at risk the following term. Scholarships can be reassigned to other athletes once you declare intent to transfer. Ask your compliance office specifically about your scholarship protection window.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>House settlement protection</strong> Under the House v. NCAA settlement, athletes on financial aid cannot have that aid reduced due to roster limit changes. This is DI only. Source: <a href="https://www.ncaa.org" target="_blank" rel="noopener" style="color:var(--gold)">NCAA.org</a></div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Revenue share agreements and transfers</strong> If you have a signed revenue share agreement at your current school, read the repayment clause. Some agreements require repayment if you transfer. Get this in writing before you enter the portal. Source: <a href="https://www.collegesportscommission.org/revenue-sharing/" target="_blank" rel="noopener" style="color:var(--gold)">College Sports Commission</a></div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Federal financial aid moves with you</strong> Federal Pell Grants and other need-based federal aid (FAFSA) are awarded by the federal government — they can follow you to a new institution. Contact your new school's financial aid office to ensure continuity. Source: <a href="https://studentaid.gov" target="_blank" rel="noopener" style="color:var(--gold)">studentaid.gov</a></div></div>
+          </div>
+          <p class="source-note">Sources: <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a> · <a href="https://www.collegesportscommission.org" target="_blank" rel="noopener">College Sports Commission</a> · <a href="https://studentaid.gov" target="_blank" rel="noopener">U.S. Federal Student Aid (studentaid.gov)</a>. Last reviewed April 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 6: NAIA -->
+    <div class="tp-grid-cell">
+      <div id="tp-naia" class="tp-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('tp-naia-body')" aria-expanded="false" aria-controls="tp-naia-body">
+          <div>
+            <span class="tp-sec-label">Section 04 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="tp-sec-h">NAIA <span style="color:var(--gold)">TRANSFERS</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="tp-naia-body">
+          <p class="tp-sec-p" style="margin-top:12px">The NAIA governs its own transfer rules — separate from the NCAA. NAIA athletes do not use the NCAA Transfer Portal.</p>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NAIA transfer eligibility</strong> NAIA athletes transferring between NAIA schools must meet specific eligibility requirements set by the NAIA — not the NCAA. Sit-out requirements and waivers vary. Always talk to your compliance coordinator and verify directly with the NAIA.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Transferring from NCAA to NAIA</strong> If you are leaving an NCAA institution for an NAIA school, your eligibility will be governed by NAIA rules from that point forward. Your compliance office at both schools needs to be involved in this process.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your first call</strong> Contact the NAIA Eligibility Center and your compliance office at your current school before taking any steps. Do not contact NAIA coaches until you have confirmed your eligibility status.</div></div>
+          </div>
+          <div class="link-grid">
+            <a href="https://www.naia.org/student-athlete-services/eligibility/transfer/index" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NAIA — Official</span>
+              <span class="link-card-title">NAIA Transfer Rules</span>
+              <span class="link-card-desc">Official NAIA transfer eligibility rules and procedures — separate from NCAA portal.</span>
+              <span class="link-card-arrow">↗ naia.org</span>
+            </a>
+            <a href="https://www.naia.org/student-athlete-services/eligibility/index" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NAIA — Official</span>
+              <span class="link-card-title">NAIA Eligibility Center</span>
+              <span class="link-card-desc">Official eligibility requirements for all NAIA student-athletes.</span>
+              <span class="link-card-arrow">↗ naia.org</span>
+            </a>
+          </div>
+          <p class="source-note">Source: <a href="https://www.naia.org" target="_blank" rel="noopener">NAIA.org</a> — National Association of Intercollegiate Athletics. Last reviewed April 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 7: JUCO -->
+    <div class="tp-grid-cell">
+      <div id="tp-juco" class="tp-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('tp-juco-body')" aria-expanded="false" aria-controls="tp-juco-body">
+          <div>
+            <span class="tp-sec-label">Section 05 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
+            <h2 class="tp-sec-h">JUCO <span style="color:var(--gold)">TRANSFERS</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="tp-juco-body">
+          <p class="tp-sec-p" style="margin-top:12px">JUCO (junior college / community college) athletes are governed by the NJCAA — not the NCAA. Transfer rules differ significantly.</p>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NJCAA to NCAA transfer</strong> If you are a JUCO athlete transferring to an NCAA school, your eligibility will be evaluated by the NCAA Eligibility Center. You have typically 2 years of NCAA eligibility remaining after 2 years at a JUCO. Academic requirements must be met — verify with the NCAA Eligibility Center early.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NJCAA transfer between JUCO schools</strong> Transfer rules within the NJCAA are set by the NJCAA and your conference. Each school and conference may have additional rules. Talk to your athletic director and compliance staff.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>October 2025 enforcement</strong> The NCAA expanded NIL and transfer reporting obligations to include JUCO transfers entering DI programs. If you are a JUCO transfer entering DI, you are subject to NIL Go reporting requirements from the moment you enroll. Source: <a href="https://www.ncaa.org" target="_blank" rel="noopener" style="color:var(--gold)">NCAA.org</a></div></div>
+          </div>
+          <div class="link-grid">
+            <a href="https://www.njcaa.org/eligibility/transfer/index" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NJCAA — Official</span>
+              <span class="link-card-title">NJCAA Transfer Rules</span>
+              <span class="link-card-desc">Official NJCAA transfer eligibility rules for two-year college athletes.</span>
+              <span class="link-card-arrow">↗ njcaa.org</span>
+            </a>
+            <a href="https://web3.ncaa.org/ecwr3/" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA — Official</span>
+              <span class="link-card-title">NCAA Eligibility Center</span>
+              <span class="link-card-desc">If you are transferring from JUCO to an NCAA school, start your eligibility review here.</span>
+              <span class="link-card-arrow">↗ NCAA Eligibility Center</span>
+            </a>
+          </div>
+          <p class="source-note">Sources: <a href="https://www.njcaa.org" target="_blank" rel="noopener">NJCAA.org</a> · <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a>. Last reviewed April 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 8: Find Support -->
+    <div class="tp-grid-cell">
+      <div id="tp-support" class="tp-sec">
+        <div class="sec-acc-header" onclick="toggleSecAcc('tp-support-body')" aria-expanded="false" aria-controls="tp-support-body">
+          <div>
+            <span class="tp-sec-label">Your Voice Matters</span>
+            <h2 class="tp-sec-h">FIND <span style="color:var(--gold)">SUPPORT</span></h2>
+          </div>
+          <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="sec-acc-body" id="tp-support-body">
+          <p class="tp-sec-p" style="margin-top:12px">Transferring is one of the most consequential decisions an athlete makes. You do not have to navigate it alone.</p>
+          <div class="link-grid">
+            <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA.org — Official</span>
+              <span class="link-card-title">NCAA Transfer Guide</span>
+              <span class="link-card-desc">Full official guide to the transfer portal process — start to finish.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+            <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA.org</span>
+              <span class="link-card-title">NIL &amp; Transfer Portal</span>
+              <span class="link-card-desc">How NIL reporting requirements apply during and after the transfer process for DI athletes.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+            <a href="https://nilassist.ncaa.org" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA NIL Assist</span>
+              <span class="link-card-title">NIL Assist Platform</span>
+              <span class="link-card-desc">Education, provider connections, and disclosure tools for DI athletes navigating NIL during a transfer.</span>
+              <span class="link-card-arrow">↗ nilassist.ncaa.org</span>
+            </a>
+            <a href="https://www.ncaa.org/sports/2014/10/6/mental-health-resources.aspx" target="_blank" rel="noopener" class="link-card">
+              <span class="link-card-label">NCAA — Mental Health</span>
+              <span class="link-card-title">Mental Health Resources</span>
+              <span class="link-card-desc">The transfer process is emotionally hard. NCAA mental health resources for student-athletes.</span>
+              <span class="link-card-arrow">↗ ncaa.org</span>
+            </a>
+          </div>
+          <div style="margin-top:20px;padding:20px 24px;background:var(--dark-2);border:1px solid rgba(46,189,142,0.15);border-radius:10px;border-left:4px solid var(--gold)">
+            <p style="font-size:14px;color:var(--gray-light);line-height:1.8;font-weight:300;margin:0"><strong style="color:var(--white);display:block;margin-bottom:8px;font-family:var(--font-display);font-size:18px;letter-spacing:1.5px">YOUR FIRST CALL IS TO YOUR COMPLIANCE OFFICE.</strong>Every resource on this page is educational. The person who knows your school's specific rules, your conference's rules, and your scholarship situation is your compliance officer. Have that conversation before you enter the portal. That is not optional — that is how you protect yourself.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end tp-sections-grid -->
+
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo" aria-label="ATHLINKT Home">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" style="width:28px;height:28px">
+        <circle cx="20" cy="20" r="18.5" stroke="#2EBD8E" stroke-width="1.5"/>
+        <line x1="11" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+        <line x1="29" y1="32" x2="20" y2="7" stroke="#2EBD8E" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="20,15.5 15.5,19.5 20,23.5 24.5,19.5" fill="#2EBD8E"/>
+      </svg>
+      <div>
+        <div class="footer-wm"><span class="g">A</span>THLINKT</div>
+        <div class="footer-tag">Beyond the Finish Line</div>
+      </div>
+    </a>
+    <a href="index.html" class="footer-back">← Back to ATHLINKT</a>
+    <p class="footer-copy">© 2025–26 ATHLINKT · For educational purposes only · Not legal advice · Source citations on each section</p>
+  </div>
+</footer>
+
+<script>
+// ── HAMBURGER ──
+var navToggle = document.getElementById('navToggle');
+var navLinks = document.getElementById('navLinks');
+function closeNav(){
+  if(!navLinks||!navToggle) return;
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+  document.querySelectorAll('.nav-has-dropdown').forEach(function(el){ el.classList.remove('mob-open'); });
+}
+if(navToggle && navLinks){
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  // Mobile dropdown toggles
+  document.querySelectorAll('.nav-has-dropdown>a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(window.innerWidth <= 960){
+        e.preventDefault();
+        var li = a.closest('.nav-has-dropdown');
+        var wasOpen = li.classList.contains('mob-open');
+        document.querySelectorAll('.nav-has-dropdown').forEach(function(el){ el.classList.remove('mob-open'); });
+        if(!wasOpen) li.classList.add('mob-open');
+      }
+    });
+  });
+  navLinks.querySelectorAll('a:not(.nav-has-dropdown>a)').forEach(function(link){
+    link.addEventListener('click', closeNav);
+  });
+}
+
+// ── DARK/LIGHT MODE ──
+var isDark = false;
+function updateToggleUI(){
+  var icon = isDark ? '🌙' : '☀️';
+  var label = isDark ? 'Dark' : 'Light';
+  ['Desktop','Mobile'].forEach(function(s){
+    var i = document.getElementById('modeIcon'+s);
+    var l = document.getElementById('modeLabel'+s);
+    if(i) i.textContent = icon;
+    if(l) l.textContent = s === 'Mobile' ? label+' Mode' : label;
+  });
+}
+function toggleMode(){
+  isDark = !isDark;
+  document.body.classList.toggle('light-mode', !isDark);
+  localStorage.setItem('athlinkt-mode', isDark ? 'dark' : 'light');
+  updateToggleUI();
+}
+(function(){
+  var saved = localStorage.getItem('athlinkt-mode');
+  isDark = saved ? saved === 'dark' : true;
+  document.body.classList.toggle('light-mode', !isDark);
+  updateToggleUI();
+})();
+['Desktop','Mobile'].forEach(function(s){
+  var btn = document.getElementById('modeToggle'+s);
+  if(btn) btn.addEventListener('click', toggleMode);
+});
+
+// ── SECTION ACCORDIONS ──
+function toggleSecAcc(bodyId){
+  var body = document.getElementById(bodyId);
+  var header = body ? body.previousElementSibling : null;
+  var arrow = header ? header.querySelector('.sec-acc-arrow') : null;
+  if(!body) return;
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  if(arrow) arrow.classList.toggle('open', !isOpen);
+  if(header) header.setAttribute('aria-expanded', String(!isOpen));
+}
+function openSecAcc(bodyId){
+  var body = document.getElementById(bodyId);
+  var header = body ? body.previousElementSibling : null;
+  var arrow = header ? header.querySelector('.sec-acc-arrow') : null;
+  if(!body) return;
+  body.classList.add('open');
+  if(arrow) arrow.classList.add('open');
+  if(header) header.setAttribute('aria-expanded','true');
+}
+// Wire section nav to open accordions
+document.querySelectorAll('.tp-nav-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var href = btn.getAttribute('href');
+    if(href && href.startsWith('#tp-')){
+      var secId = href.slice(1);
+      var bodyId = secId + '-body';
+      openSecAcc(bodyId);
+    }
+  });
+});
+// Keyboard support
+document.querySelectorAll('.sec-acc-header').forEach(function(el){
+  el.setAttribute('tabindex','0');
+  el.addEventListener('keydown', function(e){
+    if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      var bodyId = el.getAttribute('aria-controls');
+      if(bodyId) toggleSecAcc(bodyId);
+    }
+  });
+});
+
+// ── INNER ACCORDIONS ──
+document.querySelectorAll('.acc-toggle').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var id = btn.getAttribute('aria-controls');
+    var body = document.getElementById(id);
+    var arrow = btn.querySelector('.acc-arrow');
+    if(!body) return;
+    var open = body.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    if(arrow) arrow.classList.toggle('open', open);
+  });
+  btn.addEventListener('keydown', function(e){
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); btn.click(); }
+  });
+});
+
+// ── BREAKING NEWS TICKER ──
+var TICKER_NEWS = [
+  {
+    label: "TRANSFER PORTAL",
+    text: 'Ghost transfer rule: Programs signing transfers who bypassed the portal face automatic 50% coach suspension + 20% budget fine. All DI sports. Effective Feb. 25, 2026. <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener">Read on NCAA.org \u2197</a>',
+    date: "2026-04-01T15:00:00"
+  }
+];
+(function(){
+  var now = Date.now();
+  var HOURS_48 = 48*60*60*1000;
+  var active = TICKER_NEWS.filter(function(item){ return (now - new Date(item.date).getTime()) < HOURS_48; });
+  var bar = document.getElementById('tickerBar');
+  var inner = document.getElementById('tickerInner');
+  if(!bar||!inner||active.length===0) return;
+  var html = '';
+  var items = active.concat(active);
+  items.forEach(function(item,i){
+    html += '<span class="ticker-item">';
+    html += '<span class="ticker-item-badge">'+item.label+'</span>';
+    html += '<span class="ticker-item-text">'+item.text+'</span>';
+    if(i<items.length-1) html += '<span class="ticker-sep" aria-hidden="true">&#9632;</span>';
+    html += '</span>';
+  });
+  inner.innerHTML = html;
+  bar.classList.add('active');
+  requestAnimationFrame(function(){
+    var contentWidth = inner.scrollWidth/2;
+    var speed = Math.max(20,contentWidth/80);
+    inner.style.animationDuration = speed+'s';
+  });
+  inner.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('focus',function(){ inner.style.animationPlayState='paused'; });
+    a.addEventListener('blur',function(){ inner.style.animationPlayState='running'; });
+  });
+})();
+
+// Section nav active state on scroll
+var tpNavBtns = document.querySelectorAll('.tp-nav-btn');
+window.addEventListener('scroll', function(){
+  var scrollPos = window.scrollY + 180;
+  tpNavBtns.forEach(function(btn){
+    var href = btn.getAttribute('href');
+    if(!href || !href.startsWith('#')) return;
+    var sec = document.getElementById(href.slice(1));
+    if(sec && sec.offsetTop <= scrollPos && (sec.offsetTop + sec.offsetHeight) > scrollPos){
+      tpNavBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    }
+  });
+}, {passive:true});
+</script>
+</body>
+</html>

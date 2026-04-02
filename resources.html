@@ -63,6 +63,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;d
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px;flex-shrink:0}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
 .nav-tagline{display:none}
+/* ── NAV DROPDOWN MENUS ── */
+.nav-has-dropdown{position:relative}
+.nav-star{font-size:8px;color:var(--gold);opacity:0;transition:opacity 0.2s ease;vertical-align:middle;margin-left:3px}
+.nav-has-dropdown>a:hover .nav-star,.nav-has-dropdown:focus-within .nav-star{opacity:1}
+.nav-has-dropdown>a:hover{color:var(--gold)}
+.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding:8px 0;opacity:0;visibility:hidden;transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+.nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
+.nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
+body.light-mode .nav-dropdown{background:var(--dark-2)}
+@media(max-width:960px){
+  .nav-dropdown{position:static;transform:none !important;opacity:1;visibility:visible;background:transparent;border:none;box-shadow:none;padding:0 0 8px 16px;pointer-events:auto;display:none;width:100%}
+  .nav-has-dropdown.mob-open .nav-dropdown{display:block}
+  .nav-dropdown li a{font-size:14px;padding:8px 12px;letter-spacing:1px;border-left:none;color:var(--gray-light);text-align:left}
+  .nav-star{display:inline-block;opacity:0.5;font-size:9px;transition:transform 0.2s}
+  .nav-has-dropdown.mob-open .nav-star{transform:rotate(90deg);opacity:1}
+}
 .nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .mode-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;background:none;border:1px solid rgba(46,189,142,0.3);border-radius:20px;padding:6px 14px;transition:all var(--transition);flex-shrink:0}
 .mode-toggle:hover{border-color:var(--gold)}
@@ -230,25 +247,71 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
     </svg>
     <span class="nav-wordmark"><span class="g">A</span>THLINKT</span>
   </a>
-  <span class="nav-tagline" aria-hidden="true">Beyond the Finish Line</span>
   <ul class="nav-links" id="navLinks" role="list">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="nil.html">NIL</a></li>
-    <li><a href="transfer.html">Transfer Portal</a></li>
-    <li><a href="career.html">Career Match</a></li>
-    <li><a href="resources.html" class="active">Resources</a></li>
-    <li><a href="community.html">Community</a></li>
-    <li><a href="index.html">Our Story</a></li>
+    <li><a href="index.html">HOME</a></li>
+    <li class="nav-has-dropdown">
+      <a href="nil.html">NIL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="nil.html#nil-what">What Is NIL</a></li>
+        <li><a href="nil.html#nil-rules">Know the Rules</a></li>
+        <li><a href="nil.html#nil-money">Your Money</a></li>
+        <li><a href="nil.html#nil-sports">NIL By Sport</a></li>
+        <li><a href="nil.html#nil-education">Before You Sign</a></li>
+        <li><a href="nil.html#nil-agreement">Sample Agreement</a></li>
+        <li><a href="nil.html#nil-support">Find Support</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="transfer.html">TRANSFER PORTAL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="transfer.html#tp-first">Talk to Your Coach First</a></li>
+        <li><a href="transfer.html#tp-how">How It Works</a></li>
+        <li><a href="transfer.html#tp-windows">Windows by Sport</a></li>
+        <li><a href="transfer.html#tp-ghost">Ghost Transfer Rule</a></li>
+        <li><a href="transfer.html#tp-financial">Financial Aid</a></li>
+        <li><a href="transfer.html#tp-naia">NAIA Rules</a></li>
+        <li><a href="transfer.html#tp-juco">JUCO Rules</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="career.html">CAREER MATCH <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="career.html#cm-strengths">Know Your Strengths</a></li>
+        <li><a href="career.html#cm-tools">Exploration Tools</a></li>
+        <li><a href="career.html#cm-life">Life After the Sport</a></li>
+        <li><a href="career.html#cm-internships">Internship Pathways</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="resources.html" class="active">RESOURCES <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="resources.html#res-nil">NIL Resources</a></li>
+        <li><a href="resources.html#res-transfer">Transfer Portal</a></li>
+        <li><a href="resources.html#res-career">Career & Life</a></li>
+        <li><a href="resources.html#res-mental">Mental Health</a></li>
+        <li><a href="resources.html#res-financial">Financial & Tax</a></li>
+        <li><a href="resources.html#res-access">Accessibility</a></li>
+        <li><a href="resources.html#res-titleix">Title IX</a></li>
+      </ul>
+    </li>
+    <li class="nav-has-dropdown">
+      <a href="community.html">COMMUNITY <span class="nav-star" aria-hidden="true">✦</span></a>
+      <ul class="nav-dropdown" role="list">
+        <li><a href="community.html#commitment">Our Commitment</a></li>
+        <li><a href="community.html#beyond">Beyond the Finish Line</a></li>
+      </ul>
+    </li>
+    <li><a href="feedback.html">FEEDBACK</a></li>
     <li class="mode-toggle-mobile">
       <button class="mode-toggle" id="modeToggleMobile" aria-label="Toggle light and dark mode">
-        <span class="mode-toggle-icon" id="modeIconMobile"></span>
+        <span class="mode-toggle-icon" id="modeIconMobile">🌙</span>
         <span class="mode-toggle-label" id="modeLabelMobile">Dark Mode</span>
       </button>
     </li>
   </ul>
   <div class="nav-right">
     <button class="mode-toggle" id="modeToggleDesktop" aria-label="Toggle light and dark mode">
-      <span class="mode-toggle-icon" id="modeIconDesktop"></span>
+      <span class="mode-toggle-icon" id="modeIconDesktop">🌙</span>
       <span class="mode-toggle-label" id="modeLabelDesktop">Dark</span>
     </button>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle menu">
