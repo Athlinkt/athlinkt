@@ -363,6 +363,23 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
   html{scroll-behavior:auto}
 }
+/* ── BREAKING NEWS TICKER ── */
+.ticker-bar{display:none;width:100%;background:#0d2e1e;border-bottom:2px solid var(--gold);position:sticky;top:64px;z-index:198;overflow:hidden;height:42px;max-height:42px}
+.ticker-bar.active{display:flex;align-items:stretch;height:42px}
+.ticker-label{background:var(--gold);color:var(--dark);font-family:var(--font-display);font-size:11px;letter-spacing:2.5px;padding:0 16px;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;height:42px}
+.ticker-track{flex:1;overflow:hidden;display:flex;align-items:center;position:relative}
+.ticker-inner{display:flex;align-items:center;gap:0;white-space:nowrap;animation:tickerScroll 30s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:12px;color:#e8f5f0;letter-spacing:0.3px;white-space:nowrap;flex-shrink:0;height:42px}
+.ticker-item-badge{font-family:var(--font-display);font-size:10px;letter-spacing:2px;color:var(--gold);background:rgba(46,189,142,0.12);border:1px solid rgba(46,189,142,0.3);border-radius:3px;padding:2px 7px;flex-shrink:0}
+.ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0}
+.ticker-item-text a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(46,189,142,0.3)}
+.ticker-item-text a:hover{border-bottom-color:var(--gold)}
+.ticker-sep{color:rgba(46,189,142,0.3);padding:0 8px;font-size:16px;flex-shrink:0}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(max-width:600px){.ticker-label{font-size:10px;padding:0 10px}.ticker-item{padding:10px 20px;font-size:11px}}
+body.light-mode .ticker-bar{background:#0a2419}
+body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0}
 </style>
 </head>
 <body class="light-mode">
@@ -409,9 +426,17 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   </div>
 </nav>
 
+<!-- ══ BREAKING NEWS TICKER ══ -->
+<div class="ticker-bar" id="tickerBar" role="region" aria-label="Breaking news" aria-live="polite">
+  <span class="ticker-label">&#9646; LATEST</span>
+  <div class="ticker-track">
+    <div class="ticker-inner" id="tickerInner"></div>
+  </div>
+</div>
+
 <!-- DISCLAIMER BAR -->
 <div class="disclaimer-bar" role="note">
-  For educational purposes only. Not legal, financial, or compliance advice. Always consult your school's compliance office before signing any NIL agreement. Rules evolve — verify current requirements at <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">ncaa.org</a> and <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener">collegesportscommission.org</a>. &nbsp;·&nbsp; <strong style="color:var(--gold)">Last reviewed: March 2026</strong>
+  For educational purposes only. Not legal, financial, or compliance advice. Always consult your school's compliance office before signing any NIL agreement. Rules evolve — verify current requirements at <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">ncaa.org</a> and <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener">collegesportscommission.org</a>. &nbsp;·&nbsp; <strong style="color:var(--gold)">Last reviewed: April 2026 (Sections 01–03 updated)</strong>
 </div>
 
 <main id="main-content" class="nil-page">
@@ -452,7 +477,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   <div class="nil-grid-cell"><div id="nil-what" class="nil-sec" aria-labelledby="what-h">
       <div class="sec-acc-header" onclick="toggleSecAcc('nil-what')" aria-expanded="false" aria-controls="body-nil-what">
         <div>
-          <span class="nil-sec-label">Section 01 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: March 2026</span></span>
+          <span class="nil-sec-label">Section 01 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
           <h2 class="nil-sec-h" id="what-h">WHAT IS <span style="color:var(--gold)">NIL?</span></h2>
         </div>
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -464,14 +489,14 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
       <div style="margin-top:32px;display:flex;flex-direction:column;gap:10px">
 
         <div class="nil-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-timeline">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-timeline">
             <div class="acc-left">
               <span class="acc-title">The NIL Timeline</span>
               <span class="acc-label">2014 to today — how we got here</span>
             </div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-timeline">
+          <div class="acc-body" id="acc-timeline">
             <div class="acc-body-inner">
               <div class="rule-list">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>2014 — O'Bannon v. NCAA</strong> Former UCLA basketball player Ed O'Bannon won a lawsuit against the NCAA for using his likeness in a video game without compensation. The first crack in the amateurism wall.</div></div>
@@ -481,20 +506,21 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>June 2025 — House Settlement Approved</strong> U.S. District Judge Claudia Wilken approved the $2.576 billion House v. NCAA settlement, allowing Division I schools to pay athletes directly for the first time. Revenue sharing begins July 1, 2025.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>July 2025 — New Era Begins</strong> Schools can now distribute up to $20.5 million annually in direct payments to athletes. NIL Go (Deloitte) launches as the clearinghouse for all third-party deals over $600. The College Sports Commission becomes the enforcement body.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>October 2025 — Enforcement Expands</strong> The NCAA Division I Board of Directors adopts new reporting amendments extending NIL obligations to all DI athletes, including high school prospects, JUCO transfers, and portal entrants.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>April 1, 2026 — Ghost Transfer Rule (DI)</strong> The NCAA Division I Cabinet adopts emergency legislation for all DI sports. Programs that sign a transfer, add them to the roster, or allow athletic participation without the athlete entering the transfer portal face automatic penalties: head coach suspended for 50% of a season + a fine of 20% of that sport's budget. Effective immediately, retroactive to Feb. 25, 2026. Source: <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener" style="color:var(--gold)">NCAA.org</a>.</div></div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="nil-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-glossary">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-glossary">
             <div class="acc-left">
               <span class="acc-title">Key Terms Glossary</span>
               <span class="acc-label">NIL, collective, NIL Go, CSC, pay-for-play and more</span>
             </div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-glossary">
+          <div class="acc-body" id="acc-glossary">
             <div class="acc-body-inner">
               <div class="rule-list">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL (Name, Image, Likeness)</strong> Your legal right to earn money from your personal identity — your name, face, voice, social media presence, and public persona — for commercial purposes.</div></div>
@@ -520,7 +546,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   <div class="nil-grid-cell"><div id="nil-rules" class="nil-sec" aria-labelledby="rules-h">
       <div class="sec-acc-header" onclick="toggleSecAcc('nil-rules')" aria-expanded="false" aria-controls="body-nil-rules">
         <div>
-          <span class="nil-sec-label">Section 02 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: March 2026</span></span>
+          <span class="nil-sec-label">Section 02 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
           <h2 class="nil-sec-h" id="rules-h">KNOW THE <span style="color:var(--gold)">RULES</span></h2>
         </div>
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -539,6 +565,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
             <div class="div-item">No verbal or written guarantees of third-party NIL from schools (as of July 1, 2025)</div>
             <div class="div-item">Pre-enrollment NIL negotiations now permitted</div>
             <div class="div-item">Transfer portal athletes must report deals from the moment they enter the portal</div>
+            <div class="div-item"><strong>Ghost transfer rule (Apr 2026):</strong> Transfer portal entry required before any athlete can participate. Violation triggers automatic penalties: 50% coach suspension + 20% sport budget fine. Effective Feb. 25, 2026.</div>
             <div class="div-item">FTC disclosure rules apply to all sponsored social content</div>
           </div>
         </div>
@@ -641,7 +668,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   <div class="nil-grid-cell"><div id="nil-money" class="nil-sec" aria-labelledby="money-h">
       <div class="sec-acc-header" onclick="toggleSecAcc('nil-money')" aria-expanded="false" aria-controls="body-nil-money">
         <div>
-          <span class="nil-sec-label">Section 03 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: March 2026</span></span>
+          <span class="nil-sec-label">Section 03 &nbsp;·&nbsp; <span style="color:var(--gray);font-size:9px;letter-spacing:1px">Last reviewed: April 2026</span></span>
           <h2 class="nil-sec-h" id="money-h">YOUR <span style="color:var(--gold)">MONEY</span></h2>
         </div>
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -749,7 +776,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL Evaluation — not a contract, not a guarantee</strong> When a coach tells you what you "could earn" in NIL, that is an evaluation — an estimate of your market value based on your position and profile. It is not binding. It is not signed. It carries no legal weight. If it is not documented as a formal signed agreement before you enroll, it does not exist.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Revenue Share — a formal contract from the school</strong> Revenue sharing is a direct payment from the school's athletic department under the House settlement. It must be a signed agreement, uploaded to the CAPS system, and tied to your enrollment and eligibility. This is a real contract with real terms — and the one coaches can actually commit to. Verify at <a href="https://www.collegesportscommission.org/revenue-sharing/" target="_blank" rel="noopener" style="color:var(--gold)">collegesportscommission.org</a>.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The cap is finite — and positions compete for it</strong> Schools distribute their $20.5M cap across every sport and every athlete. At most programs, 85–90% goes to football and men's and women's basketball. Every athlete a coach recruits at your position draws from the same limited pool. Offers are real — but first-come, first-served within a budget that does not expand.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The portal factor</strong> Coaches hold back cap space every year for the transfer portal. The number quoted in October can shrink by February because portal decisions consume budget your offer was drawing from. Revenue-sharing is now part of every recruiting and transfer decision. Source: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">ncaa.org</a>.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The portal factor</strong> Coaches hold back cap space every year for the transfer portal. The number quoted in October can shrink by February because portal decisions consume budget your offer was drawing from. Revenue-sharing is now part of every recruiting and transfer decision. Additionally, as of April 1, 2026, the NCAA has teeth on ghost transfers — programs that add athletes outside the portal face automatic penalties. The portal is not optional for coaches or athletes. Source: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">ncaa.org</a>.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Repayment clauses — read before you sign</strong> Revenue share and NIL agreements are contracts. Some include repayment clauses if you transfer or are injured. Always ask: what happens to this agreement if I transfer? What if I'm injured and cannot compete? Get those answers in writing. Source: <a href="https://nilassist.ncaa.org/update-heading-to-contracts-best-practices/" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Assist — Contract Best Practices</a>.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The question to ask every coach</strong> "Is what you're describing a revenue share agreement that will be documented and signed before I enroll — or is this an NIL evaluation of what I might earn?" If they cannot answer that clearly, that is your answer. Review contract guidance at <a href="https://nilassist.ncaa.org/navigating-nil-opportunity-contracts/" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Assist</a>.</div></div>
               </div>
@@ -777,11 +804,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- FOOTBALL -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🏈</div><div><div class="sport-name">Football</div><div class="sport-meta">~64,000 athletes (est.) · Highest NIL volume</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -806,11 +833,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- TRACK & FIELD -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🏃</div><div><div class="sport-name">Track & Field</div><div class="sport-meta">~46,000 athletes (est.) · Strong brand deal potential</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -834,11 +861,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- BASEBALL / SOFTBALL -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">⚾</div><div><div class="sport-name">Baseball & Softball</div><div class="sport-meta">~47,000 combined (est.) · Scholarship expansion in softball</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -862,11 +889,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- SOCCER -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">⚽</div><div><div class="sport-name">Soccer</div><div class="sport-meta">~43,000 athletes (est.) · Fastest growing in NIL commercial market</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -890,11 +917,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- BASKETBALL -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🏀</div><div><div class="sport-name">Basketball</div><div class="sport-meta">~32,000 athletes (est.) · #2 commercial NIL sport</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -920,11 +947,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- CROSS COUNTRY -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🌲</div><div><div class="sport-name">Cross Country</div><div class="sport-meta">~25,000 athletes (est.) · Endurance and wellness brands</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -947,11 +974,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- SWIMMING & DIVING -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🏊</div><div><div class="sport-name">Swimming & Diving</div><div class="sport-meta">~20,000 athletes (est.) · Scholarship expansion under new rules</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -974,11 +1001,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- VOLLEYBALL -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🏐</div><div><div class="sport-name">Volleyball</div><div class="sport-meta">Strong DI/DII/DIII presence · Top earner NIL sport</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -1003,11 +1030,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- GOLF -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">⛳</div><div><div class="sport-name">Golf</div><div class="sport-meta">Large DI/II/III presence · Premium brand partnerships</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -1030,11 +1057,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- TENNIS -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🎾</div><div><div class="sport-name">Tennis</div><div class="sport-meta">Strong across all divisions · Equipment and lifestyle brands</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -1057,11 +1084,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- LACROSSE -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🥍</div><div><div class="sport-name">Lacrosse</div><div class="sport-meta">Fastest growing sport · Strong East Coast market</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -1084,11 +1111,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- WRESTLING -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🤼</div><div><div class="sport-name">Wrestling</div><div class="sport-meta">Growing fast · Inaugural women's NCAA championship 2025–26</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -1111,11 +1138,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- GYMNASTICS -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🤸</div><div><div class="sport-name">Gymnastics</div><div class="sport-meta">High social media leverage · Top women's NIL earners</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -1139,11 +1166,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- ICE HOCKEY -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🏒</div><div><div class="sport-name">Ice Hockey</div><div class="sport-meta">Regional markets · Strong equipment brand partnerships</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -1166,11 +1193,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- ROWING -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🚣</div><div><div class="sport-name">Rowing</div><div class="sport-meta">Scholarship equivalency expanding 20 → 68 under new rules</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -1193,11 +1220,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- FIELD HOCKEY -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🏑</div><div><div class="sport-name">Field Hockey</div><div class="sport-meta">Strong DI East Coast presence · Equipment and athletic brands</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -1220,11 +1247,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- ALL OTHER NCAA CHAMPIONSHIP SPORTS -->
         <div class="sport-item">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🏅</div><div><div class="sport-name">All Other NCAA Championship Sports</div><div class="sport-meta">Water polo · Fencing · Skiing · Rifle · Stunt</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
@@ -1248,11 +1275,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
         <!-- EMERGING SPORTS -->
         <div class="sport-item" style="border-color:rgba(46,189,142,0.25)">
-          <button class="sport-toggle" aria-expanded="true">
+          <button class="sport-toggle" aria-expanded="false">
             <div class="sport-left"><div class="sport-icon">🌱</div><div><div class="sport-name">Emerging Sports</div><div class="sport-meta">Flag Football · Triathlon — growing toward full NCAA championship status</div></div></div>
-            <svg class="sport-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="sport-body open">
+          <div class="sport-body">
             <div>
               <div class="sport-col-label">What Emerging Sports Means</div>
               <div class="sport-col-items">
@@ -1753,6 +1780,59 @@ if('IntersectionObserver' in window){
     el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);
   });
 }
+
+// ── BREAKING NEWS TICKER ──
+// HOW TO USE:
+// Add items to TICKER_NEWS below. Each item needs:
+//   label: category badge (e.g. "TRANSFER PORTAL", "NIL", "HOUSE SETTLEMENT")
+//   text:  the headline — can include HTML for links
+//   date:  when you posted it — ISO string "2026-04-01T15:00:00"
+// Items auto-disappear 48 hours after their date.
+// When all expire, ticker hides completely — zero height, no gap left behind.
+
+var TICKER_NEWS = [
+  {
+    label: "TRANSFER PORTAL",
+    text: 'Ghost transfer rule: Programs signing transfers who bypassed the portal face automatic 50% coach suspension + 20% budget fine. All DI sports. Effective Feb. 25, 2026. <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener">Read on NCAA.org ↗</a>',
+    date: "2026-04-01T15:00:00"
+  }
+  // Add more items here in the same format.
+  // Remove expired items by deleting their block.
+];
+
+(function(){
+  var now = Date.now();
+  var HOURS_48 = 48 * 60 * 60 * 1000;
+  var active = TICKER_NEWS.filter(function(item){
+    return (now - new Date(item.date).getTime()) < HOURS_48;
+  });
+  var bar = document.getElementById('tickerBar');
+  var inner = document.getElementById('tickerInner');
+  if(!bar || !inner || active.length === 0) return;
+  var html = '';
+  var items = active.concat(active);
+  items.forEach(function(item, i){
+    html += '<span class="ticker-item">';
+    html += '<span class="ticker-item-badge">' + item.label + '</span>';
+    html += '<span class="ticker-item-text">' + item.text + '</span>';
+    if(i < items.length - 1){
+      html += '<span class="ticker-sep" aria-hidden="true">&#9632;</span>';
+    }
+    html += '</span>';
+  });
+  inner.innerHTML = html;
+  bar.classList.add('active');
+  // Wait for layout before measuring animation speed
+  requestAnimationFrame(function(){
+    var contentWidth = inner.scrollWidth / 2;
+    var speed = Math.max(20, contentWidth / 80);
+    inner.style.animationDuration = speed + 's';
+  });
+  inner.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('focus', function(){ inner.style.animationPlayState = 'paused'; });
+    a.addEventListener('blur', function(){ inner.style.animationPlayState = 'running'; });
+  });
+})();
 </script>
 </body>
 </html>
