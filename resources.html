@@ -62,7 +62,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;d
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px;flex-shrink:0}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
-.nav-tagline{position:absolute;left:0;right:0;text-align:center;font-family:var(--font-elegant);font-size:12px;font-style:italic;color:var(--white);letter-spacing:3px;white-space:nowrap;pointer-events:none;opacity:0.8;z-index:-1}
+.nav-tagline{display:none}
 .nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .mode-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;background:none;border:1px solid rgba(46,189,142,0.3);border-radius:20px;padding:6px 14px;transition:all var(--transition);flex-shrink:0}
 .mode-toggle:hover{border-color:var(--gold)}
@@ -184,6 +184,33 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
   html{scroll-behavior:auto}
 }
+/* ── BREAKING NEWS TICKER ── */
+.ticker-bar{display:none;width:100%;background:#0d2e1e;border-bottom:2px solid var(--gold);position:sticky;top:64px;z-index:198;overflow:hidden;height:42px;max-height:42px}
+.ticker-bar.active{display:flex;align-items:stretch;height:42px}
+.ticker-label{background:var(--gold);color:var(--dark);font-family:var(--font-display);font-size:11px;letter-spacing:2.5px;padding:0 16px;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;height:42px}
+.ticker-track{flex:1;overflow:hidden;display:flex;align-items:center;position:relative}
+.ticker-inner{display:flex;align-items:center;gap:0;white-space:nowrap;animation:tickerScroll 30s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:12px;color:#e8f5f0;letter-spacing:0.3px;white-space:nowrap;flex-shrink:0;height:42px}
+.ticker-item-badge{font-family:var(--font-display);font-size:10px;letter-spacing:2px;color:var(--gold);background:rgba(46,189,142,0.12);border:1px solid rgba(46,189,142,0.3);border-radius:3px;padding:2px 7px;flex-shrink:0}
+.ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0}
+.ticker-item-text a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(46,189,142,0.3)}
+.ticker-item-text a:hover{border-bottom-color:var(--gold)}
+.ticker-sep{color:rgba(46,189,142,0.3);padding:0 8px;font-size:16px;flex-shrink:0}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(max-width:600px){.ticker-label{font-size:10px;padding:0 10px}.ticker-item{padding:10px 20px;font-size:11px}}
+body.light-mode .ticker-bar{background:#0a2419}
+body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0}
+/* ── 2-COLUMN SECTIONS GRID (matches nil.html) ── */
+.nil-sections-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:0;width:100% !important;max-width:100% !important;box-sizing:border-box}
+.nil-grid-cell{display:block !important;width:100% !important;min-width:0 !important;box-sizing:border-box !important;align-self:start;background:var(--dark);overflow:hidden}
+.nil-grid-cell:nth-child(odd){grid-column:1;border-right:1px solid rgba(46,189,142,0.08)}
+.nil-grid-cell:nth-child(even){grid-column:2}
+.nil-grid-cell:nth-child(4n+2),.nil-grid-cell:nth-child(4n+3){background:var(--dark-2)}
+.nil-grid-cell:not(:nth-last-child(-n+2)){border-bottom:1px solid rgba(46,189,142,0.08)}
+.nil-grid-cell .res-sec{padding:36px 32px !important;width:100% !important;box-sizing:border-box !important;position:static !important;z-index:auto !important}
+.nil-grid-cell .res-sec-inner{max-width:100% !important}
+@media(max-width:900px){.nil-sections-grid{grid-template-columns:1fr !important}.nil-grid-cell,.nil-grid-cell:nth-child(odd),.nil-grid-cell:nth-child(even){grid-column:1 !important;border-right:none}.nil-grid-cell{border-bottom:1px solid rgba(46,189,142,0.08)}}
 </style>
 </head>
 <body class="light-mode">
@@ -230,9 +257,17 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   </div>
 </nav>
 
+<!-- ══ BREAKING NEWS TICKER ══ -->
+<div class="ticker-bar" id="tickerBar" role="region" aria-label="Breaking news" aria-live="polite">
+  <span class="ticker-label">&#9646; LATEST</span>
+  <div class="ticker-track">
+    <div class="ticker-inner" id="tickerInner"></div>
+  </div>
+</div>
+
 <!-- DISCLAIMER -->
 <div class="disclaimer-bar" role="note">
-  All resources link to verified government, NCAA, or nonprofit sources. Not legal, financial, or compliance advice. Always verify current requirements with your school's compliance office. &nbsp;·&nbsp; <strong style="color:var(--gold)">Last reviewed: March 2026</strong>
+  All resources link to verified government, NCAA, or nonprofit sources. Not legal, financial, or compliance advice. Always verify current requirements with your school's compliance office. &nbsp;·&nbsp; <strong style="color:var(--gold)">Last reviewed: April 2026</strong>
 </div>
 
 <main id="main-content" class="res-page">
@@ -266,7 +301,10 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   </nav>
 
   <!-- ══ SECTION 1: NIL ══ -->
-  <section id="res-nil" class="res-sec" aria-labelledby="nil-h">
+  <div class="nil-sections-grid">
+
+  <!-- Cell 1: res-nil -->
+  <div class="nil-grid-cell"><section id="res-nil" class="res-sec" aria-labelledby="nil-h">
     <div class="res-sec-inner">
       <span class="res-sec-label">Section 01</span>
       <h2 class="res-sec-h" id="nil-h">NIL <span style="color:var(--gold)">RESOURCES</span></h2>
@@ -274,11 +312,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-nil-official">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-nil-official">
             <div class="acc-left"><span class="acc-title">Official NCAA & Governing Body Sources</span><span class="acc-label">The source of truth — start here</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-nil-official">
+          <div class="acc-body" id="acc-nil-official">
             <div class="acc-body-inner">
               <div class="link-grid">
                 <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" class="link-card">
@@ -311,11 +349,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
 
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-nil-state">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-nil-state">
             <div class="acc-left"><span class="acc-title">State NIL Laws</span><span class="acc-label">Your state may have additional rules beyond NCAA policy</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-nil-state">
+          <div class="acc-body" id="acc-nil-state">
             <div class="acc-body-inner">
               <p>State NIL laws vary significantly. Some states provide broader rights than the NCAA framework. Always know what your state permits — it may give you more options than the NCAA minimum.</p>
               <div class="link-grid">
@@ -337,11 +375,54 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
 
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-nil-deep">
-            <div class="acc-left"><span class="acc-title">Full NIL Resource Hub</span><span class="acc-label">Rules, money sources, sport breakdowns, sample agreement</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-nil-revshare">
+            <div class="acc-left"><span class="acc-title">Revenue Sharing vs. NIL — Know the Difference</span><span class="acc-label">House settlement, contracts, and what coaches can actually promise</span></div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-nil-deep">
+          <div class="acc-body" id="acc-nil-revshare">
+            <div class="acc-body-inner">
+              <div class="rule-list" style="margin-bottom:16px">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL (Name, Image, Likeness)</strong> Money earned from third-party deals — brands, endorsements, social media, appearances. Arranged between you and outside companies. Every division, every sport.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Revenue Sharing</strong> Direct payment from the school's athletic department under the House v. NCAA settlement. DI only. Must be a signed contract uploaded to CAPS within 5 business days. Up to $20.5M per school annually in 2025–26.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>An NIL evaluation is not a contract</strong> When a coach tells you what you "could earn," that is an estimate — not a signed agreement, not legally binding. Always ask: is this a signed revenue share agreement or an NIL evaluation?</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Read repayment clauses</strong> Some revenue share agreements require repayment if you transfer or are injured. Always ask before signing what happens if your situation changes.</div></div>
+              </div>
+              <div class="link-grid">
+                <a href="https://www.collegesportscommission.org/revenue-sharing/" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">College Sports Commission</span>
+                  <span class="link-card-title">Revenue Sharing Framework</span>
+                  <span class="link-card-desc">Official CSC guidance on how revenue sharing works, school opt-in, and athlete agreements.</span>
+                  <span class="link-card-arrow">↗ collegesportscommission.org</span>
+                </a>
+                <a href="https://nilassist.ncaa.org/update-heading-to-contracts-best-practices/" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA NIL Assist</span>
+                  <span class="link-card-title">Contract Best Practices</span>
+                  <span class="link-card-desc">Sample contract terms, what to look for, and how to protect yourself before signing any NIL or revenue share agreement.</span>
+                  <span class="link-card-arrow">↗ nilassist.ncaa.org</span>
+                </a>
+                <a href="https://nilassist.ncaa.org/navigating-nil-opportunity-contracts/" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA NIL Assist</span>
+                  <span class="link-card-title">Navigating NIL Contracts</span>
+                  <span class="link-card-desc">Step-by-step guidance on contract terms, intellectual property, deliverables, and red flags.</span>
+                  <span class="link-card-arrow">↗ nilassist.ncaa.org</span>
+                </a>
+                <a href="https://www.nilnewsstand.com/nil-revenue-share-infrastructure-tracker" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NIL Newsstand — DI Only</span>
+                  <span class="link-card-title">NIL &amp; Revenue Share Infrastructure Tracker</span>
+                  <span class="link-card-desc">See how DI programs structure their NIL entities — Athletic Department, Collective, External Agency, and GM roles by school. Helpful when researching a program's NIL setup before committing.</span>
+                  <span class="link-card-arrow">↗ nilnewsstand.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-nil-deep">
+            <div class="acc-left"><span class="acc-title">Full NIL Resource Hub</span><span class="acc-label">Rules, money sources, sport breakdowns, sample agreement</span></div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body" id="acc-nil-deep">
             <div class="acc-body-inner">
               <p>The ATHLINKT NIL Resource Hub goes deep — timeline, glossary, division-specific rules, where the money actually comes from, sport-by-sport NIL breakdowns, an education checklist, and a printable sample agreement.</p>
               <div style="margin-top:16px">
@@ -355,12 +436,10 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
       </div>
     </div>
-  </section>
+  </section></div>
 
-  <hr class="gd">
-
-  <!-- ══ SECTION 2: TRANSFER PORTAL ══ -->
-  <section id="res-transfer" class="res-sec" style="background:var(--dark-2)" aria-labelledby="transfer-h">
+  <!-- Cell 2: res-transfer -->
+  <div class="nil-grid-cell"><section id="res-transfer" class="res-sec" aria-labelledby="transfer-h">
     <div class="res-sec-inner">
       <span class="res-sec-label">Section 02</span>
       <h2 class="res-sec-h" id="transfer-h">TRANSFER <span style="color:var(--gold)">PORTAL</span></h2>
@@ -368,11 +447,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-transfer-rules">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-transfer-rules">
             <div class="acc-left"><span class="acc-title">Official Transfer Rules</span><span class="acc-label">NCAA, NAIA, and JUCO transfer eligibility</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-transfer-rules">
+          <div class="acc-body" id="acc-transfer-rules">
             <div class="acc-body-inner">
               <div class="link-grid">
                 <a href="https://www.ncaa.org/sports/2021/7/1/transfer-portal.aspx" target="_blank" rel="noopener" class="link-card">
@@ -405,11 +484,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
 
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-transfer-windows">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-transfer-windows">
             <div class="acc-left"><span class="acc-title">Transfer Windows by Sport</span><span class="acc-label">When you can enter — varies by sport and division</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-transfer-windows">
+          <div class="acc-body" id="acc-transfer-windows">
             <div class="acc-body-inner">
               <p>Transfer windows are sport-specific and change annually. Always verify current windows directly with the NCAA before making any decisions.</p>
               <div class="rule-list">
@@ -430,13 +509,44 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
           </div>
         </div>
       </div>
+
+        <div class="res-section-card">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-ghost-transfer">
+            <div class="acc-left"><span class="acc-title">Ghost Transfer Rule — April 2026 (DI Only)</span><span class="acc-label">New enforcement with automatic penalties — effective now</span></div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="acc-body" id="acc-ghost-transfer">
+            <div class="acc-body-inner">
+              <div class="rule-list" style="margin-bottom:16px">
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What it is</strong> The NCAA DI Cabinet adopted emergency legislation on April 1, 2026 for all Division I sports. A "ghost transfer" or "blind transfer" is when an athlete leaves their school and joins another without entering the transfer portal. This is now explicitly penalized.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Automatic penalties for programs</strong> If a school signs, adds to the roster, or allows athletic participation by a transfer who did not enter the portal: the head coach is suspended for 50% of the season from all coaching, recruiting, and administrative duties, and the school is fined 20% of that sport's budget. Penalties are automatic — no investigation required to trigger them.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Effective date</strong> Applies to all DI sports, retroactive to February 25, 2026. There is no spring portal window for football in 2026 — the only football portal window was January 2–16, 2026.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What this means for athletes</strong> If you want to transfer at any DI school, you must enter the transfer portal. No coach can add you without it — if they do, they face automatic suspension. This protects your eligibility and puts accountability on programs, not athletes.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>DI only</strong> This rule applies to NCAA Division I only. NAIA and JUCO have separate transfer rules — see their official sites for current transfer policies.</div></div>
+              </div>
+              <div class="link-grid">
+                <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA.org — Official</span>
+                  <span class="link-card-title">DI Cabinet: Ghost Transfer Rules</span>
+                  <span class="link-card-desc">Official NCAA announcement — penalties, effective date, and scope for all DI sports. April 1, 2026.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+                <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener" class="link-card">
+                  <span class="link-card-label">NCAA.org</span>
+                  <span class="link-card-title">Transfer Portal — How To Enter</span>
+                  <span class="link-card-desc">Official NCAA guide to entering the transfer portal, eligibility requirements, and the notification process.</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
-  </section>
+  </section></div>
 
-  <hr class="gd">
-
-  <!-- ══ SECTION 3: CAREER ══ -->
-  <section id="res-career" class="res-sec" aria-labelledby="career-h">
+  <!-- Cell 3: res-career -->
+  <div class="nil-grid-cell"><section id="res-career" class="res-sec" aria-labelledby="career-h">
     <div class="res-sec-inner">
       <span class="res-sec-label">Section 03</span>
       <h2 class="res-sec-h" id="career-h">CAREER <span style="color:var(--gold)">& LIFE AFTER SPORT</span></h2>
@@ -444,11 +554,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-career-data">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-career-data">
             <div class="acc-left"><span class="acc-title">Career Data & Exploration Tools</span><span class="acc-label">Real salary data, real career pathways — powered by the U.S. government</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-career-data">
+          <div class="acc-body" id="acc-career-data">
             <div class="acc-body-inner">
               <div class="link-grid">
                 <a href="https://www.onetonline.org" target="_blank" rel="noopener" class="link-card">
@@ -481,11 +591,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
 
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-career-athlete">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-career-athlete">
             <div class="acc-left"><span class="acc-title">Athlete Career Transition Resources</span><span class="acc-label">Built specifically for athletes moving beyond sport</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-career-athlete">
+          <div class="acc-body" id="acc-career-athlete">
             <div class="acc-body-inner">
               <div class="link-grid">
                 <a href="https://www.ncaa.org/sports/2014/10/6/career-center.aspx" target="_blank" rel="noopener" class="link-card">
@@ -518,12 +628,10 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
       </div>
     </div>
-  </section>
+  </section></div>
 
-  <hr class="gd">
-
-  <!-- ══ SECTION 4: MENTAL HEALTH ══ -->
-  <section id="res-mental" class="res-sec" style="background:var(--dark-2)" aria-labelledby="mental-h">
+  <!-- Cell 4: res-mental -->
+  <div class="nil-grid-cell"><section id="res-mental" class="res-sec" aria-labelledby="mental-h">
     <div class="res-sec-inner">
       <span class="res-sec-label">Section 04</span>
       <h2 class="res-sec-h" id="mental-h">MENTAL HEALTH <span style="color:var(--gold)">& IDENTITY</span></h2>
@@ -531,11 +639,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-mental-support">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-mental-support">
             <div class="acc-left"><span class="acc-title">Athlete Mental Health Support</span><span class="acc-label">NCAA, crisis resources, and athlete-specific support</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-mental-support">
+          <div class="acc-body" id="acc-mental-support">
             <div class="acc-body-inner">
               <div class="rule-list" style="margin-bottom:16px">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Crisis Line — 988 Suicide & Crisis Lifeline</strong> Call or text 988. Available 24/7. Free, confidential support for anyone in emotional distress.</div></div>
@@ -572,11 +680,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
 
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-mental-eating">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-mental-eating">
             <div class="acc-left"><span class="acc-title">Eating Disorders & Body Image</span><span class="acc-label">Athletes face elevated risk — real support resources</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-mental-eating">
+          <div class="acc-body" id="acc-mental-eating">
             <div class="acc-body-inner">
               <div class="link-grid">
                 <a href="https://www.allianceforeatingdisorders.com" target="_blank" rel="noopener" class="link-card">
@@ -597,12 +705,10 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
       </div>
     </div>
-  </section>
+  </section></div>
 
-  <hr class="gd">
-
-  <!-- ══ SECTION 5: FINANCIAL & TAX ══ -->
-  <section id="res-financial" class="res-sec" aria-labelledby="financial-h">
+  <!-- Cell 5: res-financial -->
+  <div class="nil-grid-cell"><section id="res-financial" class="res-sec" aria-labelledby="financial-h">
     <div class="res-sec-inner">
       <span class="res-sec-label">Section 05</span>
       <h2 class="res-sec-h" id="financial-h">FINANCIAL <span style="color:var(--gold)">& TAX</span></h2>
@@ -610,11 +716,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-tax">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-tax">
             <div class="acc-left"><span class="acc-title">Tax Resources for Athletes</span><span class="acc-label">NIL income, self-employment tax, filing — official IRS guidance</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-tax">
+          <div class="acc-body" id="acc-tax">
             <div class="acc-body-inner">
               <div class="rule-list" style="margin-bottom:16px">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL income is taxable income</strong> Whether you receive cash, products, or services — if it has value, the IRS considers it income. You are responsible for reporting it.</div></div>
@@ -652,11 +758,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
 
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-financial-literacy">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-financial-literacy">
             <div class="acc-left"><span class="acc-title">Financial Literacy Resources</span><span class="acc-label">Budgeting, credit, saving — from verified nonprofit and government sources</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-financial-literacy">
+          <div class="acc-body" id="acc-financial-literacy">
             <div class="acc-body-inner">
               <div class="link-grid">
                 <a href="https://www.consumerfinance.gov/consumer-tools/money-as-you-grow/young-adults/" target="_blank" rel="noopener" class="link-card">
@@ -689,12 +795,10 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
       </div>
     </div>
-  </section>
+  </section></div>
 
-  <hr class="gd">
-
-  <!-- ══ SECTION 6: ACCESSIBILITY & OPPORTUNITY ══ -->
-  <section id="res-access" class="res-sec" style="background:var(--dark-2)" aria-labelledby="access-h">
+  <!-- Cell 6: res-access -->
+  <div class="nil-grid-cell"><section id="res-access" class="res-sec" aria-labelledby="access-h">
     <div class="res-sec-inner">
       <span class="res-sec-label">Section 06</span>
       <h2 class="res-sec-h" id="access-h">ACCESSIBILITY <span style="color:var(--gold)">& OPPORTUNITY</span></h2>
@@ -810,11 +914,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
       <div style="margin-top:32px">
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-ada">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-ada">
             <div class="acc-left"><span class="acc-title">Disability Rights in College Athletics</span><span class="acc-label">ADA, Section 504, and accommodation rights for student-athletes</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-ada">
+          <div class="acc-body" id="acc-ada">
             <div class="acc-body-inner">
               <div class="rule-list" style="margin-bottom:16px">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Americans with Disabilities Act (ADA)</strong> Prohibits discrimination against people with disabilities in all areas of public life, including colleges and universities.</div></div>
@@ -841,25 +945,24 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
       </div>
 
     </div>
-  </section>
+  </section></div>
 
-  <hr class="gd">
-
-  <!-- ══ SECTION 7: TITLE IX ══ -->
-  <section id="res-titleix" class="res-sec" aria-labelledby="titleix-h">
+  <!-- Cell 7: res-titleix -->
+  <div class="nil-grid-cell"><section id="res-titleix" class="res-sec" aria-labelledby="titleix-h">
     <div class="res-sec-inner">
       <span class="res-sec-label">Section 07</span>
       <h2 class="res-sec-h" id="titleix-h">TITLE <span style="color:var(--gold)">IX</span></h2>
       <p class="res-sec-p">Title IX is a federal civil rights law that prohibits sex-based discrimination in any school or education program receiving federal funding. In athletics, it means equal opportunity — equal access to participation, scholarships, facilities, and support. Every college athlete needs to know their rights.</p>
+      <p class="res-sec-p" style="font-size:13px;color:var(--gray);border-left:3px solid rgba(46,189,142,0.3);padding-left:12px;margin-top:8px"><strong style="color:var(--white)">Current status:</strong> The Biden administration's 2024 Title IX regulations were rescinded by the Trump administration in 2025. A 9th Circuit Court challenge remains active. Core Title IX protections remain in effect. Verify current status at <a href="https://titleix.gov" target="_blank" rel="noopener" style="color:var(--gold)">TitleIX.gov</a> and <a href="https://www2.ed.gov/about/offices/list/ocr/complaints.html" target="_blank" rel="noopener" style="color:var(--gold)">ed.gov OCR</a>. Last reviewed: April 2026.</p>
 
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
 
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-titleix-basics">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-titleix-basics">
             <div class="acc-left"><span class="acc-title">What Title IX Means For Athletes</span><span class="acc-label">Your rights — plain language</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-titleix-basics">
+          <div class="acc-body" id="acc-titleix-basics">
             <div class="acc-body-inner">
               <div class="rule-list">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Equal participation opportunity</strong> Schools must provide participation opportunities proportional to the student body, or demonstrate a history of expanding opportunities for the underrepresented sex, or fully and effectively accommodate the interests of the underrepresented sex.</div></div>
@@ -873,11 +976,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
 
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-titleix-links">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-titleix-links">
             <div class="acc-left"><span class="acc-title">Official Title IX Resources</span><span class="acc-label">Federal, NCAA, and athlete-specific resources</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-titleix-links">
+          <div class="acc-body" id="acc-titleix-links">
             <div class="acc-body-inner">
               <div class="link-grid">
                 <a href="https://www2.ed.gov/about/offices/list/ocr/frontpage/faq/title9.html" target="_blank" rel="noopener" class="link-card">
@@ -922,11 +1025,11 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
         </div>
 
         <div class="res-section-card">
-          <button class="acc-toggle" aria-expanded="true" aria-controls="acc-titleix-find">
+          <button class="acc-toggle" aria-expanded="false" aria-controls="acc-titleix-find">
             <div class="acc-left"><span class="acc-title">Find Your Title IX Coordinator</span><span class="acc-label">Every school is required to have one — know who they are</span></div>
-            <svg class="acc-arrow open" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
-          <div class="acc-body open" id="acc-titleix-find">
+          <div class="acc-body" id="acc-titleix-find">
             <div class="acc-body-inner">
               <p>Every college and university that receives federal funding is required by law to designate a Title IX Coordinator. This person is responsible for overseeing the school's compliance with Title IX — including in athletics.</p>
               <div class="rule-list">
@@ -948,17 +1051,9 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 
       </div>
     </div>
-  </section>
+  </section></div>
 
-  <!-- FINAL CTA -->
-  <section class="res-sec" aria-label="Start your profile">
-    <div class="res-sec-inner" style="text-align:center;max-width:640px;margin:0 auto">
-      <span class="res-sec-label">Your Next Step</span>
-      <h2 class="res-sec-h">GET YOUR <span style="color:var(--gold)">PERSONALIZED</span> PICTURE</h2>
-      <p class="res-sec-p" style="margin:0 auto 28px">These resources are the foundation. Your ATHLINKT profile takes them further — matching them to your specific sport, division, major, and situation.</p>
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--dark);padding:16px 36px;border-radius:var(--radius);font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all var(--transition)">Start Your Profile →</a>
-    </div>
-  </section>
+</div><!-- end nil-sections-grid -->
 
 </main>
 
@@ -1067,6 +1162,58 @@ if('IntersectionObserver' in window){
     el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);
   });
 }
+
+// ── BREAKING NEWS TICKER ──
+// HOW TO USE:
+// Add items to TICKER_NEWS below. Each item needs:
+//   label: category badge (e.g. "TRANSFER PORTAL", "NIL", "HOUSE SETTLEMENT")
+//   text:  the headline — can include HTML for links
+//   date:  when you posted it — ISO string "2026-04-01T15:00:00"
+// Items auto-disappear 48 hours after their date.
+// When all expire, ticker hides completely — zero height, no gap left behind.
+
+var TICKER_NEWS = [
+  {
+    label: "TRANSFER PORTAL",
+    text: 'Ghost transfer rule: Programs signing transfers who bypassed the portal face automatic 50% coach suspension + 20% budget fine. All DI sports. Effective Feb. 25, 2026. <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener">Read on NCAA.org ↗</a>',
+    date: "2026-04-01T15:00:00"
+  }
+  // Add more items here in the same format.
+  // Remove expired items by deleting their block.
+];
+
+(function(){
+  var now = Date.now();
+  var HOURS_48 = 48 * 60 * 60 * 1000;
+  var active = TICKER_NEWS.filter(function(item){
+    return (now - new Date(item.date).getTime()) < HOURS_48;
+  });
+  var bar = document.getElementById('tickerBar');
+  var inner = document.getElementById('tickerInner');
+  if(!bar || !inner || active.length === 0) return;
+  var html = '';
+  var items = active.concat(active);
+  items.forEach(function(item, i){
+    html += '<span class="ticker-item">';
+    html += '<span class="ticker-item-badge">' + item.label + '</span>';
+    html += '<span class="ticker-item-text">' + item.text + '</span>';
+    if(i < items.length - 1){
+      html += '<span class="ticker-sep" aria-hidden="true">&#9632;</span>';
+    }
+    html += '</span>';
+  });
+  inner.innerHTML = html;
+  bar.classList.add('active');
+  requestAnimationFrame(function(){
+    var contentWidth = inner.scrollWidth / 2;
+    var speed = Math.max(20, contentWidth / 80);
+    inner.style.animationDuration = speed + 's';
+  });
+  inner.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('focus', function(){ inner.style.animationPlayState = 'paused'; });
+    a.addEventListener('blur', function(){ inner.style.animationPlayState = 'running'; });
+  });
+})();
 </script>
 </body>
 </html>
