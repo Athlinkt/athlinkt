@@ -60,11 +60,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;d
 .mode-toggle-mobile{display:none;width:100%;justify-content:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(46,189,142,0.15)}
 
 /* NAV DROPDOWN */
-.nav-has-dropdown{position:relative}
-.nav-star{font-size:8px;color:var(--gold);opacity:0;transition:opacity 0.2s ease;vertical-align:middle;margin-left:3px}
-.nav-has-dropdown>a:hover .nav-star,.nav-has-dropdown:focus-within .nav-star{opacity:1}
-.nav-has-dropdown>a:hover{color:var(--gold)}
-.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding:8px 0;opacity:0;visibility:hidden;transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+
 .nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
 .nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
@@ -94,7 +90,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
 
 /* HERO */
 .tp-hero{padding:72px 48px 56px;max-width:var(--max);margin:0 auto;position:relative}
-.tp-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
+.tp-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:16px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
 .tp-h1{font-family:var(--font-display);font-size:clamp(56px,8vw,96px);letter-spacing:4px;line-height:1.0;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .25s}
 .tp-h1 span{color:var(--gold)}
 .tp-hero-p{font-size:16px;color:var(--gray-light);line-height:1.75;font-weight:300;max-width:640px;margin-bottom:24px;opacity:0;animation:fadeUp .8s ease forwards .4s}
@@ -198,9 +194,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
   .nav-dropdown{position:static;transform:none !important;opacity:1;visibility:visible;background:transparent;border:none;box-shadow:none;padding:0 0 8px 16px;pointer-events:auto;display:none;width:100%}
   .nav-has-dropdown.mob-open .nav-dropdown{display:block}
   .nav-dropdown li a{font-size:14px;padding:8px 12px;letter-spacing:1px;border-left:none;color:var(--gray-light);text-align:left}
-  .nav-star{display:inline-block;opacity:0.5;font-size:9px;transition:transform 0.2s}
-  .nav-has-dropdown.mob-open .nav-star{transform:rotate(90deg);opacity:1}
-  /* Grid: single column on mobile */
+    .nav-has-dropdown.mob-open   /* Grid: single column on mobile */
   .tp-sections-grid{grid-template-columns:1fr !important}
   .tp-grid-cell,.tp-grid-cell:nth-child(odd),.tp-grid-cell:nth-child(even){grid-column:1 !important;border-right:none}
   .tp-grid-cell{border-bottom:1px solid rgba(46,189,142,0.08)}
@@ -214,6 +208,15 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
   .tp-nav-btn{padding:12px 14px;font-size:10px}
   .ticker-item{padding:0 16px}
 }
+
+/* ── NAV DROPDOWN ── */
+.nav-has-dropdown{position:relative}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding-top:8px;padding-bottom:8px;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+.nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto}
+.nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
+.nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
+.nav-dropdown li a:hover::before{content:"✦";font-size:7px;margin-right:6px;color:var(--gold);vertical-align:middle}
+body.light-mode .nav-dropdown{background:var(--dark-2)}
 </style>
 </head>
 <body>
@@ -234,7 +237,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
   <ul class="nav-links" id="navLinks" role="list">
     <li><a href="index.html">Home</a></li>
     <li class="nav-has-dropdown">
-      <a href="nil.html">NIL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="nil.html">NIL</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="nil.html#nil-what">What Is NIL</a></li>
         <li><a href="nil.html#nil-rules">Know the Rules</a></li>
@@ -246,7 +249,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="transfer.html" class="active">Transfer Portal <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="transfer.html" class="active">Transfer Portal</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="#tp-first">Talk to Your Coach First</a></li>
         <li><a href="#tp-how">How the Portal Works</a></li>
@@ -258,7 +261,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="career.html">Career Match <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="career.html">Career Match</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="career.html#cm-strengths">Know Your Strengths</a></li>
         <li><a href="career.html#cm-tools">Career Exploration Tools</a></li>
@@ -267,7 +270,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="resources.html">Resources <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="resources.html">Resources</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="resources.html#res-nil">NIL Resources</a></li>
         <li><a href="resources.html#res-transfer">Transfer Portal</a></li>
@@ -279,7 +282,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="community.html">Community <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="community.html">Community</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="community.html#commitment">Our Commitment</a></li>
         <li><a href="community.html#beyond">Beyond the Finish Line</a></li>
@@ -364,29 +367,29 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
         <div class="sec-acc-body" id="tp-first-body">
           <div class="alert-box" style="margin-top:16px">
             <div class="alert-box-title">Your compliance office. Your head coach. In person. First.</div>
-            <p>Before you enter the transfer portal — before you tell another coach, before you post anything, before you sign anything — you need two conversations: one with your <strong style="color:var(--white)">compliance office</strong> and one <strong style="color:var(--white)">in-person conversation with your head coach</strong>. Not a text. Not an email. In person. We are here to educate you on your options — not to shortcut the conversations that protect you.</p>
+            <p>Before you enter the transfer portal — before you tell another coach, before you post anything, before you sign anything. You need two conversations: one with your <strong style="color:var(--white)">compliance office</strong> and one <strong style="color:var(--white)">in-person conversation with your head coach</strong>. Not a text. Not an email. In person. We are here to educate you on your options. Not to shortcut the conversations that protect you.</p>
           </div>
           <div class="rule-list">
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your compliance office exists to protect you</strong> They know your school's specific rules, your conference rules, and your state's laws. They are not there to penalize you for asking — they are there to make sure you don't lose eligibility by accident. Call them first.</div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Have an honest conversation with your head coach</strong> Your coach should hear it from you directly — not through a portal notification, not through another coach, not through social media. This is about your integrity and your relationships, regardless of what happens next.</div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Know your window before you move</strong> Entering the portal at the wrong time — or before you have all the information — can cost you a scholarship, eligibility, or both. There is no urgency that justifies skipping these steps.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your compliance office exists to protect you</strong> They know your school's specific rules, your conference rules, and your state's laws. They are not there to penalize you for asking. They are there to make sure you don't lose eligibility by accident. Call them first.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Have an honest conversation with your head coach</strong> Your coach should hear it from you directly. Not through a portal notification, not through another coach, not through social media. This is about your integrity and your relationships, regardless of what happens next.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Know your window before you move</strong> Entering the portal at the wrong time, or before you have all the information — can cost you a scholarship, eligibility, or both. There is no urgency that justifies skipping these steps.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>You can explore without entering</strong> Talking to your compliance office does not mean you are transferring. It means you are informed. That is always the right first step.</div></div>
           </div>
           <div class="link-grid">
             <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener" class="link-card">
               <span class="link-card-label">NCAA.org — Official</span>
               <span class="link-card-title">Want to Transfer?</span>
-              <span class="link-card-desc">Official NCAA guide to the transfer process — start here before any other step.</span>
+              <span class="link-card-desc">Official NCAA guide to the transfer process. Start here before any other step.</span>
               <span class="link-card-arrow">↗ ncaa.org</span>
             </a>
             <a href="https://web3.ncaa.org/transfer/service" target="_blank" rel="noopener" class="link-card">
               <span class="link-card-label">NCAA — Transfer Center</span>
               <span class="link-card-title">Transfer Eligibility Center</span>
-              <span class="link-card-desc">Official NCAA transfer eligibility system — enter and track your transfer request.</span>
+              <span class="link-card-desc">Official NCAA transfer eligibility system. Enter and track your transfer request.</span>
               <span class="link-card-arrow">↗ ncaa.org Transfer Center</span>
             </a>
           </div>
-          <p class="source-note">Source: <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a> — Official transfer guidance. Last reviewed April 2026.</p>
+          <p class="source-note">Source: <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Want to Transfer?&rdquo; NCAA.org</a>. Accessed April 2026.</p>
         </div>
       </div>
     </div>
@@ -402,10 +405,10 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
           <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <div class="sec-acc-body" id="tp-how-body">
-          <p class="tp-sec-p" style="margin-top:12px">The NCAA Transfer Portal is the official online system that allows college athletes to declare intent to transfer and be contacted by other schools. Entering the portal does not mean you are committed to leaving — but it is a formal step with real consequences.</p>
+          <p class="tp-sec-p" style="margin-top:12px">The NCAA Transfer Portal is the official online system that allows college athletes to declare intent to transfer and be contacted by other schools. Entering the portal does not mean you are committed to leaving. But it is a formal step with real consequences.</p>
           <div class="rule-list">
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>DI — Enter during your sport's official window</strong> Your school has 2 business days to enter you into the portal after you notify them. Schools can contact you once you are in. As of 2024, there is no limit on the number of times you can transfer if academically eligible. Source: <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener" style="color:var(--gold)">NCAA.org</a></div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>DII &amp; DIII</strong> DII athletes follow similar portal procedures to DI. DIII now requires portal use following the January 2026 NCAA Convention vote — previously optional. Each division has its own windows and release processes. Verify with your compliance office.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>DII &amp; DIII</strong> DII athletes follow similar portal procedures to DI. DIII now requires portal use following the January 2026 NCAA Convention vote. Previously optional. Each division has its own windows and release processes. Verify with your compliance office.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Coaching change exception</strong> If your head coach leaves, a 15-day portal window opens 5 days after the new coach is hired or publicly announced. This applies to all DI sports (football rules differ slightly).</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Scholarship is not guaranteed at a new school</strong> Entering the portal does not transfer your scholarship. If you enter and do not receive an offer, you may be responsible for tuition at your current school in the next term. Ask your compliance office about scholarship protection before entering.</div></div>
           </div>
@@ -441,7 +444,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
               <span class="link-card-arrow">↗ ncaa.org</span>
             </a>
           </div>
-          <p class="source-note">Source: <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a>. Windows updated January 2026 NCAA Convention. Last reviewed April 2026.</p>
+          <p class="source-note">Source: <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Transfer Portal: Sport-Specific Windows.&rdquo; NCAA.org</a>. Updated following January 2026 NCAA Convention. Accessed April 2026.</p>
         </div>
       </div>
     </div>
@@ -458,13 +461,13 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
         </div>
         <div class="sec-acc-body" id="tp-ghost-body">
           <div class="alert-box" style="margin-top:16px">
-            <div class="alert-box-title">Effective immediately — all DI sports</div>
+            <div class="alert-box-title">Effective immediately. All DI sports</div>
             <p>The NCAA Division I Cabinet adopted emergency legislation on April 1, 2026. Retroactive to February 25, 2026.</p>
           </div>
           <div class="rule-list">
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What is a ghost transfer?</strong> When an athlete leaves their school and joins another without entering the official transfer portal — bypassing the required process entirely. Also called a "blind transfer."</div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Automatic penalties for programs</strong> If a school signs, adds to roster, or allows participation by a transfer who did not enter the portal: the head coach is suspended for 50% of the season from all coaching, recruiting, and administrative duties AND the school is fined 20% of that sport's budget. No investigation required — penalties are automatic.</div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What this means for you as an athlete</strong> You are protected by this rule. No DI coach can legally add you to their roster without you properly entering the portal. If a coach suggests otherwise, that is a compliance violation — contact your compliance office immediately.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Automatic penalties for programs</strong> If a school signs, adds to roster, or allows participation by a transfer who did not enter the portal: the head coach is suspended for 50% of the season from all coaching, recruiting, and administrative duties AND the school is fined 20% of that sport's budget. No investigation required. Penalties are automatic.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What this means for you as an athlete</strong> You are protected by this rule. No DI coach can legally add you to their roster without you properly entering the portal. If a coach suggests otherwise, that is a compliance violation. Contact your compliance office immediately.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>DI only</strong> This rule applies to NCAA Division I only. NAIA and JUCO have their own separate transfer rules and procedures.</div></div>
           </div>
           <div class="link-grid">
@@ -491,16 +494,22 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
           <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <div class="sec-acc-body" id="tp-financial-body">
-          <p class="tp-sec-p" style="margin-top:12px">Transferring affects your financial aid. These are not hypotheticals — they are things athletes face every transfer cycle.</p>
+          <p class="tp-sec-p" style="margin-top:12px">Transferring affects your financial aid. These are not hypotheticals. They are things athletes face every transfer cycle.</p>
           <div class="rule-list">
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your scholarship does not transfer with you</strong> Athletic scholarships are awarded by the institution, not the NCAA. When you leave, your scholarship stays. Your new school is under no obligation to match it.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>If you enter the portal and don't land anywhere</strong> Your current scholarship may be at risk the following term. Scholarships can be reassigned to other athletes once you declare intent to transfer. Ask your compliance office specifically about your scholarship protection window.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>House settlement protection</strong> Under the House v. NCAA settlement, athletes on financial aid cannot have that aid reduced due to roster limit changes. This is DI only. Source: <a href="https://www.ncaa.org" target="_blank" rel="noopener" style="color:var(--gold)">NCAA.org</a></div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Revenue share agreements and transfers</strong> If you have a signed revenue share agreement at your current school, read the repayment clause. Some agreements require repayment if you transfer. Get this in writing before you enter the portal. Source: <a href="https://www.collegesportscommission.org/revenue-sharing/" target="_blank" rel="noopener" style="color:var(--gold)">College Sports Commission</a></div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Federal financial aid moves with you</strong> Federal Pell Grants and other need-based federal aid (FAFSA) are awarded by the federal government — they can follow you to a new institution. Contact your new school's financial aid office to ensure continuity. Source: <a href="https://studentaid.gov" target="_blank" rel="noopener" style="color:var(--gold)">studentaid.gov</a></div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Federal financial aid moves with you</strong> Federal Pell Grants and other need-based federal aid (FAFSA) are awarded by the federal government. They can follow you to a new institution. Contact your new school's financial aid office to ensure continuity. Source: <a href="https://studentaid.gov" target="_blank" rel="noopener" style="color:var(--gold)">studentaid.gov</a></div></div>
           </div>
-          <p class="source-note">Sources: <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a> · <a href="https://www.collegesportscommission.org" target="_blank" rel="noopener">College Sports Commission</a> · <a href="https://studentaid.gov" target="_blank" rel="noopener">U.S. Federal Student Aid (studentaid.gov)</a>. Last reviewed April 2026.</p>
-        </div>
+          <p class="source-note">Sources: <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Want to Transfer?&rdquo; NCAA.org</a> &middot; <a href="https://www.collegesportscommission.org/revenue-sharing/" target="_blank" rel="noopener">College Sports Commission. &ldquo;Revenue Sharing.&rdquo; collegesportscommission.org</a> &middot; <a href="https://studentaid.gov/understand-aid/types/grants/pell" target="_blank" rel="noopener">U.S. Department of Education. &ldquo;Federal Pell Grants.&rdquo; studentaid.gov</a>. All free public resources. Accessed April 2026.</p>
+        
+          <div style="margin-top:20px;padding:16px 18px;background:var(--dark-3);border-radius:var(--radius);border:1px solid rgba(46,189,142,0.15)">
+            <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px">LOOK UP YOUR PROGRAM&#39;S BUDGET BEFORE YOU COMMIT</p>
+            <p style="font-size:13px;color:var(--gray-light);line-height:1.7;margin-bottom:10px">The EADA database is public federal data. Before transferring, you can look up your target school&#39;s athletics budget, scholarships by sport, and gender equity metrics. This is information you are entitled to see.</p>
+            <a href="https://ope.ed.gov/athletics/" target="_blank" rel="noopener" style="color:var(--gold);font-size:13px;font-weight:600;text-decoration:none">Search schools at ope.ed.gov/athletics &#8599;</a>
+            <p class="source-note" style="margin-top:8px">Source: U.S. Department of Education, Office of Postsecondary Education. "Equity in Athletics Disclosure Act (EADA)." ope.ed.gov/athletics. Federal public resource, no account required. Accessed April 2026.</p>
+          </div></div>
       </div>
     </div>
 
@@ -515,9 +524,9 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
           <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <div class="sec-acc-body" id="tp-naia-body">
-          <p class="tp-sec-p" style="margin-top:12px">The NAIA governs its own transfer rules — separate from the NCAA. NAIA athletes do not use the NCAA Transfer Portal.</p>
+          <p class="tp-sec-p" style="margin-top:12px">The NAIA governs its own transfer rules. Separate from the NCAA. NAIA athletes do not use the NCAA Transfer Portal.</p>
           <div class="rule-list">
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NAIA transfer eligibility</strong> NAIA athletes transferring between NAIA schools must meet specific eligibility requirements set by the NAIA — not the NCAA. Sit-out requirements and waivers vary. Always talk to your compliance coordinator and verify directly with the NAIA.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NAIA transfer eligibility</strong> NAIA athletes transferring between NAIA schools must meet specific eligibility requirements set by the NAIA. Not the NCAA. Sit-out requirements and waivers vary. Always talk to your compliance coordinator and verify directly with the NAIA.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Transferring from NCAA to NAIA</strong> If you are leaving an NCAA institution for an NAIA school, your eligibility will be governed by NAIA rules from that point forward. Your compliance office at both schools needs to be involved in this process.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your first call</strong> Contact the NAIA Eligibility Center and your compliance office at your current school before taking any steps. Do not contact NAIA coaches until you have confirmed your eligibility status.</div></div>
           </div>
@@ -525,7 +534,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
             <a href="https://www.naia.org/student-athlete-services/eligibility/transfer/index" target="_blank" rel="noopener" class="link-card">
               <span class="link-card-label">NAIA — Official</span>
               <span class="link-card-title">NAIA Transfer Rules</span>
-              <span class="link-card-desc">Official NAIA transfer eligibility rules and procedures — separate from NCAA portal.</span>
+              <span class="link-card-desc">Official NAIA transfer eligibility rules and procedures. Separate from NCAA portal.</span>
               <span class="link-card-arrow">↗ naia.org</span>
             </a>
             <a href="https://www.naia.org/student-athlete-services/eligibility/index" target="_blank" rel="noopener" class="link-card">
@@ -551,9 +560,9 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
           <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <div class="sec-acc-body" id="tp-juco-body">
-          <p class="tp-sec-p" style="margin-top:12px">JUCO (junior college / community college) athletes are governed by the NJCAA — not the NCAA. Transfer rules differ significantly.</p>
+          <p class="tp-sec-p" style="margin-top:12px">JUCO (junior college / community college) athletes are governed by the NJCAA. Not the NCAA. Transfer rules differ significantly.</p>
           <div class="rule-list">
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NJCAA to NCAA transfer</strong> If you are a JUCO athlete transferring to an NCAA school, your eligibility will be evaluated by the NCAA Eligibility Center. You have typically 2 years of NCAA eligibility remaining after 2 years at a JUCO. Academic requirements must be met — verify with the NCAA Eligibility Center early.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NJCAA to NCAA transfer</strong> If you are a JUCO athlete transferring to an NCAA school, your eligibility will be evaluated by the NCAA Eligibility Center. You have typically 2 years of NCAA eligibility remaining after 2 years at a JUCO. Academic requirements must be met. Verify with the NCAA Eligibility Center early.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NJCAA transfer between JUCO schools</strong> Transfer rules within the NJCAA are set by the NJCAA and your conference. Each school and conference may have additional rules. Talk to your athletic director and compliance staff.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>October 2025 enforcement</strong> The NCAA expanded NIL and transfer reporting obligations to include JUCO transfers entering DI programs. If you are a JUCO transfer entering DI, you are subject to NIL Go reporting requirements from the moment you enroll. Source: <a href="https://www.ncaa.org" target="_blank" rel="noopener" style="color:var(--gold)">NCAA.org</a></div></div>
           </div>
@@ -571,7 +580,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
               <span class="link-card-arrow">↗ NCAA Eligibility Center</span>
             </a>
           </div>
-          <p class="source-note">Sources: <a href="https://www.njcaa.org" target="_blank" rel="noopener">NJCAA.org</a> · <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a>. Last reviewed April 2026.</p>
+          <p class="source-note">Sources: <a href="https://www.njcaa.org/eligibility/transfer/index" target="_blank" rel="noopener">National Junior College Athletic Association (NJCAA). &ldquo;Transfer Eligibility.&rdquo; njcaa.org</a> &middot; <a href="https://web3.ncaa.org/ecwr3/" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;NCAA Eligibility Center.&rdquo; web3.ncaa.org</a>. Both free public resources. Accessed April 2026.</p>
         </div>
       </div>
     </div>
@@ -592,7 +601,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
             <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener" class="link-card">
               <span class="link-card-label">NCAA.org — Official</span>
               <span class="link-card-title">NCAA Transfer Guide</span>
-              <span class="link-card-desc">Full official guide to the transfer portal process — start to finish.</span>
+              <span class="link-card-desc">Full official guide to the transfer portal process. Start to finish.</span>
               <span class="link-card-arrow">↗ ncaa.org</span>
             </a>
             <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" class="link-card">
@@ -615,7 +624,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
             </a>
           </div>
           <div style="margin-top:20px;padding:20px 24px;background:var(--dark-2);border:1px solid rgba(46,189,142,0.15);border-radius:10px;border-left:4px solid var(--gold)">
-            <p style="font-size:14px;color:var(--gray-light);line-height:1.8;font-weight:300;margin:0"><strong style="color:var(--white);display:block;margin-bottom:8px;font-family:var(--font-display);font-size:18px;letter-spacing:1.5px">YOUR FIRST CALL IS TO YOUR COMPLIANCE OFFICE.</strong>Every resource on this page is educational. The person who knows your school's specific rules, your conference's rules, and your scholarship situation is your compliance officer. Have that conversation before you enter the portal. That is not optional — that is how you protect yourself.</p>
+            <p style="font-size:14px;color:var(--gray-light);line-height:1.8;font-weight:300;margin:0"><strong style="color:var(--white);display:block;margin-bottom:8px;font-family:var(--font-display);font-size:18px;letter-spacing:1.5px">YOUR FIRST CALL IS TO YOUR COMPLIANCE OFFICE.</strong>Every resource on this page is educational. The person who knows your school's specific rules, your conference's rules, and your scholarship situation is your compliance officer. Have that conversation before you enter the portal. That is not optional. That is how you protect yourself.</p>
           </div>
         </div>
       </div>

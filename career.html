@@ -55,11 +55,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;d
 .mode-toggle-icon{font-size:14px;line-height:1}
 .mode-toggle-label{font-size:12px;font-family:var(--font-body);font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gray-light);white-space:nowrap}
 .mode-toggle-mobile{display:none;width:100%;justify-content:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(46,189,142,0.15)}
-.nav-has-dropdown{position:relative}
-.nav-star{font-size:8px;color:var(--gold);opacity:0;transition:opacity 0.2s ease;vertical-align:middle;margin-left:3px}
-.nav-has-dropdown>a:hover .nav-star,.nav-has-dropdown:focus-within .nav-star{opacity:1}
-.nav-has-dropdown>a:hover{color:var(--gold)}
-.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding:8px 0;opacity:0;visibility:hidden;transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+
 .nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
 .nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
@@ -81,11 +77,11 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
 .disclaimer-bar a{color:var(--gold);text-decoration:none}
 .cm-page{padding-top:64px}
 .cm-hero{padding:72px 48px 56px;max-width:var(--max);margin:0 auto}
-.cm-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
+.cm-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:16px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
 .cm-h1{font-family:var(--font-display);font-size:clamp(56px,8vw,96px);letter-spacing:4px;line-height:1.0;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .25s}
 .cm-h1 span{color:var(--gold)}
 .cm-hero-p{font-size:16px;color:var(--gray-light);line-height:1.75;font-weight:300;max-width:680px;margin-bottom:8px;opacity:0;animation:fadeUp .8s ease forwards .4s}
-.cm-hero-sub{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gray);letter-spacing:1px;margin-bottom:24px;opacity:0;animation:fadeUp .8s ease forwards .5s}
+.cm-hero-sub{font-family:var(--font-elegant);font-style:italic;font-size:18px;color:var(--gray);letter-spacing:1px;margin-bottom:24px;opacity:0;animation:fadeUp .8s ease forwards .5s}
 .cm-tags{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:fadeUp .8s ease forwards .55s}
 .cm-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#1A8F68;border:1.5px solid #1A8F68;border-radius:20px;padding:6px 16px;font-weight:600;background:rgba(46,189,142,0.06)}
 body:not(.light-mode) .cm-tag{color:#2EBD8E;border-color:rgba(46,189,142,0.45);background:rgba(46,189,142,0.08)}
@@ -163,9 +159,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
   .nav-dropdown{position:static;transform:none !important;opacity:1;visibility:visible;background:transparent;border:none;box-shadow:none;padding:0 0 8px 16px;pointer-events:auto;display:none;width:100%}
   .nav-has-dropdown.mob-open .nav-dropdown{display:block}
   .nav-dropdown li a{font-size:14px;padding:8px 12px;border-left:none;text-align:left}
-  .nav-star{display:inline-block;opacity:0.5;font-size:9px;transition:transform 0.2s}
-  .nav-has-dropdown.mob-open .nav-star{transform:rotate(90deg);opacity:1}
-  .cm-sections-grid{grid-template-columns:1fr !important}
+    .nav-has-dropdown.mob-open   .cm-sections-grid{grid-template-columns:1fr !important}
   .cm-grid-cell,.cm-grid-cell:nth-child(odd),.cm-grid-cell:nth-child(even){grid-column:1 !important;border-right:none}
   .cm-grid-cell{border-bottom:1px solid rgba(46,189,142,0.08)}
   .cm-hero{padding:40px 24px 32px}
@@ -173,6 +167,15 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
   .link-grid{grid-template-columns:1fr}
   footer{padding:28px 24px}
 }
+
+/* ── NAV DROPDOWN ── */
+.nav-has-dropdown{position:relative}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding-top:8px;padding-bottom:8px;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+.nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto}
+.nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
+.nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
+.nav-dropdown li a:hover::before{content:"✦";font-size:7px;margin-right:6px;color:var(--gold);vertical-align:middle}
+body.light-mode .nav-dropdown{background:var(--dark-2)}
 </style>
 </head>
 <body>
@@ -193,7 +196,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
   <ul class="nav-links" id="navLinks" role="list">
     <li><a href="index.html">Home</a></li>
     <li class="nav-has-dropdown">
-      <a href="nil.html">NIL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="nil.html">NIL</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="nil.html#nil-what">What Is NIL</a></li>
         <li><a href="nil.html#nil-rules">Know the Rules</a></li>
@@ -205,7 +208,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="transfer.html">Transfer Portal <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="transfer.html">Transfer Portal</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="transfer.html#tp-first">Talk to Your Coach First</a></li>
         <li><a href="transfer.html#tp-how">How It Works</a></li>
@@ -217,7 +220,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="career.html" class="active">Career Match <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="career.html" class="active">Career Match</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="#cm-strengths">Know Your Strengths</a></li>
         <li><a href="#cm-tools">Career Exploration Tools</a></li>
@@ -226,7 +229,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="resources.html">Resources <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="resources.html">Resources</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="resources.html#res-nil">NIL Resources</a></li>
         <li><a href="resources.html#res-transfer">Transfer Portal</a></li>
@@ -238,7 +241,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="community.html">Community <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="community.html">Community</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="community.html#commitment">Our Commitment</a></li>
         <li><a href="community.html#beyond">Beyond the Finish Line</a></li>
@@ -281,9 +284,14 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
   <!-- HERO -->
   <section class="cm-hero" aria-label="Career Match">
     <span class="cm-eyebrow">Career Match</span>
-    <h1 class="cm-h1">LIFE AFTER <span>NCAA PARTICIPATION</span></h1>
-    <p class="cm-hero-p">Most athletes become civilians after their NCAA participation ends — not everyone coaches, and this is not about graduate school. Whether you are still competing, just finished, or years removed and ready for a career change: these tools are for you at any stage.</p>
-    <p class="cm-hero-sub">Current athlete &nbsp;·&nbsp; Former athlete &nbsp;·&nbsp; Returning for a career change at any point — you are welcome here</p>
+    <h1 class="cm-h1">CAREER READY. <span>ATHLETE DRIVEN.</span></h1>
+    <p class="cm-hero-p">Most athletes become people who step away from sport after their NCAA participation ends. Not everyone coaches, and this is not about graduate school. Whether you are still competing, just finished, or years removed and ready for a career change: these tools are for you at any stage.</p>
+    <div class="alert-box" style="margin-top:20px">
+      <div class="alert-box-title">THE GAP NOBODY PREPARES YOU FOR</div>
+      <p>Some athletes are pulling real money right now through NIL and revenue share. When participation ends, that income stops. Most entry-level offers land between $45K and $75K. That adjustment is real and it happens fast. This page exists because no one built the bridge between those two numbers.</p>
+      <p style="font-size:12px;color:var(--gray);margin-top:8px;margin-bottom:0">Original reporting on this topic appeared in <em>Sports Business Journal</em>, March 30, 2026 (subscription required at sportsbusinessjournal.com). The content above is original ATHLINKT commentary on a documented industry trend.</p>
+    </div>
+    <p class="cm-hero-sub">Current athlete &nbsp;·&nbsp; Former athlete &nbsp;·&nbsp; Returning for a career change at any point. You are welcome here</p>
     <div class="cm-tags">
       <span class="cm-tag">All Divisions</span>
       <span class="cm-tag">Current Athletes</span>
@@ -319,14 +327,14 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
           <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <div class="sec-acc-body" id="cm-strengths-body">
-          <p class="cm-sec-p" style="margin-top:12px">You have spent years developing skills that most people never build. The problem is not that you lack skills — it is that no one has taught you to name them, own them, and translate them to a workplace.</p>
+          <p class="cm-sec-p" style="margin-top:12px">You have spent years developing skills that most people never build. The problem is not that you lack skills. It is that no one has taught you to name them, own them, and translate them to a workplace.</p>
           <div class="rule-list">
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Transferable skills you already have</strong> Discipline, time management under extreme pressure, team dynamics, performance under stress, coaching and receiving coaching, goal-setting, film study (pattern recognition), physical and mental recovery, competition strategy. These are not soft skills — they are leadership and professional skills.</div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The identity challenge is real</strong> Research from Grand Valley State University (2025) confirms that student-athletes struggle with career readiness partly because athletic identity makes it hard to envision a future without sport. Acknowledging this is the first step — not a weakness.</div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Start early — not your senior year</strong> The athletes who transition best are the ones who started exploring during their sophomore or junior year. If you are reading this as a freshman, you are ahead. If you are a former athlete reading this years later — you are not late, you are ready.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Transferable skills you already have</strong> Discipline, time management under extreme pressure, team dynamics, performance under stress, coaching and receiving coaching, goal-setting, film study (pattern recognition), physical and mental recovery, competition strategy. These are not soft skills. They are leadership and professional skills.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The identity challenge is real</strong> Research from Grand Valley State University (2025) confirms that student-athletes struggle with career readiness partly because athletic identity makes it hard to envision a future without sport. Acknowledging this is the first step. Not a weakness.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Start early. Not your senior year</strong> The athletes who transition best are the ones who started exploring during their sophomore or junior year. If you are reading this as a freshman, you are ahead. If you are a former athlete reading this years later. You are not late, you are ready.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Use the tools below to name what you already know</strong> The O*NET Interest Profiler and CareerOneStop Skills Matcher are built specifically to help people identify what they are good at and match it to careers. They are free, from the U.S. Department of Labor, and take less than 30 minutes.</div></div>
           </div>
-          <p class="source-note">Research reference: Gibbs, E.M. (2025). "From Student-Athlete to Working Professional: Career Readiness for College Athletes." Grand Valley State University. <a href="https://scholarworks.gvsu.edu/gradprojects/543/" target="_blank" rel="noopener">scholarworks.gvsu.edu</a>. All content on this page is paraphrased and attributed — not reproduced.</p>
+          <p class="source-note">Research reference: Gibbs, Elizabeth M. &ldquo;From Student-Athlete to Working Professional: Career Readiness for College Athletes.&rdquo; <em>Culminating Experience Projects</em>, no. 543. Grand Valley State University ScholarWorks, 2025. <a href="https://scholarworks.gvsu.edu/gradprojects/543/" target="_blank" rel="noopener">scholarworks.gvsu.edu/gradprojects/543</a>. All content above is paraphrased and attributed in accordance with academic fair use. Not reproduced verbatim.</p>
         </div>
       </div>
     </div>
@@ -382,7 +390,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
             </button>
             <div class="acc-body" id="acc-mynext">
               <div class="acc-body-inner">
-                <p>A streamlined career search and discovery tool from the U.S. Department of Labor. Search by keyword, browse by industry, or take the built-in interest assessment. Each career profile includes what the job involves, what skills it requires, salary data, and training pathways — all on one clear page.</p>
+                <p>A streamlined career search and discovery tool from the U.S. Department of Labor. Search by keyword, browse by industry, or take the built-in interest assessment. Each career profile includes what the job involves, what skills it requires, salary data, and training pathways. All on one clear page.</p>
                 <div class="link-grid">
                   <a href="https://www.mynextmove.org" target="_blank" rel="noopener" class="link-card">
                     <span class="link-card-label">U.S. Dept of Labor — Free</span>
@@ -406,7 +414,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
             </button>
             <div class="acc-body" id="acc-careeronestop">
               <div class="acc-body-inner">
-                <p>Select the skills you already have — including transferable skills from athletics — and the Skills Matcher returns careers that align with your profile. Helpful for athletes who know what they are good at but do not know what job titles match.</p>
+                <p>Select the skills you already have. Including transferable skills from athletics. And the Skills Matcher returns careers that align with your profile. Helpful for athletes who know what they are good at but do not know what job titles match.</p>
                 <div class="link-grid">
                   <a href="https://www.careeronestop.org/Toolkit/Skills/skills-matcher.aspx" target="_blank" rel="noopener" class="link-card">
                     <span class="link-card-label">U.S. Dept of Labor — Free</span>
@@ -417,11 +425,35 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
                   <a href="https://www.bls.gov/ooh/" target="_blank" rel="noopener" class="link-card">
                     <span class="link-card-label">U.S. Bureau of Labor Statistics — Free</span>
                     <span class="link-card-title">Occupational Outlook Handbook</span>
-                    <span class="link-card-desc">Salary ranges, job growth projections, what the work actually requires — for every major career.</span>
+                    <span class="link-card-desc">Salary ranges, job growth projections, what the work actually requires. For every major career.</span>
                     <span class="link-card-arrow">↗ bls.gov/ooh</span>
                   </a>
                 </div>
                 <p class="source-note">Sources: <a href="https://www.careeronestop.org" target="_blank" rel="noopener">CareerOneStop.org</a> · <a href="https://www.bls.gov/ooh/" target="_blank" rel="noopener">Bureau of Labor Statistics</a>. Both free U.S. government resources.</p>
+              </div>
+            </div>
+          </div>
+          <div class="cm-card">
+            <button class="acc-toggle" aria-expanded="false" aria-controls="acc-gameplan">
+              <div class="acc-left">
+                <span class="acc-title">GamePlanU</span>
+                <span class="acc-label">Free for athletes. No school required.</span>
+              </div>
+              <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="acc-body" id="acc-gameplan">
+              <div class="acc-body-inner">
+                <p>GamePlanU is the free-access side of Game Plan, a platform built specifically for college athletes navigating life after sport. Sign up with a personal email to access job listings from employers who specifically recruit athletes, plus live Office Hours sessions with career coaches.</p>
+                <p>Some mentorship features require your athletic department to activate access. Check with your career or compliance staff. Game Plan is now part of Bridge Learning and Insights.</p>
+                <div class="link-grid">
+                  <a href="https://www.gameplanuniversity.com/" target="_blank" rel="noopener" class="link-card">
+                    <span class="link-card-label">Game Plan — Free Athlete Access</span>
+                    <span class="link-card-title">GamePlanU</span>
+                    <span class="link-card-desc">Free for current and former college athletes. Job listings, employer network, and live career coaching. Sign up with a personal email.</span>
+                    <span class="link-card-arrow">&#8599; gameplanuniversity.com</span>
+                  </a>
+                </div>
+                <p class="source-note">Source: Game Plan (now part of Bridge Learning and Insights). "GamePlanU." wearegameplan.com. Free public access for athletes. Accessed April 2026. Note: some platform features require your athletic department administrator to activate access.</p>
               </div>
             </div>
           </div>
@@ -441,10 +473,10 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
           <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <div class="sec-acc-body" id="cm-life-body">
-          <p class="cm-sec-p" style="margin-top:12px">This section is not about graduate school — it is about what comes after your athletic participation ends. Whether that was last season or fifteen years ago, whether you need a first career or a second one: career change is not failure. Coming back to this at any point is strength.</p>
+          <p class="cm-sec-p" style="margin-top:12px">This section is not about graduate school. It is about what comes after your athletic participation ends. Whether that was last season or fifteen years ago, whether you need a first career or a second one: career change is not failure. Coming back to this at any point is strength.</p>
           <div class="rule-list">
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>You are not starting over</strong> Every year of athletic experience counts. The discipline, the team experience, the adversity, the commitment — those are credentials. The work is learning to articulate them in terms that employers recognize.</div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The transition is hard — and that is normal</strong> Research is clear: athletes often struggle with identity after sport ends. The structure disappears. The team disappears. The goal disappears. If this describes you right now, you are not broken — you are between chapters. Use the mental health resources on the Resources page alongside these career tools.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The transition is hard. And that is normal</strong> Research is clear: athletes often struggle with identity after sport ends. The structure disappears. The team disappears. The goal disappears. If this describes you right now, you are not broken. You are between chapters. Use the mental health resources on the Resources page alongside these career tools.</div></div>
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Former athletes returning for a career change</strong> If you are years removed from sport and need a new direction, the same tools apply. The O*NET Profiler and My Next Move have no eligibility requirements. They work at any stage of life.</div></div>
           </div>
           <div class="link-grid">
@@ -461,7 +493,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
               <span class="link-card-arrow">↗ grad.ncaa.org</span>
             </a>
           </div>
-          <p class="source-note">Sources: <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a>. Last reviewed April 2026.</p>
+          <p class="source-note">Sources: <a href="https://www.ncaa.org/sports/2021/7/9/preparing-for-your-career.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Preparing for Your Career.&rdquo; NCAA.org</a> &middot; <a href="https://www.grad.ncaa.org" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Graduate School Resources.&rdquo; grad.ncaa.org</a>. Free resources for current and former student-athletes. Accessed April 2026.</p>
         </div>
       </div>
     </div>
@@ -504,7 +536,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
               <span class="link-card-arrow">↗ ncaa.org Membership Directory</span>
             </a>
           </div>
-          <p class="source-note">All links above: Source <a href="https://www.ncaa.org" target="_blank" rel="noopener">NCAA.org</a> — Official NCAA resources. Free and publicly accessible. Last reviewed April 2026.</p>
+          <p class="source-note">All links in this section: <a href="https://www.ncaa.org" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). NCAA.org</a>. Official NCAA resources. Free and publicly accessible without account creation. Includes the <a href="https://www.ncaa.org/sports/2021/5/3/membership-directory.aspx" target="_blank" rel="noopener">NCAA Membership Directory</a> — public federal disclosure data, no account required. Accessed April 2026.</p>
         </div>
       </div>
     </div>
@@ -523,8 +555,8 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
           <p class="cm-sec-p" style="margin-top:12px">Internship experience has a strong correlation to finding employment in a desired career. Athletes face schedule challenges that make traditional internship timelines hard. These resources help navigate that.</p>
           <div class="rule-list">
             <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Talk to your athletic department first</strong> Many schools have career services specifically for athletes, sometimes called an Athletics Career Center or Athletic Academic Center. They can connect you with employers who already value the athlete skill set and understand your schedule.</div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Federal internship and job search tools — free</strong> CareerOneStop (U.S. Dept of Labor) includes job search tools, apprenticeship finders, and local workforce resources — all free, no account required.</div></div>
-            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Off-season is your window</strong> If internship timing conflicts with your season, use the off-season strategically. A part-time or virtual internship during a semester may be possible — ask your academic advisor and compliance office about any restrictions.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Federal internship and job search tools — free</strong> CareerOneStop (U.S. Dept of Labor) includes job search tools, apprenticeship finders, and local workforce resources. All free, no account required.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Off-season is your window</strong> If internship timing conflicts with your season, use the off-season strategically. A part-time or virtual internship during a semester may be possible. Ask your academic advisor and compliance office about any restrictions.</div></div>
           </div>
           <div class="link-grid">
             <a href="https://www.careeronestop.org/JobSearch/FindJobs/find-jobs.aspx" target="_blank" rel="noopener" class="link-card">
@@ -541,7 +573,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
             </a>
           </div>
           <div style="margin-top:20px;padding:16px 20px;background:var(--dark-2);border:1px solid rgba(46,189,142,0.15);border-radius:8px;border-left:3px solid rgba(46,189,142,0.4)">
-            <p style="font-size:13px;color:var(--gray-light);line-height:1.7;margin:0"><strong style="color:var(--gold);font-family:var(--font-display);font-size:14px;letter-spacing:1.5px;display:block;margin-bottom:6px">COMING: CONNECT WITH PEOPLE WILLING TO GIVE THEIR TIME</strong>This space is reserved for a future Community feature — athletes connecting with professionals and former athletes willing to offer informal mentorship, informational interviews, and time. Not LinkedIn. Not Facebook. Something built specifically for this community. Watch this space.</p>
+            <p style="font-size:13px;color:var(--gray-light);line-height:1.7;margin:0"><strong style="color:var(--gold);font-family:var(--font-display);font-size:14px;letter-spacing:1.5px;display:block;margin-bottom:6px">COMING: CONNECT WITH PEOPLE WILLING TO GIVE THEIR TIME</strong>This space is reserved for a future Community feature. Athletes connecting with professionals and former athletes willing to offer informal mentorship, informational interviews, and time. Not LinkedIn. Not Facebook. Something built specifically for this community. Watch this space.</p>
           </div>
           <p class="source-note">Sources: <a href="https://www.careeronestop.org" target="_blank" rel="noopener">CareerOneStop.org</a> · <a href="https://www.apprenticeship.gov" target="_blank" rel="noopener">Apprenticeship.gov</a>. Both U.S. Department of Labor. Free public resources. Last reviewed April 2026.</p>
         </div>

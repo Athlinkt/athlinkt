@@ -52,11 +52,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;d
 .mode-toggle-icon{font-size:14px;line-height:1}
 .mode-toggle-label{font-size:12px;font-family:var(--font-body);font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gray-light);white-space:nowrap}
 .mode-toggle-mobile{display:none;width:100%;justify-content:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(46,189,142,0.15)}
-.nav-has-dropdown{position:relative}
-.nav-star{font-size:8px;color:var(--gold);opacity:0;transition:opacity 0.2s ease;vertical-align:middle;margin-left:3px}
-.nav-has-dropdown>a:hover .nav-star,.nav-has-dropdown:focus-within .nav-star{opacity:1}
-.nav-has-dropdown>a:hover{color:var(--gold)}
-.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding:8px 0;opacity:0;visibility:hidden;transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+
 .nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
 .nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
@@ -79,7 +75,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
 .comm-page{padding-top:64px}
 .comm-hero{min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 48px;position:relative;overflow:hidden}
 .comm-hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(ellipse,rgba(46,189,142,0.06) 0%,transparent 70%);pointer-events:none;z-index:0}
-.comm-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .1s;position:relative;z-index:1}
+.comm-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:16px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .1s;position:relative;z-index:1}
 .comm-h1{font-family:var(--font-display);font-size:clamp(56px,9vw,110px);letter-spacing:4px;line-height:1.0;margin-bottom:24px;opacity:0;animation:fadeUp .8s ease forwards .25s;position:relative;z-index:1}
 .comm-h1 span{color:var(--gold)}
 .comm-quote{font-family:var(--font-elegant);font-style:italic;font-size:clamp(18px,2.5vw,24px);color:var(--gray-light);letter-spacing:1px;line-height:1.6;max-width:700px;margin:0 auto 40px;opacity:0;animation:fadeUp .8s ease forwards .4s;position:relative;z-index:1}
@@ -139,15 +135,22 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
   .nav-dropdown{position:static;transform:none !important;opacity:1;visibility:visible;background:transparent;border:none;box-shadow:none;padding:0 0 8px 16px;pointer-events:auto;display:none;width:100%}
   .nav-has-dropdown.mob-open .nav-dropdown{display:block}
   .nav-dropdown li a{font-size:14px;padding:8px 12px;border-left:none;text-align:left}
-  .nav-star{display:inline-block;opacity:0.5;font-size:9px;transition:transform 0.2s}
-  .nav-has-dropdown.mob-open .nav-star{transform:rotate(90deg);opacity:1}
-  .comm-hero{padding:60px 24px}
+    .nav-has-dropdown.mob-open   .comm-hero{padding:60px 24px}
   .comm-content{padding:48px 24px}
   .comm-cards{grid-template-columns:1fr}
   .beyond-section{padding:60px 24px}
   footer{padding:28px 24px}
   .ticker-item{padding:0 16px}
 }
+
+/* ── NAV DROPDOWN ── */
+.nav-has-dropdown{position:relative}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding-top:8px;padding-bottom:8px;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+.nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto}
+.nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
+.nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
+.nav-dropdown li a:hover::before{content:"✦";font-size:7px;margin-right:6px;color:var(--gold);vertical-align:middle}
+body.light-mode .nav-dropdown{background:var(--dark-2)}
 </style>
 </head>
 <body>
@@ -168,7 +171,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
   <ul class="nav-links" id="navLinks" role="list">
     <li><a href="index.html">Home</a></li>
     <li class="nav-has-dropdown">
-      <a href="nil.html">NIL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="nil.html">NIL</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="nil.html#nil-what">What Is NIL</a></li>
         <li><a href="nil.html#nil-rules">Know the Rules</a></li>
@@ -180,7 +183,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="transfer.html">Transfer Portal <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="transfer.html">Transfer Portal</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="transfer.html#tp-first">Talk to Your Coach First</a></li>
         <li><a href="transfer.html#tp-how">How It Works</a></li>
@@ -192,7 +195,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="career.html">Career Match <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="career.html">Career Match</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="career.html#cm-strengths">Know Your Strengths</a></li>
         <li><a href="career.html#cm-tools">Exploration Tools</a></li>
@@ -201,7 +204,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="resources.html">Resources <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="resources.html">Resources</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="resources.html#res-nil">NIL Resources</a></li>
         <li><a href="resources.html#res-transfer">Transfer Portal</a></li>
@@ -213,7 +216,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="community.html" class="active">Community <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="community.html" class="active">Community</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="#commitment">Our Commitment</a></li>
         <li><a href="#beyond">Beyond the Finish Line</a></li>
@@ -263,17 +266,17 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       <span class="comm-section-label">Our Commitment</span>
       <h2 class="comm-section-h" id="commitment-h">WE ARE <span>BUILDING THIS.</span><br>RIGHT NOW. WITH YOU WATCHING.</h2>
 
-      <p class="comm-p">We want to be direct with you: this community does not fully exist yet. You are here at the beginning — and that is intentional for us to tell you, not something to hide.</p>
+      <p class="comm-p">We want to be direct with you: this community does not fully exist yet. You are here at the beginning. And that is intentional for us to tell you, not something to hide.</p>
 
       <p class="comm-p">No great team walks onto the floor fully formed on day one. A championship is not built in a single practice. Neither is a community worth belonging to. What we are building here requires the kind of investment that cannot be rushed — the same investment every coach makes before a season ever starts, the same discipline every athlete applies before a competition is ever won.</p>
 
-      <p class="comm-p">ATHLINKT's community is being built with that same intention: <strong>with care, with purpose, and with the people it is actually meant to serve at the center of every decision</strong>. That means you. Current athletes mid-season and mid-career. Former athletes who left the sport years ago and are still figuring out what comes next. Coaches who want to stay connected. Families who showed up every single day. The people who competed without the spotlight and without the fanfare — and deserve just as much access to real information and real support.</p>
+      <p class="comm-p">ATHLINKT's community is being built with that same intention: <strong>with care, with purpose, and with the people it is actually meant to serve at the center of every decision</strong>. That means you. Current athletes mid-season and mid-career. Former athletes who left the sport years ago and are still figuring out what comes next. Coaches who want to stay connected. Families who showed up every single day. The people who competed without the spotlight and without the fanfare. And deserve just as much access to real information and real support.</p>
 
       <p class="comm-p">We are not building a platform where your voice disappears into an algorithm. We are not building LinkedIn with a sports filter. We are not building a place where the loudest voice wins. <strong>We are building a space where an athlete from a small DIII school has the same quality of access, the same respect, and the same support as anyone else who ever put on a uniform.</strong></p>
 
-      <p class="comm-p">That takes time to build right. We know that. Every resource on this site, every verified link, every honest explanation of a rule — that is us building. Every piece of feedback that shapes what we build next — that is you building with us. The foundation is being laid now, in public, one practice at a time.</p>
+      <p class="comm-p">That takes time to build right. We know that. Every resource on this site, every verified link, every honest explanation of a rule. That is us building. Every piece of feedback that shapes what we build next. That is you building with us. The foundation is being laid now, in public, one practice at a time.</p>
 
-      <p class="comm-p"><strong>If you have ever been an athlete — at any level, in any sport, in any division, at any point in your life — you belong here.</strong> That is not marketing language. That is the whole point of this.</p>
+      <p class="comm-p"><strong>If you have ever been an athlete. At any level, in any sport, in any division, at any point in your life. You belong here.</strong> That is not marketing language. That is the whole point of this.</p>
 
       <div class="comm-cards">
         <div class="comm-card">
@@ -284,7 +287,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
         <div class="comm-card">
           <div class="comm-card-num">02</div>
           <div class="comm-card-title">BUILT WITH HONESTY</div>
-          <p class="comm-card-p">We cite our sources. We say when something is DI-only. We tell you when a rule is new and still evolving. We do not pretend to have every answer — we show you where to find them from the people who do.</p>
+          <p class="comm-card-p">We cite our sources. We say when something is DI-only. We tell you when a rule is new and still evolving. We do not pretend to have every answer. We show you where to find them from the people who do.</p>
         </div>
         <div class="comm-card">
           <div class="comm-card-num">03</div>
@@ -304,16 +307,17 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
       <span class="beyond-label">Coming Soon</span>
       <h2 class="beyond-h" id="beyond-h">BEYOND THE <span>FINISH LINE</span></h2>
       <p class="beyond-p">Stories from athletes — current and former — about what comes after the sport ends. The transitions, the pivots, the second acts, the quiet victories that never made the scoreboard. This is where those stories live.</p>
-      <p class="beyond-p" style="font-size:14px;color:var(--gray)">We are building this space carefully. When it opens, it will be a place for your voice — not an algorithm's. If you have a story to share when it is ready, <a href="mailto:athlinkt&#64;gmail&#46;com" style="color:var(--gold);text-decoration:none">reach out to us directly</a>.</p>
+      <p class="beyond-p" style="font-size:14px;color:var(--gray)">We are building this space carefully. When it opens, it will be a place for your voice. Not an algorithm's. If you have a story to share when it is ready, <a href="/cdn-cgi/l/email-protection#b8d9ccd0d4d1d6d3cc9e9b8e8c83dfd5d9d1d49e9b8c8e83dbd7d5" style="color:var(--gold);text-decoration:none">reach out to us directly</a>.</p>
       <div class="beyond-placeholder">
         <div class="beyond-placeholder-icon">— · —</div>
-        <p class="beyond-placeholder-text">"The work is not finished when the final whistle blows. It is just beginning."<br><br>This section is under construction. Check back — or <a href="feedback.html">share your story now</a> so it can be among the first when we open.</p>
+        <p class="beyond-placeholder-text">"The work is not finished when the final whistle blows. It is just beginning."<br><br>This section is under construction. Check back, or <a href="feedback.html">share your story now</a> so it can be among the first when we open.</p>
       </div>
     </div>
   </section>
 
 </main>
 
+<div class="disclaimer-bar" role="note" style="background:var(--dark-2);border-bottom:1px solid rgba(46,189,142,0.1);padding:10px 32px;text-align:center;font-size:12px;color:var(--gray)">This page reflects our current commitment. We update it as we build. <strong style="color:var(--gold)">Last reviewed: April 2026</strong></div>
 <footer role="contentinfo">
   <div class="footer-inner">
     <a href="index.html" class="footer-logo" aria-label="ATHLINKT Home">
@@ -333,7 +337,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var navToggle = document.getElementById('navToggle');
 var navLinks = document.getElementById('navLinks');
 function closeNav(){
@@ -414,11 +418,6 @@ var TICKER_NEWS = [
   });
   inner.innerHTML = html;
   bar.classList.add('active');
-  requestAnimationFrame(function(){
-    var speed = Math.max(20, inner.scrollWidth/2/80);
-    inner.style.animationDuration = speed+'s';
-  });
-})();
-</script>
+  requestAnimation
 </body>
 </html>

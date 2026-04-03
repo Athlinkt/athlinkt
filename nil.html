@@ -69,11 +69,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;d
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
 .nav-tagline{display:none}
 /* ── NAV DROPDOWN MENUS ── */
-.nav-has-dropdown{position:relative}
-.nav-star{font-size:8px;color:var(--gold);opacity:0;transition:opacity 0.2s ease;vertical-align:middle;margin-left:3px}
-.nav-has-dropdown>a:hover .nav-star,.nav-has-dropdown:focus-within .nav-star{opacity:1}
-.nav-has-dropdown>a:hover{color:var(--gold)}
-.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding:8px 0;opacity:0;visibility:hidden;transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+
 .nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
 .nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
@@ -82,9 +78,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
   .nav-dropdown{position:static;transform:none !important;opacity:1;visibility:visible;background:transparent;border:none;box-shadow:none;padding:0 0 8px 16px;pointer-events:auto;display:none;width:100%}
   .nav-has-dropdown.mob-open .nav-dropdown{display:block}
   .nav-dropdown li a{font-size:14px;padding:8px 12px;letter-spacing:1px;border-left:none;color:var(--gray-light);text-align:left}
-  .nav-star{display:inline-block;opacity:0.5;font-size:9px;transition:transform 0.2s}
-  .nav-has-dropdown.mob-open .nav-star{transform:rotate(90deg);opacity:1}
-}
+    .nav-has-dropdown.mob-open }
 .nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .mode-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;background:none;border:1px solid rgba(46,189,142,0.3);border-radius:20px;padding:6px 14px;transition:all var(--transition);flex-shrink:0}
 .mode-toggle:hover{border-color:var(--gold)}
@@ -103,7 +97,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 /* HERO */
 .nil-hero{padding:72px 48px 56px;max-width:var(--max);margin:0 auto;position:relative}
 .nil-hero-glow{position:absolute;top:0;left:40%;width:500px;height:400px;background:radial-gradient(ellipse,var(--gold-glow) 0%,transparent 70%);pointer-events:none;z-index:-1}
-.nil-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
+.nil-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:16px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
 .nil-h1{font-family:var(--font-display);font-size:clamp(52px,7vw,96px);letter-spacing:4px;line-height:1;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .25s}
 .nil-h1 span{color:var(--gold)}
 .nil-hero-p{font-size:17px;color:var(--gray-light);font-weight:300;line-height:1.8;max-width:680px;margin-bottom:32px;opacity:0;animation:fadeUp .8s ease forwards .4s}
@@ -397,6 +391,15 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
 @media(max-width:600px){.ticker-label{font-size:10px;padding:0 10px}.ticker-item{padding:10px 20px;font-size:11px}}
 body.light-mode .ticker-bar{background:#0a2419}
 body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0}
+
+/* ── NAV DROPDOWN ── */
+.nav-has-dropdown{position:relative}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding-top:8px;padding-bottom:8px;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+.nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto}
+.nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
+.nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
+.nav-dropdown li a:hover::before{content:"✦";font-size:7px;margin-right:6px;color:var(--gold);vertical-align:middle}
+body.light-mode .nav-dropdown{background:var(--dark-2)}
 </style>
 </head>
 <body class="light-mode">
@@ -419,7 +422,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
   <ul class="nav-links" id="navLinks" role="list">
     <li><a href="index.html">HOME</a></li>
     <li class="nav-has-dropdown">
-      <a href="nil.html" class="active">NIL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="nil.html" class="active">NIL</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="nil.html#nil-what">What Is NIL</a></li>
         <li><a href="nil.html#nil-rules">Know the Rules</a></li>
@@ -431,7 +434,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="transfer.html">TRANSFER PORTAL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="transfer.html">TRANSFER PORTAL</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="transfer.html#tp-first">Talk to Your Coach First</a></li>
         <li><a href="transfer.html#tp-how">How It Works</a></li>
@@ -443,7 +446,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="career.html">CAREER MATCH <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="career.html">CAREER MATCH</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="career.html#cm-strengths">Know Your Strengths</a></li>
         <li><a href="career.html#cm-tools">Exploration Tools</a></li>
@@ -452,7 +455,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="resources.html">RESOURCES <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="resources.html">RESOURCES</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="resources.html#res-nil">NIL Resources</a></li>
         <li><a href="resources.html#res-transfer">Transfer Portal</a></li>
@@ -464,7 +467,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="community.html">COMMUNITY <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="community.html">COMMUNITY</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="community.html#commitment">Our Commitment</a></li>
         <li><a href="community.html#beyond">Beyond the Finish Line</a></li>
@@ -499,7 +502,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
 
 <!-- DISCLAIMER BAR -->
 <div class="disclaimer-bar" role="note">
-  For educational purposes only. Not legal, financial, or compliance advice. Always consult your school's compliance office before signing any NIL agreement. Rules evolve — verify current requirements at <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">ncaa.org</a> and <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener">collegesportscommission.org</a>. &nbsp;·&nbsp; <strong style="color:var(--gold)">Last reviewed: April 2026 (Sections 01–03 updated)</strong>
+  For educational purposes only. Not legal, financial, or compliance advice. Always consult your school's compliance office before signing any NIL agreement. Rules evolve. Verify current requirements at <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">ncaa.org</a> and <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener">collegesportscommission.org</a>. &nbsp;·&nbsp; <strong style="color:var(--gold)">Last reviewed: April 2026 (Sections 01–03 updated)</strong>
 </div>
 
 <main id="main-content" class="nil-page">
@@ -546,7 +549,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <div class="sec-acc-body" id="body-nil-what">
-      <p class="nil-sec-p">NIL stands for Name, Image, and Likeness. It is your legal right to earn money from who you are — your face, your name, your story, your brand — while remaining eligible to compete in college athletics.</p>
+      <p class="nil-sec-p">NIL stands for Name, Image, and Likeness. It is your legal right to earn money from who you are. Your face, your name, your story, your brand. While remaining eligible to compete in college athletics.</p>
       <p class="nil-sec-p">Since July 2021, the NCAA has allowed all college athletes across every division to pursue NIL opportunities. The 2025 House v. NCAA settlement took that further, allowing Division I schools to pay athletes directly for the first time in history.</p>
 
       <div style="margin-top:32px;display:flex;flex-direction:column;gap:10px">
@@ -555,7 +558,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-timeline">
             <div class="acc-left">
               <span class="acc-title">The NIL Timeline</span>
-              <span class="acc-label">2014 to today — how we got here</span>
+              <span class="acc-label">2014 to today. How we got here</span>
             </div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
@@ -569,7 +572,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>June 2025 — House Settlement Approved</strong> U.S. District Judge Claudia Wilken approved the $2.576 billion House v. NCAA settlement, allowing Division I schools to pay athletes directly for the first time. Revenue sharing begins July 1, 2025.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>July 2025 — New Era Begins</strong> Schools can now distribute up to $20.5 million annually in direct payments to athletes. NIL Go (Deloitte) launches as the clearinghouse for all third-party deals over $600. The College Sports Commission becomes the enforcement body.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>October 2025 — Enforcement Expands</strong> The NCAA Division I Board of Directors adopts new reporting amendments extending NIL obligations to all DI athletes, including high school prospects, JUCO transfers, and portal entrants.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>April 1, 2026 — Ghost Transfer Rule (DI)</strong> The NCAA Division I Cabinet adopts emergency legislation for all DI sports. Programs that sign a transfer, add them to the roster, or allow athletic participation without the athlete entering the transfer portal face automatic penalties: head coach suspended for 50% of a season + a fine of 20% of that sport's budget. Effective immediately, retroactive to Feb. 25, 2026. Source: <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener" style="color:var(--gold)">NCAA.org</a>.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>April 1, 2026 — Ghost Transfer Rule (DI)</strong> The NCAA Division I Cabinet adopts emergency legislation for all DI sports. Programs that sign a transfer, add them to the roster, or allow athletic participation without the athlete entering the transfer portal face automatic penalties: head coach suspended for 50% of a season + a fine of 20% of that sport's budget. Effective immediately, retroactive to Feb. 25, 2026. Source: <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener" style="color:var(--gold)">National Collegiate Athletic Association (NCAA). &ldquo;DI Cabinet Adopts Ghost Transfer Rules.&rdquo; NCAA.org, April 1, 2026.</a> Accessed April 2026.</div></div>
               </div>
             </div>
           </div>
@@ -586,15 +589,15 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           <div class="acc-body" id="acc-glossary">
             <div class="acc-body-inner">
               <div class="rule-list">
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL (Name, Image, Likeness)</strong> Your legal right to earn money from your personal identity — your name, face, voice, social media presence, and public persona — for commercial purposes.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL (Name, Image, Likeness)</strong> Your legal right to earn money from your personal identity. Your name, face, voice, social media presence, and public persona. For commercial purposes.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL Deal</strong> Any agreement where you receive compensation (money, products, or services) in exchange for allowing a business or individual to use your name, image, or likeness to promote their goods or services.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL Collective</strong> A third-party organization — typically funded by alumni, donors, and boosters — that pools money and facilitates NIL deals for athletes at a specific school. Collectives operate independently from universities.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Revenue Sharing</strong> Beginning July 1, 2025, Division I schools that opt into the House settlement can pay athletes directly from athletic revenue — up to $20.5 million per school annually in 2025–26.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL Collective</strong> A third-party organization. Typically funded by alumni, donors, and boosters. That pools money and facilitates NIL deals for athletes at a specific school. Collectives operate independently from universities.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Revenue Sharing</strong> Beginning July 1, 2025, Division I schools that opt into the House settlement can pay athletes directly from athletic revenue. Up to $20.5 million per school annually in 2025–26.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL Go</strong> The online clearinghouse portal built by Deloitte and operated by the College Sports Commission (CSC). All DI athletes must report third-party NIL deals of $600 or more through NIL Go within five business days of signing.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>College Sports Commission (CSC)</strong> The independent enforcement body created under the House settlement to oversee NIL compliance, revenue sharing caps, and roster limits. Led by former MLB executive Bryan Seeley.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Valid Business Purpose</strong> A CSC requirement that all NIL deals must be tied to actual commercial activity — promoting a real product or service to the public for profit. The athlete's NIL must be genuinely used in the promotion.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Pay-for-Play</strong> Prohibited under all circumstances. Paying an athlete to attend a specific school, stay at a school, or as a reward for athletic performance. Not the same as legitimate NIL compensation for promotional services.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>CAPS</strong> The Compensation and Administrative Platform System — operated by LBi under CSC oversight — where institutions upload revenue sharing agreements and manage benefits cap reporting.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>CAPS</strong> The Compensation and Administrative Platform System — operated by LBi under CSC oversight. Where institutions upload revenue sharing agreements and manage benefits cap reporting.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Benefits Cap</strong> The ceiling on total revenue sharing and benefits a DI institution can provide to athletes in an academic year. Set at $20.5 million for 2025–26 and will grow by up to 4% annually over ten years.</div></div>
               </div>
             </div>
@@ -622,7 +625,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           <div class="div-label">DI</div>
           <div class="div-name">Division I</div>
           <div class="div-items">
-            <div class="div-item">Revenue sharing active — up to $20.5M per school</div>
+            <div class="div-item">Revenue sharing active. Up to $20.5M per school</div>
             <div class="div-item">All third-party deals $600+ must be reported through NIL Go within 5 business days</div>
             <div class="div-item">Deals reviewed for valid business purpose and market-rate compensation</div>
             <div class="div-item">No verbal or written guarantees of third-party NIL from schools (as of July 1, 2025)</div>
@@ -639,7 +642,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
             <div class="div-item">NIL is permitted — no revenue sharing under the House settlement (DI only)</div>
             <div class="div-item">No NIL Go reporting requirement unless transferring to a DI institution</div>
             <div class="div-item">Must follow state NIL law where your school is located</div>
-            <div class="div-item">Only ~22% of DII schools have a formal NIL policy — check with your compliance office</div>
+            <div class="div-item">Only ~22% of DII schools have a formal NIL policy. Check with your compliance office</div>
             <div class="div-item">Local brand deals, social media, camps and clinics are primary pathways</div>
             <div class="div-item">Pay-for-play and recruiting inducements remain prohibited</div>
           </div>
@@ -648,11 +651,11 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           <div class="div-label">DIII</div>
           <div class="div-name">Division III</div>
           <div class="div-items">
-            <div class="div-item">NIL is permitted — no athletic scholarships at DIII level</div>
+            <div class="div-item">NIL is permitted. No athletic scholarships at DIII level</div>
             <div class="div-item">No NIL Go reporting requirement</div>
-            <div class="div-item">State law and school policy govern — no uniform national framework</div>
+            <div class="div-item">State law and school policy govern. No uniform national framework</div>
             <div class="div-item">NIL activity compliant with state law does not affect eligibility</div>
-            <div class="div-item">DIII schools have limited NIL infrastructure — most lack dedicated NIL staff</div>
+            <div class="div-item">DIII schools have limited NIL infrastructure. Most lack dedicated NIL staff</div>
             <div class="div-item">Community partnerships and digital platforms are the main NIL pathways</div>
           </div>
         </div>
@@ -673,8 +676,8 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
               <p>NIL Go is the CSC's online clearinghouse, built with Deloitte, where all DI athletes submit third-party NIL deals of $600 or more for review before or shortly after signing. You get access when you register at your DI institution.</p>
               <div class="rule-list">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Step 1 — Submit the deal</strong> Upload a PDF of the agreement (even unsigned) and provide details about the paying party. If the company isn't in the system, they will receive an invitation to register.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Step 2 — Three-part review</strong> NIL Go evaluates every deal on: (1) Payor Association — the business's relationship to your school; (2) Valid Business Purpose — does the deal promote a real product or service?; (3) Range of Compensation — is the pay fair for your market value?</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Step 3 — Result</strong> Cleared (green) — you are good to proceed. Flagged for Review (yellow) — sent for additional CSC evaluation. Not Cleared (red) — the deal fails the review; you may adjust and resubmit, or request neutral arbitration.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Step 2 — Three-part review</strong> NIL Go evaluates every deal on: (1) Payor Association — the business's relationship to your school; (2) Valid Business Purpose. Does the deal promote a real product or service?; (3) Range of Compensation — is the pay fair for your market value?</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Step 3 — Result</strong> Cleared (green). You are good to proceed. Flagged for Review (yellow) — sent for additional CSC evaluation. Not Cleared (red) — the deal fails the review; you may adjust and resubmit, or request neutral arbitration.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Critical reminder</strong> Do not post about or activate a deal before it is cleared. Promotion before clearance puts your eligibility at risk. Report early, not after the fact.</div></div>
               </div>
               <p style="margin-top:16px">Access NIL Go and learn more at the <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener" style="color:var(--gold)">College Sports Commission NIL page</a>.</p>
@@ -692,9 +695,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           </button>
           <div class="acc-body" id="acc-statelaw">
             <div class="acc-body-inner">
-              <p>Every state has its own NIL laws, and you must follow the law where your school is located — not where you grew up. State laws vary widely on disclosure timelines, prohibited deal categories, agent licensing, and school involvement. NCAA policy applies on top of, not instead of, your state's law.</p>
+              <p>Every state has its own NIL laws, and you must follow the law where your school is located. Not where you grew up. State laws vary widely on disclosure timelines, prohibited deal categories, agent licensing, and school involvement. NCAA policy applies on top of, not instead of, your state's law.</p>
               <p>Common themes across state laws include: mandatory disclosure of contracts to your school, prohibitions on deals involving alcohol, gambling, cannabis, adult entertainment, or tobacco, and requirements that deal terms not conflict with your institution's existing contracts.</p>
-              <p>For a full breakdown of NIL law in your state, visit the <a href="https://www.nilnetwork.com/nil-laws-by-state/" target="_blank" rel="noopener" style="color:var(--gold)">NIL Network State Laws Directory</a>. As of early 2026, no single federal NIL statute has been enacted — Congress is still debating the SAFE Act and SCORE Act — so state-by-state differences remain active.</p>
+              <p>For a full breakdown of NIL law in your state, visit the <a href="https://www.ncsl.org/resources/details/college-athletics-faces-uncertainty-amid-nil-policy-changes" target="_blank" rel="noopener" style="color:var(--gold)">NIL Network State Laws Directory</a>. As of early 2026, no single federal NIL statute has been enacted. Congress is still debating the SAFE Act and SCORE Act. So state-by-state differences remain active.</p>
             </div>
           </div>
         </div>
@@ -709,10 +712,10 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           </button>
           <div class="acc-body" id="acc-ftc">
             <div class="acc-body-inner">
-              <p>The Federal Trade Commission actively monitors NIL-related social media content. If you are being paid to promote a product or brand, you must clearly disclose that relationship in every post. This is federal law — not just a guideline — and violations can result in penalties for both you and the brand.</p>
+              <p>The Federal Trade Commission actively monitors NIL-related social media content. If you are being paid to promote a product or brand, you must clearly disclose that relationship in every post. This is federal law. Not just a guideline. And violations can result in penalties for both you and the brand.</p>
               <div class="rule-list">
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Required disclosures</strong> Use clear labels: #ad, #sponsored, or #partner. The disclosure must be prominent — not buried in a string of hashtags or visible only when expanded.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Applies to all platforms</strong> Instagram, TikTok, X, YouTube, Twitch, podcasts — every format and channel where you promote a brand for compensation requires disclosure.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Required disclosures</strong> Use clear labels: #ad, #sponsored, or #partner. The disclosure must be prominent. Not buried in a string of hashtags or visible only when expanded.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Applies to all platforms</strong> Instagram, TikTok, X, YouTube, Twitch, podcasts. Every format and channel where you promote a brand for compensation requires disclosure.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your NIL contract should include this</strong> Any reputable brand contract will have an FTC compliance clause requiring you to disclose. If it doesn't, add it before signing.</div></div>
               </div>
             </div>
@@ -722,9 +725,15 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       </div>
 
       <div style="margin-top:28px">
-        <p class="nil-sec-p" style="font-size:14px">Official sources: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Page</a> · <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener" style="color:var(--gold)">College Sports Commission</a> · <a href="https://sportsepreneur.com/nil-rules-athletes-parents-coaches/" target="_blank" rel="noopener" style="color:var(--gold)">NIL Rules 2026 Guide (updated March 2026)</a></p>
+        <p class="nil-sec-p" style="font-size:14px">Official sources: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">National Collegiate Athletic Association (NCAA). &ldquo;Name, Image and Likeness.&rdquo; NCAA.org</a> &middot; <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener" style="color:var(--gold)">College Sports Commission. &ldquo;NIL.&rdquo; collegesportscommission.org</a> · <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">NIL Rules 2026 Guide (updated March 2026)</a></p>
       </div>
-      </div><!-- end sec-acc-body -->
+      
+            <div style="margin-top:16px;padding:16px 18px;background:var(--dark-3);border-radius:var(--radius);border:1px solid rgba(46,189,142,0.15)">
+              <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px">KNOW YOUR SCHOOL&#39;S NUMBERS</p>
+              <p style="font-size:13px;color:var(--gray-light);line-height:1.7;margin-bottom:10px">The Equity in Athletics Disclosure Act (EADA) requires every college receiving federal financial aid to publicly report athletics budgets, participation numbers, scholarships, and coach salaries by sport and gender. It is public federal data. You have a right to see it.</p>
+              <a href="https://ope.ed.gov/athletics/" target="_blank" rel="noopener" style="color:var(--gold);font-size:13px;font-weight:600;text-decoration:none">Look up your school at ope.ed.gov/athletics &#8599;</a>
+              <p class="source-note" style="margin-top:8px">Source: U.S. Department of Education, Office of Postsecondary Education. "Equity in Athletics Disclosure Act (EADA)." ope.ed.gov/athletics. Federal public resource, no account required. Accessed April 2026.</p>
+            </div></div><!-- end sec-acc-body -->
   </div></div>
 
   <!-- ══ SECTION 3: YOUR MONEY ══ -->
@@ -737,13 +746,13 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <div class="sec-acc-body" id="body-nil-money">
-      <p class="nil-sec-p">Every college athlete — regardless of division, sport, or school size — has access to at least one of these three compensation sources. What's available to you depends on your division. Know what applies to your situation.</p>
+      <p class="nil-sec-p">Every college athlete. Regardless of division, sport, or school size — has access to at least one of these three compensation sources. What's available to you depends on your division. Know what applies to your situation.</p>
 
       <div class="pillar-grid">
         <div class="pillar">
           <div class="pillar-num">01</div>
           <div class="pillar-title">ATHLETIC AID</div>
-          <p class="pillar-p"><strong style="color:var(--white)">DI & DII:</strong> Athletic scholarships covering tuition, room and board, books, and related expenses — full or partial depending on sport and school. Under the House settlement, athletes on financial aid cannot have that aid reduced due to roster limit changes.<br><br><strong style="color:var(--white)">DIII:</strong> No athletic scholarships — but need-based financial aid and merit scholarships are available and often substantial at private DIII schools.<br><br><strong style="color:var(--white)">NAIA:</strong> Athletic aid available at DI and DII NAIA levels — governed by the institution, not a central body.<br><br><strong style="color:var(--white)">JUCO:</strong> Athletic scholarships available — varies by school and sport.</p>
+          <p class="pillar-p"><strong style="color:var(--white)">DI & DII:</strong> Athletic scholarships covering tuition, room and board, books, and related expenses — full or partial depending on sport and school. Under the House settlement, athletes on financial aid cannot have that aid reduced due to roster limit changes.<br><br><strong style="color:var(--white)">DIII:</strong> No athletic scholarships. But need-based financial aid and merit scholarships are available and often substantial at private DIII schools.<br><br><strong style="color:var(--white)">NAIA:</strong> Athletic aid available at DI and DII NAIA levels — governed by the institution, not a central body.<br><br><strong style="color:var(--white)">JUCO:</strong> Athletic scholarships available — varies by school and sport.</p>
         </div>
         <div class="pillar">
           <div class="pillar-num">02</div>
@@ -753,7 +762,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
         <div class="pillar">
           <div class="pillar-num">03</div>
           <div class="pillar-title">THIRD-PARTY NIL DEALS</div>
-          <p class="pillar-p"><strong style="color:var(--white)">Every division. Every sport. Every athlete.</strong> Endorsements, appearances, social media campaigns, camps and clinics, merchandise, licensing — arranged with brands, local businesses, collectives, or individual sponsors.<br><br><strong style="color:var(--white)">DI:</strong> Deals of $600+ must be reported through NIL Go within 5 business days.<br><br><strong style="color:var(--white)">DII & DIII:</strong> Follow your state's NIL law and your school's policy — no NIL Go requirement unless transferring to DI.<br><br><strong style="color:var(--white)">NAIA:</strong> Follow NAIA framework and your school's institutional policy.<br><br>You don't need to be at a Power 4 school to earn NIL. Athletes at every level are making it work.</p>
+          <p class="pillar-p"><strong style="color:var(--white)">Every division. Every sport. Every athlete.</strong> Endorsements, appearances, social media campaigns, camps and clinics, merchandise, licensing — arranged with brands, local businesses, collectives, or individual sponsors.<br><br><strong style="color:var(--white)">DI:</strong> Deals of $600+ must be reported through NIL Go within 5 business days.<br><br><strong style="color:var(--white)">DII & DIII:</strong> Follow your state's NIL law and your school's policy. No NIL Go requirement unless transferring to DI.<br><br><strong style="color:var(--white)">NAIA:</strong> Follow NAIA framework and your school's institutional policy.<br><br>You don't need to be at a Power 4 school to earn NIL. Athletes at every level are making it work.</p>
         </div>
       </div>
 
@@ -769,11 +778,11 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           </button>
           <div class="acc-body" id="acc-collectives">
             <div class="acc-body-inner">
-              <p>NIL collectives are third-party organizations — typically funded by alumni, fans, and donors — that pool money and arrange paid opportunities for athletes at specific schools. They operate independently from universities and have played a major role since 2021.</p>
+              <p>NIL collectives are third-party organizations. Typically funded by alumni, fans, and donors. That pool money and arrange paid opportunities for athletes at specific schools. They operate independently from universities and have played a major role since 2021.</p>
               <p>With the arrival of direct revenue sharing in 2025, the landscape for collectives has shifted significantly. Schools are now competing directly for that fundraising attention, and many donor contributions that previously flowed to collectives are being redirected to help schools meet their revenue sharing obligations.</p>
-              <p>Critically, Deloitte data shared with athletic directors shows that approximately 70% of the payment structures common in pre-2025 collectives — essentially pay-for-attendance arrangements — would fail the CSC's valid business purpose review today. Collectives must now structure deals around real commercial deliverables: appearances, promotions, social media campaigns, autograph signings with a genuine promotional purpose.</p>
+              <p>Critically, Deloitte data shared with athletic directors shows that approximately 70% of the payment structures common in pre-2025 collectives. Essentially pay-for-attendance arrangements — would fail the CSC's valid business purpose review today. Collectives must now structure deals around real commercial deliverables: appearances, promotions, social media campaigns, autograph signings with a genuine promotional purpose.</p>
               <p>Collectives are not going away. Athletes at participating programs can still draw from all three compensation sources simultaneously. However, the deals must be structured correctly and submitted through NIL Go for review.</p>
-              <p>To find your school's collective or explore options: <a href="https://businessofcollegesports.com/tracker-university-specific-nil-collectives/" target="_blank" rel="noopener" style="color:var(--gold)">Business of College Sports Collective Tracker</a> · <a href="https://nil-ncaa.com/collectives/" target="_blank" rel="noopener" style="color:var(--gold)">NIL-NCAA Collectives Overview</a></p>
+              <p>To find your school's collective or explore options: <a href="https://businessofcollegesports.com/tracker-university-specific-nil-collectives/" target="_blank" rel="noopener" style="color:var(--gold)">Business of College Sports Collective Tracker</a> · <a href="https://www.collegesportscommission.org/nil/" target="_blank" rel="noopener" style="color:var(--gold)">NIL-NCAA Collectives Overview</a></p>
             </div>
           </div>
         </div>
@@ -788,14 +797,14 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           </button>
           <div class="acc-body" id="acc-taxes">
             <div class="acc-body-inner">
-              <p>All NIL compensation — whether from third-party deals, collectives, or school revenue sharing — is taxable income. This includes payments in cash and non-cash benefits such as free products, gift cards, housing subsidies, or car leases above fair market value.</p>
+              <p>All NIL compensation. Whether from third-party deals, collectives, or school revenue sharing — is taxable income. This includes payments in cash and non-cash benefits such as free products, gift cards, housing subsidies, or car leases above fair market value.</p>
               <div class="rule-list">
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>1099 forms</strong> If a company or collective pays you $600 or more in a tax year, they are required to issue a 1099 form. No taxes are withheld from these payments — you are responsible for paying them yourself.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>1099 forms</strong> If a company or collective pays you $600 or more in a tax year, they are required to issue a 1099 form. No taxes are withheld from these payments. You are responsible for paying them yourself.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Set aside 20–30%</strong> A general guideline is to set aside 20–30% of NIL income for federal and state taxes. The exact amount depends on your total income and tax situation.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Business expenses may be deductible</strong> Equipment, software, travel required for NIL work, and professional service fees may be deductible. Keep all receipts and records.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Consult a professional</strong> NIL tax situations are genuinely complex. Use the NIL Assist platform to find vetted tax advisors experienced with athlete income.</div></div>
               </div>
-              <p style="margin-top:16px">Tax education resources: <a href="https://nilassist.ncaa.org/education/" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Assist Education Library</a></p>
+              <p class="source-note" style="margin-top:16px">Tax education: <a href="https://nilassist.ncaa.org/education/" target="_blank" rel="noopener" style="color:var(--gold)">National Collegiate Athletic Association — NIL Assist. &ldquo;Education Library.&rdquo; nilassist.ncaa.org</a>. Free resource for enrolled DI athletes. Accessed April 2026.</p>
             </div>
           </div>
         </div>
@@ -810,16 +819,16 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           </button>
           <div class="acc-body" id="acc-equity">
             <div class="acc-body-inner">
-              <p>The intersection of NIL and Title IX is one of the most active and unresolved legal areas in college sports right now. Every athlete — regardless of gender — should understand where things stand.</p>
+              <p>The intersection of NIL and Title IX is one of the most active and unresolved legal areas in college sports right now. Every athlete. Regardless of gender — should understand where things stand.</p>
               <div class="rule-list">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The gap is real</strong> As of 2024, data shared by schools showed male athletes out-earning female athletes $92 million to $19 million in NIL compensation. Over 60% of NIL deals flow to football, men's basketball, and baseball.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Biden guidance — January 2025</strong> The U.S. Department of Education's Office for Civil Rights issued guidance stating that school revenue sharing constitutes "athletic financial assistance" and must comply with Title IX's equal opportunity requirements.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Trump administration rescinded that guidance — February 2025</strong> The current administration reversed the Biden guidance, stating Title IX does not require proportional distribution of NIL revenue between male and female athletes.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>House settlement appeal pending</strong> A group of female student-athletes appealed the House v. NCAA settlement to the 9th Circuit, arguing the back-pay formula pays male athletes approximately 90% more than female athletes — an unlawful gender disparity. The appeal is pending.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Third-party NIL is different</strong> Title IX applies to institutions receiving federal funding — not to independent brands, collectives, or third parties negotiating directly with athletes. The commercial marketplace is driven by brand value, not school policy.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What this means for you</strong> The commercial NIL market is real for every sport. Women's basketball, gymnastics, and volleyball athletes are among the highest individual NIL earners in college sports. Your earning potential is not limited by the institutional gap — build your brand and access the marketplace directly.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>House settlement appeal pending</strong> A group of female student-athletes appealed the House v. NCAA settlement to the 9th Circuit, arguing the back-pay formula pays male athletes approximately 90% more than female athletes. An unlawful gender disparity. The appeal is pending.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Third-party NIL is different</strong> Title IX applies to institutions receiving federal funding. Not to independent brands, collectives, or third parties negotiating directly with athletes. The commercial marketplace is driven by brand value, not school policy.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What this means for you</strong> The commercial NIL market is real for every sport. Women's basketball, gymnastics, and volleyball athletes are among the highest individual NIL earners in college sports. Your earning potential is not limited by the institutional gap. Build your brand and access the marketplace directly.</div></div>
               </div>
-              <p style="margin-top:16px">Resources: <a href="https://titleix.gov" target="_blank" rel="noopener" style="color:var(--gold)">TitleIX.gov</a> · <a href="https://www.ncaa.org/sports/2014/10/6/title-ix-resources.aspx" target="_blank" rel="noopener" style="color:var(--gold)">NCAA Title IX Resources</a> · <a href="https://opendorse.com" target="_blank" rel="noopener" style="color:var(--gold)">Opendorse marketplace</a></p>
+              <p style="margin-top:16px">Resources: <a href="https://titleix.gov" target="_blank" rel="noopener" style="color:var(--gold)">U.S. Department of Education. &ldquo;Title IX.&rdquo; TitleIX.gov</a> &middot; <a href="https://www.ncaa.org/sports/2014/10/6/title-ix-resources.aspx" target="_blank" rel="noopener" style="color:var(--gold)">National Collegiate Athletic Association (NCAA). &ldquo;Title IX Resources.&rdquo; NCAA.org</a> &middot; <a href="https://opendorse.com" target="_blank" rel="noopener" style="color:var(--gold)">Opendorse Marketplace. opendorse.com</a> <em style="font-size:10px;color:var(--gray)">(Commercial platform — widely used in college athletics for NIL data and deal tracking. Not a government or nonprofit source. Not affiliated with ATHLINKT. Verify figures independently.)</em>. Accessed April 2026.</p>
             </div>
           </div>
         </div>
@@ -834,14 +843,14 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           </button>
           <div class="acc-body" id="acc-coach-money">
             <div class="acc-body-inner">
-              <p>Coaches advise recruits: know the difference between an NIL evaluation and revenue share — and understand that coaches are talking to other recruits at your position. That money is not there for long. Here is exactly what that means.</p>
+              <p>Coaches advise recruits: know the difference between an NIL evaluation and revenue share. And understand that coaches are talking to other recruits at your position. That money is not there for long. Here is exactly what that means.</p>
               <div class="rule-list">
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL Evaluation — not a contract, not a guarantee</strong> When a coach tells you what you "could earn" in NIL, that is an evaluation — an estimate of your market value based on your position and profile. It is not binding. It is not signed. It carries no legal weight. If it is not documented as a formal signed agreement before you enroll, it does not exist.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Revenue Share — a formal contract from the school</strong> Revenue sharing is a direct payment from the school's athletic department under the House settlement. It must be a signed agreement, uploaded to the CAPS system, and tied to your enrollment and eligibility. This is a real contract with real terms — and the one coaches can actually commit to. Verify at <a href="https://www.collegesportscommission.org/revenue-sharing/" target="_blank" rel="noopener" style="color:var(--gold)">collegesportscommission.org</a>.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The cap is finite — and positions compete for it</strong> Schools distribute their $20.5M cap across every sport and every athlete. At most programs, 85–90% goes to football and men's and women's basketball. Every athlete a coach recruits at your position draws from the same limited pool. Offers are real — but first-come, first-served within a budget that does not expand.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The portal factor</strong> Coaches hold back cap space every year for the transfer portal. The number quoted in October can shrink by February because portal decisions consume budget your offer was drawing from. Revenue-sharing is now part of every recruiting and transfer decision. Additionally, as of April 1, 2026, the NCAA has teeth on ghost transfers — programs that add athletes outside the portal face automatic penalties. The portal is not optional for coaches or athletes. Source: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">ncaa.org</a>.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Repayment clauses — read before you sign</strong> Revenue share and NIL agreements are contracts. Some include repayment clauses if you transfer or are injured. Always ask: what happens to this agreement if I transfer? What if I'm injured and cannot compete? Get those answers in writing. Source: <a href="https://nilassist.ncaa.org/update-heading-to-contracts-best-practices/" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Assist — Contract Best Practices</a>.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The question to ask every coach</strong> "Is what you're describing a revenue share agreement that will be documented and signed before I enroll — or is this an NIL evaluation of what I might earn?" If they cannot answer that clearly, that is your answer. Review contract guidance at <a href="https://nilassist.ncaa.org/navigating-nil-opportunity-contracts/" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Assist</a>.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL Evaluation. Not a contract, not a guarantee</strong> When a coach tells you what you "could earn" in NIL, that is an evaluation. An estimate of your market value based on your position and profile. It is not binding. It is not signed. It carries no legal weight. If it is not documented as a formal signed agreement before you enroll, it does not exist.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Revenue Share. A formal contract from the school</strong> Revenue sharing is a direct payment from the school's athletic department under the House settlement. It must be a signed agreement, uploaded to the CAPS system, and tied to your enrollment and eligibility. This is a real contract with real terms. And the one coaches can actually commit to. Verify at <a href="https://www.collegesportscommission.org/revenue-sharing/" target="_blank" rel="noopener" style="color:var(--gold)">collegesportscommission.org</a>.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The cap is finite. And positions compete for it</strong> Schools distribute their $20.5M cap across every sport and every athlete. At most programs, 85–90% goes to football and men's and women's basketball. Every athlete a coach recruits at your position draws from the same limited pool. Offers are real. But first-come, first-served within a budget that does not expand.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The portal factor</strong> Coaches hold back cap space every year for the transfer portal. The number quoted in October can shrink by February because portal decisions consume budget your offer was drawing from. Revenue-sharing is now part of every recruiting and transfer decision. Additionally, as of April 1, 2026, the NCAA has teeth on ghost transfers — programs that add athletes outside the portal face automatic penalties. The portal is not optional for coaches or athletes. Source: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" style="color:var(--gold)">National Collegiate Athletic Association (NCAA). &ldquo;Name, Image and Likeness.&rdquo; NCAA.org</a>. Accessed April 2026.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Repayment clauses — read before you sign</strong> Revenue share and NIL agreements are contracts. Some include repayment clauses if you transfer or are injured. Always ask: what happens to this agreement if I transfer? What if I'm injured and cannot compete? Get those answers in writing. Source: <a href="https://nilassist.ncaa.org/update-heading-to-contracts-best-practices/" target="_blank" rel="noopener" style="color:var(--gold)">National Collegiate Athletic Association — NIL Assist. &ldquo;Contract Best Practices.&rdquo; nilassist.ncaa.org</a>. Free resource for DI athletes. Accessed April 2026.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The question to ask every coach</strong> "Is what you're describing a revenue share agreement that will be documented and signed before I enroll, or is this an NIL evaluation of what I might earn?" If they cannot answer that clearly, that is your answer. Review contract guidance at <a href="https://nilassist.ncaa.org/navigating-nil-opportunity-contracts/" target="_blank" rel="noopener" style="color:var(--gold)">NCAA NIL Assist</a>.</div></div>
               </div>
             </div>
           </div>
@@ -861,7 +870,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <div class="sec-acc-body" id="body-nil-sports">
-      <p class="nil-sec-p">Every college athlete — at every division — can pursue NIL. Click any sport below to see the NIL landscape, deal types, and resources. Applies to NCAA (DI, DII, DIII), NAIA, and JUCO athletes.</p>
+      <p class="nil-sec-p">Every college athlete. At every division — can pursue NIL. Click any sport below to see the NIL landscape, deal types, and resources. Applies to NCAA (DI, DII, DIII), NAIA, and JUCO athletes.</p>
       <!-- SPORTS LIST — 2 column grid -->
       <div class="sports-list" id="sportsList">
 
@@ -908,7 +917,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 <div class="sport-col-item">Sports nutrition, supplement, and wellness brand partnerships common</div>
                 <div class="sport-col-item">Performance training and equipment deals growing</div>
                 <div class="sport-col-item">Olympic pipeline athletes attract significant brand attention</div>
-                <div class="sport-col-item">Active across all three divisions — large total athlete pool</div>
+                <div class="sport-col-item">Active across all three divisions. Large total athlete pool</div>
               </div>
             </div>
             <div>
@@ -960,7 +969,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
-                <div class="sport-col-item">Growing rapidly in commercial NIL — strong brand alignment with athletic lifestyle</div>
+                <div class="sport-col-item">Growing rapidly in commercial NIL. Strong brand alignment with athletic lifestyle</div>
                 <div class="sport-col-item">Local and regional business partnerships are accessible entry points</div>
                 <div class="sport-col-item">Strong international athlete presence creates global brand appeal</div>
                 <div class="sport-col-item">Sports nutrition, footwear, and apparel are primary deal categories</div>
@@ -1182,7 +1191,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
             <div>
               <div class="sport-col-label">NIL Landscape</div>
               <div class="sport-col-items">
-                <div class="sport-col-item">Women's wrestling held its inaugural NCAA championship in 2025–26 — new visibility driving NIL interest</div>
+                <div class="sport-col-item">Women's wrestling held its inaugural NCAA championship in 2025–26. New visibility driving NIL interest</div>
                 <div class="sport-col-item">Combat sports adjacent brands are active NIL partners</div>
                 <div class="sport-col-item">Strength and conditioning, nutrition, and recovery brands align naturally</div>
                 <div class="sport-col-item">Strong personal brand potential — individual athlete storytelling resonates</div>
@@ -1339,7 +1348,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
         <!-- EMERGING SPORTS -->
         <div class="sport-item" style="border-color:rgba(46,189,142,0.25)">
           <button class="sport-toggle" aria-expanded="false">
-            <div class="sport-left"><div class="sport-icon">🌱</div><div><div class="sport-name">Emerging Sports</div><div class="sport-meta">Flag Football · Triathlon — growing toward full NCAA championship status</div></div></div>
+            <div class="sport-left"><div class="sport-icon">🌱</div><div><div class="sport-name">Emerging Sports</div><div class="sport-meta">Flag Football · Triathlon. Growing toward full NCAA championship status</div></div></div>
             <svg class="sport-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="sport-body">
@@ -1379,7 +1388,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <div class="sec-acc-body" id="body-nil-education">
-      <p class="nil-sec-p">Every athlete has a brand. Not every athlete knows how to protect it. Run through this checklist before engaging any NIL deal — and watch for the red flags.</p>
+      <p class="nil-sec-p">Every athlete has a brand. Not every athlete knows how to protect it. Run through this checklist before engaging any NIL deal. And watch for the red flags.</p>
 
       <div class="nil-section-card" style="margin-bottom:16px">
         <button class="acc-toggle" aria-expanded="false" aria-controls="acc-checklist">
@@ -1395,7 +1404,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
               <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Talk to your compliance office first</strong>Before you sign, before you verbally agree — run it by your school's compliance office. They exist to protect you. This step is not optional for DI athletes.</div></div>
               <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Understand exactly what you are agreeing to</strong>Read the deliverables section completely. How many posts? What type of content? By when? What approvals does the brand require? Vague deliverables create disputes.</div></div>
               <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Confirm it has a valid business purpose (DI)</strong>The brand must offer a real product or service to the public for profit, and your NIL must be genuinely used to promote it. If the deal looks like payment to stay at or go to a school, it will not clear NIL Go.</div></div>
-              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Verify the compensation is market-rate</strong>Research comparable deals using the NCAA NIL Assist Data Dashboard and Opendorse. Compensation well above your market value is a red flag — it may indicate a hidden inducement.</div></div>
+              <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Verify the compensation is market-rate</strong>Research comparable deals using the NCAA NIL Assist Data Dashboard and Opendorse. Compensation well above your market value is a red flag. It may indicate a hidden inducement.</div></div>
               <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Check for conflicts with team or school contracts</strong>Does your school have an exclusive apparel deal? Does your deal involve a competing brand? Does it require using school logos or facilities without prior approval? Flag any of these before signing.</div></div>
               <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Plan for taxes before the money arrives</strong>Set aside 20–30% of your NIL income. A 1099 means no tax was withheld. You will owe it at filing. Don't get caught short.</div></div>
               <div class="check-item"><div class="check-box"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="check-text"><strong>Submit through NIL Go before activating (DI)</strong>Report the deal to NIL Go within five business days of signing. Do not post, appear, or activate any promotion until the deal is cleared. Activation before clearance risks eligibility.</div></div>
@@ -1417,9 +1426,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
         <div class="acc-body" id="acc-redflags">
           <div class="acc-body-inner">
             <div class="checklist">
-              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>Verbal guarantees of NIL money tied to your school choice</strong>If someone is promising you NIL money to attend or stay at a specific school — and there is no real commercial deliverable attached — that is pay-for-play. It is prohibited and will not clear CSC review.</div></div>
-              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>Compensation far above your market value with no clear reason</strong>If a deal pays dramatically more than comparable athletes earn and the justification is vague, that gap will draw scrutiny at NIL Go. High pay is not automatically a problem — but it needs a legitimate explanation.</div></div>
-              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>No defined deliverables in the contract</strong>A contract that pays you but does not specify what you are doing in return is not an NIL deal — it is a payment. The CSC will reject it.</div></div>
+              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>Verbal guarantees of NIL money tied to your school choice</strong>If someone is promising you NIL money to attend or stay at a specific school. And there is no real commercial deliverable attached. That is pay-for-play. It is prohibited and will not clear CSC review.</div></div>
+              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>Compensation far above your market value with no clear reason</strong>If a deal pays dramatically more than comparable athletes earn and the justification is vague, that gap will draw scrutiny at NIL Go. High pay is not automatically a problem. But it needs a legitimate explanation.</div></div>
+              <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>No defined deliverables in the contract</strong>A contract that pays you but does not specify what you are doing in return is not an NIL deal. It is a payment. The CSC will reject it.</div></div>
               <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>Pressure to sign quickly without reviewing the full terms</strong>Legitimate NIL partners give you time to review, consult your compliance office, and have an attorney look at the contract. Anyone rushing you to sign immediately deserves skepticism.</div></div>
               <div class="check-item red-flag"><div class="check-box" style="border-color:rgba(226,75,74,0.4)"></div><div class="check-text"><strong>Exclusivity clauses you do not fully understand</strong>Some contracts restrict you from working with any competing brands for the duration. Know exactly what you are giving up. An overly broad exclusivity clause can block better opportunities down the road.</div></div>
             </div>
@@ -1443,7 +1452,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <div class="sec-acc-body" id="body-nil-agreement">
-      <p class="nil-sec-p">A plain-language educational template showing the core components of an NIL contract. Use this to understand what you should expect to see — and ask about — before you sign anything real.</p>
+      <p class="nil-sec-p">A plain-language educational template showing the core components of an NIL contract. Use this to understand what you should expect to see. And ask about. Before you sign anything real.</p>
 
       <div class="ag-disclaimer">
         <p><strong>Important:</strong> This is an educational reference only. It is not a legal document and does not constitute legal advice. It does not account for your school's specific policies, your state's NIL laws, or current NCAA bylaws. Before signing any NIL contract, always consult your institution's compliance office and consider working with a licensed attorney.</p>
@@ -1555,13 +1564,14 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
         <svg class="sec-acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <div class="sec-acc-body" id="body-nil-support">
-      <p class="nil-sec-p">Every link below has been verified as of March 2026. Start with your school's compliance office — every other resource is a supplement to that conversation, not a replacement for it.</p>
+      <p class="nil-sec-p">Every link below has been verified as of March 2026. Start with your school's compliance office. Every other resource is a supplement to that conversation, not a replacement for it.</p>
+            <p class="source-note" style="margin-top:8px"><em>Commercial platforms noted above (Opendorse, On3 NIL Deal Tracker, NIL Newsstand) are widely used in college athletics for NIL data and deal tracking. They are not government or nonprofit sources and are not affiliated with ATHLINKT. Verify figures independently before relying on them.</em> Accessed April 2026.</p>
 
       <div class="link-grid">
         <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" class="link-card">
           <span class="link-card-label">Official Policy</span>
           <span class="link-card-title">NCAA NIL Main Page</span>
-          <span class="link-card-desc">Official NCAA resource covering what is allowed, reporting requirements, and FAQs for all divisions.</span>
+          <span class="link-card-desc">Official NCAA resource covering what is allowed, reporting requirements, and FAQs for all divisions. Commercial platform — widely used in college athletics for NIL data and deal tracking. Not a government or nonprofit source. Not affiliated with ATHLINKT. Verify figures independently. Commercial platform — widely used in college athletics for NIL data and deal tracking. Not a government or nonprofit source. Not affiliated with ATHLINKT. Verify figures independently. Commercial platform — widely used in college athletics for NIL data and deal tracking. Not a government or nonprofit source. Not affiliated with ATHLINKT. Verify figures independently.</span>
           <span class="link-card-arrow">↗ ncaa.org</span>
         </a>
         <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener" class="link-card">
@@ -1585,19 +1595,19 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
         <a href="https://opendorse.com" target="_blank" rel="noopener" class="link-card">
           <span class="link-card-label">Brand Deals</span>
           <span class="link-card-title">Opendorse Marketplace</span>
-          <span class="link-card-desc">NIL marketplace where athletes connect with brands. Searchable by sport. Open to all divisions.</span>
+          <span class="link-card-desc">NIL marketplace where athletes connect with brands. Searchable by sport. Open to all divisions. Commercial platform — widely used in college athletics for NIL data and deal tracking. Not a government or nonprofit source. Not affiliated with ATHLINKT. Verify figures independently.</span>
           <span class="link-card-arrow">↗ opendorse.com</span>
         </a>
         <a href="https://www.on3.com/nil/deals/" target="_blank" rel="noopener" class="link-card">
           <span class="link-card-label">Deal Tracking</span>
           <span class="link-card-title">On3 NIL Deal Tracker</span>
-          <span class="link-card-desc">Live tracker of reported NIL deals across all NCAA divisions, sports, and schools. Updated continuously.</span>
+          <span class="link-card-desc">Live tracker of reported NIL deals across all NCAA divisions, sports, and schools. Updated continuously. Commercial platform — widely used in college athletics for NIL data and deal tracking. Not a government or nonprofit source. Not affiliated with ATHLINKT. Verify figures independently.</span>
           <span class="link-card-arrow">↗ on3.com</span>
         </a>
         <a href="https://www.nilnewsstand.com/nil-deal-tracker" target="_blank" rel="noopener" class="link-card">
           <span class="link-card-label">Deal Tracking</span>
           <span class="link-card-title">NIL Newsstand Deal Tracker</span>
-          <span class="link-card-desc">Weekly updated NIL deal recap covering verified partnerships by athlete, brand, and school.</span>
+          <span class="link-card-desc">Weekly updated NIL deal recap covering verified partnerships by athlete, brand, and school. Commercial platform — widely used in college athletics for NIL data and deal tracking. Not a government or nonprofit source. Not affiliated with ATHLINKT. Verify figures independently.</span>
           <span class="link-card-arrow">↗ nilnewsstand.com</span>
         </a>
         <a href="https://businessofcollegesports.com/tracker-university-specific-nil-collectives/" target="_blank" rel="noopener" class="link-card">
@@ -1606,11 +1616,11 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           <span class="link-card-desc">University-specific NIL collective directory tracking organizations by school. Find your program's collective.</span>
           <span class="link-card-arrow">↗ businessofcollegesports.com</span>
         </a>
-        <a href="https://www.nilnetwork.com/nil-laws-by-state/" target="_blank" rel="noopener" class="link-card">
+        <a href="https://www.ncsl.org/resources/details/college-athletics-faces-uncertainty-amid-nil-policy-changes" target="_blank" rel="noopener" class="link-card">
           <span class="link-card-label">State Laws</span>
           <span class="link-card-title">NIL Laws by State</span>
           <span class="link-card-desc">Full breakdown of active state-level NIL legislation, organized state by state. Know the law where your school is located.</span>
-          <span class="link-card-arrow">↗ nilnetwork.com</span>
+          <span class="link-card-arrow">↗ ncsl.org</span>
         </a>
         <a href="https://nilassist.ncaa.org/student-athletes/" target="_blank" rel="noopener" class="link-card">
           <span class="link-card-label">Service Providers</span>
@@ -1618,22 +1628,22 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           <span class="link-card-desc">Registry of vetted NIL service providers including tax advisors, attorneys, marketing agents, and financial experts.</span>
           <span class="link-card-arrow">↗ nilassist.ncaa.org</span>
         </a>
-        <a href="https://sportsepreneur.com/nil-rules-athletes-parents-coaches/" target="_blank" rel="noopener" class="link-card">
+        <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener" class="link-card">
           <span class="link-card-label">Rules Reference</span>
           <span class="link-card-title">NIL Rules 2026 — Updated Guide</span>
           <span class="link-card-desc">Comprehensive, independently maintained NIL rules guide for athletes, families, and coaches. Updated March 2026.</span>
-          <span class="link-card-arrow">↗ sportsepreneur.com</span>
+          <span class="link-card-arrow">↗ ncaa.org</span>
         </a>
-        <a href="https://www.collegeathletecompensation.com/" target="_blank" rel="noopener" class="link-card">
+        <a href="https://www.collegesportscommission.org/nil/" target="_blank" rel="noopener" class="link-card">
           <span class="link-card-label">House Settlement</span>
           <span class="link-card-title">College Athlete Compensation</span>
           <span class="link-card-desc">Official House v. NCAA settlement site. If you competed in DI from 2016 forward, check your eligibility for back-pay claims.</span>
-          <span class="link-card-arrow">↗ collegeathletecompensation.com</span>
+          <span class="link-card-arrow">↗ collegesportscommission.org</span>
         </a>
       </div>
 
       <div style="margin-top:40px;padding:28px 32px;background:var(--dark-2);border:1px solid rgba(46,189,142,0.15);border-radius:10px;border-left:4px solid var(--gold)">
-        <p style="font-size:14px;color:var(--gray-light);line-height:1.8;font-weight:300;margin:0"><strong style="color:var(--white);display:block;margin-bottom:8px;font-family:var(--font-display);font-size:18px;letter-spacing:1.5px">YOUR FIRST CALL IS TO YOUR COMPLIANCE OFFICE.</strong>Every resource on this page is an educational supplement. The person who knows your school's specific policies, your conference rules, and your state's law is your compliance officer. They are there to help you — not penalize you for asking. Use them before you sign anything, before you verbally commit to anything, and before you activate any deal.</p>
+        <p style="font-size:14px;color:var(--gray-light);line-height:1.8;font-weight:300;margin:0"><strong style="color:var(--white);display:block;margin-bottom:8px;font-family:var(--font-display);font-size:18px;letter-spacing:1.5px">YOUR FIRST CALL IS TO YOUR COMPLIANCE OFFICE.</strong>Every resource on this page is an educational supplement. The person who knows your school's specific policies, your conference rules, and your state's law is your compliance officer. They are there to help you. Not penalize you for asking. Use them before you sign anything, before you verbally commit to anything, and before you activate any deal.</p>
       </div>
       </div><!-- end sec-acc-body -->
   </div></div>

@@ -64,11 +64,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:64px;d
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
 .nav-tagline{display:none}
 /* ── NAV DROPDOWN MENUS ── */
-.nav-has-dropdown{position:relative}
-.nav-star{font-size:8px;color:var(--gold);opacity:0;transition:opacity 0.2s ease;vertical-align:middle;margin-left:3px}
-.nav-has-dropdown>a:hover .nav-star,.nav-has-dropdown:focus-within .nav-star{opacity:1}
-.nav-has-dropdown>a:hover{color:var(--gold)}
-.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding:8px 0;opacity:0;visibility:hidden;transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+
 .nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
 .nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
@@ -77,9 +73,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
   .nav-dropdown{position:static;transform:none !important;opacity:1;visibility:visible;background:transparent;border:none;box-shadow:none;padding:0 0 8px 16px;pointer-events:auto;display:none;width:100%}
   .nav-has-dropdown.mob-open .nav-dropdown{display:block}
   .nav-dropdown li a{font-size:14px;padding:8px 12px;letter-spacing:1px;border-left:none;color:var(--gray-light);text-align:left}
-  .nav-star{display:inline-block;opacity:0.5;font-size:9px;transition:transform 0.2s}
-  .nav-has-dropdown.mob-open .nav-star{transform:rotate(90deg);opacity:1}
-}
+    .nav-has-dropdown.mob-open }
 .nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .mode-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;background:none;border:1px solid rgba(46,189,142,0.3);border-radius:20px;padding:6px 14px;transition:all var(--transition);flex-shrink:0}
 .mode-toggle:hover{border-color:var(--gold)}
@@ -98,7 +92,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 /* HERO */
 .res-hero{padding:72px 48px 56px;max-width:var(--max);margin:0 auto;position:relative}
 .res-hero-glow{position:absolute;top:0;left:40%;width:500px;height:400px;background:radial-gradient(ellipse,var(--gold-glow) 0%,transparent 70%);pointer-events:none;z-index:-1}
-.res-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:14px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
+.res-eyebrow{font-family:var(--font-elegant);font-style:italic;font-size:16px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:12px;opacity:0;animation:fadeUp .8s ease forwards .1s}
 .res-h1{font-family:var(--font-display);font-size:clamp(52px,7vw,96px);letter-spacing:4px;line-height:1;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .25s}
 .res-h1 span{color:var(--gold)}
 .res-hero-p{font-size:17px;color:var(--gray-light);font-weight:300;line-height:1.8;max-width:680px;margin-bottom:32px;opacity:0;animation:fadeUp .8s ease forwards .4s}
@@ -228,6 +222,15 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
 .nil-grid-cell .res-sec{padding:36px 32px !important;width:100% !important;box-sizing:border-box !important;position:static !important;z-index:auto !important}
 .nil-grid-cell .res-sec-inner{max-width:100% !important}
 @media(max-width:900px){.nil-sections-grid{grid-template-columns:1fr !important}.nil-grid-cell,.nil-grid-cell:nth-child(odd),.nil-grid-cell:nth-child(even){grid-column:1 !important;border-right:none}.nil-grid-cell{border-bottom:1px solid rgba(46,189,142,0.08)}}
+
+/* ── NAV DROPDOWN ── */
+.nav-has-dropdown{position:relative}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding-top:8px;padding-bottom:8px;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+.nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto}
+.nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
+.nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
+.nav-dropdown li a:hover::before{content:"✦";font-size:7px;margin-right:6px;color:var(--gold);vertical-align:middle}
+body.light-mode .nav-dropdown{background:var(--dark-2)}
 </style>
 </head>
 <body class="light-mode">
@@ -250,7 +253,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
   <ul class="nav-links" id="navLinks" role="list">
     <li><a href="index.html">HOME</a></li>
     <li class="nav-has-dropdown">
-      <a href="nil.html">NIL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="nil.html">NIL</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="nil.html#nil-what">What Is NIL</a></li>
         <li><a href="nil.html#nil-rules">Know the Rules</a></li>
@@ -262,7 +265,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="transfer.html">TRANSFER PORTAL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="transfer.html">TRANSFER PORTAL</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="transfer.html#tp-first">Talk to Your Coach First</a></li>
         <li><a href="transfer.html#tp-how">How It Works</a></li>
@@ -274,7 +277,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="career.html">CAREER MATCH <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="career.html">CAREER MATCH</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="career.html#cm-strengths">Know Your Strengths</a></li>
         <li><a href="career.html#cm-tools">Exploration Tools</a></li>
@@ -283,7 +286,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="resources.html" class="active">RESOURCES <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="resources.html" class="active">RESOURCES</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="resources.html#res-nil">NIL Resources</a></li>
         <li><a href="resources.html#res-transfer">Transfer Portal</a></li>
@@ -295,7 +298,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="community.html">COMMUNITY <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="community.html">COMMUNITY</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="community.html#commitment">Our Commitment</a></li>
         <li><a href="community.html#beyond">Beyond the Finish Line</a></li>
@@ -340,7 +343,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
     <div class="res-hero-glow" aria-hidden="true"></div>
     <span class="res-eyebrow">Verified · Free · Built for Athletes</span>
     <h1 class="res-h1">RESOURCE <span>LIBRARY</span></h1>
-    <p class="res-hero-p">Every resource here links directly to a verified government, NCAA, or nonprofit source. Nothing paid. Nothing promotional. Everything an athlete actually needs — in one place.</p>
+    <p class="res-hero-p">Every resource here links directly to a verified government, NCAA, or nonprofit source. Nothing paid. Nothing promotional. Everything an athlete actually needs. In one place.</p>
     <div class="res-hero-tags">
       <span class="res-tag">All Divisions</span>
       <span class="res-tag">All Sports</span>
@@ -376,7 +379,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-nil-official">
-            <div class="acc-left"><span class="acc-title">Official NCAA & Governing Body Sources</span><span class="acc-label">The source of truth — start here</span></div>
+            <div class="acc-left"><span class="acc-title">Official NCAA & Governing Body Sources</span><span class="acc-label">The source of truth. Start here</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-nil-official">
@@ -397,18 +400,22 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 <a href="https://www.naia.org/student-athlete-services/nil/index" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">NAIA</span>
                   <span class="link-card-title">NAIA NIL Framework</span>
-                  <span class="link-card-desc">NIL guidance specific to NAIA athletes — separate from NCAA rules.</span>
+                  <span class="link-card-desc">NIL guidance specific to NAIA athletes. Separate from NCAA rules.</span>
                   <span class="link-card-arrow">↗ naia.org</span>
                 </a>
-                <a href="https://nilgo.com" target="_blank" rel="noopener" class="link-card">
+                <a href="https://www.collegesportscommission.org/nil/" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">Deloitte / CSC</span>
                   <span class="link-card-title">NIL Go Clearinghouse</span>
                   <span class="link-card-desc">Required reporting portal for all DI athletes with third-party NIL deals over $600.</span>
-                  <span class="link-card-arrow">↗ nilgo.com</span>
+                  <span class="link-card-arrow">↗ collegesportscommission.org</span>
                 </a>
               </div>
             </div>
-          </div>
+          
+          <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Name, Image and Likeness.&rdquo; NCAA.org</a> &middot; <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener">College Sports Commission. &ldquo;NIL.&rdquo; collegesportscommission.org</a>. Free public resources. Accessed April 2026.</p>
+        
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Name, Image and Likeness.&rdquo; NCAA.org</a> &middot; <a href="https://www.collegesportscommission.org/nil" target="_blank" rel="noopener">College Sports Commission. &ldquo;NIL.&rdquo; collegesportscommission.org</a>. Free public resources. Accessed April 2026.</p>
+      </div>
         </div>
 
         <div class="res-section-card">
@@ -418,12 +425,12 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           </button>
           <div class="acc-body" id="acc-nil-state">
             <div class="acc-body-inner">
-              <p>State NIL laws vary significantly. Some states provide broader rights than the NCAA framework. Always know what your state permits — it may give you more options than the NCAA minimum.</p>
+              <p>State NIL laws vary significantly. Some states provide broader rights than the NCAA framework. Always know what your state permits. It may give you more options than the NCAA minimum.</p>
               <div class="link-grid">
-                <a href="https://www.ncsl.org/education/name-image-and-likeness-state-laws" target="_blank" rel="noopener" class="link-card">
+                <a href="https://www.ncsl.org/resources/details/college-athletics-faces-uncertainty-amid-nil-policy-changes" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">National Conference of State Legislatures</span>
                   <span class="link-card-title">State NIL Law Tracker</span>
-                  <span class="link-card-desc">Comprehensive tracker of every state NIL law — updated regularly.</span>
+                  <span class="link-card-desc">Comprehensive tracker of every state NIL law. Updated regularly.</span>
                   <span class="link-card-arrow">↗ ncsl.org</span>
                 </a>
                 <a href="https://ballotpedia.org/Name,_image,_and_likeness_(NIL)_legislation" target="_blank" rel="noopener" class="link-card">
@@ -434,7 +441,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;NIL State Laws.&rdquo; NCAA.org</a> &middot; <a href="https://nilassist.ncaa.org" target="_blank" rel="noopener">NCAA NIL Assist. nilassist.ncaa.org</a>. Accessed April 2026.</p>
+      </div>
         </div>
 
         <div class="res-section-card">
@@ -447,7 +456,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
               <div class="rule-list" style="margin-bottom:16px">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL (Name, Image, Likeness)</strong> Money earned from third-party deals — brands, endorsements, social media, appearances. Arranged between you and outside companies. Every division, every sport.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Revenue Sharing</strong> Direct payment from the school's athletic department under the House v. NCAA settlement. DI only. Must be a signed contract uploaded to CAPS within 5 business days. Up to $20.5M per school annually in 2025–26.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>An NIL evaluation is not a contract</strong> When a coach tells you what you "could earn," that is an estimate — not a signed agreement, not legally binding. Always ask: is this a signed revenue share agreement or an NIL evaluation?</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>An NIL evaluation is not a contract</strong> When a coach tells you what you "could earn," that is an estimate. Not a signed agreement, not legally binding. Always ask: is this a signed revenue share agreement or an NIL evaluation?</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Read repayment clauses</strong> Some revenue share agreements require repayment if you transfer or are injured. Always ask before signing what happens if your situation changes.</div></div>
               </div>
               <div class="link-grid">
@@ -477,7 +486,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.collegesportscommission.org/revenue-sharing/" target="_blank" rel="noopener">College Sports Commission. &ldquo;Revenue Sharing.&rdquo; collegesportscommission.org</a> &middot; <a href="https://nilassist.ncaa.org/update-heading-to-contracts-best-practices/" target="_blank" rel="noopener">NCAA NIL Assist. &ldquo;Contract Best Practices.&rdquo; nilassist.ncaa.org</a>. Free public resources. Accessed April 2026.</p>
+      </div>
         </div>
 
         <div class="res-section-card">
@@ -495,7 +506,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.ncaa.org/sports/2021/7/9/name-image-likeness.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Name, Image and Likeness.&rdquo; NCAA.org</a>. Full NIL Resource Hub available at nil.html on this site. Accessed April 2026.</p>
+      </div>
         </div>
       </div>
     </div>
@@ -543,7 +556,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Want to Transfer?&rdquo; NCAA.org</a> &middot; <a href="https://web3.ncaa.org/transfer/service" target="_blank" rel="noopener">NCAA Transfer Eligibility Center. web3.ncaa.org</a>. Free public resources. Accessed April 2026.</p>
+      </div>
         </div>
 
         <div class="res-section-card">
@@ -556,8 +571,8 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
               <p>Transfer windows are sport-specific and change annually. Always verify current windows directly with the NCAA before making any decisions.</p>
               <div class="rule-list">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Football</strong> Winter window: Dec 9 – Jan 2. Spring window: May 1–15. Players have one free transfer with immediate eligibility.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Men's & Women's Basketball</strong> Spring window: April 1 – May 1. All other sports follow general windows — verify at ncaa.org for current year dates.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>All Other Sports</strong> One-time transfer rule applies — athletes may transfer once and receive immediate eligibility without a waiver. Verify sport-specific windows at ncaa.org.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Men's & Women's Basketball</strong> Spring window: April 1 – May 1. All other sports follow general windows. Verify at ncaa.org for current year dates.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>All Other Sports</strong> One-time transfer rule applies. Athletes may transfer once and receive immediate eligibility without a waiver. Verify sport-specific windows at ncaa.org.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Important</strong> Entering the portal does not require you to transfer. However, once entered, your current school may revoke athletic aid. Know your situation before you enter.</div></div>
               </div>
               <div style="margin-top:16px">
@@ -569,13 +584,15 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.ncaa.org/sports/2015/2/13/want-to-transfer.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Transfer Portal Windows by Sport.&rdquo; NCAA.org</a>. Updated January 2026 NCAA Convention. Accessed April 2026.</p>
+      </div>
         </div>
       </div>
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-ghost-transfer">
-            <div class="acc-left"><span class="acc-title">Ghost Transfer Rule — April 2026 (DI Only)</span><span class="acc-label">New enforcement with automatic penalties — effective now</span></div>
+            <div class="acc-left"><span class="acc-title">Ghost Transfer Rule — April 2026 (DI Only)</span><span class="acc-label">New enforcement with automatic penalties. Effective now</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-ghost-transfer">
@@ -584,8 +601,8 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What it is</strong> The NCAA DI Cabinet adopted emergency legislation on April 1, 2026 for all Division I sports. A "ghost transfer" or "blind transfer" is when an athlete leaves their school and joins another without entering the transfer portal. This is now explicitly penalized.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Automatic penalties for programs</strong> If a school signs, adds to the roster, or allows athletic participation by a transfer who did not enter the portal: the head coach is suspended for 50% of the season from all coaching, recruiting, and administrative duties, and the school is fined 20% of that sport's budget. Penalties are automatic — no investigation required to trigger them.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Effective date</strong> Applies to all DI sports, retroactive to February 25, 2026. There is no spring portal window for football in 2026 — the only football portal window was January 2–16, 2026.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What this means for athletes</strong> If you want to transfer at any DI school, you must enter the transfer portal. No coach can add you without it — if they do, they face automatic suspension. This protects your eligibility and puts accountability on programs, not athletes.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>DI only</strong> This rule applies to NCAA Division I only. NAIA and JUCO have separate transfer rules — see their official sites for current transfer policies.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What this means for athletes</strong> If you want to transfer at any DI school, you must enter the transfer portal. No coach can add you without it. If they do, they face automatic suspension. This protects your eligibility and puts accountability on programs, not athletes.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>DI only</strong> This rule applies to NCAA Division I only. NAIA and JUCO have separate transfer rules. See their official sites for current transfer policies.</div></div>
               </div>
               <div class="link-grid">
                 <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener" class="link-card">
@@ -602,7 +619,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.ncaa.org/news/2026/4/1/media-center-di-cabinet-adopts-new-rules-to-address-ghost-transfers-for-all-sports.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;DI Cabinet Adopts Ghost Transfer Rules.&rdquo; NCAA.org, April 1, 2026.</a> Accessed April 2026.</p>
+      </div>
         </div>
 
     </div>
@@ -618,7 +637,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-career-data">
-            <div class="acc-left"><span class="acc-title">Career Data & Exploration Tools</span><span class="acc-label">Real salary data, real career pathways — powered by the U.S. government</span></div>
+            <div class="acc-left"><span class="acc-title">Career Data & Exploration Tools</span><span class="acc-label">Real salary data, real career pathways. Powered by the U.S. government</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-career-data">
@@ -633,7 +652,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 <a href="https://www.bls.gov/ooh/" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">Bureau of Labor Statistics</span>
                   <span class="link-card-title">Occupational Outlook Handbook</span>
-                  <span class="link-card-desc">Real salary data, job demand projections, and what workers actually do — updated annually.</span>
+                  <span class="link-card-desc">Real salary data, job demand projections, and what workers actually do. Updated annually.</span>
                   <span class="link-card-arrow">↗ bls.gov</span>
                 </a>
                 <a href="https://www.careeronestop.org" target="_blank" rel="noopener" class="link-card">
@@ -650,7 +669,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.mynextmove.org" target="_blank" rel="noopener">U.S. Department of Labor. &ldquo;My Next Move.&rdquo; mynextmove.org</a> &middot; <a href="https://www.careeronestop.org" target="_blank" rel="noopener">U.S. Department of Labor. &ldquo;CareerOneStop.&rdquo; careeronestop.org</a> &middot; <a href="https://www.bls.gov/ooh/" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics. &ldquo;Occupational Outlook Handbook.&rdquo; bls.gov</a>. Free U.S. government resources. Accessed April 2026.</p>
+      </div>
         </div>
 
         <div class="res-section-card">
@@ -667,16 +688,16 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                   <span class="link-card-desc">Career resources built specifically for current and former NCAA student-athletes.</span>
                   <span class="link-card-arrow">↗ ncaa.org</span>
                 </a>
-                <a href="https://www.usopa.org" target="_blank" rel="noopener" class="link-card">
+                <a href="https://www.usopc.org/athlete-services/alumni" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">Nonprofit</span>
                   <span class="link-card-title">US Olympic & Paralympic Alumni</span>
                   <span class="link-card-desc">Career transition support for elite athletes. Programs, mentorship, and professional development.</span>
-                  <span class="link-card-arrow">↗ usopa.org</span>
+                  <span class="link-card-arrow">↗ usopc.org</span>
                 </a>
                 <a href="https://www.apprenticeship.gov" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">U.S. Dept of Labor</span>
                   <span class="link-card-title">Apprenticeship.gov</span>
-                  <span class="link-card-desc">Earn while you learn — paid apprenticeship programs across industries. Athletes thrive in structured environments.</span>
+                  <span class="link-card-desc">Earn while you learn. Paid apprenticeship programs across industries. Athletes thrive in structured environments.</span>
                   <span class="link-card-arrow">↗ apprenticeship.gov</span>
                 </a>
                 <a href="https://www.grad.ncaa.org" target="_blank" rel="noopener" class="link-card">
@@ -687,7 +708,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.ncaa.org/sports/2021/7/9/preparing-for-your-career.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Preparing for Your Career.&rdquo; NCAA.org</a> &middot; <a href="https://www.usopc.org/lifeaftersport" target="_blank" rel="noopener">U.S. Olympic and Paralympic Committee. &ldquo;Life After Sport.&rdquo; usopc.org</a>. Free public resources. Accessed April 2026.</p>
+      </div>
         </div>
       </div>
     </div>
@@ -698,7 +721,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
     <div class="res-sec-inner">
       <span class="res-sec-label">Section 04</span>
       <h2 class="res-sec-h" id="mental-h">MENTAL HEALTH <span style="color:var(--gold)">& IDENTITY</span></h2>
-      <p class="res-sec-p">The identity shift when sport ends is real. So is the pressure while you're competing. These resources are built for athletes — not generic wellness content.</p>
+      <p class="res-sec-p">The identity shift when sport ends is real. So is the pressure while you're competing. These resources are built for athletes. Not generic wellness content.</p>
 
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
@@ -719,11 +742,11 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                   <span class="link-card-desc">Mental health resources and support built specifically for student-athletes.</span>
                   <span class="link-card-arrow">↗ ncaa.org</span>
                 </a>
-                <a href="https://www.spsp.org/athlete-mental-health" target="_blank" rel="noopener" class="link-card">
+                <a href="https://www.ncaa.org/sports/2014/10/6/mental-health-resources.aspx" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">Society for Sport & Exercise</span>
                   <span class="link-card-title">Sport Psychology Resources</span>
                   <span class="link-card-desc">Performance psychology, identity transition, and mental performance resources for athletes.</span>
-                  <span class="link-card-arrow">↗ spsp.org</span>
+                  <span class="link-card-arrow">↗ ncaa.org</span>
                 </a>
                 <a href="https://adaa.org/living-with-anxiety/college-students" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">Anxiety & Depression Association</span>
@@ -739,12 +762,14 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.ncaa.org/sports/2014/10/6/mental-health-resources.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Mental Health Resources.&rdquo; NCAA.org</a> &middot; <a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" rel="noopener">U.S. Substance Abuse and Mental Health Services Administration (SAMHSA). &ldquo;National Helpline.&rdquo; samhsa.gov</a>. Free public resources. Accessed April 2026.</p>
+      </div>
         </div>
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-mental-eating">
-            <div class="acc-left"><span class="acc-title">Eating Disorders & Body Image</span><span class="acc-label">Athletes face elevated risk — real support resources</span></div>
+            <div class="acc-left"><span class="acc-title">Eating Disorders & Body Image</span><span class="acc-label">Athletes face elevated risk. Real support resources</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-mental-eating">
@@ -764,7 +789,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.allianceforeatingdisorders.com/find-a-provider/" target="_blank" rel="noopener">Alliance for Eating Disorders Awareness. &ldquo;Find a Provider.&rdquo; allianceforeatingdisorders.com</a> &middot; <a href="https://www.ncaa.org/sports/2014/10/6/mental-health-resources.aspx" target="_blank" rel="noopener">NCAA. &ldquo;Mental Health Resources.&rdquo; NCAA.org</a>. Accessed April 2026.</p>
+      </div>
         </div>
       </div>
     </div>
@@ -786,8 +813,8 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
           <div class="acc-body" id="acc-tax">
             <div class="acc-body-inner">
               <div class="rule-list" style="margin-bottom:16px">
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL income is taxable income</strong> Whether you receive cash, products, or services — if it has value, the IRS considers it income. You are responsible for reporting it.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Self-employment tax applies</strong> If you receive NIL payments as an independent contractor (most do), you owe self-employment tax in addition to income tax — currently 15.3% on net earnings.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>NIL income is taxable income</strong> Whether you receive cash, products, or services. If it has value, the IRS considers it income. You are responsible for reporting it.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Self-employment tax applies</strong> If you receive NIL payments as an independent contractor (most do), you owe self-employment tax in addition to income tax. Currently 15.3% on net earnings.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Quarterly estimated payments</strong> If you expect to owe more than $1,000 in taxes, the IRS requires quarterly estimated tax payments. Missing these results in penalties.</div></div>
               </div>
               <div class="link-grid">
@@ -806,7 +833,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 <a href="https://www.irs.gov/payments/pay-as-you-go-so-you-wont-owe" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">IRS.gov</span>
                   <span class="link-card-title">Estimated Tax Payments</span>
-                  <span class="link-card-desc">Quarterly estimated tax payments — when you owe them, how to calculate and pay.</span>
+                  <span class="link-card-desc">Quarterly estimated tax payments. When you owe them, how to calculate and pay.</span>
                   <span class="link-card-arrow">↗ irs.gov</span>
                 </a>
                 <a href="https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free" target="_blank" rel="noopener" class="link-card">
@@ -817,12 +844,14 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.irs.gov/individuals/student-athletes-and-nil" target="_blank" rel="noopener">U.S. Internal Revenue Service (IRS). &ldquo;Student-Athletes and NIL.&rdquo; irs.gov</a> &middot; <a href="https://nilassist.ncaa.org/education/" target="_blank" rel="noopener">NCAA NIL Assist. &ldquo;Tax Education.&rdquo; nilassist.ncaa.org</a>. Free U.S. government and NCAA resources. Accessed April 2026.</p>
+      </div>
         </div>
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-financial-literacy">
-            <div class="acc-left"><span class="acc-title">Financial Literacy Resources</span><span class="acc-label">Budgeting, credit, saving — from verified nonprofit and government sources</span></div>
+            <div class="acc-left"><span class="acc-title">Financial Literacy Resources</span><span class="acc-label">Budgeting, credit, saving. From verified nonprofit and government sources</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-financial-literacy">
@@ -854,7 +883,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.mymoney.gov" target="_blank" rel="noopener">U.S. Financial Literacy and Education Commission. &ldquo;MyMoney.gov.&rdquo; mymoney.gov</a> &middot; <a href="https://www.cfpb.gov" target="_blank" rel="noopener">U.S. Consumer Financial Protection Bureau (CFPB). cfpb.gov</a>. Free U.S. government resources. Accessed April 2026.</p>
+      </div>
         </div>
       </div>
     </div>
@@ -865,7 +896,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
     <div class="res-sec-inner">
       <span class="res-sec-label">Section 06</span>
       <h2 class="res-sec-h" id="access-h">ACCESSIBILITY <span style="color:var(--gold)">& OPPORTUNITY</span></h2>
-      <p class="res-sec-p">ATHLINKT is built for every athlete. That means Deaf and Hard of Hearing athletes, adaptive and Paralympic athletes, first generation students, and international athletes all have a place here — with resources built specifically for them.</p>
+      <p class="res-sec-p">ATHLINKT is built for every athlete. That means Deaf and Hard of Hearing athletes, adaptive and Paralympic athletes, first generation students, and international athletes all have a place here. With resources built specifically for them.</p>
 
       <div class="access-grid" style="margin-top:24px">
 
@@ -986,7 +1017,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
               <div class="rule-list" style="margin-bottom:16px">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Americans with Disabilities Act (ADA)</strong> Prohibits discrimination against people with disabilities in all areas of public life, including colleges and universities.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Section 504 of the Rehabilitation Act</strong> Requires colleges receiving federal funding to provide equal access and accommodations for students with disabilities. This includes student-athletes.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your Right to Accommodations</strong> You have the right to request academic and athletic accommodations. Contact your school's disability services office — and your athletic academic advisor — to understand your options.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Your Right to Accommodations</strong> You have the right to request academic and athletic accommodations. Contact your school's disability services office. And your athletic academic advisor — to understand your options.</div></div>
               </div>
               <div class="link-grid">
                 <a href="https://www.ada.gov" target="_blank" rel="noopener" class="link-card">
@@ -1003,7 +1034,9 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.ada.gov" target="_blank" rel="noopener">U.S. Department of Justice. &ldquo;ADA.gov.&rdquo; ada.gov</a> &middot; <a href="https://www.ncaa.org/sports/2021/5/3/membership-directory.aspx" target="_blank" rel="noopener">National Collegiate Athletic Association (NCAA). &ldquo;Membership Directory.&rdquo; NCAA.org</a>. Free federal and NCAA public resources. Accessed April 2026.</p>
+      </div>
         </div>
       </div>
 
@@ -1030,12 +1063,14 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
               <div class="rule-list">
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Equal participation opportunity</strong> Schools must provide participation opportunities proportional to the student body, or demonstrate a history of expanding opportunities for the underrepresented sex, or fully and effectively accommodate the interests of the underrepresented sex.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Athletic financial assistance</strong> Scholarship dollars must be awarded proportional to the ratio of male to female athletes. If 40% of athletes are women, approximately 40% of scholarship money must go to women's sports.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Equal treatment and benefits</strong> Equipment, supplies, scheduling, travel, coaching, facilities, tutoring, publicity, and recruitment support must be equivalent — not necessarily identical — for men's and women's programs.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Equal treatment and benefits</strong> Equipment, supplies, scheduling, travel, coaching, facilities, tutoring, publicity, and recruitment support must be equivalent. Not necessarily identical. For men's and women's programs.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Protection from retaliation</strong> You cannot be retaliated against for filing a Title IX complaint or participating in a Title IX investigation. Retaliation is itself a Title IX violation.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Sexual harassment and assault</strong> Title IX also covers sexual harassment, assault, and gender-based discrimination in educational settings. Every school must have a Title IX Coordinator — find yours.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Sexual harassment and assault</strong> Title IX also covers sexual harassment, assault, and gender-based discrimination in educational settings. Every school must have a Title IX Coordinator. Find yours.</div></div>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.titleix.gov" target="_blank" rel="noopener">U.S. Department of Education. &ldquo;Title IX.&rdquo; TitleIX.gov</a> &middot; <a href="https://www.ed.gov/ocr" target="_blank" rel="noopener">U.S. Department of Education Office for Civil Rights (OCR). ed.gov/ocr</a>. Federal resources. Accessed April 2026.</p>
+      </div>
         </div>
 
         <div class="res-section-card">
@@ -1055,7 +1090,7 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 <a href="https://titleix.gov" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">U.S. Government</span>
                   <span class="link-card-title">TitleIX.gov</span>
-                  <span class="link-card-desc">The official U.S. government Title IX resource — your rights, how the law works, and how to get help.</span>
+                  <span class="link-card-desc">The official U.S. government Title IX resource. Your rights, how the law works, and how to get help.</span>
                   <span class="link-card-arrow">↗ titleix.gov</span>
                 </a>
                 <a href="https://www.ncaa.org/sports/2014/10/6/title-ix-resources.aspx" target="_blank" rel="noopener" class="link-card">
@@ -1084,32 +1119,36 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www.titleix.gov" target="_blank" rel="noopener">U.S. Department of Education. &ldquo;Title IX.&rdquo; TitleIX.gov</a> &middot; <a href="https://www.ed.gov/ocr" target="_blank" rel="noopener">U.S. Department of Education Office for Civil Rights. ed.gov</a>. Free federal resources. Accessed April 2026.</p>
+      </div>
         </div>
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-titleix-find">
-            <div class="acc-left"><span class="acc-title">Find Your Title IX Coordinator</span><span class="acc-label">Every school is required to have one — know who they are</span></div>
+            <div class="acc-left"><span class="acc-title">Find Your Title IX Coordinator</span><span class="acc-label">Every school is required to have one. Know who they are</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-titleix-find">
             <div class="acc-body-inner">
-              <p>Every college and university that receives federal funding is required by law to designate a Title IX Coordinator. This person is responsible for overseeing the school's compliance with Title IX — including in athletics.</p>
+              <p>Every college and university that receives federal funding is required by law to designate a Title IX Coordinator. This person is responsible for overseeing the school's compliance with Title IX. Including in athletics.</p>
               <div class="rule-list">
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>How to find them</strong> Check your school's website under Student Affairs, Human Resources, or Athletics. The coordinator's name and contact info must be publicly posted. If you can't find it — ask your athletic academic advisor or compliance office.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What they do</strong> They investigate complaints, coordinate training, and ensure the school follows Title IX. You can go to them directly — you do not need to go through coaches or athletics staff first.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>How to find them</strong> Check your school's website under Student Affairs, Human Resources, or Athletics. The coordinator's name and contact info must be publicly posted. If you can't find it. Ask your athletic academic advisor or compliance office.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What they do</strong> They investigate complaints, coordinate training, and ensure the school follows Title IX. You can go to them directly. You do not need to go through coaches or athletics staff first.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Confidential reporting options</strong> Many schools also have confidential advisors separate from the Title IX Coordinator. Ask what confidential reporting options exist at your school before deciding how to proceed.</div></div>
               </div>
               <div style="margin-top:16px">
                 <a href="https://www2.ed.gov/about/offices/list/ocr/frontpage/faq/title9.html" target="_blank" rel="noopener" class="link-card">
                   <span class="link-card-label">U.S. Dept of Education</span>
                   <span class="link-card-title">Title IX Coordinator Requirements</span>
-                  <span class="link-card-desc">Federal requirements for Title IX Coordinators — what they must do and how to reach them.</span>
+                  <span class="link-card-desc">Federal requirements for Title IX Coordinators. What they must do and how to reach them.</span>
                   <span class="link-card-arrow">↗ ed.gov</span>
                 </a>
               </div>
             </div>
-          </div>
+          
+        <p class="source-note" style="margin-top:16px">Sources: <a href="https://www2.ed.gov/about/offices/list/ocr/index.html" target="_blank" rel="noopener">U.S. Department of Education Office for Civil Rights. &ldquo;File a Complaint.&rdquo; ed.gov</a>. Free federal resource. Accessed April 2026.</p>
+      </div>
         </div>
 
       </div>

@@ -443,9 +443,7 @@ footer{background:var(--dark);padding:40px 48px;border-top:1px solid rgba(46,189
   .nav-dropdown{position:static;transform:none !important;opacity:1;visibility:visible;background:transparent;border:none;box-shadow:none;padding:0 0 8px 16px;pointer-events:auto;display:none;width:100%}
   .nav-has-dropdown.mob-open .nav-dropdown{display:block}
   .nav-dropdown li a{font-size:16px;padding:8px 16px;letter-spacing:1px;border-left:none;color:var(--gray-light);text-align:center}
-  .nav-star{display:inline-block;opacity:0.5;font-size:9px;transition:transform 0.2s}
-  .nav-has-dropdown.mob-open .nav-star{transform:rotate(90deg);opacity:1}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .nav-has-dropdown.mob-open   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .feat-grid{grid-template-columns:repeat(3,1fr)}
   .who-grid{grid-template-columns:repeat(2,1fr)}
   .feat,.who-card{padding:24px 18px}
@@ -484,14 +482,19 @@ body.light-mode .ticker-bar{background:#0a2419}
 body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0}
 
 /* ── NAV DROPDOWN MENUS ── */
-.nav-has-dropdown{position:relative}
-.nav-star{font-size:8px;color:var(--gold);opacity:0;transition:opacity 0.2s ease;vertical-align:middle;margin-left:3px}
-.nav-has-dropdown>a:hover .nav-star,.nav-has-dropdown:focus-within .nav-star{opacity:1}
-.nav-has-dropdown>a:hover{color:var(--gold)}
-.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding:8px 0;opacity:0;visibility:hidden;transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+
 .nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
 .nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
+body.light-mode .nav-dropdown{background:var(--dark-2)}
+
+/* ── NAV DROPDOWN ── */
+.nav-has-dropdown{position:relative}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.4);list-style:none;padding-top:8px;padding-bottom:8px;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s;z-index:300;pointer-events:none}
+.nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto}
+.nav-dropdown li a{display:block;padding:10px 18px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;border-left:2px solid transparent}
+.nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
+.nav-dropdown li a:hover::before{content:"✦";font-size:7px;margin-right:6px;color:var(--gold);vertical-align:middle}
 body.light-mode .nav-dropdown{background:var(--dark-2)}
 </style>
 </head>
@@ -523,7 +526,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
   <ul class="nav-links" id="navLinks" role="list">
     <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
     <li class="nav-has-dropdown">
-      <a href="nil.html" class="nav-link">NIL <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="nil.html" class="nav-link">NIL</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="nil.html#nil-what">What Is NIL</a></li>
         <li><a href="nil.html#nil-rules">Know the Rules</a></li>
@@ -535,7 +538,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="transfer.html" class="nav-link">Transfer Portal <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="transfer.html" class="nav-link">Transfer Portal</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="transfer.html#tp-first">Talk to Your Coach First</a></li>
         <li><a href="transfer.html#tp-how">How It Works</a></li>
@@ -547,7 +550,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="career.html" class="nav-link">Career Match <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="career.html" class="nav-link">Career Match</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="career.html#cm-strengths">Know Your Strengths</a></li>
         <li><a href="career.html#cm-tools">Exploration Tools</a></li>
@@ -556,7 +559,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="resources.html" class="nav-link">Resources <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="resources.html" class="nav-link">Resources</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="resources.html#res-nil">NIL Resources</a></li>
         <li><a href="resources.html#res-transfer">Transfer Portal</a></li>
@@ -568,7 +571,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       </ul>
     </li>
     <li class="nav-has-dropdown">
-      <a href="community.html" class="nav-link">Community <span class="nav-star" aria-hidden="true">✦</span></a>
+      <a href="community.html" class="nav-link">Community</a>
       <ul class="nav-dropdown" role="list">
         <li><a href="community.html#commitment">Our Commitment</a></li>
         <li><a href="community.html#beyond">Beyond the Finish Line</a></li>
@@ -659,7 +662,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <span class="sec-label">The Mission</span>
       <h2 class="sec-h" id="mission-h">EVERY ATHLETE DESERVES <span style="color:var(--gold)">CLARITY.</span></h2>
       <p class="sec-p">The portal moves fast. NIL is confusing. The sport ends before anyone is ready. Athletes are making life-changing decisions without the information, support, or community they deserve.</p>
-      <p class="sec-p"><span class="highlight">ATHLINKT exists to change that.</span> Real tools, real data, real connection — built for the athlete who has given everything to their sport and deserves something built for what comes next.</p>
+      <p class="sec-p"><span class="highlight">ATHLINKT exists to change that.</span> Real tools, real data, real connection. Built for the athlete who has given everything to their sport and deserves something built for what comes next.</p>
       <p class="sec-p">Every college athlete. Every sport. Every division. <span class="highlight">No exceptions.</span></p>
     </div>
   </section>
@@ -686,14 +689,14 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
             <path d="M22 11V22L30 26" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
           </svg>
           <h3 id="feat-nil">NIL PICTURE</h3>
-          <p>Know where you stand. Know what you are worth. Know exactly what to do next — before an opportunity passes you by.</p>
+          <p>Know where you stand. Know what you are worth. Know exactly what to do next. Before an opportunity passes you by.</p>
         </article>
         <article class="feat" aria-labelledby="feat-transfer">
           <svg class="feat-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
             <path d="M6 22H38M28 12L38 22L28 32" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round"/>
           </svg>
           <h3 id="feat-transfer">TRANSFER GUIDANCE</h3>
-          <p>Before you enter the portal — know your full picture. The decision you make in 48 hours lives with you for years.</p>
+          <p>Before you enter the portal. Know your full picture. The decision you make in 48 hours lives with you for years.</p>
         </article>
       </div>
     </div>
@@ -715,11 +718,11 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
         </article>
         <article class="who-card">
           <h3>TRANSFER ATHLETES</h3>
-          <p>The portal is open. The pressure is real. Come here first. Injury, degree, teammates, community — it all matters. ATHLINKT helps you decide with clarity.</p>
+          <p>The portal is open. The pressure is real. Come here first. Injury, degree, teammates, community. It all matters. ATHLINKT helps you decide with clarity.</p>
         </article>
         <article class="who-card">
           <h3>POST-ELIGIBILITY</h3>
-          <p>The sport ended. The identity didn't. ATHLINKT connects who you were as an athlete to who you are becoming — with tools built for right now.</p>
+          <p>The sport ended. The identity didn't. ATHLINKT connects who you were as an athlete to who you are becoming. With tools built for right now.</p>
         </article>
         <article class="who-card">
           <h3>POST-CAREER</h3>
@@ -770,7 +773,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
           <div class="stats-grid" style="margin-top:20px">
             <div class="stat"><div class="stat-n">D1</div><div class="stat-l">Played at the highest level</div></div>
             <div class="stat"><div class="stat-n">3×</div><div class="stat-l">Player. Coach. Parent.</div></div>
-            <div class="stat"><div class="stat-n">1</div><div class="stat-l">Mission — every athlete</div></div>
+            <div class="stat"><div class="stat-n">1</div><div class="stat-l">Mission. Every athlete</div></div>
             <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Lives beyond the sport</div></div>
           </div>
         </div>
@@ -961,7 +964,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
     <div class="q-block" data-q="6">
       <div class="q-num">Question 6 of 7</div>
       <h2 class="q-text">What's your role on your team?</h2>
-      <p class="q-sub">Select all that apply — be real.</p>
+      <p class="q-sub">Select all that apply. Be real.</p>
       <div class="q-options" id="q6-opts" role="group" aria-label="Team role">
         <button class="q-opt" onclick="selectMulti(this,'q6')" aria-pressed="false"><div class="opt-check" aria-hidden="true"></div><div class="opt-label"><strong>I lead</strong>I set the tone and others follow</div></button>
         <button class="q-opt" onclick="selectMulti(this,'q6')" aria-pressed="false"><div class="opt-check" aria-hidden="true"></div><div class="opt-label"><strong>I lead AND follow</strong>I read the moment and do what the team needs</div></button>
@@ -1012,7 +1015,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <div class="r-card r-card-full">
         <div class="r-card-label">Career Match</div>
         <h3>YOUR TOP CAREER PATHS</h3>
-        <p>Based on your sport, major, and athletic identity — here are your strongest career fits.</p>
+        <p>Based on your sport, major, and athletic identity. Here are your strongest career fits.</p>
         <div class="career-paths" id="careerPaths"></div>
       </div>
 
@@ -1058,7 +1061,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
     <span class="crown">Beyond the Finish Line</span>
     <h1>NIL</h1>
     <span class="coming-badge">Name. Image. Likeness.</span>
-    <p>NIL changed college athletics. But most athletes still don't know what it means for <em>them specifically</em> — their sport, their division, their market. ATHLINKT gives you a <span class="highlight">coaching picture, not just a score.</span></p>
+    <p>NIL changed college athletics. But most athletes still don't know what it means for <em>them specifically</em>. Their sport, their division, their market. ATHLINKT gives you a <span class="highlight">coaching picture, not just a score.</span></p>
 
     <div class="content-section">
       <h2>YOUR NIL PICTURE</h2>
@@ -1067,17 +1070,17 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
         <div class="nil-story-card">
           <div class="nil-story-icon"></div>
           <h4>WHAT YOU HAVE</h4>
-          <p>Your athletic profile, your story, your presence — these are assets brands and employers look for. Most athletes don't realize what they already bring to the table.</p>
+          <p>Your athletic profile, your story, your presence. These are assets brands and employers look for. Most athletes don't realize what they already bring to the table.</p>
         </div>
         <div class="nil-story-card">
           <div class="nil-story-icon"></div>
           <h4>YOUR BIGGEST OPPORTUNITY</h4>
-          <p>One specific thing that moves the needle most for your situation. Not generic advice — your actual next opportunity based on your sport, division, and profile.</p>
+          <p>One specific thing that moves the needle most for your situation. Not generic advice. Your actual next opportunity based on your sport, division, and profile.</p>
         </div>
         <div class="nil-story-card">
           <div class="nil-story-icon"></div>
           <h4>YOUR NEXT MOVE</h4>
-          <p>One action you can take this week. Concrete. Specific. Built around where you are right now — not where someone else is.</p>
+          <p>One action you can take this week. Concrete. Specific. Built around where you are right now. Not where someone else is.</p>
         </div>
       </div>
       <div style="text-align:center;margin-top:32px">
@@ -1091,7 +1094,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <div class="resource-grid">
         <div class="res-card">
           <h4>NIL BASICS</h4>
-          <p>What NIL actually is, what you can do, and what you cannot — in plain language built for athletes. Every sport. Every division.</p>
+          <p>What NIL actually is, what you can do, and what you cannot. In plain language built for athletes. Every sport. Every division.</p>
         </div>
         <div class="res-card">
           <h4>YOUR MARKET VALUE</h4>
@@ -1125,7 +1128,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
         </div>
         <div class="nil-stat-item">
           <div class="nil-stat-n">$0</div>
-          <div class="nil-stat-l">is what most athletes earn — not because they lack value, but because they lack information</div>
+          <div class="nil-stat-l">is what most athletes earn. Not because they lack value, but because they lack information</div>
         </div>
         <div class="nil-stat-item">
           <div class="nil-stat-n">500K+</div>
@@ -1160,9 +1163,9 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
         <div class="res-card"><h4>IF YOU GOT INJURED</h4><p>If you suffered a season-ending injury tomorrow — would you still want to be at the school you're considering?</p></div>
         <div class="res-card"><h4>THE DEGREE</h4><p>Does a degree from that school set you up for success after athletics? Your major matters beyond the sport.</p></div>
         <div class="res-card"><h4>YOUR TEAMMATES</h4><p>Do you like the people who will be your teammates? Will they push you to be better? Can you see lifelong friendships?</p></div>
-        <div class="res-card"><h4>YOUR DEVELOPMENT</h4><p>Where will you be developed most — as a player AND as a person? Those aren't always the same place.</p></div>
+        <div class="res-card"><h4>YOUR DEVELOPMENT</h4><p>Where will you be developed most. As a player AND as a person? Those aren't always the same place.</p></div>
         <div class="res-card"><h4>WINNING</h4><p>Is winning important to you? If so — can you genuinely see the program you're considering winning?</p></div>
-        <div class="res-card"><h4>THE COMMUNITY</h4><p>Do you like the city, the campus, the culture? You'll be living there — not just playing there.</p></div>
+        <div class="res-card"><h4>THE COMMUNITY</h4><p>Do you like the city, the campus, the culture? You'll be living there. Not just playing there.</p></div>
       </div>
     </div>
 
@@ -1186,15 +1189,15 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
     <h1>CAREER MATCH</h1>
     <span class="coming-badge">Powered by Real Data</span>
     <p>Every skill you built as an athlete translates. Discipline. Leadership. Pressure performance. Teamwork. Communication. These aren't soft skills — they're career assets.</p>
-    <p>ATHLINKT maps your athletic identity to <span class="highlight">real career paths</span> — with salary data, job demand projections, and how other athletes got there.</p>
+    <p>ATHLINKT maps your athletic identity to <span class="highlight">real career paths</span>. With salary data, job demand projections, and how other athletes got there.</p>
 
     <div class="content-section">
       <h2>HOW IT WORKS</h2>
       <div class="resource-grid">
         <div class="res-card"><h4>YOUR ATHLETIC PROFILE</h4><p>Sport, position, role, and years played translate directly into a skill set most platforms never capture.</p></div>
         <div class="res-card"><h4>YOUR ACADEMIC MAJOR</h4><p>Your degree combined with your athletic experience opens doors that neither one alone would.</p></div>
-        <div class="res-card"><h4>REAL CAREER DATA</h4><p>Powered by O*NET and the Bureau of Labor Statistics — real salaries, real demand, real pathways.</p></div>
-        <div class="res-card"><h4>ATHLETE PATHWAYS</h4><p>See how other athletes in your sport and position actually made the transition — not hypotheticals.</p></div>
+        <div class="res-card"><h4>REAL CAREER DATA</h4><p>Powered by O*NET and the Bureau of Labor Statistics. Real salaries, real demand, real pathways.</p></div>
+        <div class="res-card"><h4>ATHLETE PATHWAYS</h4><p>See how other athletes in your sport and position actually made the transition. Not hypotheticals.</p></div>
       </div>
     </div>
 
@@ -1228,7 +1231,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <h2>TRANSFER PORTAL</h2>
       <div class="resource-grid">
         <div class="res-card"><h4>NCAA TRANSFER RULES</h4><p>Current transfer portal rules, windows, and eligibility requirements for your sport and division.</p></div>
-        <div class="res-card"><h4>DECISION FRAMEWORK</h4><p>The questions every athlete should answer before entering the portal — not after.</p></div>
+        <div class="res-card"><h4>DECISION FRAMEWORK</h4><p>The questions every athlete should answer before entering the portal. Not after.</p></div>
       </div>
     </div>
 
@@ -1282,7 +1285,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <p style="font-family:var(--font-display);font-size:clamp(22px,3.5vw,36px);letter-spacing:2px;line-height:1.2;color:var(--white)">"This started on a <span class="highlight">court.</span> It was built for every <span class="highlight">athlete</span> who deserves more than a <span class="highlight">blank page</span> after the sport ends."</p>
     </div>
     <p>ATHLINKT was built by someone who played D1, coached at the highest level, served as a Senior Woman Administrator, coordinated Title IX compliance, and raised athletes. Not a tech company trying to figure out sports from the outside.</p>
-    <p>Someone who lived every stage — player, coach, parent, administrator — and saw the same gap, over and over. Athletes making life-changing decisions about the portal, about NIL, about what comes after — with almost no real support.</p>
+    <p>Someone who lived every stage — player, coach, parent, administrator. And saw the same gap, over and over. Athletes making life-changing decisions about the portal, about NIL, about what comes after. With almost no real support.</p>
     <p>Not because nobody cares. Because nothing existed that was built specifically for them, by someone who understood them.</p>
     <p><span class="highlight">ATHLINKT is that thing. Finally.</span></p>
     <div style="margin-top:40px;display:flex;align-items:center;gap:14px">
@@ -1299,7 +1302,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
   <div class="content-page" style="max-width:640px">
     <span class="crown">Beyond the Finish Line</span>
     <h1>FEEDBACK</h1>
-    <p>ATHLINKT is built for athletes — which means athletes help shape it. Tell us what you need, what's missing, and what would make this more useful for you.</p>
+    <p>ATHLINKT is built for athletes, which means athletes help shape it. Tell us what you need, what's missing, and what would make this more useful for you.</p>
 
     <form class="feedback-form" id="feedbackForm" action="https://formspree.io/f/mgopkged" method="POST">
 
@@ -1355,7 +1358,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
         <div class="checkbox-group">
           <label class="check-opt"><input type="checkbox" name="Topics" value="NIL"><span>NIL — understanding my value and opportunities</span></label>
           <label class="check-opt"><input type="checkbox" name="Topics" value="Transfer Portal"><span>Transfer Portal — making the right decision</span></label>
-          <label class="check-opt"><input type="checkbox" name="Topics" value="Career"><span>Career — what comes after sport</span></label>
+          <label class="check-opt"><input type="checkbox" name="Topics" value="Career"><span>Career. What comes after sport</span></label>
           <label class="check-opt"><input type="checkbox" name="Topics" value="Mental Health"><span>Mental health and athlete identity</span></label>
           <label class="check-opt"><input type="checkbox" name="Topics" value="Financial"><span>Financial literacy and tax</span></label>
           <label class="check-opt"><input type="checkbox" name="Topics" value="Community"><span>Community — connecting with other athletes</span></label>
@@ -1365,7 +1368,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="fb-message">Just like you, we want to improve our game — and we need your feedback to do it.</label>
+        <label class="form-label" for="fb-message">Just like you, we want to improve our game. And we need your feedback to do it.</label>
         <textarea class="form-textarea" id="fb-message" name="Feedback" placeholder="Be honest. Be specific. We're listening." required></textarea>
       </div>
 
@@ -1401,7 +1404,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <span class="footer-wm"><span class="g">A</span>THLINKT</span>
     </a>
     <span class="footer-tag">Beyond the Finish Line</span>
-    <span class="footer-copy">© 2025 ATHLINKT. Built for every athlete.</span>
+    <span class="footer-copy"><span style="color:var(--gray);font-size:11px">Last reviewed: April 2026 &nbsp;·&nbsp; </span>© 2025 ATHLINKT. Built for every athlete.</span>
   </div>
 </footer>
 
