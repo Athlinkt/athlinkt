@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src https://fonts.gstatic.com; connect-src 'self' https://docs.google.com; img-src 'self' data: https:; frame-src https://docs.google.com;">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="NIL Resource Hub — Rules, money sources, athlete education, sport-by-sport breakdowns, and a sample agreement. Built for every college athlete at every division.">
 <meta name="theme-color" content="#111111">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -400,6 +402,21 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
 .nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
 .nav-dropdown li a:hover::before{content:"✦";font-size:7px;margin-right:6px;color:var(--gold);vertical-align:middle}
 body.light-mode .nav-dropdown{background:var(--dark-2)}
+.source-note{font-size:11px;font-family:var(--font-body);font-style:italic;color:var(--gray);line-height:1.6;margin-top:12px;padding-top:8px;border-top:1px solid rgba(46,189,142,0.08)}
+.source-note a{color:var(--gold);text-decoration:none;font-style:normal}
+.source-note a:hover{text-decoration:underline}
+
+/* ── BTFL TOOLTIP ── */
+.btfl-wrap{position:relative;display:inline}
+.btfl-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--dark-2);border:1px solid rgba(46,189,142,0.3);border-radius:8px;padding:12px 16px;font-family:var(--font-body);font-size:13px;font-style:italic;color:var(--gold);white-space:normal;text-align:center;pointer-events:none;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s;z-index:500;max-width:280px;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.btfl-wrap:hover .btfl-tooltip{opacity:1;visibility:visible}
+@media(max-width:600px){.btfl-tooltip{font-size:12px;max-width:220px}}
+
+/* ── NAV STAR ── */
+
+.nav-has-dropdown>a::after{content:"✦";font-size:8px;color:var(--gold);opacity:0;margin-left:5px;vertical-align:middle;transition:opacity 0.2s ease, text-shadow 0.4s ease;display:inline-block}
+.nav-has-dropdown:hover>a::after{opacity:1;text-shadow:0 0 8px #2ebd8e, 0 0 16px rgba(46,189,142,0.5), 0 0 24px rgba(46,189,142,0.3)}
+.nav-has-dropdown>a:focus::after{opacity:1}
 </style>
 </head>
 <body class="light-mode">
@@ -804,7 +821,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Business expenses may be deductible</strong> Equipment, software, travel required for NIL work, and professional service fees may be deductible. Keep all receipts and records.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Consult a professional</strong> NIL tax situations are genuinely complex. Use the NIL Assist platform to find vetted tax advisors experienced with athlete income.</div></div>
               </div>
-              <p class="source-note" style="margin-top:16px">Tax education: <a href="https://nilassist.ncaa.org/education/" target="_blank" rel="noopener" style="color:var(--gold)">National Collegiate Athletic Association — NIL Assist. &ldquo;Education Library.&rdquo; nilassist.ncaa.org</a>. Free resource for enrolled DI athletes. Accessed April 2026.</p>
+              <p class="source-note" style="margin-top:16px">Tax education: <a href="https://nilassist.ncaa.org/education/" target="_blank" rel="noopener">National Collegiate Athletic Association — NIL Assist. &ldquo;Education Library.&rdquo; nilassist.ncaa.org</a>. Free resource for enrolled DI athletes. Accessed April 2026.</p>
             </div>
           </div>
         </div>
@@ -824,7 +841,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>The gap is real</strong> As of 2024, data shared by schools showed male athletes out-earning female athletes $92 million to $19 million in NIL compensation. Over 60% of NIL deals flow to football, men's basketball, and baseball.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Biden guidance — January 2025</strong> The U.S. Department of Education's Office for Civil Rights issued guidance stating that school revenue sharing constitutes "athletic financial assistance" and must comply with Title IX's equal opportunity requirements.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Trump administration rescinded that guidance — February 2025</strong> The current administration reversed the Biden guidance, stating Title IX does not require proportional distribution of NIL revenue between male and female athletes.</div></div>
-                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>House settlement appeal pending</strong> A group of female student-athletes appealed the House v. NCAA settlement to the 9th Circuit, arguing the back-pay formula pays male athletes approximately 90% more than female athletes. An unlawful gender disparity. The appeal is pending.</div></div>
+                <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>House settlement appeal pending</strong> A group of female student-athletes appealed the House v. NCAA settlement to the 9th Circuit, arguing the back-pay formula pays male athletes approximately 90% more than female athletes, which they argue is an unlawful gender disparity. This figure is the appellants’ legal argument, not an independently verified statistic. The appeal was pending as of April 2026.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Third-party NIL is different</strong> Title IX applies to institutions receiving federal funding. Not to independent brands, collectives, or third parties negotiating directly with athletes. The commercial marketplace is driven by brand value, not school policy.</div></div>
                 <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>What this means for you</strong> The commercial NIL market is real for every sport. Women's basketball, gymnastics, and volleyball athletes are among the highest individual NIL earners in college sports. Your earning potential is not limited by the institutional gap. Build your brand and access the marketplace directly.</div></div>
               </div>
@@ -1691,7 +1708,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       </svg>
       <div>
         <div class="footer-wm"><span class="g">A</span>THLINKT</div>
-        <div class="footer-tag">Beyond the Finish Line</div>
+        <div class="footer-tag"><span class="btfl-wrap">Beyond the Finish Line<span class="btfl-tooltip" aria-hidden="true"></span></span></div>
       </div>
     </a>
     <a href="index.html" class="footer-back">← Back to ATHLINKT</a>
@@ -1907,5 +1924,75 @@ var TICKER_NEWS = [
   });
 })();
 </script>
+
+(function(){
+  var msgs=[
+    "You already know how to prepare. This is just a different game.",
+    "You trained when no one was watching. You showed up hurt. You sat on a bench and cheered anyway.",
+    "Film doesn't lie. Neither does your track record.",
+    "The grind translates. Trust it.",
+    "You showed up when it was hard. That doesn't stop mattering.",
+    "Next play. Different game plan. Same you.",
+    "The best coaches teach you to play without them. You're ready."
+  ];
+  var day=Math.floor(Date.now()/(1000*60*60*24));
+  var msg=msgs[day%msgs.length];
+  document.querySelectorAll('.btfl-tooltip').forEach(function(t){t.textContent=msg;});
+})();
+
+// ── ACCORDION OPEN FROM URL HASH ──
+(function(){
+  function openFromHash(){
+    var hash = window.location.hash.replace('#','');
+    if(!hash) return;
+    // Map section IDs to their accordion toggle IDs
+    var sectionMap = {
+      'nil-what':     'acc-nil-what',
+      'nil-rules':    'acc-nil-rules',
+      'nil-money':    'acc-nil-money',
+      'nil-sports':   'acc-nil-sports',
+      'nil-education':'acc-nil-education',
+      'nil-agreement':'acc-nil-agreement',
+      'nil-support':  'acc-nil-support',
+      'tp-first':     'tp-first-body',
+      'tp-how':       'tp-how-body',
+      'tp-windows':   'tp-windows-body',
+      'tp-ghost':     'tp-ghost-body',
+      'tp-financial': 'tp-financial-body',
+      'tp-naia':      'tp-naia-body',
+      'tp-juco':      'tp-juco-body',
+      'tp-support':   'tp-support-body',
+      'cm-strengths': 'cm-strengths-body',
+      'cm-tools':     'cm-tools-body',
+      'cm-life':      'cm-life-body',
+      'cm-ncaa':      'cm-ncaa-body',
+    };
+    // Scroll to section
+    var target = document.getElementById(hash);
+    if(target){
+      setTimeout(function(){
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        // Find and open the accordion for this section
+        var bodyId = sectionMap[hash];
+        if(bodyId){
+          var body = document.getElementById(bodyId);
+          var toggle = body ? document.querySelector('[aria-controls="'+bodyId+'"]') : null;
+          if(body && toggle && body.hidden){
+            body.hidden = false;
+            toggle.setAttribute('aria-expanded','true');
+            var arrow = body.previousElementSibling && body.previousElementSibling.querySelector('.acc-arrow');
+            if(arrow) arrow.style.transform = 'rotate(180deg)';
+          }
+        }
+      }, 300);
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', openFromHash);
+  } else {
+    openFromHash();
+  }
+  window.addEventListener('hashchange', openFromHash);
+})();
 </body>
 </html>

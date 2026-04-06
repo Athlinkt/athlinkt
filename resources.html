@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src https://fonts.gstatic.com; connect-src 'self' https://docs.google.com; img-src 'self' data: https:; frame-src https://docs.google.com;">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="ATHLINKT Resource Library — Verified resources for NIL, transfer portal, career, mental health, financial literacy, and accessibility. Built for every college athlete.">
 <meta name="theme-color" content="#111111">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -231,6 +233,21 @@ body.light-mode .ticker-item-text{color:#e8f5f0;white-space:nowrap;flex-shrink:0
 .nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
 .nav-dropdown li a:hover::before{content:"✦";font-size:7px;margin-right:6px;color:var(--gold);vertical-align:middle}
 body.light-mode .nav-dropdown{background:var(--dark-2)}
+.source-note{font-size:11px;font-family:var(--font-body);font-style:italic;color:var(--gray);line-height:1.6;margin-top:12px;padding-top:8px;border-top:1px solid rgba(46,189,142,0.08)}
+.source-note a{color:var(--gold);text-decoration:none;font-style:normal}
+.source-note a:hover{text-decoration:underline}
+
+/* ── BTFL TOOLTIP ── */
+.btfl-wrap{position:relative;display:inline}
+.btfl-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--dark-2);border:1px solid rgba(46,189,142,0.3);border-radius:8px;padding:12px 16px;font-family:var(--font-body);font-size:13px;font-style:italic;color:var(--gold);white-space:normal;text-align:center;pointer-events:none;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s;z-index:500;max-width:280px;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.btfl-wrap:hover .btfl-tooltip{opacity:1;visibility:visible}
+@media(max-width:600px){.btfl-tooltip{font-size:12px;max-width:220px}}
+
+/* ── NAV STAR ── */
+
+.nav-has-dropdown>a::after{content:"✦";font-size:8px;color:var(--gold);opacity:0;margin-left:5px;vertical-align:middle;transition:opacity 0.2s ease, text-shadow 0.4s ease;display:inline-block}
+.nav-has-dropdown:hover>a::after{opacity:1;text-shadow:0 0 8px #2ebd8e, 0 0 16px rgba(46,189,142,0.5), 0 0 24px rgba(46,189,142,0.3)}
+.nav-has-dropdown>a:focus::after{opacity:1}
 </style>
 </head>
 <body class="light-mode">
@@ -379,7 +396,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-nil-official">
-            <div class="acc-left"><span class="acc-title">Official NCAA & Governing Body Sources</span><span class="acc-label">The source of truth. Start here</span></div>
+            <div class="acc-left"><span class="acc-title">Official NCAA & Governing Body Sources</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">The source of truth. Start here</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-nil-official">
@@ -420,7 +438,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-nil-state">
-            <div class="acc-left"><span class="acc-title">State NIL Laws</span><span class="acc-label">Your state may have additional rules beyond NCAA policy</span></div>
+            <div class="acc-left"><span class="acc-title">State NIL Laws</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">Your state may have additional rules beyond NCAA policy</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-nil-state">
@@ -448,7 +467,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-nil-revshare">
-            <div class="acc-left"><span class="acc-title">Revenue Sharing vs. NIL — Know the Difference</span><span class="acc-label">House settlement, contracts, and what coaches can actually promise</span></div>
+            <div class="acc-left"><span class="acc-title">Revenue Sharing vs. NIL — Know the Difference</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">House settlement, contracts, and what coaches can actually promise</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-nil-revshare">
@@ -493,7 +513,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-nil-deep">
-            <div class="acc-left"><span class="acc-title">Full NIL Resource Hub</span><span class="acc-label">Rules, money sources, sport breakdowns, sample agreement</span></div>
+            <div class="acc-left"><span class="acc-title">Full NIL Resource Hub</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">Rules, money sources, sport breakdowns, sample agreement</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-nil-deep">
@@ -524,7 +545,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-transfer-rules">
-            <div class="acc-left"><span class="acc-title">Official Transfer Rules</span><span class="acc-label">NCAA, NAIA, and JUCO transfer eligibility</span></div>
+            <div class="acc-left"><span class="acc-title">Official Transfer Rules</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">NCAA, NAIA, and JUCO transfer eligibility</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-transfer-rules">
@@ -563,7 +585,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-transfer-windows">
-            <div class="acc-left"><span class="acc-title">Transfer Windows by Sport</span><span class="acc-label">When you can enter — varies by sport and division</span></div>
+            <div class="acc-left"><span class="acc-title">Transfer Windows by Sport</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">When you can enter — varies by sport and division</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-transfer-windows">
@@ -592,7 +615,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-ghost-transfer">
-            <div class="acc-left"><span class="acc-title">Ghost Transfer Rule — April 2026 (DI Only)</span><span class="acc-label">New enforcement with automatic penalties. Effective now</span></div>
+            <div class="acc-left"><span class="acc-title">Ghost Transfer Rule — April 2026 (DI Only)</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">New enforcement with automatic penalties. Effective now</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-ghost-transfer">
@@ -637,7 +661,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-career-data">
-            <div class="acc-left"><span class="acc-title">Career Data & Exploration Tools</span><span class="acc-label">Real salary data, real career pathways. Powered by the U.S. government</span></div>
+            <div class="acc-left"><span class="acc-title">Career Data & Exploration Tools</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">Real salary data, real career pathways. Powered by the U.S. government</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-career-data">
@@ -676,7 +701,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-career-athlete">
-            <div class="acc-left"><span class="acc-title">Athlete Career Transition Resources</span><span class="acc-label">Built specifically for athletes moving beyond sport</span></div>
+            <div class="acc-left"><span class="acc-title">Athlete Career Transition Resources</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">Built specifically for athletes moving beyond sport</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-career-athlete">
@@ -726,7 +752,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-mental-support">
-            <div class="acc-left"><span class="acc-title">Athlete Mental Health Support</span><span class="acc-label">NCAA, crisis resources, and athlete-specific support</span></div>
+            <div class="acc-left"><span class="acc-title">Athlete Mental Health Support</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">NCAA, crisis resources, and athlete-specific support</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-mental-support">
@@ -769,7 +796,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-mental-eating">
-            <div class="acc-left"><span class="acc-title">Eating Disorders & Body Image</span><span class="acc-label">Athletes face elevated risk. Real support resources</span></div>
+            <div class="acc-left"><span class="acc-title">Eating Disorders & Body Image</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">Athletes face elevated risk. Real support resources</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-mental-eating">
@@ -807,7 +835,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-tax">
-            <div class="acc-left"><span class="acc-title">Tax Resources for Athletes</span><span class="acc-label">NIL income, self-employment tax, filing — official IRS guidance</span></div>
+            <div class="acc-left"><span class="acc-title">Tax Resources for Athletes</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">NIL income, self-employment tax, filing — official IRS guidance</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-tax">
@@ -851,7 +880,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-financial-literacy">
-            <div class="acc-left"><span class="acc-title">Financial Literacy Resources</span><span class="acc-label">Budgeting, credit, saving. From verified nonprofit and government sources</span></div>
+            <div class="acc-left"><span class="acc-title">Financial Literacy Resources</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">Budgeting, credit, saving. From verified nonprofit and government sources</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-financial-literacy">
@@ -1009,7 +1039,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       <div style="margin-top:32px">
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-ada">
-            <div class="acc-left"><span class="acc-title">Disability Rights in College Athletics</span><span class="acc-label">ADA, Section 504, and accommodation rights for student-athletes</span></div>
+            <div class="acc-left"><span class="acc-title">Disability Rights in College Athletics</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">ADA, Section 504, and accommodation rights for student-athletes</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-ada">
@@ -1055,7 +1086,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-titleix-basics">
-            <div class="acc-left"><span class="acc-title">What Title IX Means For Athletes</span><span class="acc-label">Your rights — plain language</span></div>
+            <div class="acc-left"><span class="acc-title">What Title IX Means For Athletes</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">Your rights — plain language</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-titleix-basics">
@@ -1075,7 +1107,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-titleix-links">
-            <div class="acc-left"><span class="acc-title">Official Title IX Resources</span><span class="acc-label">Federal, NCAA, and athlete-specific resources</span></div>
+            <div class="acc-left"><span class="acc-title">Official Title IX Resources</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">Federal, NCAA, and athlete-specific resources</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-titleix-links">
@@ -1126,7 +1159,8 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 
         <div class="res-section-card">
           <button class="acc-toggle" aria-expanded="false" aria-controls="acc-titleix-find">
-            <div class="acc-left"><span class="acc-title">Find Your Title IX Coordinator</span><span class="acc-label">Every school is required to have one. Know who they are</span></div>
+            <div class="acc-left"><span class="acc-title">Find Your Title IX Coordinator</span>
+              <span class="acc-label" style="font-size:10px;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase">Last reviewed: April 2026</span><span class="acc-label">Every school is required to have one. Know who they are</span></div>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <div class="acc-body" id="acc-titleix-find">
@@ -1173,7 +1207,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       </svg>
       <span class="footer-wm"><span class="g">A</span>THLINKT</span>
     </a>
-    <span class="footer-tag">Beyond the Finish Line</span>
+    <span class="footer-tag"><span class="btfl-wrap">Beyond the Finish Line<span class="btfl-tooltip" aria-hidden="true"></span></span></span>
     <a href="index.html" class="footer-back">← Back to Home</a>
     <span class="footer-copy">© 2025 ATHLINKT. Built for every athlete.</span>
   </div>
@@ -1317,5 +1351,75 @@ var TICKER_NEWS = [
   });
 })();
 </script>
+
+(function(){
+  var msgs=[
+    "You already know how to prepare. This is just a different game.",
+    "You trained when no one was watching. You showed up hurt. You sat on a bench and cheered anyway.",
+    "Film doesn't lie. Neither does your track record.",
+    "The grind translates. Trust it.",
+    "You showed up when it was hard. That doesn't stop mattering.",
+    "Next play. Different game plan. Same you.",
+    "The best coaches teach you to play without them. You're ready."
+  ];
+  var day=Math.floor(Date.now()/(1000*60*60*24));
+  var msg=msgs[day%msgs.length];
+  document.querySelectorAll('.btfl-tooltip').forEach(function(t){t.textContent=msg;});
+})();
+
+// ── ACCORDION OPEN FROM URL HASH ──
+(function(){
+  function openFromHash(){
+    var hash = window.location.hash.replace('#','');
+    if(!hash) return;
+    // Map section IDs to their accordion toggle IDs
+    var sectionMap = {
+      'nil-what':     'acc-nil-what',
+      'nil-rules':    'acc-nil-rules',
+      'nil-money':    'acc-nil-money',
+      'nil-sports':   'acc-nil-sports',
+      'nil-education':'acc-nil-education',
+      'nil-agreement':'acc-nil-agreement',
+      'nil-support':  'acc-nil-support',
+      'tp-first':     'tp-first-body',
+      'tp-how':       'tp-how-body',
+      'tp-windows':   'tp-windows-body',
+      'tp-ghost':     'tp-ghost-body',
+      'tp-financial': 'tp-financial-body',
+      'tp-naia':      'tp-naia-body',
+      'tp-juco':      'tp-juco-body',
+      'tp-support':   'tp-support-body',
+      'cm-strengths': 'cm-strengths-body',
+      'cm-tools':     'cm-tools-body',
+      'cm-life':      'cm-life-body',
+      'cm-ncaa':      'cm-ncaa-body',
+    };
+    // Scroll to section
+    var target = document.getElementById(hash);
+    if(target){
+      setTimeout(function(){
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        // Find and open the accordion for this section
+        var bodyId = sectionMap[hash];
+        if(bodyId){
+          var body = document.getElementById(bodyId);
+          var toggle = body ? document.querySelector('[aria-controls="'+bodyId+'"]') : null;
+          if(body && toggle && body.hidden){
+            body.hidden = false;
+            toggle.setAttribute('aria-expanded','true');
+            var arrow = body.previousElementSibling && body.previousElementSibling.querySelector('.acc-arrow');
+            if(arrow) arrow.style.transform = 'rotate(180deg)';
+          }
+        }
+      }, 300);
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', openFromHash);
+  } else {
+    openFromHash();
+  }
+  window.addEventListener('hashchange', openFromHash);
+})();
 </body>
 </html>

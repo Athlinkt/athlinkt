@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src https://fonts.gstatic.com; connect-src 'self' https://docs.google.com; img-src 'self' data: https:; frame-src https://docs.google.com;">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="ATHLINKT — Career clarity, NIL readiness, and transfer guidance for every college athlete. Beyond the Finish Line.">
 <meta name="theme-color" content="#111111">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -496,6 +498,24 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
 .nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
 .nav-dropdown li a:hover::before{content:"✦";font-size:7px;margin-right:6px;color:var(--gold);vertical-align:middle}
 body.light-mode .nav-dropdown{background:var(--dark-2)}
+.source-note{font-size:11px;font-family:var(--font-body);font-style:italic;color:var(--gray);line-height:1.6;margin-top:12px;padding-top:8px;border-top:1px solid rgba(46,189,142,0.08)}
+.source-note a{color:var(--gold);text-decoration:none;font-style:normal}
+.source-note a:hover{text-decoration:underline}
+
+/* ── BTFL TOOLTIP ── */
+.btfl-wrap{position:relative;display:inline}
+.btfl-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--dark-2);border:1px solid rgba(46,189,142,0.3);border-radius:8px;padding:12px 16px;font-family:var(--font-body);font-size:13px;font-style:italic;color:var(--gold);white-space:normal;text-align:center;pointer-events:none;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s;z-index:500;max-width:280px;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.btfl-wrap:hover .btfl-tooltip{opacity:1;visibility:visible}
+@media(max-width:600px){.btfl-tooltip{font-size:12px;max-width:220px}}
+
+
+.home-2col{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:760px){.home-2col{grid-template-columns:1fr}}
+/* ── NAV STAR ── */
+
+.nav-has-dropdown>a::after{content:"✦";font-size:8px;color:var(--gold);opacity:0;margin-left:5px;vertical-align:middle;transition:opacity 0.2s ease, text-shadow 0.4s ease;display:inline-block}
+.nav-has-dropdown:hover>a::after{opacity:1;text-shadow:0 0 8px #2ebd8e, 0 0 16px rgba(46,189,142,0.5), 0 0 24px rgba(46,189,142,0.3)}
+.nav-has-dropdown>a:focus::after{opacity:1}
 </style>
 </head>
 <body class="light-mode">
@@ -517,7 +537,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
     </svg>
     <div class="nav-logo-text">
       <span class="nav-wordmark"><span class="g">A</span>THLINKT</span>
-      <span class="nav-tagline" aria-hidden="true">Beyond the Finish Line</span>
+      <span class="nav-tagline" aria-hidden="true"><span class="btfl-wrap">Beyond the Finish Line<span class="btfl-tooltip" aria-hidden="true"></span></span></span>
     </div>
   </a>
 
@@ -735,52 +755,39 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
   <hr class="gd">
 
   <!-- OUR STORY + STATS — two columns -->
-  <div class="collapse-row">
-
-    <!-- OUR STORY — collapsed by default -->
-    <section class="collapsible-section" aria-labelledby="story-h">
-      <div class="sec-inner">
-        <button class="collapse-toggle" onclick="toggleSection('story-body','story-arrow')" aria-expanded="false" aria-controls="story-body">
-          <span class="sec-label" style="margin-bottom:0">Our Story</span>
-          <svg id="story-arrow" class="collapse-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M6 9L12 15L18 9" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div id="story-body" class="collapse-body" hidden>
-          <blockquote style="margin-top:28px">
-            <p>"This started on a <span>court.</span> It was built for every <span>athlete</span> who deserves more than a <span>blank page</span> after the sport ends."</p>
-          </blockquote>
-          <p class="sec-p" style="color:var(--gray-light);font-weight:300;margin-top:24px">ATHLINKT was built by someone who played D1, coached at the highest level, served as a Senior Woman Administrator, coordinated Title IX compliance, and raised athletes.</p>
-          <p class="sec-p" style="color:var(--gray-light);font-weight:300">Athletes make some of the most important decisions of their lives with almost no real support. <span class="highlight">ATHLINKT is that support. Finally.</span></p>
-          <div class="attr">
-            <div class="attr-line" aria-hidden="true"></div>
-            <span>Founder — D1 Athlete &nbsp;·&nbsp; Head Coach &nbsp;·&nbsp; SWA &nbsp;·&nbsp; Title IX Coordinator &nbsp;·&nbsp; Parent</span>
-          </div>
+  
+  <!-- OUR STORY — elevated, always visible -->
+  <section class="sec" aria-labelledby="story-h" style="padding:56px 32px 0">
+    <div class="home-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1100px;margin:0 auto;align-items:start">
+      
+      <!-- Our Story -->
+      <div>
+        <span class="sec-label" id="story-h">Our Story</span>
+        <blockquote style="margin-top:20px;margin-bottom:0">
+          <p>"This started on a <span>court.</span> It was built for every <span>athlete</span> who deserves more than a <span>blank page</span> after the sport ends."</p>
+        </blockquote>
+        <p class="sec-p" style="color:var(--gray-light);font-weight:300;margin-top:20px">ATHLINKT was built by someone who played D1, coached at the highest level, served as a Senior Woman Administrator, coordinated Title IX compliance, and raised athletes.</p>
+        <p class="sec-p" style="color:var(--gray-light);font-weight:300;margin-top:16px">Athletes make some of the most important decisions of their lives with almost no real support. Not because nobody cares. Because nobody built the right tool. <em style="color:var(--gold)">ATHLINKT is that support. Finally.</em></p>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(46,189,142,0.15)">
+          <span class="sec-p" style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray)">Founder &nbsp;·&nbsp; D1 Athlete &nbsp;·&nbsp; Head Coach &nbsp;·&nbsp; SWA &nbsp;·&nbsp; Title IX Coordinator &nbsp;·&nbsp; Parent</span>
         </div>
       </div>
-    </section>
 
-    <!-- STATS — collapsed by default -->
-    <section class="collapsible-section" aria-label="Credentials">
-      <div class="sec-inner">
-        <button class="collapse-toggle" onclick="toggleSection('stats-body','stats-arrow')" aria-expanded="false" aria-controls="stats-body">
-          <span class="sec-label" style="margin-bottom:0">The Foundation</span>
-          <svg id="stats-arrow" class="collapse-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M6 9L12 15L18 9" stroke="#2EBD8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div id="stats-body" class="collapse-body" hidden>
-          <div class="stats-grid" style="margin-top:20px">
-            <div class="stat"><div class="stat-n">D1</div><div class="stat-l">Played at the highest level</div></div>
-            <div class="stat"><div class="stat-n">3×</div><div class="stat-l">Player. Coach. Parent.</div></div>
-            <div class="stat"><div class="stat-n">1</div><div class="stat-l">Mission. Every athlete</div></div>
-            <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Lives beyond the sport</div></div>
-          </div>
+      <!-- The Foundation -->
+      <div>
+        <span class="sec-label" id="stats-h">The Foundation</span>
+        <div class="stats-grid" style="margin-top:24px">
+          <div class="stat"><div class="stat-n">D1</div><div class="stat-l">Played at the highest level</div></div>
+          <div class="stat"><div class="stat-n">3×</div><div class="stat-l">Player. Coach. Parent.</div></div>
+          <div class="stat"><div class="stat-n">1</div><div class="stat-l">Mission. Every athlete</div></div>
+          <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Lives beyond the sport</div></div>
         </div>
       </div>
-    </section>
 
-  </div>
+    </div>
+  </section>
+
+
 
   <!-- FOOTER ROW — three columns -->
   <div class="home-footer-row" role="complementary" aria-label="Connect with ATHLINKT">
@@ -1403,7 +1410,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       </svg>
       <span class="footer-wm"><span class="g">A</span>THLINKT</span>
     </a>
-    <span class="footer-tag">Beyond the Finish Line</span>
+    <span class="footer-tag"><span class="btfl-wrap">Beyond the Finish Line<span class="btfl-tooltip" aria-hidden="true"></span></span></span>
     <span class="footer-copy"><span style="color:var(--gray);font-size:11px">Last reviewed: April 2026 &nbsp;·&nbsp; </span>© 2025 ATHLINKT. Built for every athlete.</span>
   </div>
 </footer>
@@ -1868,5 +1875,20 @@ var TICKER_NEWS = [
   });
 })();
 </script>
+
+(function(){
+  var msgs=[
+    "You already know how to prepare. This is just a different game.",
+    "You trained when no one was watching. You showed up hurt. You sat on a bench and cheered anyway.",
+    "Film doesn't lie. Neither does your track record.",
+    "The grind translates. Trust it.",
+    "You showed up when it was hard. That doesn't stop mattering.",
+    "Next play. Different game plan. Same you.",
+    "The best coaches teach you to play without them. You're ready."
+  ];
+  var day=Math.floor(Date.now()/(1000*60*60*24));
+  var msg=msgs[day%msgs.length];
+  document.querySelectorAll('.btfl-tooltip').forEach(function(t){t.textContent=msg;});
+})();
 </body>
 </html>

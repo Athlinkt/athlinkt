@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src https://fonts.gstatic.com; connect-src 'self' https://docs.google.com; img-src 'self' data: https:; frame-src https://docs.google.com;">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Career Match for college athletes — free verified tools for life after NCAA participation. Current athletes, former athletes, any point in your journey.">
   <meta property="og:title" content="Career Match | ATHLINKT — Beyond the Finish Line">
@@ -176,6 +178,18 @@ footer{background:var(--dark-2);border-top:1px solid rgba(46,189,142,0.1);paddin
 .nav-dropdown li a:hover{color:var(--gold);background:rgba(46,189,142,0.05);border-left-color:var(--gold)}
 .nav-dropdown li a:hover::before{content:"✦";font-size:7px;margin-right:6px;color:var(--gold);vertical-align:middle}
 body.light-mode .nav-dropdown{background:var(--dark-2)}
+
+/* ── BTFL TOOLTIP ── */
+.btfl-wrap{position:relative;display:inline}
+.btfl-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--dark-2);border:1px solid rgba(46,189,142,0.3);border-radius:8px;padding:12px 16px;font-family:var(--font-body);font-size:13px;font-style:italic;color:var(--gold);white-space:normal;text-align:center;pointer-events:none;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s;z-index:500;max-width:280px;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.btfl-wrap:hover .btfl-tooltip{opacity:1;visibility:visible}
+@media(max-width:600px){.btfl-tooltip{font-size:12px;max-width:220px}}
+
+/* ── NAV STAR ── */
+
+.nav-has-dropdown>a::after{content:"✦";font-size:8px;color:var(--gold);opacity:0;margin-left:5px;vertical-align:middle;transition:opacity 0.2s ease, text-shadow 0.4s ease;display:inline-block}
+.nav-has-dropdown:hover>a::after{opacity:1;text-shadow:0 0 8px #2ebd8e, 0 0 16px rgba(46,189,142,0.5), 0 0 24px rgba(46,189,142,0.3)}
+.nav-has-dropdown>a:focus::after{opacity:1}
 </style>
 </head>
 <body>
@@ -594,7 +608,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
           <p class="cm-sec-p" style="margin-top:12px">Is a tool missing? Something unclear? Have a resource that helped you that should be here? This page improves because student athletes and their supporters tell us what they need.</p>
           <div style="margin-top:16px;padding:24px;background:var(--dark-2);border-radius:10px;text-align:center">
             <p style="font-size:14px;color:var(--gray);margin-bottom:16px;font-weight:300">Share your feedback directly —</p>
-            <a href="mailto:athlinkt&#64;gmail&#46;com" style="color:var(--gold);font-size:16px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(46,189,142,0.3);padding-bottom:2px">athlinkt&#64;gmail&#46;com</a>
+            <a href="/cdn-cgi/l/email-protection#6706130f0b0e090c13414451535c000a060e0b414453515c04080a" style="color:var(--gold);font-size:16px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(46,189,142,0.3);padding-bottom:2px">athlinkt&#64;gmail&#46;com</a>
           </div>
         </div>
       </div>
@@ -615,7 +629,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
       </svg>
       <div>
         <div class="footer-wm"><span class="g">A</span>THLINKT</div>
-        <div class="footer-tag">Beyond the Finish Line</div>
+        <div class="footer-tag"><span class="btfl-wrap">Beyond the Finish Line<span class="btfl-tooltip" aria-hidden="true"></span></span></div>
       </div>
     </a>
     <a href="index.html" class="footer-back">← Back to ATHLINKT</a>
@@ -623,7 +637,7 @@ body.light-mode .nav-dropdown{background:var(--dark-2)}
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var navToggle = document.getElementById('navToggle');
 var navLinks = document.getElementById('navLinks');
 function closeNav(){
@@ -757,5 +771,75 @@ var TICKER_NEWS = [
   });
 })();
 </script>
+
+(function(){
+  var msgs=[
+    "You already know how to prepare. This is just a different game.",
+    "You trained when no one was watching. You showed up hurt. You sat on a bench and cheered anyway.",
+    "Film doesn't lie. Neither does your track record.",
+    "The grind translates. Trust it.",
+    "You showed up when it was hard. That doesn't stop mattering.",
+    "Next play. Different game plan. Same you.",
+    "The best coaches teach you to play without them. You're ready."
+  ];
+  var day=Math.floor(Date.now()/(1000*60*60*24));
+  var msg=msgs[day%msgs.length];
+  document.querySelectorAll('.btfl-tooltip').forEach(function(t){t.textContent=msg;});
+})();
+
+// ── ACCORDION OPEN FROM URL HASH ──
+(function(){
+  function openFromHash(){
+    var hash = window.location.hash.replace('#','');
+    if(!hash) return;
+    // Map section IDs to their accordion toggle IDs
+    var sectionMap = {
+      'nil-what':     'acc-nil-what',
+      'nil-rules':    'acc-nil-rules',
+      'nil-money':    'acc-nil-money',
+      'nil-sports':   'acc-nil-sports',
+      'nil-education':'acc-nil-education',
+      'nil-agreement':'acc-nil-agreement',
+      'nil-support':  'acc-nil-support',
+      'tp-first':     'tp-first-body',
+      'tp-how':       'tp-how-body',
+      'tp-windows':   'tp-windows-body',
+      'tp-ghost':     'tp-ghost-body',
+      'tp-financial': 'tp-financial-body',
+      'tp-naia':      'tp-naia-body',
+      'tp-juco':      'tp-juco-body',
+      'tp-support':   'tp-support-body',
+      'cm-strengths': 'cm-strengths-body',
+      'cm-tools':     'cm-tools-body',
+      'cm-life':      'cm-life-body',
+      'cm-ncaa':      'cm-ncaa-body',
+    };
+    // Scroll to section
+    var target = document.getElementById(hash);
+    if(target){
+      setTimeout(function(){
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        // Find and open the accordion for this section
+        var bodyId = sectionMap[hash];
+        if(bodyId){
+          var body = document.getElementById(bodyId);
+          var toggle = body ? document.querySelector('[aria-controls="'+bodyId+'"]') : null;
+          if(body && toggle && body.hidden){
+            body.hidden = false;
+            toggle.setAttribute('aria-expanded','true');
+            var arrow = body.previousElementSibling && body.previousElementSibling.querySelector('.acc-arrow');
+            if(arrow) arrow.style.transform = 'rotate(180deg)';
+          }
+        }
+      }, 300);
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', openFromHash);
+  } else {
+    openFromHash();
+  }
+  window.addEventListener('hashchange', openFromHash);
+})();
 </body>
 </html>
