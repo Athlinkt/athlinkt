@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The surgery, and what it involves</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--ink:#0B1A20;--ink2:#102730;--ink3:#17323D;
+--bone:#EFE7D7;--bone2:#C9D3D6;--dim:#8FA5AC;--faint:#5E777F;
+--aqua:#45D3BE;--coral:#FF6E4E;--amber:#F2A93B;--steel:#7FB3CC;--red:#D9483F;
+--line:rgba(239,231,215,.13);--line2:rgba(239,231,215,.28);
+--disp:"Archivo Black","Arial Black",system-ui,sans-serif;
+--body:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+a.nav{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-decoration:none;margin-right:18px}
+a.nav:hover{color:var(--aqua)}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--aqua);margin:0 0 12px}
+h1{font-family:var(--disp);font-size:clamp(2.2rem,7vw,3.8rem);line-height:.95;letter-spacing:-.025em;margin:0 0 18px;text-wrap:balance}
+h2{font-family:var(--disp);font-size:clamp(1.3rem,3.4vw,1.8rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 8px}
+.sub{color:var(--dim);font-size:15px;margin:0 0 20px;max-width:58ch}
+header{padding:22px 0 40px}
+section{padding:44px 0;border-top:1px solid var(--line)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:18px}
+.card{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:9px}
+.card .tag.r{color:var(--red)}.card .tag.w{color:var(--bone)}.card .tag.b{color:var(--steel)}.card .tag.g{color:var(--aqua)}
+.card h3{font-family:var(--body);font-weight:600;font-size:15.5px;margin:0 0 6px;line-height:1.35}
+.card p{font-size:14.5px;color:var(--bone2);margin:0;line-height:1.55}
+svg{display:block;width:100%;height:auto}
+.stage{background:var(--ink2);border:1px solid var(--line);border-radius:16px;padding:14px 12px;margin-top:18px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--bone2);justify-content:center;padding:12px 4px 2px}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block;margin-right:7px;border:1px solid rgba(0,0,0,.35)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:18px 0 0}
+ol.steps li{counter-increment:s;position:relative;padding:16px 0 16px 46px;border-top:1px solid var(--line);color:var(--bone2);font-size:15.5px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:14px;width:30px;height:30px;border-radius:8px;background:var(--ink3);color:var(--aqua);font-family:var(--mono);font-size:13px;display:flex;align-items:center;justify-content:center}
+ol.steps li b{color:var(--bone);font-weight:600;display:block;margin-bottom:3px}
+img.shot{display:block;width:100%;height:auto;border-radius:12px}
+.card img.shot{border-radius:10px;margin:0 0 12px;aspect-ratio:4/3;object-fit:cover}
+footer{padding:38px 0 64px;color:var(--faint);font-size:13.5px;border-top:1px solid var(--line)}
+footer p{max-width:64ch}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap">
+<div style="padding:22px 0 26px">
+<a class="nav" href="index.html">&larr; What's happening in my back</a>
+<a class="nav" href="recovery.html">Recovery &rarr;</a>
+</div>
+<p class="eyebrow">The operation</p>
+<h1>What actually happens in the room</h1>
+<p class="sub">Two surgeons, two approaches, one operation. Here is the plan as it has been explained to me.</p>
+</div>
+</header>
+
+<section>
+<div class="wrap">
+<h2>Two surgeons</h2>
+<p class="sub">This is not a one-doctor operation. Getting to the front of my spine is its own specialty.</p>
+<div class="cards">
+<div class="card" data-img="vascular"><span class="tag r">In red</span><h3>The vascular surgeon</h3><p>Opens the way in and protects everything in the path. The front of the lower spine sits behind major blood vessels and the bowel, so somebody whose whole job is vessels moves them safely aside and holds them there. They get the spine surgeon ready, then stay for the duration.</p></div>
+<div class="card" data-img="spine"><span class="tag w">In white</span><h3>The spine surgeon</h3><p>Does the fusion itself. Clears out what is left of the worn disc, places the cage, then moves to my back for the screws and pulls L5 back into position.</p></div>
+<div class="card" data-img="team"><span class="tag b">In blue</span><h3>Everyone else</h3><p>Anaesthesia at my head, scrub tech on instruments, assistants, monitoring, and a circulating nurse who never scrubs in and keeps the room supplied.</p></div>
+</div>
+<div class="stage">
+<div id="orShell"><svg viewBox="0 0 720 560" role="img" id="or" aria-labelledby="ort ord">
+<title id="ort">Overhead view of the operating room team around the table</title>
+<desc id="ord">A draped patient lies on their right side on the table. The vascular surgeon in a red gown and the spine surgeon in a white gown stand at the front of the patient. The rest of the team, in blue, stands at the head, the back and the instrument side. Faces are not shown.</desc>
+</svg></div>
+<div class="legend"><span><i style="background:#D9483F"></i>Vascular surgeon</span><span><i style="background:#F2EDE3"></i>Spine surgeon</span><span><i style="background:#3E6FA8"></i>OR team</span></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>How I'll be positioned</h2>
+<div class="cards">
+<div class="card"><span class="tag">On my side</span><h3>Right side down</h3><p>Not face down, not on my back. I lie on my right side for the whole operation, which is what makes it a lateral approach.</p></div>
+<div class="card"><span class="tag">Tilted</span><h3>Rolled forward by the retractor system</h3><p>The table and the retractor system pull me forward so my sacroiliac joint is leaned over. That angle is what opens a line to the front of L5&ndash;S1 from the side.</p></div>
+<div class="card"><span class="tag">Fixed</span><h3>Left shoulder up and locked</h3><p>My left shoulder is triangulated toward my neck and held immobile, so nothing shifts once the corridor is set.</p></div>
+</div>
+<div class="stage">
+<svg viewBox="0 0 680 330" role="img" id="pos" aria-labelledby="post posd">
+<title id="post">Cross-section showing how I lie on the table</title>
+<desc id="posd">Looking along the body from the feet. The right side rests on the table, the left side is uppermost, and the whole body is rolled forward so the front tips toward the floor.</desc>
+</svg>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>The front</h2>
+<p class="sub">Six centimetres, and no muscle cut.</p>
+<ol class="steps">
+<li><b>An angled oblique incision, low on the abdomen</b>Roughly six centimetres, placed on the lower side because of where my sacroiliac joint sits. Angled rather than straight.</li>
+<li><b>Nothing is cut through</b>No muscle is cut and no muscle is split. The layers are opened and held apart rather than divided.</li>
+<li><b>A corridor about two fingers wide</b>That is the whole working space. The vascular surgeon retracts what needs moving and protects it there while the spine surgeon works through the gap.</li>
+<li><b>What is left of the disc comes out</b>The worn L5&ndash;S1 disc is cleared from the front, which is the part no posterior approach can reach as completely.</li>
+<li><b>The cage goes in</b>A titanium cage packed with allograft, meaning donor bone. It restores the height that the collapsed disc lost, which is what lifts the nerve doorway back open, and it gives the two bones a scaffold to grow together through.</li>
+</ol>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>The back</h2>
+<p class="sub">Two incisions, four screws, then the reduction.</p>
+<ol class="steps">
+<li><b>Two incisions near the sacroiliac joints</b>Two to three inches each, one on each side.</li>
+<li><b>Four pedicle screws</b>Bilateral posterior pedicle screws, two on each side, anchoring into L5 and into the sacrum below.</li>
+<li><b>L5 gets pulled back</b>With the cage in front and the screws behind, the surgeon draws L5 back toward where it belongs. As much as it will safely go, which for a slip past halfway is usually a partial correction rather than a full one.</li>
+</ol>
+<div class="stage">
+<svg viewBox="0 0 680 400" role="img" aria-labelledby="axt axd">
+<title id="axt">Cross-section through the torso showing both surgical corridors</title>
+<desc id="axd">Looking along the body with the patient on their right side. A corridor comes in obliquely from the front and lower side to reach the disc. Two shorter corridors come in from the back to reach the pedicles.</desc>
+</svg>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>Closing up</h2>
+<div class="cards">
+<div class="card"><span class="tag g">Deep</span><h3>Permanent sutures under the skin</h3><p>Front and back both. These stay in for good and are never seen.</p></div>
+<div class="card"><span class="tag g">Middle</span><h3>Three layers of absorbable sutures</h3><p>Dissolve on their own over the following weeks. Nothing to have taken out.</p></div>
+<div class="card"><span class="tag g">Surface</span><h3>A Mepilex dressing</h3><p>Soft silicone foam. It lifts off without pulling at the skin.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>What waking up is like</h2>
+<p class="sub">The honest version, without either sugar-coating or drama.</p>
+<div class="cards">
+<div class="card"><span class="tag">Expect</span><h3>It will hurt</h3><p>Three incisions, a corridor held open for hours, and hardware that was not there this morning. The acute pain is real and nobody pretends otherwise.</p></div>
+<div class="card"><span class="tag g">Also true</span><h3>Patients tolerate it well</h3><p>This is the phrase that keeps coming up, and it is worth holding onto. Painful and well tolerated are not contradictions.</p></div>
+<div class="card"><span class="tag b">Then</span><h3>Up and walking</h3><p>Three to five days in hospital, walking the first day, physical therapy starting before I leave.</p></div>
+</div>
+<p class="sub" style="margin-top:26px">What comes after that has <a href="recovery.html" style="color:var(--aqua)">its own page</a>.</p>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<p>This is the plan as it has been described to me, drawn schematically. The illustrations show the arrangement and the approach, not surgical detail, and the anatomy is simplified. My surgical team's account of the day is the one that counts.</p>
+</div>
+</footer>
+
+<script>
+var NS="http://www.w3.org/2000/svg",SK=["#8D5524","#C68642","#E0AC69","#F1C27D","#FFDBAC","#6B4226","#A9704B","#D8A47F"];
+function E(p,t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+function txt(p,x,y,s,c,sz,anc){var e=E(p,"text",{x:x,y:y,fill:c||"#8FA5AC","font-family":"IBM Plex Mono, monospace","font-size":sz||11.5,"text-anchor":anc||"middle","letter-spacing":.6});e.textContent=s;return e}
+
+/* ---------- operating room ---------- */
+(function(){
+var sv=document.getElementById("or");
+sv.setAttribute("viewBox","0 0 900 560");
+var d=E(sv,"defs",{});
+
+function grad(id,c1,c2,c3){
+ var g=E(d,"linearGradient",{id:id,x1:"18%",y1:"0%",x2:"82%",y2:"100%"});
+ E(g,"stop",{offset:"0%","stop-color":c1});
+ E(g,"stop",{offset:"52%","stop-color":c2});
+ E(g,"stop",{offset:"100%","stop-color":c3});
+}
+grad("gRed","#F0705F","#D9483F","#8E2A25");
+grad("gWht","#FFFDF7","#EFE9DC","#B9B0A0");
+grad("gBlu","#5C90C4","#3E6FA8","#22456B");
+grad("gDrape","#4E93A2","#2E6B78","#194B57");
+grad("gTable","#2A5665","#1C3B47","#122A34");
+
+var rm=E(d,"radialGradient",{id:"room",cx:"48%",cy:"20%",r:"82%"});
+E(rm,"stop",{offset:"0%","stop-color":"#24485606"});
+E(rm,"stop",{offset:"0%","stop-color":"#244856"});
+E(rm,"stop",{offset:"62%","stop-color":"#122B34"});
+E(rm,"stop",{offset:"100%","stop-color":"#08151B"});
+var pl=E(d,"radialGradient",{id:"pool",cx:"50%",cy:"50%",r:"50%"});
+E(pl,"stop",{offset:"0%","stop-color":"#FFF1D6","stop-opacity":".40"});
+E(pl,"stop",{offset:"55%","stop-color":"#FFE9C4","stop-opacity":".14"});
+E(pl,"stop",{offset:"100%","stop-color":"#FFE9C4","stop-opacity":"0"});
+var vg=E(d,"radialGradient",{id:"vig",cx:"50%",cy:"46%",r:"72%"});
+E(vg,"stop",{offset:"62%","stop-color":"#000","stop-opacity":"0"});
+E(vg,"stop",{offset:"100%","stop-color":"#000","stop-opacity":".55"});
+
+var fb=E(d,"filter",{id:"far",x:"-25%",y:"-25%",width:"150%",height:"150%"});
+E(fb,"feGaussianBlur",{stdDeviation:"2.4"});
+var sh=E(d,"filter",{id:"drop",x:"-40%",y:"-40%",width:"180%",height:"180%"});
+E(sh,"feDropShadow",{dx:"0",dy:"10","stdDeviation":"12","flood-color":"#000","flood-opacity":".5"});
+var gl=E(d,"filter",{id:"glow",x:"-70%",y:"-70%",width:"240%",height:"240%"});
+E(gl,"feGaussianBlur",{stdDeviation:"14"});
+
+E(sv,"rect",{x:0,y:0,width:900,height:560,fill:"url(#room)"});
+
+/* overhead lights */
+[[276,72,56],[604,58,46]].forEach(function(l){
+ E(sv,"line",{x1:l[0],y1:0,x2:l[0],y2:l[1]-l[2]*.4,stroke:"#2B505E","stroke-width":8});
+ E(sv,"ellipse",{cx:l[0],cy:l[1]+8,rx:l[2]*.9,ry:l[2]*.38,fill:"#FFF3DA",opacity:".3",filter:"url(#glow)"});
+ E(sv,"ellipse",{cx:l[0],cy:l[1],rx:l[2],ry:l[2]*.42,fill:"#2F5A6B",stroke:"#4A8095","stroke-width":2});
+ E(sv,"ellipse",{cx:l[0],cy:l[1]+3,rx:l[2]*.76,ry:l[2]*.29,fill:"#FFF8E8"});
+ E(sv,"ellipse",{cx:l[0]-l[2]*.24,cy:l[1],rx:l[2]*.24,ry:l[2]*.1,fill:"#FFF","opacity":".7"});
+});
+E(sv,"ellipse",{cx:452,cy:224,rx:340,ry:158,fill:"url(#pool)"});
+
+/* far side of the table, drawn first so the table hides their lower halves */
+FAR();
+
+/* ---------- table and patient ---------- */
+var tb=E(sv,"g",{filter:"url(#drop)"});
+E(tb,"path",{d:"M168 270 L742 270 L774 194 L198 194 Z",fill:"url(#gTable)",stroke:"rgba(239,231,215,.2)"});
+E(tb,"path",{d:"M168 270 L742 270 L742 286 L168 286 Z",fill:"#122A34"});
+E(tb,"path",{d:"M198 194 L774 194 L770 200 L200 200 Z",fill:"#3C7286",opacity:".6"});
+/* ---------- the patient: right side down, head to the left, front toward you ---------- */
+var pg=E(sv,"g",{});
+var BODY="M220 202 Q222 184 246 184 Q270 184 274 202 L288 194 Q304 178 330 181 "+
+ "Q388 177 444 182 Q502 187 552 194 Q598 197 624 209 Q670 214 702 228 Q740 239 752 254 "+
+ "L744 270 Q700 264 660 256 Q620 251 596 247 Q556 253 520 251 Q470 255 420 251 "+
+ "Q360 247 316 245 Q292 243 280 233 Q268 227 258 233 Q240 237 230 227 Q217 216 220 202 Z";
+E(pg,"path",{d:BODY,fill:"url(#gDrape)"});
+E(pg,"path",{d:BODY,fill:"none",stroke:"#6FBAC9","stroke-width":2,opacity:".75"});
+/* drape folds following the body */
+["M300 186 Q294 216 302 244","M362 180 Q356 214 364 248","M428 182 Q422 216 428 251",
+ "M496 187 Q490 218 496 251","M560 195 Q556 222 562 249","M636 212 Q634 232 640 254",
+ "M700 228 Q702 244 706 262"].forEach(function(p){
+ E(pg,"path",{d:p,fill:"none",stroke:"#0B1A20",opacity:".15","stroke-width":3.5,"stroke-linecap":"round"})});
+E(pg,"path",{d:"M288 194 Q388 177 552 194 Q640 205 752 254",fill:"none",stroke:"#8FD3DF","stroke-width":2.5,opacity:".5"});
+/* head, capped */
+E(pg,"ellipse",{cx:246,cy:206,rx:27,ry:23,fill:"#2E6B78"});
+E(pg,"path",{d:"M222 200 q4 -22 24 -22 q20 0 24 22 q-24 12 -48 0 Z",fill:"#3E8494"});
+E(pg,"path",{d:"M228 190 q18 -9 36 2",fill:"none",stroke:"#8FD3DF","stroke-width":3,opacity:".55"});
+/* left shoulder: up and triangulated toward the neck */
+E(pg,"path",{d:"M276 202 Q288 176 316 180 Q334 184 330 202 Q304 212 276 202 Z",fill:"#3B7E8C"});
+E(pg,"path",{d:"M282 190 q18 -10 40 -2",fill:"none",stroke:"#8FD3DF","stroke-width":2.5,opacity:".5"});
+/* left arm forward onto a padded support */
+E(pg,"rect",{x:232,y:264,width:86,height:13,rx:6,fill:"#2C5867"});
+E(pg,"path",{d:"M300 206 Q286 236 268 262",stroke:"#3B7E8C","stroke-width":22,fill:"none","stroke-linecap":"round"});
+E(pg,"path",{d:"M300 206 Q286 236 268 262",stroke:"#0B1A20","stroke-width":5,fill:"none",opacity:".13"});
+/* pillow between the knees */
+E(pg,"ellipse",{cx:700,cy:250,rx:24,ry:11,fill:"#3E8494",opacity:".85"});
+/* sterile windows: front low, back high */
+E(pg,"rect",{x:446,y:220,width:112,height:30,rx:8,fill:"#E7DCC7"});
+E(pg,"rect",{x:446,y:220,width:112,height:9,rx:8,fill:"#FFF6E6",opacity:".5"});
+E(pg,"line",{x1:464,y1:243,x2:538,y2:226,stroke:"#9C3128","stroke-width":5,"stroke-linecap":"round"});
+E(pg,"rect",{x:576,y:198,width:76,height:26,rx:7,fill:"#E7DCC7"});
+E(pg,"rect",{x:576,y:198,width:76,height:8,rx:7,fill:"#FFF6E6",opacity:".5"});
+E(pg,"line",{x1:594,y1:204,x2:594,y2:218,stroke:"#9C3128","stroke-width":4,"stroke-linecap":"round"});
+E(pg,"line",{x1:632,y1:204,x2:632,y2:218,stroke:"#9C3128","stroke-width":4,"stroke-linecap":"round"});
+/* orientation labels */
+txt(sv,246,166,"HEAD","#B9C6CA",10.5);
+txt(sv,772,266,"FEET","#B9C6CA",10.5);
+txt(sv,318,166,"LEFT SIDE, UP","#8FD3DF",10.5);
+txt(sv,470,300,"MY FRONT, TOWARD YOU","#8FD3DF",10.5);
+E(sv,"path",{d:"M158 300 q0 -12 12 -12 l552 0 q12 0 12 12",fill:"none",stroke:"#3E8494",opacity:".45","stroke-width":1.5});
+txt(sv,440,318,"RIGHT SIDE DOWN, ON THE TABLE","#9AAFB6",11);
+txt(sv,502,262,"6 CM, FRONT","#7A4A44",10);
+txt(sv,614,190,"TWO, BACK","#7A4A44",10);
+txt(sv,614,178,"MY BACK, AWAY FROM YOU","#8FD3DF",10.5);
+
+/* anaesthesia screen, monitor, instrument stand */
+E(sv,"rect",{x:150,y:146,width:9,height:112,rx:4,fill:"#2E5666"});
+E(sv,"rect",{x:62,y:116,width:82,height:58,rx:8,fill:"#0F242C",stroke:"#356070","stroke-width":2});
+E(sv,"path",{d:"M70 152 l11 0 l6 -17 l8 28 l8 -36 l7 25 l7 0 l16 0",fill:"none",stroke:"#45D3BE","stroke-width":2.2,"stroke-linecap":"round"});
+E(sv,"rect",{x:754,y:212,width:122,height:13,rx:6,fill:"#2C5867"});
+E(sv,"rect",{x:806,y:225,width:10,height:80,rx:5,fill:"#2C5867"});
+[0,1,2,3,4,5].forEach(function(i){E(sv,"rect",{x:764+i*19,y:202,width:6,height:11,rx:2,fill:"#D6E1E4"})});
+
+/* ---------- figures ---------- */
+function folds(g,arr,o){arr.forEach(function(p){E(g,"path",{d:p,fill:"none",stroke:"#000",opacity:o||".17","stroke-width":3,"stroke-linecap":"round"})})}
+
+function backFigure(x,y,s,gid,skin,dark,tone){
+ var g=E(sv,"g",{transform:"translate("+x+" "+y+") scale("+s+")",filter:"url(#drop)"});
+ [-1,1].forEach(function(dr){
+  E(g,"path",{d:"M"+(dr*46)+" -150 Q"+(dr*84)+" -104 "+(dr*72)+" -38",stroke:"url(#"+gid+")","stroke-width":31,fill:"none","stroke-linecap":"round"});
+  E(g,"path",{d:"M"+(dr*52)+" -140 Q"+(dr*80)+" -102 "+(dr*70)+" -52",stroke:"#000",opacity:".12","stroke-width":6,fill:"none"});
+  E(g,"path",{d:"M"+(dr*58)+" -44 q"+(dr*13)+" 3 "+(dr*18)+" 13",stroke:"#E6EFF2","stroke-width":10,fill:"none","stroke-linecap":"round"});
+  E(g,"ellipse",{cx:dr*70,cy:-28,rx:15,ry:13,fill:skin});
+  E(g,"ellipse",{cx:dr*70-dr*4,cy:-32,rx:8,ry:6,fill:"#FFF",opacity:".13"});
+ });
+ E(g,"path",{d:"M-33 -200 q4 -35 33 -35 q29 0 33 35 q2 17 -8 23 q-25 11 -50 0 q-10 -6 -8 -23 Z",fill:"url(#"+gid+")"});
+ E(g,"path",{d:"M-24 -224 q24 -9 48 6",fill:"none",stroke:"#FFF",opacity:".22","stroke-width":5,"stroke-linecap":"round"});
+ E(g,"path",{d:"M-31 -186 q31 17 62 0",fill:"none",stroke:"#000",opacity:".16","stroke-width":3});
+ E(g,"path",{d:"M-14 -178 q14 10 28 0 l-3 21 q-11 6 -22 0 Z",fill:skin});
+ E(g,"path",{d:"M-12 -176 q12 9 24 0 l-1 8 q-11 5 -22 0 Z",fill:"#000",opacity:".16"});
+ E(g,"path",{d:"M-15 -186 q15 9 30 0",fill:"none",stroke:dark,"stroke-width":4,opacity:".6"});
+ E(g,"path",{d:"M-26 -193 q26 -9 52 0",fill:"none",stroke:"#F6F3EC","stroke-width":2,opacity:".85"});
+ E(g,"path",{d:"M-24 -183 q24 -8 48 0",fill:"none",stroke:"#F6F3EC","stroke-width":2,opacity:".7"});
+ E(g,"path",{d:"M-48 -158 q-15 45 -11 92 l6 68 l106 0 l6 -68 q4 -47 -11 -92 q-48 21 -96 0 Z",fill:"url(#"+gid+")"});
+ folds(g,["M-30 -140 q-10 46 -6 96 l3 52","M28 -140 q10 46 6 96 l-3 52","M-2 -128 q-4 40 -1 74","M-44 -96 q22 12 44 6"],".15");
+ E(g,"path",{d:"M-48 -158 q-15 45 -11 92 l6 68 l24 0 l-5 -70 q-4 -52 8 -90 Z",fill:"#000",opacity:".18"});
+ E(g,"path",{d:"M34 -152 q14 44 11 90 l-5 68 l14 0 l6 -68 q4 -47 -11 -92 Z",fill:"#FFF",opacity:".07"});
+ E(g,"path",{d:"M-30 -164 q30 21 60 0 l6 13 q-36 22 -72 0 Z",fill:"url(#"+gid+")",stroke:"#000","stroke-opacity":".18"});
+ E(g,"path",{d:"M-34 -66 q34 13 68 0",fill:"none",stroke:"#000",opacity:".2","stroke-width":3});
+ E(g,"path",{d:"M0 -62 q-16 -13 -24 -2 q10 10 24 2 q14 8 24 -2 q-8 -11 -24 2 Z",fill:"url(#"+gid+")",stroke:"#000","stroke-opacity":".24"});
+ E(g,"path",{d:"M-4 -58 l-15 32 M4 -58 l15 32",stroke:"url(#"+gid+")","stroke-width":5,"stroke-linecap":"round"});
+ return g;
+}
+
+function FAR(){
+ bentFigure(316,148,.72,"gBlu","#8D5524","#3A2214");
+ bentFigure(700,152,.70,"gBlu","#E0AC69","#8A5C2A");
+}
+function bentFigure(x,y,s,gid,skin,dark){
+ var g=E(sv,"g",{transform:"translate("+x+" "+y+") scale("+s+")",filter:"url(#far)"});
+ [-1,1].forEach(function(dr){
+  E(g,"path",{d:"M"+(dr*40)+" -34 Q"+(dr*68)+" 8 "+(dr*54)+" 48",stroke:"url(#"+gid+")","stroke-width":27,fill:"none","stroke-linecap":"round"});
+  E(g,"ellipse",{cx:dr*52,cy:54,rx:13,ry:11,fill:skin});
+ });
+ E(g,"path",{d:"M-53 -30 q-8 -47 53 -47 q61 0 53 47 q-53 21 -106 0 Z",fill:"url(#"+gid+")"});
+ folds(g,["M-26 -70 q-6 32 -2 44","M26 -70 q6 32 2 44"],".14");
+ E(g,"path",{d:"M-53 -30 q-8 -47 53 -47 l0 58 q-31 0 -53 -11 Z",fill:"#000",opacity:".2"});
+ E(g,"path",{d:"M-30 -67 q30 -31 60 0 q4 21 -30 23 q-34 -2 -30 -23 Z",fill:"url(#"+gid+")"});
+ E(g,"path",{d:"M-22 -84 q22 -9 44 4",fill:"none",stroke:"#FFF",opacity:".2","stroke-width":4,"stroke-linecap":"round"});
+ E(g,"path",{d:"M-19 -48 q19 13 38 0 l-4 13 q-15 7 -30 0 Z",fill:skin,opacity:".95"});
+ E(g,"path",{d:"M-22 -58 q22 -10 44 0",fill:"none",stroke:dark,"stroke-width":3,opacity:".55"});
+ return g;
+}
+
+backFigure(116,522,.62,"gBlu","#6B4226","#301A0E");
+backFigure(320,550,1.03,"gRed","#C68642","#6F4517");
+backFigure(548,558,1.07,"gWht","#F1C27D","#9A6B33");
+backFigure(776,518,.66,"gBlu","#A9704B","#4F3018");
+
+E(sv,"rect",{x:0,y:0,width:900,height:560,fill:"url(#vig)","pointer-events":"none"});
+txt(sv,116,416,"ANAESTHESIA","#A6BAC0",11);
+txt(sv,320,430,"VASCULAR SURGEON","#F0A096",11.5);
+txt(sv,548,440,"SPINE SURGEON","#F2EDE3",11.5);
+txt(sv,776,412,"SCRUB TECH","#A6BAC0",11);
+txt(sv,316,84,"ASSISTANT","#9AAFB6",10.5);
+txt(sv,700,88,"MONITORING","#9AAFB6",10.5);
+})();
+
+/* ---------- axial cross-section, both corridors ---------- */
+(function(){
+var sv=document.querySelectorAll("svg")[1];
+E(sv,"rect",{x:60,y:318,width:560,height:22,rx:8,fill:"#20404C"});
+txt(sv,340,356,"THE TABLE. I AM ON MY RIGHT SIDE.","#5E777F",11);
+/* torso cross-section: anterior left, posterior right */
+E(sv,"ellipse",{cx:330,cy:190,rx:230,ry:125,fill:"#E8DFCD",opacity:.1,stroke:"rgba(239,231,215,.3)"});
+E(sv,"ellipse",{cx:330,cy:190,rx:230,ry:125,fill:"none",stroke:"rgba(239,231,215,.35)","stroke-width":1.5});
+txt(sv,112,190,"FRONT","#7F97A0",11);
+txt(sv,556,190,"BACK","#7F97A0",11);
+/* vertebra */
+E(sv,"rect",{x:352,y:158,width:78,height:66,rx:10,fill:"#E9E0CC"});
+E(sv,"rect",{x:436,y:150,width:22,height:26,rx:6,fill:"#DCD1BA"});
+E(sv,"rect",{x:436,y:206,width:22,height:26,rx:6,fill:"#DCD1BA"});
+E(sv,"rect",{x:464,y:176,width:34,height:30,rx:7,fill:"#DCD1BA"});
+txt(sv,391,196,"L5","#0B1A20",12);
+/* anterior corridor */
+E(sv,"path",{d:"M150 268 L128 236 L346 166 L352 206 Z",fill:"#D9483F",opacity:.26});
+E(sv,"path",{d:"M150 268 L128 236 L346 166 L352 206 Z",fill:"none",stroke:"#D9483F","stroke-width":1.5});
+E(sv,"line",{x1:126,y1:250,x2:152,y2:262,stroke:"#B4322A","stroke-width":5,"stroke-linecap":"round"});
+txt(sv,196,300,"6 cm oblique. No muscle cut or split.","#D9483F",12);
+/* cage */
+E(sv,"rect",{x:356,y:178,width:34,height:26,rx:5,fill:"#9FBFCF"});
+/* posterior corridors */
+[[150,-1],[232,1]].forEach(function(p){
+ E(sv,"path",{d:"M596 "+(p[0]-14)+" L596 "+(p[0]+14)+" L462 "+(190+p[1]*22)+" L462 "+(190+p[1]*4)+" Z",fill:"#F2EDE3",opacity:.2});
+ E(sv,"path",{d:"M596 "+(p[0]-14)+" L596 "+(p[0]+14)+" L462 "+(190+p[1]*22)+" L462 "+(190+p[1]*4)+" Z",fill:"none",stroke:"#F2EDE3","stroke-width":1.3});
+ E(sv,"line",{x1:600,y1:p[0]-12,x2:600,y2:p[0]+12,stroke:"#B4322A","stroke-width":5,"stroke-linecap":"round"});
+ E(sv,"circle",{cx:474,cy:190+p[1]*14,r:6,fill:"#9FBFCF"});
+});
+txt(sv,556,120,"2 to 3 in","#C9D3D6",12);
+txt(sv,556,266,"2 to 3 in","#C9D3D6",12);
+txt(sv,330,40,"Looking along my body, from the feet up","#8FA5AC",12);
+})();
+
+/* ---------- how I lie on the table ---------- */
+(function(){
+var sv=document.getElementById("pos"); if(!sv)return;
+E(sv,"rect",{x:70,y:266,width:540,height:20,rx:8,fill:"#20404C"});
+txt(sv,340,306,"THE TABLE","#5E777F",11);
+var g=E(sv,"g",{transform:"rotate(-19 340 168)"});
+E(g,"ellipse",{cx:340,cy:168,rx:150,ry:96,fill:"#2E6B78",opacity:".55",stroke:"#6FBAC9","stroke-width":2});
+E(g,"ellipse",{cx:340,cy:168,rx:150,ry:96,fill:"none",stroke:"#8FD3DF","stroke-width":1,opacity:".5"});
+E(g,"rect",{x:396,y:146,width:52,height:46,rx:9,fill:"#E9E0CC"});
+E(g,"rect",{x:452,y:140,width:18,height:18,rx:5,fill:"#DCD1BA"});
+E(g,"rect",{x:452,y:180,width:18,height:18,rx:5,fill:"#DCD1BA"});
+txt(g,422,174,"L5","#0B1A20",11);
+E(g,"path",{d:"M212 196 L262 172",stroke:"#D9483F","stroke-width":6,"stroke-linecap":"round"});
+E(g,"path",{d:"M486 132 L486 148 M486 188 L486 204",stroke:"#F2EDE3","stroke-width":6,"stroke-linecap":"round"});
+txt(sv,132,126,"LEFT, UP","#8FD3DF",11.5);
+txt(sv,548,224,"RIGHT, DOWN","#8FD3DF",11.5);
+txt(sv,150,250,"FRONT","#9AAFB6",11);
+txt(sv,548,96,"BACK","#9AAFB6",11);
+E(sv,"path",{d:"M196 78 q84 -34 158 -6",fill:"none",stroke:"#45D3BE","stroke-width":2.5,"marker-end":"url(#ah)"});
+var d2=E(sv,"defs",{});var mk=E(d2,"marker",{id:"ah",viewBox:"0 0 10 10",refX:"8",refY:"5",markerWidth:"6",markerHeight:"6",orient:"auto-start-reverse"});
+E(mk,"path",{d:"M0 0 L10 5 L0 10 z",fill:"#45D3BE"});
+txt(sv,264,58,"rolled forward by the retractor system","#45D3BE",12);
+E(sv,"rect",{x:100,y:196,width:74,height:12,rx:6,fill:"#2C5867"});
+txt(sv,137,226,"ARM SUPPORT","#5E777F",10);
+txt(sv,340,30,"Looking along my body from my feet","#8FA5AC",12.5);
+})();
+
+/* ---------- optional photographs ----------
+   Drop files into an "images" folder next to this page and they replace the
+   drawings automatically. Nothing breaks if they are absent.
+     images/or-scene.jpg   the room
+     images/vascular.jpg   the surgeon in red
+     images/spine.jpg      the surgeon in white
+     images/team.jpg       the team in blue
+   .jpg, .png and .webp all work.                                          */
+(function(){
+ function tryLoad(base,alt,ok){
+  var exts=["jpg","jpeg","png","webp"],i=0;
+  (function next(){
+   if(i>=exts.length)return;
+   var im=new Image();
+   im.onload=function(){im.className="shot";im.alt=alt;ok(im)};
+   im.onerror=function(){i++;next()};
+   im.src="images/"+base+"."+exts[i];
+  })();
+ }
+ tryLoad("or-scene","The surgical team around the operating table. No faces are shown.",function(im){
+  var sh=document.getElementById("orShell");
+  if(sh){sh.innerHTML="";sh.appendChild(im)}
+ });
+ document.querySelectorAll("[data-img]").forEach(function(card){
+  tryLoad(card.dataset.img,card.querySelector("h3").textContent,function(im){
+   card.insertBefore(im,card.firstChild);
+  });
+ });
+})();
+</script>
+</body>
+</html>

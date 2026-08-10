@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recovery, week by week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--ink:#0B1A20;--ink2:#102730;--ink3:#17323D;
+--bone:#EFE7D7;--bone2:#C9D3D6;--dim:#8FA5AC;--faint:#5E777F;
+--aqua:#45D3BE;--coral:#FF6E4E;--amber:#F2A93B;--steel:#7FB3CC;--grass:#7FC24E;
+--line:rgba(239,231,215,.13);--line2:rgba(239,231,215,.28);
+--disp:"Archivo Black","Arial Black",system-ui,sans-serif;
+--body:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+a.back{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:22px 0 0}
+a.back:hover{color:var(--aqua)}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--aqua);margin:0 0 12px}
+h1{font-family:var(--disp);font-size:clamp(2.2rem,7vw,3.8rem);line-height:.95;letter-spacing:-.025em;margin:0 0 18px;text-wrap:balance}
+h2{font-family:var(--disp);font-size:clamp(1.3rem,3.4vw,1.8rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 8px}
+.sub{color:var(--dim);font-size:15px;margin:0 0 20px;max-width:58ch}
+header{padding:26px 0 40px}
+section{padding:44px 0;border-top:1px solid var(--line)}
+svg{display:block;width:100%;height:auto;max-width:430px;margin:0 auto}
+select{width:100%;padding:12px 13px;font-family:var(--body);font-size:16px;color:var(--bone);background:var(--ink2);border:1px solid var(--line2);border-radius:10px;-webkit-appearance:none;appearance:none;
+background-image:linear-gradient(45deg,transparent 50%,var(--dim) 50%),linear-gradient(135deg,var(--dim) 50%,transparent 50%);
+background-position:calc(100% - 20px) calc(50% + 2px),calc(100% - 14px) calc(50% + 2px);background-size:6px 6px,6px 6px;background-repeat:no-repeat}
+select:focus{outline:2px solid var(--aqua);outline-offset:2px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--dim);justify-content:center;padding:10px 0 18px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:6px}
+.status{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:14px}
+.status .nm{font-weight:600;font-size:17px;margin:0 0 4px}
+.status .wh{font-family:var(--mono);font-size:13px;margin:0 0 10px}
+.status .why{font-size:15px;color:var(--bone2);margin:0}
+details{border-top:1px solid var(--line);margin:0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:14px 2px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:16px;color:var(--faint)}
+details[open] summary::after{content:"\2212"}
+details[open] summary{color:var(--aqua)}
+.dbody{padding:0 2px 16px}
+.rw{display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
+.rw b{color:var(--faint);font-weight:400;font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;padding-top:3px}
+.dbody p{margin:0;font-size:15.5px;color:var(--bone2);max-width:62ch}
+.phase{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;padding:4px 0 16px}
+button.pchip{font-family:var(--body);font-size:13.5px;padding:9px 11px;border-radius:9px;border:1px solid var(--line2);background:var(--ink2);color:var(--bone2);cursor:pointer;text-align:left;line-height:1.3}
+button.pchip[aria-pressed="true"]{border-width:2px;font-weight:600}
+:focus-visible{outline:2px solid var(--aqua);outline-offset:2px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:18px}
+.card{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:9px}
+.card h3{font-family:var(--body);font-weight:600;font-size:15.5px;margin:0 0 6px;line-height:1.35}
+.card p{font-size:14.5px;color:var(--bone2);margin:0;line-height:1.55}
+footer{padding:38px 0 64px;color:var(--faint);font-size:13.5px;border-top:1px solid var(--line)}
+footer p{max-width:64ch}
+@media(max-width:520px){.rw{grid-template-columns:1fr;gap:2px}.rw b{padding-top:0}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap">
+<a class="back" href="index.html" style="margin-right:18px">&larr; What's happening in my back</a><a class="back" href="surgery.html">The surgery &rarr;</a>
+<p class="eyebrow" style="padding-top:26px">After the surgery</p>
+<h1>Recovery, week by week</h1>
+<p class="sub">Surgery end of August. Season runs October to March. The two overlap, so here's what comes back when.</p>
+</div>
+</header>
+
+<section>
+<div class="wrap">
+<h2>By activity</h2>
+<p class="sub">Pick anything from the list. The ring shows when it clears.</p>
+<select id="pick" aria-label="Choose an activity"></select>
+<svg viewBox="0 0 380 300" role="img" id="ring" style="margin-top:16px">
+<title>Clearance ring for the selected activity</title>
+<desc>A ring spanning twelve months from September surgery. Red where the activity is not allowed, amber where limited, green where cleared. An inner band marks the October to March season.</desc>
+</svg>
+<div class="legend"><span><i style="background:#E24B4A"></i>Not yet</span><span><i style="background:#D89020"></i>Limited</span><span><i style="background:#7FC24E"></i>Cleared</span><span><i style="background:#1D9E75"></i>Season</span></div>
+<div class="status">
+<p class="nm" id="aName">Walking</p>
+<p class="wh" id="aWhen"></p>
+<p class="why" id="aWhy"></p>
+</div>
+<details id="dEnt">
+<summary>What this involves</summary>
+<div class="dbody" id="entBody"></div>
+</details>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>By phase</h2>
+<p class="sub">The same twelve months, split into five stages.</p>
+<svg viewBox="0 0 380 300" role="img" id="dial">
+<title>Five recovery phases around a twelve month ring</title>
+<desc>Phases running week nought to two, two to six, six to twelve, three to six months and six to twelve months, with an inner band marking the October to March season.</desc>
+</svg>
+<div class="legend"><span id="lgP"></span></div>
+<div class="phase" id="pchips"></div>
+<details><summary>Daily life</summary><div class="dbody"><p id="pD"></p></div></details>
+<details><summary>Coaching, off court</summary><div class="dbody"><p id="pO"></p></div></details>
+<details><summary>Coaching, on court</summary><div class="dbody"><p id="pC"></p></div></details>
+<details><summary>Watch for</summary><div class="dbody"><p id="pW"></p></div></details>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>Where it collides with the season</h2>
+<div class="cards">
+<div class="card"><span class="tag">Late August</span><h3>Surgery, then walking</h3><p>Three to five days in hospital, PT starting there. Two pounds is the lifting limit. Brace whenever I am up. The one stretch I am genuinely out.</p></div>
+<div class="card"><span class="tag">September</span><h3>Admin and virtual</h3><p>Weeks one to five. Team meetings on a screen, film, scouting, recruiting, planning. Physical therapy out of the surgeon's office. No court time at all.</p></div>
+<div class="card"><span class="tag">October</span><h3>On court, signing only</h3><p>Weeks five to ten. I am there and I am coaching, entirely through ASL. Not demonstrating, catching, bending, twisting, pushing or pulling. Anything physical belongs to my staff. The eight-week mark falls mid to late October, so restrictions start easing inside this window.</p></div>
+<div class="card"><span class="tag">November</span><h3>Season opens past the BLT mark</h3><p>Weeks ten to fourteen. Bending and twisting already cleared. Longer stretches on my feet. Brace by choice at practice, as a cue and a signal.</p></div>
+<div class="card"><span class="tag">December</span><h3>Fully functional</h3><p>Week fourteen on. Full practice, full travel, normal signing, thirty pound lifting. Still no demonstrating, catching or impact.</p></div>
+<div class="card"><span class="tag">Feb to Mar</span><h3>Demonstrations clear late season</h3><p>Six months lands late February with a month of the season left. PT at GU continues all the way through the year.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>Two things worth spelling out</h2>
+<div class="cards">
+<div class="card"><span class="tag">Jargon</span><h3>BLT means Bending, Lifting, Twisting</h3><p>The three movements that stress a healing fusion. When a surgeon says "BLT restrictions," that is all it means. Mine run eight weeks, possibly less with clearance. Protocols vary from six to twelve.</p></div>
+<div class="card"><span class="tag">The number</span><h3>Two pounds, not ten</h3><p>My surgeon set 2 lb for the first two weeks, stricter than the published sheets. Two pounds is a phone and a water bottle. Please do not hand me anything heavier.</p></div>
+</div>
+<h2 style="margin-top:36px">Brace and physical therapy</h2>
+<div class="cards">
+<div class="card"><span class="tag">Hospital</span><h3>Three to five days</h3><p>Physical therapy starts before I leave the hospital. What it covers is TBD.</p></div>
+<div class="card"><span class="tag">Brace</span><h3>Required, then chosen</h3><p>Required whenever I am up for the first couple of weeks. After that I plan to wear it at practice anyway, as a reminder to me and a visible signal to everyone else that I am not available to catch anything.</p></div>
+<div class="card"><span class="tag">PT, weeks 0 to 6</span><h3>Out of the surgeon's office</h3><p>Six weeks, run by the surgical team. Programme TBD.</p></div>
+<div class="card"><span class="tag">PT, week 6 to a year</span><h3>At GU, all season</h3><p>Moves to GU and runs the full twelve months, not until I feel better. Programme TBD.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>What October actually looks like</h2>
+<p class="sub">Roughly weeks five to ten. I am on court. I am not out. But the list of what I cannot do is long, and it will look like I am fine.</p>
+<div class="cards">
+<div class="card"><span class="tag" style="color:var(--grass)">Yes</span><h3>Coaching in ASL</h3><p>Signing is the whole job for early and mid October. Play calls, corrections, film review, huddles. All of it happens through my hands and none of it through my back.</p></div>
+<div class="card"><span class="tag">No</span><h3>Anything physical</h3><p>No demonstrating. No catching. No lifting. No bending to the floor. No twisting at the waist. No pushing or pulling carts, doors or equipment.</p></div>
+<div class="card"><span class="tag" style="color:var(--steel)">Ask</span><h3>What my staff picks up</h3><p>Balls off the floor, equipment, carts, anything that needs a body rather than a decision. Assign it in August, not in the moment.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>Where these numbers come from</h2>
+<p class="sub">Published post-operative protocols, not guesses. Surgeons differ, sometimes a lot, so treat these as the range rather than the rule.</p>
+<div class="cards">
+<div class="card"><span class="tag">Lifting</span><h3>2 lb, then 10, then 30</h3><p>My surgeon set 2 lb for the first two weeks. Published sheets say five to ten. After that, ten pounds through to twelve weeks, then thirty. The limit covers pushing and pulling too.</p></div>
+<div class="card"><span class="tag">Bending and twisting</span><h3>Eight weeks for me</h3><p>Published protocols range from six weeks to three months. Mine is eight, possibly earlier with clearance. Until then, move your feet to turn, never your torso.</p></div>
+<div class="card"><span class="tag">Driving</span><h3>Two weeks for me</h3><p>Published sheets say two to eight. Mine is two, conditional on being completely off narcotic pain medication and able to react in an emergency.</p></div>
+<div class="card"><span class="tag">Permanent</span><h3>A lasting lifting cap</h3><p>Many surgeons set a permanent limit somewhere between twenty and fifty pounds after a lumbar fusion.</p></div>
+</div>
+<p class="sub" style="margin-top:22px">Sources include published post-operative instruction sheets from Rochester Brain &amp; Spine, Precision Neurosurgery, Kurt J. Duncan MD, Round Rock Spine, The Advanced Spine Center and Premia Spine. Where they disagreed, the more conservative figure is shown. Anything marked <span style="color:var(--aqua)">set by my surgeon</span> comes from my own instructions and overrides the published range.</p>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>One problem, three places</h2>
+<p class="sub">The neck and the mid back are not separate issues. They are what the slip did on its way up.</p>
+<div class="cards">
+<div class="card"><span class="tag">Where it started</span><h3>L5&ndash;S1 slipped forward</h3><p>The bone moved off the one below it and the pelvis tipped to compensate. That deepened the curve in my low back, and everything above had to answer for it.</p></div>
+<div class="card"><span class="tag">What it forced</span><h3>The mid back took the strain next</h3><p>The body has to keep the head balanced over the pelvis. When the base tilts, the mid back changes shape to compensate, and mine has been injured doing that job for years.</p></div>
+<div class="card"><span class="tag">Where it ended up</span><h3>Disc bulges at C5, C6 and C7</h3><p>The neck compensates last, holding my head level over a spine that was no longer straight underneath it. The bulges in my neck are the top of a chain that starts at the bottom.</p></div>
+</div>
+<div class="cards" style="margin-top:12px">
+<div class="card"><span class="tag" style="color:var(--steel)">What the surgery does</span><h3>Stops the driver</h3><p>Fusing L5&ndash;S1 ends the movement that caused all of it. What it cannot do is undo years of compensation already built into the mid back and neck. That is why physical therapy runs a full year rather than until the back stops hurting.</p></div>
+<div class="card"><span class="tag">Not being fixed</span><h3>L4&ndash;L5 and the annular tear</h3><p>The tear in the cushion one level up is not part of the surgery and will not be repaired. Once L5&ndash;S1 stops moving, that level carries the share the fused joint used to. What I can and cannot do because of it is an ongoing conversation between me and my surgeon, not a date on this page.</p></div>
+<div class="card"><span class="tag">What that means</span><h3>Some limits are permanent</h3><p>Two activities on the list above stay amber all year for exactly this reason. They are not waiting to be cleared. They get managed, reviewed, and adjusted over time.</p></div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<p>These come from published post-operative protocols for lumbar fusion, assembled into a schedule. They are not my surgeon's orders. His restrictions override everything here, and the single biggest question to settle is whether whether this is a one-level or a two-level fusion, which would shift the later months. The calendar assumes surgery around 24 August; a different date shifts every month label. If the plan turns out to be two levels rather than one, most of this shifts later by several weeks.</p>
+</div>
+</footer>
+
+<script>
+var A=[
+{n:"Walking",g:"Daily life",st:[[2,1],[52,2]],x:"Encouraged from day one. Frequency over distance: three to five short walks a day, five to ten minutes each, building the time rather than the speed.",p:"Neutral to slightly arched",l:"Bodyweight, rhythmic",t:"Minimal",d:"Short bouts at first",s:"Walking is not optional, and it is not the whole of it. Physical therapy is separate and TBD."},
+{n:"Stairs",g:"Daily life",st:[[2,1],[52,2]],x:"Practised in hospital before discharge. A walker or cane for balance is common in the first few weeks.",p:"Neutral",l:"Two to three times bodyweight per step, through the leg",t:"Minimal",d:"Seconds",s:"One step at a time, hand on the rail."},
+{n:"Anything over 2 lb",g:"Daily life",m:1,st:[[2,0],[8,1],[52,2]],x:"My surgeon set 2 lb for the first two weeks. That is stricter than most published sheets, which use five to ten. Two pounds is a phone and a water bottle. It is not a laundry basket, a bag of groceries, or a toddler.",p:"Neutral, load close in",l:"Two pounds. That is the whole allowance.",t:"None",d:"Brief",s:"Assume the answer is no and let someone else carry it. Set this up before surgery so nobody has to ask."},
+{n:"10 lb, a gallon of milk",g:"Daily life",st:[[2,0],[8,1],[52,2]],x:"The ceiling once the first two weeks are past. Holds until the eight-week mark, and it covers pushing and pulling too.",p:"Neutral, load close in",l:"Ten pounds, held at waist level and close to the body",t:"None if you stay square",d:"Brief",s:"If it is heavier than a milk jug, it is not yours to lift yet."},
+{n:"Pushing or pulling",g:"Daily life",m:1,st:[[8,0],[12,1],[52,2]],x:"The 10 lb limit covers pushing and pulling too, not just lifting. Doors, carts, vacuums, strollers all count.",p:"Leaning into the load",l:"Same 10 lb ceiling as lifting",t:"Low if square",d:"Varies",s:"Ask before you assume a cart is allowed just because you are not carrying it."},
+{n:"Driving",g:"Daily life",m:1,st:[[2,0],[52,2]],x:"Cleared at two weeks for me, which is earlier than most published sheets. The condition is being fully off narcotic pain medication and able to react in an emergency.",p:"Curled forward in a low seat",l:"Steady compression plus road vibration",t:"High getting in and out",d:"The whole trip",s:"Ride as a passenger first. Lumbar roll. Stop every thirty minutes."},
+{n:"Sitting over 20 minutes",g:"Daily life",st:[[6,0],[10,1],[52,2]],x:"Stand roughly every thirty minutes early on. Long sitting is one of the last things to come back.",p:"Curled forward",l:"Sustained compression",t:"Low",d:"The whole sit",s:"Set a timer. A supportive chair with a lumbar cushion beats a soft couch."},
+{n:"Bending at the waist",g:"Daily life",m:1,st:[[8,0],[12,1],[52,2]],x:"The B in BLT. My surgeon set eight weeks, possibly sooner with clearance. That is between the six and twelve most protocols use.",p:"Deep curl",l:"Climbs fast with anything in your hands",t:"Low if you stay square",d:"Brief",s:"Hip hinge or half-kneel. A grabber tool for anything on the floor."},
+{n:"Twisting",g:"Daily life",m:1,st:[[8,0],[12,1],[52,2]],x:"The T in BLT. Eight weeks for me. Until then the instruction is to move your feet to turn, never the torso.",p:"Neutral",l:"Low on its own",t:"The whole movement",d:"Brief",s:"Turn your feet. Log-roll to get in and out of bed rather than twisting."},
+{n:"30 lb",g:"Daily life",st:[[12,0],[22,1],[52,2]],x:"Thirty pounds is a common allowance only after twelve weeks, once the fusion is confirmed. Not before.",p:"Hinge and lift",l:"High shear at the fusion",t:"Low if square",d:"Brief",s:"Hug it to your chest and lift with the legs, spine straight."},
+{n:"Lifting a child",g:"Daily life",st:[[12,0],[22,1],[52,2]],x:"Weight plus a moving, unpredictable load that does not stay where you put it. Later than the plain lifting number suggests.",p:"Curl, reach, unpredictable",l:"Thirty to fifty pounds that shifts mid-lift",t:"Moderate to high",d:"Brief but repeated all day",s:"Sit down first and have them climb to you. Set the rule before surgery so nobody has to negotiate it in the moment."},
+{n:"Child on my chest",g:"Daily life",st:[[12,0],[22,1],[52,2]],x:"Good news: once fused, this stops being the arch problem it is now.",p:"Flat on your back, arched",l:"Light, but it presses the arch deeper",t:"Low",d:"Minutes to hours",s:"Recline in a chair rather than lying flat. Pillow under the knees."},
+{n:"Sleeping on my back",g:"Daily life",st:[[2,1],[52,2]],x:"The position that hurts most now becomes ordinary after fusion.",p:"Arched, with legs straight",l:"The lowest of anything here",t:"None",d:"All night",s:"Pillow under the knees. Log-roll to get out of bed, every time."},
+{n:"Getting off the floor",g:"Daily life",st:[[8,0],[12,1],[52,2]],x:"Combines bending and twisting, so it waits for the eight-week BLT mark.",p:"Curl, then push",l:"Bodyweight through one side",t:"High",d:"Brief",s:"Half-kneel, hand on furniture, lead with the same leg every time."},
+{n:"Baths, pools, hot tubs",g:"Daily life",st:[[6,0],[8,1],[52,2]],x:"Submerging is commonly off limits for four to six weeks while the incisions seal. Showering usually resumes much sooner.",p:"Not the issue here",l:"None",t:"None",d:"Varies",s:"Shower only until you are told otherwise. This one is about infection, not the fusion."},
+{n:"Swimming",g:"Daily life",st:[[8,0],[13,1],[52,2]],x:"Incisions must be fully sealed first, then the strokes themselves need clearing. After that it is one of the best options available.",p:"Long spine in freestyle, arched in breaststroke",l:"Near zero, the water carries you",t:"Rotation with every stroke",d:"Long",s:"Freestyle with a snorkel keeps the neck and low back neutral. Skip breaststroke."},
+{n:"Child's pose",g:"Daily life",st:[[8,0],[14,1],[52,2]],x:"Gentle and unloaded, but still a forward fold, so it sits behind the eight-week bending mark.",p:"Deep curl, unloaded",l:"Minimal",t:"None",d:"Held",s:"Nothing that folds the spine until cleared. Ask about it specifically at the three-month visit."},
+{n:"Downward dog",g:"Daily life",st:[[8,0],[18,1],[52,2]],x:"Loaded through the arms with a long spine. Later than child's pose.",p:"Long spine, hips high",l:"Moderate, shared with the arms",t:"None",d:"Held",s:"Hands on a wall or counter gives the same shape with far less load."},
+{n:"Weights",g:"Daily life",st:[[12,0],[26,1],[52,2]],x:"Light resistance often begins around two to six months. Heavy loaded lifts may carry a permanent cap somewhere between 20 and 50 lb depending on the surgeon.",p:"Varies by lift",l:"The highest of anything here",t:"Low if braced",d:"Repeated sets",s:"Machines and supported positions before free weights. Ask what your permanent number is."},
+{n:"Screen time, head down",g:"Daily life",m:1,st:[[52,1]],x:"September is admin and virtual meetings, which means hours looking down at a screen. My neck has disc bulges at C5 through C7, which came from years of compensating for the slip below. Fusing the bottom does not undo the top, so this one never turns green. It gets managed.",p:"Neck flexed, upper back rounded",l:"Head weight, multiplied by the angle",t:"None",d:"Hours, every day of September",s:"Screen at eye level. Laptop on a stand. Twenty minutes, then look up."},
+{n:"Reaching overhead",g:"Daily life",m:1,st:[[8,0],[52,1]],x:"Reaching up arches the low back and extends the neck at once, so it loads both ends of the same chain. The fusion helps the bottom of it. The top still has to be managed.",p:"Arched low back, extended neck",l:"Low, unless something is coming down with it",t:"Moderate if you reach to one side",d:"Brief",s:"Step stool, every time. Bring the thing down to waist level before doing anything with it."},
+{n:"Running",g:"Daily life",st:[[26,0],[39,1],[52,2]],x:"High impact stays off the table until the fusion is solid, which takes six months to a year.",p:"Slightly arched",l:"Two to three times bodyweight, thousands of times",t:"Moderate",d:"Long",s:"Bike or pool running gives the cardio without the impact."},
+{n:"Email and film",g:"Coaching",st:[[2,0],[52,2]],x:"The first duty back. Short blocks with standing breaks, since sitting tolerance is the limit, not the work itself.",p:"Curled in a chair",l:"Low",t:"None",d:"Can run for hours",s:"Standing desk, or lie on your side with a tablet in the early weeks."},
+{n:"Recruiting calls",g:"Coaching",st:[[2,0],[52,2]],x:"Easiest duty to restart, and it keeps the program moving while I'm out.",p:"Whatever you choose",l:"None",t:"None",d:"Long",s:"Walk while you talk. Two things at once, both good for you."},
+{n:"Office half days",g:"Coaching",st:[[4,0],[8,1],[52,2]],x:"Sedentary work commonly resumes somewhere between two and six weeks. Physically demanding work runs closer to three months.",p:"Mostly sitting",l:"Low but sustained",t:"Getting in and out of a chair",d:"Half a day",s:"Timer to stand every thirty minutes. Take meetings on foot where you can."},
+{n:"Sideline, seated",g:"Coaching",m:1,st:[[5,0],[12,1],[52,2]],x:"I am back on court in October, roughly week five. Present, coaching, seated, and restricted from everything physical. Arrange the seating well in advance.",p:"Seated, leaning forward to see",l:"Low",t:"Turning between bench and floor",d:"Two hours",s:"Rolling stool with a back, placed so you turn less to see everyone."},
+{n:"Signing from seated",g:"Coaching",m:1,st:[[5,0],[12,1],[52,2]],x:"This is how I coach in October and into November. Signing is the entire job for that stretch. No demonstrating, no equipment, no floor work.",p:"Seated, arms working",l:"Low",t:"Mild trunk rotation",d:"Throughout",s:"Position yourself so players come into your line of sight rather than turning to find them."},
+{n:"Signing across the gym",g:"Coaching",m:1,st:[[5,0],[12,1],[52,2]],x:"A big signing space means arms overhead and an arched back, held for most of a practice.",p:"Arms up, back arched",l:"Low but sustained",t:"Turning to be seen",d:"Most of practice",s:"Bring the group closer and use a smaller signing space."},
+{n:"Turning to sign both ways",g:"Coaching",m:1,st:[[8,0],[12,1],[52,2]],x:"This is trunk rotation, so it is gated by my eight-week twisting limit, which lands in mid to late October. On court before then I sign while pivoting my feet, never turning at the waist.",p:"Neutral",l:"Low",t:"The highest of anything on this list",d:"Repeated all practice",s:"Pivot your feet, never your torso. Set the group in an arc so you turn less."},
+{n:"Standing a full game",g:"Coaching",st:[[10,0],[18,1],[52,2]],x:"Held up by hip flexor recovery on the surgical side, which runs three to six months after a lateral approach.",p:"Standing tall, arched",l:"Sustained through the fusion",t:"Low",d:"Two hours unbroken",s:"Alternate stool and standing. One foot up on a rail changes the angle."},
+{n:"Full practice",g:"Coaching",m:1,st:[[5,0],[14,1],[52,2]],x:"On court from early October, about week five, but attendance is not participation. Present and coaching by sign, doing none of the physical work.",p:"Everything, in sequence",l:"Mixed",t:"Mixed",d:"Two hours",s:"Sit for drills you aren't running. Stand for the ones you are."},
+{n:"Collecting balls",g:"Coaching",st:[[8,0],[14,1],[52,2]],x:"Thirty repeated bends with a twist. Everything about it is on the restricted list.",p:"Deep curl, repeated",l:"Light per rep, thirty reps",t:"High",d:"Ten minutes",s:"A ball claw or roller. Or assign it and don't think about it again."},
+{n:"Pushing a ball cart",g:"Coaching",st:[[8,0],[12,1],[52,2]],x:"I had this one wrong. Pushing and pulling are restricted on the same 10 lb limit as lifting, and a loaded ball cart is well over that. Leaning on it feels good, which makes it easy to assume it is fine.",p:"Leaning forward onto the handle",l:"The cart is heavier than the limit allows",t:"Low",d:"As long as you like",s:"An empty cart to lean on is a different thing from a loaded one to push. Ask about both."},
+{n:"Stomping for attention",g:"Coaching",st:[[12,0],[26,1],[52,2]],x:"Impact travels straight up the leg into the fusion, and it is repeated constantly.",p:"Neutral",l:"A sharp spike up the leg",t:"Low",d:"An instant, repeated all practice",s:"Light flash, a wave, or a table tap does the same job with none of the impact."},
+{n:"Catching a pass",g:"Coaching",m:1,st:[[26,0],[39,1],[52,2]],x:"On my restricted list through the autumn. A ball arriving unexpectedly is the same problem as tripping: the load lands before anything can brace for it.",p:"Neutral, then whatever the ball makes it",l:"Sudden and unplanned",t:"Whatever it takes to reach it",d:"An instant",s:"Stand off the passing lanes. Tell the team not to throw to you, and mean it."},
+{n:"Demonstrating slides",g:"Coaching",st:[[26,0],[39,1],[52,2]],x:"Loaded, low, and shifting side to side. One of the last things cleared.",p:"Low and wide",l:"High",t:"High",d:"Short bursts",s:"Have a player demonstrate while you sign the correction."},
+{n:"Rebounding",g:"Coaching",st:[[26,0],[39,1],[52,2]],x:"Landing impact into extension. Ask whether it is cleared at all before assuming it is.",p:"Landing into an arch",l:"The highest impact here",t:"Moderate",d:"An instant",s:"Assign it permanently and stop negotiating with yourself."},
+{n:"Team bus",g:"Coaching",st:[[6,0],[14,1],[52,2]],x:"Hours of vibration with nowhere to move, on top of a sitting limit that is already the problem.",p:"Curled, unsupported",l:"Sustained, plus vibration",t:"Low",d:"Hours",s:"Aisle seat, lumbar roll, stand at every stop. Drive separately early on."},
+{n:"Air travel",g:"Coaching",st:[[4,0],[8,1],[52,2]],x:"Short flights are often possible within a few weeks, but get cleared first, and longer flights need a separate conversation.",p:"Curled in a fixed seat",l:"Sustained",t:"High at the overhead bin",d:"Hours",s:"Aisle seat, walk hourly, and let someone else handle the bag. The bin is the real hazard, not the seat."}];
+
+var P=[
+{w0:0,w1:2,c:"#E24B4A",n:"Week 0 to 2",cal:"Late August",
+ d:"Three to five days in hospital with physical therapy starting there, walking the first day. My limit is 2 lb. Not ten, not a gallon of milk. Two pounds, which is a phone and a water bottle. No bending, no twisting, no pushing, no pulling. Sitting in short blocks with a stand every thirty minutes. Three to five short walks a day. No driving until the two-week mark.",
+ o:"Nothing. Hand the program to the staff before going in.",
+ c:"None. This is the only stretch I am fully out.",
+ w:"Thigh numbness and groin tingling on the surgical side are expected from the lateral approach and usually settle within a couple of weeks. The brace is required whenever I am out of bed in this stretch."},
+{w0:2,w1:6,c:"#D8622F",n:"Week 2 to 6",cal:"September",
+ d:"The lifting limit stays around ten pounds. It covers pushing and pulling too, which catches people out. Bending and twisting still off. Driving is cleared at two weeks, conditional on being fully off narcotics. Walking distance builds.",
+ o:"September is the admin month. Virtual team meetings, film review, scouting, recruiting calls, planning. Short office visits toward the end.",
+ c:"None. September is admin and virtual meetings with the team. Film, scouting, planning, all from a screen.",
+ w:"The hardest stretch mentally, because I will feel better than I am cleared to be. Physical therapy runs out of the surgeon's office through week six. Content TBD."},
+{w0:6,w1:12,c:"#D89020",n:"Week 6 to 12",cal:"October into mid November",
+ d:"Sitting tolerance and walking distance climb. My bending, lifting and twisting limit lifts at eight weeks, mid to late October, possibly sooner with clearance. Physical therapy moves from the surgeon's office to GU and continues from there. Content TBD.",
+ o:"Back in the office, building toward full days. Short car travel. A full administrative load is realistic by the end of this window.",
+ c:"October, and I am back on court. Coaching entirely through ASL, asking and instructing. Seated in blocks, standing in short stretches. Nothing physical at all: no demonstrating, no catching, no bending, no twisting, no pushing, no pulling, no equipment.",
+ w:"Eight weeks is the number, but earlier clearance is possible. This is the window where the brace stops being required and starts being useful anyway, as a cue for me and a visible signal to everyone else at practice."},
+{w0:12,w1:26,c:"#378ADD",n:"3 to 6 months",cal:"Mid Nov to late Feb",
+ d:"December is the month I expect to be fully functional. Lifting climbs toward thirty pounds. Physical therapy continues at GU. Pace and content TBD. Still no impact.",
+ o:"Full duties. Road trips with planned standing breaks. Bus travel is tolerable again.",
+ c:"The twelve-week mark lands in mid November, right as the season opens. Restrictions lift progressively from there. Standing longer, turning at the waist again, signing without modification. Still no demonstrating, no catching, no rebounding.",
+ w:"The fusion is consolidating but still maturing. Feeling fully functional is not the same as being fully healed, and this is the window where people undo the work."},
+{w0:26,w1:52,c:"#7FC24E",n:"6 to 12 months",cal:"Late February onward",
+ d:"Normal activity. Impact reintroduced once fusion is solid. Bone keeps maturing through the full year and beyond.",
+ o:"Full and unrestricted.",
+ c:"Six months lands mid February, with a month of the season left. Demonstrations and catching cleared progressively, impact work on the surgeon's say-so.",
+ w:"Physical therapy at GU runs the full year. Content TBD. Permanent limits are common after fusion, typically a lifting cap between twenty and fifty pounds. Worth asking what number applies before planning next season."}];
+
+var MO=["A","S","O","N","D","J","F","M","A","M","J","J"],MW=[0,1.1,5.4,9.9,14.1,18.6,23.1,27.1,31.4,35.7,40.1,44.4];
+var MN=["Aug","Sept","Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"];
+var COL=["#E24B4A","#D89020","#7FC24E"],NS="http://www.w3.org/2000/svg";
+function ang(w){return -90+360*Math.pow(w/52,.55)}
+function pt(cx,cy,r,a){var t=a*Math.PI/180;return[cx+r*Math.cos(t),cy+r*Math.sin(t)]}
+function arc(cx,cy,ro,ri,a0,a1){
+ var p0=pt(cx,cy,ro,a0),p1=pt(cx,cy,ro,a1),p2=pt(cx,cy,ri,a1),p3=pt(cx,cy,ri,a0),lg=(a1-a0)>180?1:0;
+ return"M"+p0[0].toFixed(1)+" "+p0[1].toFixed(1)+"A"+ro+" "+ro+" 0 "+lg+" 1 "+p1[0].toFixed(1)+" "+p1[1].toFixed(1)+
+ "L"+p2[0].toFixed(1)+" "+p2[1].toFixed(1)+"A"+ri+" "+ri+" 0 "+lg+" 0 "+p3[0].toFixed(1)+" "+p3[1].toFixed(1)+"Z"}
+function cal(w){if(w===null||w===undefined)return"not inside the first year";if(w<=0)return"from the start";var v=w/4.345+.77,i=Math.floor(v),f=v-i;
+ return(f<.34?"early ":f<.67?"mid ":"late ")+MN[Math.min(i,12)]}
+function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e}
+function months(sv,cx,cy,r){
+ MW.forEach(function(w,i){var q=pt(cx,cy,r,ang(w)+(i===11?6:4));
+  var t=el("text",{x:q[0].toFixed(1),y:q[1].toFixed(1),"text-anchor":"middle","dominant-baseline":"central","font-size":"12",fill:"#5E777F"});
+  t.textContent=MO[i];sv.appendChild(t)})}
+
+var sel=0,psel=0;
+var sv=document.getElementById("ring"),dl=document.getElementById("dial");
+(function(){
+ var s=document.getElementById("pick"),groups={};
+ A.forEach(function(a,i){(groups[a.g]=groups[a.g]||[]).push(i)});
+ Object.keys(groups).forEach(function(g){
+  var og=document.createElement("optgroup");og.label=g;
+  groups[g].forEach(function(i){var o=document.createElement("option");o.value=i;o.textContent=A[i].n;og.appendChild(o)});
+  s.appendChild(og)});
+ s.onchange=function(){sel=+this.value;drawRing()};
+})();
+
+function drawRing(){
+ while(sv.childNodes.length>2)sv.removeChild(sv.lastChild);
+ var a=A[sel],prev=0,clr=null,lim=null;
+ a.st.forEach(function(st){
+  if(st[1]===2&&clr===null)clr=prev;
+  if(st[1]===1&&lim===null)lim=prev;
+  sv.appendChild(el("path",{d:arc(190,150,122,86,ang(prev)+.6,ang(st[0])-.6),fill:COL[st[1]]}));
+  prev=st[0]});
+ sv.appendChild(el("path",{d:arc(190,150,80,72,ang(5.4),ang(31.4)),fill:"#1D9E75",opacity:.85}));
+ months(sv,190,150,138);
+ var t1=el("text",{x:190,y:144,"text-anchor":"middle","font-size":"13",fill:"#C9D3D6"});
+ t1.textContent=clr===null?"managed, not cleared":"cleared";sv.appendChild(t1);
+ var t2=el("text",{x:190,y:166,"text-anchor":"middle","font-size":"15",fill:"#7FC24E"});
+ t2.textContent=cal(clr);t2.setAttribute('fill',clr===null?'#D89020':'#7FC24E');t2.setAttribute('font-size',clr===null?'12.5':'15');sv.appendChild(t2);
+ var t3=el("text",{x:190,y:288,"text-anchor":"middle","font-size":"11.5",fill:"#5E777F"});
+ t3.textContent="Early weeks stretched so they stay readable";sv.appendChild(t3);
+ document.getElementById("aName").textContent=a.n;
+ document.getElementById("aWhen").innerHTML=
+  (clr===null?'<span style="color:#D89020">Managed all year, not cleared</span>':'<span style="color:#7FC24E">Cleared '+cal(clr)+'</span>')+(lim!==null?'<span style="color:#5E777F"> &middot; </span><span style="color:#D89020">limited from '+cal(lim)+'</span>':'');
+ document.getElementById("aWhy").textContent=a.x;
+ document.getElementById("entBody").innerHTML=
+  '<div class="rw"><b>Back position</b><span>'+a.p+'</span></div>'+
+  '<div class="rw"><b>Load</b><span>'+a.l+'</span></div>'+
+  '<div class="rw"><b>Twist</b><span>'+a.t+'</span></div>'+
+  '<div class="rw"><b>How long</b><span>'+a.d+'</span></div>'+
+  '<div class="rw"><b>Instead, early</b><span>'+a.s+'</span></div>';
+}
+
+function drawDial(){
+ while(dl.childNodes.length>2)dl.removeChild(dl.lastChild);
+ P.forEach(function(p,i){
+  var g=el("path",{d:arc(190,150,122,86,ang(p.w0)+.7,ang(p.w1)-.7),fill:p.c,opacity:i===psel?1:.36,style:"cursor:pointer"});
+  g.addEventListener("click",function(){psel=i;drawDial()});
+  dl.appendChild(g)});
+ dl.appendChild(el("path",{d:arc(190,150,80,72,ang(5.4),ang(31.4)),fill:"#1D9E75",opacity:.85}));
+ months(dl,190,150,138);
+ var p=P[psel];
+ var t1=el("text",{x:190,y:144,"text-anchor":"middle","font-size":"15",fill:"#EFE7D7"});
+ t1.textContent=p.n;dl.appendChild(t1);
+ var t2=el("text",{x:190,y:166,"text-anchor":"middle","font-size":"12.5",fill:"#8FA5AC"});
+ t2.textContent=p.cal;dl.appendChild(t2);
+ var t3=el("text",{x:190,y:288,"text-anchor":"middle","font-size":"11.5",fill:"#1D9E75"});
+ t3.textContent="Inner band = October to March season";dl.appendChild(t3);
+ var host=document.getElementById("pchips");host.innerHTML="";
+ P.forEach(function(q,i){
+  var b=document.createElement("button");b.className="pchip";b.textContent=q.n;
+  b.setAttribute("aria-pressed",i===psel?"true":"false");
+  b.style.borderColor=i===psel?q.c:"rgba(239,231,215,.28)";
+  b.style.color=i===psel?q.c:"#C9D3D6";
+  b.onclick=function(){psel=i;drawDial()};host.appendChild(b)});
+ document.getElementById("pD").textContent=p.d;
+ document.getElementById("pO").textContent=p.o;
+ document.getElementById("pC").textContent=p.c;
+ document.getElementById("pW").textContent=p.w;
+}
+drawRing();drawDial();
+</script>
+</body>
+</html>
