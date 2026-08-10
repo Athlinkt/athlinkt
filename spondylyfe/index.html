@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's happening in my back</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--ink:#0B1A20;--ink2:#102730;--ink3:#17323D;
+--bone:#EFE7D7;--bone2:#C9D3D6;--dim:#8FA5AC;--faint:#5E777F;
+--aqua:#45D3BE;--coral:#FF6E4E;--amber:#F2A93B;--steel:#7FB3CC;
+--line:rgba(239,231,215,.13);--line2:rgba(239,231,215,.28);
+--disp:"Archivo Black","Arial Black",system-ui,sans-serif;
+--body:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--aqua);margin:0 0 12px}
+h1{font-family:var(--disp);font-size:clamp(2.3rem,7vw,4.2rem);line-height:.94;letter-spacing:-.025em;margin:0 0 18px;text-wrap:balance}
+h2{font-family:var(--disp);font-size:clamp(1.35rem,3.4vw,1.9rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 8px}
+.sub{color:var(--dim);font-size:15px;margin:0 0 22px;max-width:60ch}
+header{padding:64px 0 44px}
+section{padding:48px 0;border-top:1px solid var(--line)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);display:block;margin-bottom:9px}
+.card .tag.g{color:var(--aqua)}
+.card .tag.b{color:var(--steel)}
+.card h3{font-family:var(--body);font-weight:600;font-size:15.5px;margin:0 0 6px;line-height:1.35}
+.card p{font-size:14.5px;color:var(--bone2);margin:0;line-height:1.55}
+
+.viewer{position:sticky;top:0;z-index:30;background:var(--ink);border-bottom:1px solid var(--line2);padding:8px 0 10px;box-shadow:0 12px 24px -18px #000}
+.nav{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.nav button.arw{flex:0 0 auto;width:42px;height:42px;border-radius:11px;border:1px solid var(--line2);background:var(--ink2);color:var(--bone);font-size:19px;line-height:1;cursor:pointer}
+.nav button.arw:hover{border-color:var(--bone2)}
+.nav .who{flex:1;min-width:0;text-align:center}
+.nav .who .g{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);display:block}
+.nav .who .m{font-weight:600;font-size:16px;line-height:1.25;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#vp{position:relative;width:100%;height:clamp(190px,38vw,320px);border-radius:12px;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#183642 0%,#0C1E26 70%)}
+#vp canvas{display:block;width:100%;height:100%;touch-action:none}
+#fb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:var(--dim);font-size:13.5px;line-height:1.6}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:9px}
+.q{background:var(--ink2);border:1px solid var(--line);border-radius:11px;padding:9px 11px;min-width:0}
+.q .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q .v{font-family:var(--mono);font-size:18px;line-height:1.3;display:block}
+.q .s{font-family:var(--mono);font-size:10px;color:var(--faint);display:block}
+.good{color:var(--aqua)}.bad{color:var(--coral)}.mid{color:var(--amber)}.blu{color:var(--steel)}
+.bar2{height:6px;background:var(--ink3);border-radius:4px;overflow:hidden;margin-top:5px}
+.bar2 i{display:block;height:100%;border-radius:4px;transition:width .25s,background .25s}
+
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:6px;padding:0 0 14px}
+.chips.row{display:flex;flex-wrap:wrap}
+button.chip{font-family:var(--body);font-size:13.5px;padding:8px 11px;border-radius:9px;border:1px solid var(--line2);background:var(--ink2);color:var(--bone2);cursor:pointer;text-align:left;line-height:1.3}
+button.chip:hover{border-color:var(--bone2)}
+button.chip[aria-pressed="true"]{background:var(--aqua);border-color:var(--aqua);color:#06231F;font-weight:600}
+button.chip.warm[aria-pressed="true"]{background:var(--coral);border-color:var(--coral);color:#2B0C04}
+button.chip.cool[aria-pressed="true"]{background:var(--steel);border-color:var(--steel);color:#06222E}
+button.chip.sm{font-size:12.5px;padding:6px 10px;text-align:center}
+:focus-visible{outline:2px solid var(--aqua);outline-offset:2px}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line);margin-bottom:22px}
+summary{cursor:pointer;padding:12px 2px;font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:15px;color:var(--faint)}
+details[open] summary::after{content:"\2212"}
+details[open] summary{color:var(--aqua)}
+summary .ct{color:var(--faint);font-size:10.5px}
+.lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);display:block;margin:18px 0 7px}
+.ctrl{display:flex;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap}
+.ctrl .lbl{margin:0;min-width:100px}
+input[type=range]{flex:1;min-width:170px;accent-color:var(--coral);height:22px}
+.val{font-family:var(--mono);font-size:13.5px;color:var(--bone);min-width:56px;text-align:right}
+.note{background:var(--ink3);border-left:3px solid var(--coral);padding:14px 16px;margin-top:14px;font-size:14.5px;color:var(--bone2)}
+.note b{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:500;color:var(--coral);display:block;margin-bottom:4px}
+.note.g{border-left-color:var(--aqua)}.note.g b{color:var(--aqua)}
+svg.flat{display:block;width:100%;height:auto;background:var(--ink2);border:1px solid var(--line);border-radius:14px;margin-top:14px}
+footer{padding:40px 0 64px;color:var(--faint);font-size:13.5px;border-top:1px solid var(--line)}
+footer p{max-width:64ch}
+@media(min-width:900px){
+ #vp{height:clamp(260px,26vw,340px)}
+ .quick{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap">
+<p class="eyebrow">A plain-language walkthrough</p>
+<h1>What's actually happening in my back</h1>
+<p class="sub">People keep asking why some things wreck me and others don't. Easier to show than explain. Pick any movement and watch.</p>
+</div>
+</header>
+
+<section>
+<div class="wrap">
+<h2>The short version</h2>
+<p class="sub">One joint. Bottom of the lower back, where the last movable bone sits on the pelvis.</p>
+<div class="cards">
+<div class="card"><span class="tag">One</span><h3>The lock is broken</h3><p>The bony hook that holds that bone to the one below has a gap in it. Not a fresh break that is knitting back together, an old separation that never joined. Both sides, so there is no lock left at all.</p></div>
+<div class="card"><span class="tag">Two</span><h3>The bone slid forward</h3><p>Without the lock, it moved forward off the one beneath it. More than half its own width now. Doctors grade this in quarters, and mine sits past the halfway mark, at the edge of the next grade up.</p></div>
+<div class="card"><span class="tag">Three</span><h3>The nerve is pinched</h3><p>The nerve to my leg exits through a small doorway right there. The slide narrowed it on both sides.</p></div><div class="card"><span class="tag b">And upward</span><h3>It did not stay in one place</h3><p>When the base of a spine tilts, everything above compensates to keep the head level. Years of that injured my mid back and left disc bulges in my neck at C5 through C7. Same original problem, three places.</p></div>
+</div>
+</div>
+</section>
+
+<div class="viewer">
+<div class="wrap">
+<div class="nav">
+<button class="arw" id="prev" aria-label="Previous movement">&lsaquo;</button>
+<span class="who"><span class="g" id="gname">Everyday</span><span class="m" id="mname">Standing still</span></span>
+<button class="arw" id="next" aria-label="Next movement">&rsaquo;</button>
+</div>
+<div id="vp"><div id="fb">Loading the 3D spine&hellip;<br><span style="font-size:12.5px">Needs an internet connection. Everything else works without it.</span></div></div>
+<div class="chips row sm" style="padding:9px 0 0;justify-content:center" id="g-view"></div>
+<div class="quick">
+<div class="q"><span class="k">Nerve doorway</span><span class="v" id="qOpen">22%</span><span class="s" id="qOpenS">healthy 96%</span><div class="bar2"><i id="qBar"></i></div></div>
+<div class="q"><span class="k">Twist</span><span class="v" id="qTw">0.0&deg;</span><span class="s" id="qTwS">should be 0</span><div class="bar2"><i id="qTwBar"></i></div></div>
+<div class="q"><span class="k" id="qSlK">Slide forward</span><span class="v" id="qSl">13 mm</span><span class="s" id="qSlS">healthy 0</span><div class="bar2"><i id="qSlBar"></i></div></div>
+</div>
+<div class="chips row sm" style="padding:9px 0 0;justify-content:center" id="g-cam"></div>
+<div class="chips row sm" style="padding:7px 0 0;justify-content:center"><button class="chip sm cool" id="playTw" aria-pressed="false" style="text-align:center">&#9654;&nbsp; Play the twist</button></div>
+</div>
+</div>
+
+<section>
+<div class="wrap">
+<h2>Pick a movement</h2>
+<p class="sub">Arrows at the top step through them. The spine stays on screen while you scroll.</p>
+<div id="groups"></div>
+<div class="ctrl">
+<span class="lbl">Extra weight</span>
+<input type="range" id="ld" min="0" max="50" value="0" aria-label="Extra weight carried in pounds">
+<span class="val" id="ldv">0 lb</span>
+</div>
+<div class="note g" id="nH"><b>Healthy spine</b><span></span></div>
+<div class="note" id="nI"><b id="nIt">My spine</b><span></span></div>
+
+<svg class="flat" viewBox="0 0 680 316" role="img" aria-labelledby="svgt svgd">
+<title id="svgt">Side view of a healthy lower spine joint next to mine</title>
+<desc id="svgd">The left view stays aligned with an open nerve doorway. The right shows the upper bone sliding forward, the gap in the broken hook widening, the cushion flattening, and the doorway closing.</desc>
+<text x="178" y="26" text-anchor="middle" fill="#45D3BE" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing="1.6">HEALTHY</text>
+<text id="rt" x="519" y="26" text-anchor="middle" fill="#FF6E4E" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing="1.6">MINE, NOW</text>
+<line x1="345" y1="40" x2="345" y2="296" stroke="rgba(239,231,215,.13)"/>
+<rect x="90" y="228" width="112" height="56" rx="9" fill="#EFE7D7"/>
+<rect x="210" y="232" width="44" height="52" rx="7" fill="#EFE7D7"/>
+<rect id="hDisc" x="90" y="212" width="112" height="16" rx="4" fill="#45D3BE"/>
+<rect id="hBody" x="90" y="160" width="112" height="52" rx="9" fill="#EFE7D7"/>
+<rect id="hPed" x="210" y="160" width="24" height="52" rx="6" fill="#EFE7D7"/>
+<rect id="hLam" x="238" y="165" width="30" height="42" rx="6" fill="#EFE7D7"/>
+<ellipse id="hNrv" cx="222" cy="222" rx="6" ry="6" fill="#45D3BE"/>
+<text x="146" y="191" text-anchor="middle" fill="#0B1A20" font-family="IBM Plex Mono, monospace" font-size="11.5">L5</text>
+<text x="146" y="261" text-anchor="middle" fill="#0B1A20" font-family="IBM Plex Mono, monospace" font-size="11.5">S1</text>
+<line x1="430" y1="148" x2="430" y2="290" stroke="rgba(239,231,215,.3)" stroke-dasharray="3 4"/>
+<rect x="430" y="228" width="112" height="56" rx="9" fill="#EFE7D7"/>
+<rect x="550" y="232" width="44" height="52" rx="7" fill="#EFE7D7"/>
+<rect id="iDisc" x="430" y="212" width="112" height="16" rx="4" fill="#FF6E4E"/>
+<rect id="iCage" x="444" y="214" width="84" height="12" rx="3" fill="#7FB3CC" opacity="0"/>
+<rect id="iBody" x="430" y="160" width="112" height="52" rx="9" fill="#EFE7D7"/>
+<rect id="iPed" x="550" y="160" width="24" height="52" rx="6" fill="#EFE7D7"/>
+<rect id="iGap" x="574" y="170" width="4" height="30" rx="2" fill="#FF6E4E"/>
+<rect id="iLam" x="578" y="165" width="30" height="42" rx="6" fill="#EFE7D7"/>
+<line id="iRod" x1="562" y1="186" x2="572" y2="254" stroke="#7FB3CC" stroke-width="4" stroke-linecap="round" opacity="0"/>
+<circle id="iScA" cx="562" cy="186" r="5.5" fill="#7FB3CC" opacity="0"/>
+<circle id="iScB" cx="572" cy="254" r="5.5" fill="#7FB3CC" opacity="0"/>
+<ellipse id="iNrv" cx="562" cy="222" rx="6" ry="6" fill="#FF6E4E"/>
+<text id="iL5" x="486" y="191" text-anchor="middle" fill="#0B1A20" font-family="IBM Plex Mono, monospace" font-size="11.5">L5</text>
+<text x="486" y="261" text-anchor="middle" fill="#0B1A20" font-family="IBM Plex Mono, monospace" font-size="11.5">S1</text>
+</svg>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>The part nobody expects</h2>
+<p class="sub">Everyone pictures the bone sliding forward. It also turns.</p>
+<div class="cards">
+<div class="card"><span class="tag">Why</span><h3>Facet joints block twist</h3><p>Those bony hooks aren't just a forward stop. They're the main thing preventing one bone rotating on the next.</p></div>
+<div class="card"><span class="tag">So</span><h3>Both sides broken means both jobs gone</h3><p>Forward slide and rotation. My joint turns and shifts sideways in ways it was never built to.</p></div>
+<div class="card"><span class="tag">Feels like</span><h3>Twisting hurts differently than bending</h3><p>Hit <b>Top</b> on the 3D and pick a turning movement. Watch it rotate. That's happening right now, every day.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>Why no position fixes it</h2>
+<p class="sub">Watch the numbers across a few movements. A trap shows up.</p>
+<div class="cards">
+<div class="card"><span class="tag g">Curl forward</span><h3>Opens the nerve, feeds the slide</h3><p>Sitting or folding forward eases the nerve. The same curl lets the bone slide further.</p></div>
+<div class="card"><span class="tag">Arch back</span><h3>Holds the slide, shuts the nerve</h3><p>Standing tall or lying flat holds the bone. It also closes the doorway. Lying on my back is brutal right now.</p></div>
+<div class="card"><span class="tag b">No third option</span><h3>That trade is the reason for surgery</h3><p>One direction helps the nerve and hurts the slide. The other reverses it. Nothing splits the difference.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>What actually helps</h2>
+<p class="sub">Things I've figured out by trial and error. All of them are in the movement list.</p>
+<div class="cards">
+<div class="card"><span class="tag g">Movement</span><h3>Slow, and never stuck</h3><p>Speed is the enemy. So is staying in any one position too long. Changing position beats finding the perfect one.</p></div>
+<div class="card"><span class="tag g">Support</span><h3>Something to lean on</h3><p>Leaning forward onto a rolling cart opens the doorway. A cane wouldn't do this. A rollator with a seat is the real version.</p></div>
+<div class="card"><span class="tag g">Help</span><h3>Let people lift</h3><p>Not pride. Bending forward with weight out front is the fastest way to make the slide worse.</p></div>
+<div class="card"><span class="tag b">Games</span><h3>A brace, sometimes</h3><p>A fitted lumbar brace can limit the twist during games. Situational, not all day, and a conversation for my surgical team.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>What the surgery does</h2>
+<p class="sub">Switch the view to <i>after the surgery</i> and run the same movements.</p>
+<div class="cards">
+<div class="card"><span class="tag b">One</span><h3>The motion stops</h3><p>Two bones become one. Twist and sideways shift go to zero, because there's no joint left to move.</p></div>
+<div class="card"><span class="tag b">Two</span><h3>The doorway reopens</h3><p>A spacer replaces the worn cushion. Restoring that height lifts the doorway open and takes pressure off the nerve.</p></div>
+<div class="card"><span class="tag b">Three</span><h3>The slide is held</h3><p>Hardware holds the bone where the surgeon sets it while the bones grow together over months.</p></div>
+<div class="card"><span class="tag">The trade</span><h3>Load moves up a level</h3><p>The joint above already shows early wear. Protecting it becomes the long game.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>&ldquo;But won't you lose movement?&rdquo;</h2>
+<p class="sub">My surgeon said 5 to 10 percent. Here's what that actually means.</p>
+<div class="cards">
+<div class="card"><span class="tag b">The math</span><h3>One joint out of many</h3><p>Hips do most of the work when you bend. The mid back does most of the twisting. My lower back has five joints stacked, and this is one of them.</p></div>
+<div class="card"><span class="tag g">The key part</span><h3>It's not good movement being removed</h3><p>This joint doesn't move well right now. It moves wrong. The twist it has is the twist a healthy joint refuses to make.</p></div>
+<div class="card"><span class="tag">The trade</span><h3>Uncontrolled motion for no motion</h3><p>Not working motion for stiffness. That's a different deal entirely, and a much better one.</p></div>
+</div>
+<p class="sub" style="margin:26px 0 12px">Mapped onto the movements above:</p>
+<div class="cards">
+<div class="card"><span class="tag">Would notice</span><h3>Deep forward folds</h3><p>Touching my toes from a seated fold. Reaching all the way to the floor to tie a shoe. Deep backbends. I already avoid all three.</p></div>
+<div class="card"><span class="tag g">Barely</span><h3>Turning to sign</h3><p>That rotation is mostly mid back and hips. Same for squatting to a huddle and getting off the floor, which are hip movements.</p></div>
+<div class="card"><span class="tag g">Not at all</span><h3>Everything else</h3><p>Walking, carrying, standing, sleeping, driving, coaching. Most people with a one-level fusion can't point to the loss in daily life.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>The surgery, and after</h2>
+<p class="sub">What happens in the room, and what comes back when.</p>
+<p style="margin:0 0 10px"><a href="surgery.html" style="display:inline-block;padding:14px 20px;border:1px solid var(--line2);border-radius:12px;color:var(--aqua);text-decoration:none;font-weight:600;font-size:16px">The surgery itself &rarr;</a></p>
+<p style="margin:0"><a href="recovery.html" style="display:inline-block;padding:14px 20px;border:1px solid var(--line2);border-radius:12px;color:var(--aqua);text-decoration:none;font-weight:600;font-size:16px">Recovery, week by week &rarr;</a></p>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<p>A teaching model, not a scan. The spine here is built to look and behave like a real one, but it isn't mine. The numbers show how movements compare to each other, not measurements of any real spine. My actual case comes from my imaging and my surgical team.</p>
+</div>
+</footer>
+
+<script>
+var ACT={
+rest:{n:"Standing still",g:"day",s:.3,c:.5,r:.1,e:.3,h:"Weight passes straight down. Nothing shifts.",i:"Even standing still, the load runs unevenly, because only one side of the joint is doing its job."},
+sneeze:{n:"Sneeze",g:"day",s:1,c:1.4,r:.2,e:.8,u:1,h:"A split-second pressure spike. Absorbed.",i:"A pressure spike with nothing behind it to stop the slide. A sneeze can set me back days."},
+carinout:{n:"In and out of a car",g:"day",s:1.1,c:.9,r:1.1,e:-.3,h:"Duck, twist, sit. Unremarkable.",i:"Bend, twist and reach in one move, into a seat that's too low. Small motion, bad combination."},
+walkflat:{n:"Walking on flat ground",g:"day",s:.4,c:.8,r:.3,e:.1,h:"The best thing a spine can do all day.",i:"Still one of the better options. Short bouts are fine. It's standing still afterward that gets me."},
+stairs:{n:"Going up stairs",g:"day",s:.7,c:1.1,r:.4,e:.3,h:"Legs do the work.",i:"Manageable. Going down is worse than coming up, because of the braking."},
+
+lie:{n:"Lying on my back, child on me",g:"sleep",s:.2,c:.5,r:.5,e:1.3,x:1,h:"The lowest-load position there is. A child barely registers.",i:"Horrific right now, and it looks like resting, which is why nobody believes it. Lying flat arches my low back. A child presses that arch deeper and holds it. Not the weight. The position, held."},
+flatback:{n:"Flat on my back, legs straight",g:"sleep",s:.1,c:.2,r:0,e:1.1,x:1,h:"Textbook rest. Everything unloads.",i:"Legs straight on a flat surface pulls my low back into an arch for hours. Rest for most people. Not for me."},
+stomach:{n:"Sleeping on my stomach",g:"sleep",s:.1,c:.2,r:.1,e:1.4,x:1,h:"Some people find it comfortable.",i:"The deepest arch on this page, held all night. First thing to give up."},
+sidetuck:{n:"On my side, knees tucked",g:"sleep",s:.2,c:.3,r:.2,e:-.4,x:1,rel:1,h:"Comfortable and unremarkable.",i:"The curl opens the doorway. This is the position I can actually sleep in. Pillow between the knees stops the hips twisting."},
+rollover:{n:"Rolling over in bed",g:"sleep",s:.8,c:.5,r:1.2,e:.3,u:1,h:"Happens dozens of times a night unnoticed.",i:"A twist done half asleep with zero bracing. This is how bad mornings start."},
+outofbed:{n:"Getting out of bed",g:"sleep",s:1,c:.8,r:.9,e:.4,h:"Sit up, swing the legs, stand.",i:"A twist and a push through a joint stiffened overnight. Rolling to my side and pushing up with my arms is a real difference."},
+
+sitcouch:{n:"Sitting back on a couch",g:"sit",s:.7,c:1,r:.15,e:-.4,x:1,h:"The pelvis rolls back. Gentle squeeze.",i:"Curling forward opens the doorway, so it feels easier at first. The same curl lets the bone slide, and I hold it as long as I sit."},
+desk:{n:"At a desk for an hour",g:"sit",s:.6,c:.9,r:.1,e:-.5,x:1,h:"Stiff by the end. Nothing more.",i:"Fine for twenty minutes, then not. Standing up every half hour matters more than the chair does."},
+drive:{n:"A long drive",g:"sit",s:.7,c:1.1,r:.2,e:-.4,x:1,h:"Stiff legs. That's about it.",i:"A curled position plus road vibration for hours with no way to shift. Long drives cost me a day on the other end."},
+bleachers:{n:"Bleachers, no back support",g:"sit",s:.8,c:1,r:.3,e:-.5,x:1,h:"Uncomfortable for everyone.",i:"No back support means a deeper curl held for two hours. Sitting on the end of a row so I can stand up beats any cushion."},
+floorkids:{n:"On the floor with the kids",g:"sit",s:.9,c:.8,r:.8,e:-.7,x:1,h:"Easy. Getting up is the only effort.",i:"A deep curl, twisted to one side, held while I'm distracted. Then getting up off the floor is its own event."},
+crossleg:{n:"Legs crossed",g:"sit",s:.6,c:.8,r:.7,e:-.5,x:1,h:"Habit. No consequence.",i:"Crossing a leg tips the pelvis and twists the joint, then holds it. Always the same direction, which makes it worse."},
+
+lift:{n:"Picking up a child or bag",g:"lift",s:1.3,c:1.6,r:.35,e:-.6,h:"Hinge at the hips. Handled.",i:"Bending forward with weight out front is the most reliable way to make a slide worse."},
+carseat:{n:"Child into a car seat",g:"lift",s:1.5,c:1.5,r:1.3,e:-.5,h:"Awkward. Spines handle awkward.",i:"Bend, twist, reach and load, through a door frame, with a moving target. Worst combination of anything I do on purpose."},
+trunk:{n:"Unloading a trunk",g:"lift",s:1.4,c:1.4,r:1,e:-.6,h:"Lift and pivot. Routine.",i:"Weight held far out front over a lip, then turned. Distance from my body does the damage, not the weight."},
+dishwasher:{n:"Loading the dishwasher",g:"lift",s:1,c:.9,r:.9,e:-.7,x:1,h:"Tedious. Nothing more.",i:"Twenty small bends with a twist, back to back. Adds up faster than one heavy lift."},
+shoes:{n:"Tying my shoes",g:"lift",s:1,c:.6,r:.4,e:-1,h:"Bend down, done.",i:"About the deepest forward curl I do. Foot up on a step changes it completely."},
+upofffloor:{n:"Getting up off the floor",g:"lift",s:1.2,c:1.2,r:.9,e:.2,h:"Push through the legs and stand.",i:"A twist and a push from a dead stop, usually with a kid attached. A half-kneel version costs me nothing."},
+deadlift:{n:"Deadlift or loaded squat",g:"lift",s:1.5,c:2,r:.2,e:-.2,h:"Load it properly and it gets stronger.",i:"The heaviest squeeze here. Braced right it's controlled, but there's no version this joint enjoys right now."},
+highshelf:{n:"Reaching a high shelf",g:"lift",s:.5,c:.7,r:.5,e:1.1,h:"Reach and grab.",i:"Reaching overhead arches the low back, which shuts the doorway. A step stool is not a small thing."},
+bin:{n:"Bag into an overhead bin",g:"lift",s:1.2,c:1.3,r:.8,e:1.2,h:"Heavy and awkward, then over.",i:"Overhead, out front, twisted, loaded. Arch and weight together. I ask for help now."},
+
+carry:{n:"Carrying groceries",g:"one",s:.6,c:1.3,r:.65,e:.4,x:1,h:"Balanced without effort.",i:"One heavy side tips me over and holds it. Two lighter bags beats one heavy one."},
+hipkid:{n:"A child on one hip",g:"one",s:.7,c:1.2,r:.9,e:.7,x:1,h:"The classic parent stance. No cost.",i:"Hip cocked, back arched and side-bent, held as long as they want. Daily, and a bad one."},
+basket:{n:"Laundry basket on one hip",g:"one",s:.7,c:1.2,r:.8,e:.5,x:1,h:"Balanced without thinking.",i:"Same shape as carrying a child, shorter. Both arms in front is the fix."},
+shoulderbag:{n:"Bag over one shoulder",g:"one",s:.5,c:.9,r:.7,e:.3,x:1,h:"Barely registers.",i:"A small pull, same side, all day. Backpacks look worse and are better."},
+
+signing:{n:"Signing across the gym",g:"coach",s:.5,c:.7,r:1.1,e:.9,x:1,h:"Arms and trunk, no strain.",i:"Big signing space means arms up and back arched, turning constantly so everyone can see me. Sustained arch plus rotation. This is most of my job."},
+wave:{n:"Waving to get attention",g:"coach",s:.4,c:.6,r:.9,e:.8,h:"A wave. Nothing.",i:"Sharp, overhead, repeated all practice. Every one is a small arch and twist through the joint that can't stop either."},
+turnboth:{n:"Turning to sign both directions",g:"coach",s:.6,c:.7,r:1.4,e:.4,x:1,h:"Pivot and repeat.",i:"The highest twist number on this page. Whipping side to side so both ends of the bench can see me, dozens of times a practice."},
+stomp:{n:"Stomping the floor for attention",g:"coach",s:.9,c:1.5,r:.3,e:.5,h:"A stomp. The leg absorbs it.",i:"The impact travels straight up the leg into the joint. Small thing, sharp spike, and I do it constantly."},
+signback:{n:"Signing while walking backward",g:"coach",s:.7,c:.9,r:1,e:1,h:"Walk and talk.",i:"Backward means leaning back, which arches. Signing means turning. Both at once while not watching where I'm going."},
+pass:{n:"Chest pass",g:"coach",s:.5,c:.8,r:.9,e:.3,h:"The joints block the twist.",i:"Nothing blocks the twist, so it lands right at the bad joint."},
+dribble:{n:"Dribbling",g:"coach",s:.4,c:.6,r:.7,e:-.2,x:1,h:"Small load, easily absorbed.",i:"Small each time, hundreds of times. Adds up in a way one big lift doesn't."},
+rebound:{n:"Landing from a rebound",g:"coach",s:1.1,c:1.8,r:.5,e:.9,h:"Force spreads through the joint.",i:"The hardest squeeze here, landing arched onto a cushion already worn flat."},
+sideline:{n:"Standing the sideline all game",g:"coach",s:.4,c:.7,r:.2,e:.7,x:1,h:"Tired legs by the fourth. That's all.",i:"Two hours of standing is two hours of arching, and I can't sit to break it up. Worse for me than a lift is."},
+huddle:{n:"Squatting in a huddle",g:"coach",s:.7,c:.8,r:.3,e:-.6,x:1,rel:1,h:"Easy on everything.",i:"The curl opens the doorway. Squatting to a huddle is one of the better things I do at practice."},
+dslide:{n:"Demonstrating a defensive slide",g:"coach",s:.9,c:1.2,r:.8,e:-.2,h:"Low, wide, controlled.",i:"Loaded and shifting side to side, which is exactly the direction the broken hooks used to control."},
+balls:{n:"Collecting balls off the floor",g:"coach",s:1.2,c:1,r:.8,e:-.6,x:1,h:"Bend, grab, repeat.",i:"Thirty bends with a twist in ten minutes. Nobody counts these and they cost more than anything else at practice."},
+ballcart:{n:"Pushing a ball cart",g:"coach",s:.3,c:.6,r:.2,e:-.3,rel:1,h:"Nothing to it.",i:"Pushing with a slight forward lean opens the doorway. One of the few things at practice that feels good."},
+bus:{n:"The team bus",g:"coach",s:.6,c:1,r:.3,e:-.3,x:1,h:"Long and boring.",i:"Curled, vibrating, for hours, nowhere to move. The part of the job I'd change first."},
+
+dog:{n:"Downward dog",g:"fit",s:.2,c:.4,r:.1,e:-.5,h:"Long spine, load shared.",i:"One of the kinder options. The curl opens the doorway. Just keep the low back from sagging."},
+cobra:{n:"Cobra or upward dog",g:"fit",s:.4,c:.5,r:.1,e:1.5,h:"Opens the chest. Feels great.",i:"The deepest arch here. Every degree closes the doorway. The pose I skip."},
+fold:{n:"Seated forward fold",g:"fit",s:.9,c:.5,r:.1,e:-1.2,x:1,h:"A stretch. Nothing more.",i:"Feels like relief because the doorway opens. Meanwhile it's the biggest forward slide of any pose, pulling on an already irritated nerve."},
+plank:{n:"Plank",g:"fit",s:.4,c:.8,r:.1,e:.2,h:"Good trunk work.",i:"Genuinely useful, as long as the hips don't drop. When they drop it becomes a held arch."},
+situps:{n:"Sit-ups",g:"fit",s:1.1,c:1,r:.4,e:-.8,h:"Old-fashioned. Still effective.",i:"Repeated forward curls under load, which is the slide-forward direction. Dead bugs do the same job without the cost."},
+run:{n:"Running on flat ground",g:"fit",s:.9,c:1.4,r:.5,e:.4,h:"Impact joints are built for.",i:"Every stride is a small impact into a slightly arched back, a few thousand times."},
+downhill:{n:"Walking downhill",g:"fit",s:.8,c:1.2,r:.3,e:.7,h:"Easier than going up.",i:"Braking every step while leaning back. Harder on this joint than the climb was."},
+free:{n:"Swimming freestyle",g:"fit",s:.3,c:.3,r:.8,e:.3,rel:1,h:"Excellent all round.",i:"Weightless, which takes the squeeze off entirely. Rotation with every stroke, but no load behind it. Fair trade."},
+breast:{n:"Swimming breaststroke",g:"fit",s:.4,c:.3,r:.2,e:1.3,h:"Gentle and rhythmic.",i:"Head up means an arched back every stroke. Freestyle with a snorkel fixes it."},
+
+trip:{n:"Tripping over a toy",g:"un",s:1.4,c:1.5,r:1.3,e:.5,u:1,h:"The reflex fires in a tenth of a second. Bone holds anyway.",i:"The worst combination here. A twist and a shove arrive together, and my muscles catch up after the movement already happened. A toy on the floor is a real hazard."},
+step:{n:"Missing a step",g:"un",s:1.2,c:1.7,r:.6,e:.7,u:1,h:"The leg absorbs it. Back stays quiet.",i:"An unexpected drop squeezes the joint before I can brace. The doorway closes fast."},
+katch:{n:"Catching a falling child",g:"un",s:1.5,c:1.4,r:.9,e:.2,u:1,h:"Sudden weight. Trunk stiffens ahead of it.",i:"The highest strain on this page, and the one I'd do again without thinking."},
+slide:{n:"A foot slipping sideways",g:"un",s:1,c:1.1,r:1.5,e:.3,u:1,h:"Hip and trunk muscles arrest it.",i:"Almost pure twisting. The movement the broken hooks leave me least protected against."},
+
+slow:{n:"Moving slowly on purpose",g:"help",s:.3,c:.5,r:.2,e:.1,rel:1,h:"Just slower. No difference.",i:"Speed is the enemy. Slow gives my muscles time to arrive before the joint moves. It's the single biggest thing I control."},
+shift:{n:"Changing position often",g:"help",s:.3,c:.5,r:.2,e:0,rel:1,h:"Fidgeting. Harmless.",i:"No position is safe for long. Moving every few minutes beats hunting for a perfect one."},
+rollcart:{n:"Leaning on a rolling cart",g:"help",s:.25,c:.5,r:.15,e:-.4,x:1,rel:1,h:"Something to push. Fine.",i:"Leaning forward onto a handle opens the doorway and unloads the joint. I can go twice as far behind a cart. A cane wouldn't do this."},
+stool:{n:"Sitting on a rolling stool",g:"help",s:.5,c:.7,r:.3,e:-.2,x:1,rel:1,h:"A seat. Nothing notable.",i:"Being able to sit the second I need to, without leaving the floor, changes what a whole practice costs me."},
+brace:{n:"A brace during games",g:"help",s:.3,c:.7,r:.2,e:.3,x:1,rel:1,h:"Extra support nobody needs.",i:"A fitted brace limits the twist during games. Situational only, since wearing one all the time lets the muscles that hold me together get lazy."},
+knees:{n:"Pillow under my knees",g:"help",s:.1,c:.2,r:0,e:-.3,x:1,rel:1,h:"Comfortable. No benefit.",i:"Bending the knees flattens the arch out of my low back. Same bed, same hours, completely different night."},
+childpose:{n:"Child's pose",g:"help",s:.4,c:.2,r:.05,e:-.9,rel:1,h:"A rest between harder poses.",i:"Unloaded and curled, which opens the doorway without the nerve pull of a straight-leg stretch."},
+letlift:{n:"Letting someone else lift",g:"help",s:.15,c:.3,r:.1,e:0,rel:1,h:"Nice, but unnecessary.",i:"The highest-value thing on this list and the hardest to actually do. Not pride. Physics."},
+bike:{n:"Riding a bike, leaning forward",g:"help",s:.3,c:.6,r:.2,e:-.5,x:1,rel:1,h:"Good exercise. Easy on joints.",i:"Seated and folded forward with legs doing the work. Most of the cardio, almost none of the cost."},
+water:{n:"Standing in chest-deep water",g:"help",s:.2,c:.15,r:.1,e:.2,x:1,rel:1,h:"Pleasant. Nothing more.",i:"Water takes most of my weight off while I stay upright and moving. Closest thing to a day off this joint gets."}
+};
+
+var GRP=[["day","Everyday"],["sleep","Sleep and getting up"],["sit","Sitting"],["lift","Lifting, bending, twisting"],["one","Carrying on one side"],["coach","Coaching"],["fit","Workouts and yoga"],["un","Caught off guard"],["help","What actually helps"]];
+var GN={};GRP.forEach(function(g){GN[g[0]]=g[1]});
+var ORDER=[];GRP.forEach(function(g){Object.keys(ACT).forEach(function(k){if(ACT[k].g===g[0])ORDER.push(k)})});
+var cur="rest",view="now";
+
+(function(){
+var host=document.getElementById("groups");
+GRP.forEach(function(gr,gi){
+ var keys=ORDER.filter(function(k){return ACT[k].g===gr[0]});
+ var d=document.createElement("details");if(gi===0)d.open=true;d.dataset.g=gr[0];
+ var s=document.createElement("summary");
+ s.innerHTML="<span>"+gr[1]+"</span><span class='ct'>"+keys.length+"</span>";
+ d.appendChild(s);
+ var c=document.createElement("div");c.className="chips";
+ keys.forEach(function(k){
+  var b=document.createElement("button");
+  b.className="chip"+(gr[0]==="un"?" warm":"");
+  b.textContent=ACT[k].n;b.dataset.k=k;
+  b.setAttribute("aria-pressed",k===cur?"true":"false");
+  b.onclick=function(){pick(k)};
+  c.appendChild(b);
+ });
+ d.appendChild(c);host.appendChild(d);
+});
+function radio(host,opts,val,cls,cb){
+ var c=document.getElementById(host);
+ opts.forEach(function(p){
+  var b=document.createElement("button");b.className="chip sm "+cls;b.textContent=p[1];b.dataset.v=p[0];
+  b.setAttribute("aria-pressed",p[0]===val?"true":"false");
+  b.onclick=function(){c.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x.dataset.v===p[0]?"true":"false")});cb(p[0])};
+  c.appendChild(b);
+ });
+}
+radio("g-view",[["healthy","Healthy"],["now","Mine now"],["after","After surgery"]],view,"cool",function(v){view=v;draw()});
+radio("g-cam",[["front","Front"],["side","Side"],["top","See the twist"],["back","Back"],["spin","Spin"]],"","",function(v){if(window.spine3D)window.spine3D.cam(v)});
+})();
+
+function pick(k){
+ cur=k;
+ document.querySelectorAll("[data-k]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.k===k?"true":"false")});
+ var g=ACT[k].g;
+ document.querySelectorAll("details").forEach(function(d){if(d.dataset.g===g)d.open=true});
+ draw();
+}
+function stepBy(n){
+ var i=ORDER.indexOf(cur)+n;
+ if(i<0)i=ORDER.length-1;if(i>=ORDER.length)i=0;
+ pick(ORDER[i]);
+}
+document.getElementById("prev").onclick=function(){stepBy(-1)};
+document.getElementById("next").onclick=function(){stepBy(1)};
+addEventListener("keydown",function(e){
+ if(/input|textarea|select/i.test((e.target.tagName||"")))return;
+ if(e.key==="ArrowLeft"){stepBy(-1);e.preventDefault()}
+ if(e.key==="ArrowRight"){stepBy(1);e.preventDefault()}
+});
+document.getElementById("ld").oninput=draw;
+document.getElementById("playTw").onclick=function(){
+ if(!window.spine3D)return;
+ var on=window.spine3D.playTwist();
+ this.setAttribute("aria-pressed",on?"true":"false");
+ this.innerHTML=(on?"\u25A0":"\u25B6")+"&nbsp; "+(on?"Stop":"Play the twist");
+ if(on)window.spine3D.cam("top");
+};
+
+function cl(v,a,b){return Math.max(a,Math.min(b,v))}
+function S(id,a,v){document.getElementById(id).setAttribute(a,v)}
+function T(id,v){document.getElementById(id).textContent=v}
+function nclr(f){return f>=5?"#45D3BE":(f>=3?"#F2A93B":"#FF6E4E")}
+
+function draw(){
+var a=ACT[cur],lb=+document.getElementById("ld").value,lf=1+lb/62,e=a.e||0;
+var healthy=view==="healthy",after=view==="after";
+T("ldv",lb+" lb");
+T("mname",a.n);T("gname",GN[a.g]);
+
+var hS=Math.max(0,a.s*.5*lf-e*.2), hD=cl(16-a.c*1.2*lf,9,16);
+var hP=cl(hS*2.2,0,8), hF=cl(hD+4-hP*.6-e*1.1,3,20), hR=a.r*(.6+lb/160), hL=a.r*.5;
+var iS,iD,iF,iR,iL;
+if(healthy){iS=hS;iD=hD;iF=hF;iR=hR;iL=hL}
+else if(after){iS=14;iD=14.5;iR=0;iL=0;iF=cl(15.5-e*1.2-a.c*.35*lf,8.5,19)}
+else{iS=cl(24+a.s*3*lf-e*1.4,19,33);iD=cl(9-a.c*1.6*lf,3.5,12);
+     iF=cl(iD+4-cl(iS*2.49,0,74)*.42-e*3.2,1.2,20);iR=a.r*4.1*lf;iL=a.r*3.4*lf}
+var iP=cl(iS*2.49,0,74);
+
+T("rt",healthy?"HEALTHY":(after?"AFTER SURGERY":"MINE, NOW"));
+document.getElementById("rt").setAttribute("fill",healthy?"#45D3BE":(after?"#7FB3CC":"#FF6E4E"));
+
+S("hDisc","height",hD);S("hDisc","y",228-hD);S("hDisc","x",90-hP*.5);
+S("hBody","x",90-hP);S("hBody","y",176-hD);
+S("hPed","x",210-hP);S("hPed","y",176-hD);
+S("hLam","x",238-hP);S("hLam","y",181-hD);
+S("hNrv","cx",222-hP);S("hNrv","cy",230-hF/2);S("hNrv","ry",cl(hF/2-.5,1,6));S("hNrv","fill",nclr(hF/2));
+S("iDisc","height",iD);S("iDisc","y",228-iD);S("iDisc","x",430-iP*.5);
+S("iDisc","fill",after?"#8FA5AC":(healthy?"#45D3BE":(iD>10?"#F2A93B":"#FF6E4E")));
+S("iBody","x",430-iP);S("iBody","y",176-iD);
+S("iL5","x",486-iP);S("iL5","y",207-iD);
+S("iPed","x",550-iP);S("iPed","y",176-iD);
+S("iGap","x",574-iP);S("iGap","width",cl(4+iP,4,70));S("iGap","fill",(healthy||after)?"#EFE7D7":"#FF6E4E");
+S("iNrv","cx",562-iP*.65);S("iNrv","cy",230-iF/2);S("iNrv","ry",cl(iF/2-.5,.8,6));S("iNrv","fill",nclr(iF/2));
+S("iCage","opacity",after?1:0);S("iCage","x",444-iP*.5);S("iCage","y",230-iD);S("iCage","height",iD-4);
+["iScA","iScB","iRod"].forEach(function(x){S(x,"opacity",after?1:0)});
+S("iScA","cx",562-iP);S("iScA","cy",196-iD);S("iRod","x1",562-iP);S("iRod","y1",196-iD);
+
+var io=Math.round(iF/20*100), ho=Math.round(hF/20*100);
+var oc=iF>=9?"good":(iF>=5?"mid":"bad");
+var qo=document.getElementById("qOpen");qo.textContent=io+"%";qo.className="v "+oc;
+T("qOpenS","healthy "+ho+"%");
+var qb=document.getElementById("qBar");qb.style.width=io+"%";qb.style.background=nclr(iF/2);
+
+var qt=document.getElementById("qTw");
+qt.textContent=(after?"0.0":iR.toFixed(1))+"\u00B0";
+qt.className="v "+(after?"blu":(iR>2.5?"bad":(iR>1?"mid":"good")));
+T("qTwS",healthy?"normal for this move":(after?"fused, no motion":"a healthy joint: "+hR.toFixed(1)+"\u00B0"));
+document.getElementById("qTwBar").style.width=cl(iR/7*100,0,100)+"%";
+document.getElementById("qTwBar").style.background=iR>2.5?"#FF6E4E":(iR>1?"#F2A93B":"#45D3BE");
+
+var qs=document.getElementById("qSl");
+if(after){
+ var adj=Math.round(cl(34+a.c*20*lf+Math.abs(e)*9,30,96));
+ T("qSlK","Load passed up to L4\u2013L5");
+ qs.textContent=adj+"%";qs.className="v "+(adj>70?"bad":(adj>50?"mid":"blu"));
+ T("qSlS","the joint above takes this share");
+ document.getElementById("qSlBar").style.width=adj+"%";
+ document.getElementById("qSlBar").style.background=adj>70?"#FF6E4E":(adj>50?"#F2A93B":"#7FB3CC");
+}else{
+ T("qSlK","Slide forward");
+ qs.textContent=iS.toFixed(1)+" mm";
+ qs.className="v "+(healthy?"good":"bad");
+ T("qSlS",healthy?"normal":"healthy "+hS.toFixed(1)+" mm");
+document.getElementById("qSlBar").style.width=cl(iS/33*100,0,100)+"%";
+ document.getElementById("qSlBar").style.background=healthy?"#45D3BE":"#FF6E4E";
+}
+
+var po=e>.55?"arched back":(e>.15?"slightly arched":(e>-.15?"neutral":"curled forward"));
+var dur=a.x?"held for minutes":(a.u?"a fraction of a second":"a second or two");
+document.getElementById("nH").querySelector("span").innerHTML=a.h+"<br><span style='color:#5E777F;font-size:13px'>Back position: "+po+" &middot; Lasts: "+dur+"</span>";
+T("nIt",healthy?"A healthy spine, again":(after?"After surgery":"My spine, now"));
+document.getElementById("nI").querySelector("span").textContent=healthy?"Same as above. Nothing to compare, which is the point.":(after?"The joint doesn't move at all. The spacer lifted the doorway back open and the hardware holds everything where the surgeon set it. The work of this movement passes upward to the next joint instead.":a.i);
+document.getElementById("nI").style.borderLeftColor=healthy?"#45D3BE":(after?"#7FB3CC":"#FF6E4E");
+
+window.__spine={healthy:healthy,after:after,slip:iS,disc:iD,twist:iR,lat:iL*.45,open:iF};
+if(window.spine3D)window.spine3D.update();
+}
+draw();
+</script>
+
+<script type="importmap">
+{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+const vp=document.getElementById('vp'),fb=document.getElementById('fb');
+const scene=new THREE.Scene();
+const cam=new THREE.PerspectiveCamera(38,1,1,2000);
+const rnd=new THREE.WebGLRenderer({antialias:true,alpha:true});
+rnd.setPixelRatio(Math.min(devicePixelRatio,2));
+rnd.toneMapping=THREE.ACESFilmicToneMapping;rnd.toneMappingExposure=1.08;
+vp.appendChild(rnd.domElement);
+scene.add(new THREE.HemisphereLight(0xCDE6F0,0x0A1A20,.75));
+const k1=new THREE.DirectionalLight(0xFFF4E2,1.75);k1.position.set(80,120,95);scene.add(k1);
+const k2=new THREE.DirectionalLight(0x7FC4E8,.9);k2.position.set(-100,35,-80);scene.add(k2);
+const k3=new THREE.DirectionalLight(0xFFD9B8,.4);k3.position.set(25,-70,55);scene.add(k3);
+
+const cortical=new THREE.MeshStandardMaterial({color:0xE9E0CC,roughness:.62,metalness:.03,side:THREE.DoubleSide,flatShading:false});
+const cortical2=new THREE.MeshStandardMaterial({color:0xDCD1BA,roughness:.7,metalness:.03,side:THREE.DoubleSide});
+const hwMat=new THREE.MeshStandardMaterial({color:0xA9C6D6,roughness:.2,metalness:.94,side:THREE.DoubleSide});
+const discGood=new THREE.MeshStandardMaterial({color:0x45D3BE,roughness:.35,metalness:.02,side:THREE.DoubleSide});
+const nrvMat=new THREE.MeshStandardMaterial({color:0xFFCE7A,roughness:.45,emissive:0x3A2A00,emissiveIntensity:.35});
+
+function ell(rx,ry,n){const p=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2;p.push({x:Math.cos(a)*rx,y:Math.sin(a)*ry})}return p}
+function bodyOutline(w,dA,dP,n){
+ const s=new THREE.Shape();
+ s.moveTo(-w,dP);s.quadraticCurveTo(0,dP*.42,w,dP);
+ s.lineTo(w*1.02,dP*.24);
+ s.bezierCurveTo(w*1.05,-dA*.48,w*.56,-dA,0,-dA);
+ s.bezierCurveTo(-w*.56,-dA,-w*1.05,-dA*.48,-w*1.02,dP*.24);
+ s.closePath();
+ return s.getPoints(n).map(p=>({x:p.x,y:p.y}));
+}
+function loft(pts,steps){
+ const n=pts.length,m=steps.length,pos=[],idx=[];
+ for(let j=0;j<m;j++){const st=steps[j];
+  for(let i=0;i<n;i++)pos.push(pts[i].x*st.sx+(st.dx||0),pts[i].y*(st.sy===undefined?st.sx:st.sy)+(st.dy||0),st.z)}
+ for(let j=0;j<m-1;j++)for(let i=0;i<n;i++){
+  const a=j*n+i,b=j*n+(i+1)%n,c=(j+1)*n+(i+1)%n,d=(j+1)*n+i;idx.push(a,b,c,a,c,d)}
+ const s0=steps[0],c0=pos.length/3;
+ pos.push(s0.dx||0,s0.dy||0,s0.z+(s0.cap||0));
+ for(let i=0;i<n;i++)idx.push(c0,(i+1)%n,i);
+ const s1=steps[m-1],c1=pos.length/3;
+ pos.push(s1.dx||0,s1.dy||0,s1.z-(s1.cap||0));
+ for(let i=0;i<n;i++)idx.push(c1,(m-1)*n+i,(m-1)*n+(i+1)%n);
+ const g=new THREE.BufferGeometry();
+ g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+ g.setIndex(idx);g.computeVertexNormals();return g;
+}
+function rough(g,amt,seed){
+ const p=g.attributes.position,sd=seed||1;
+ for(let i=0;i<p.count;i++){
+  const x=p.getX(i),y=p.getY(i),z=p.getZ(i);
+  const n=Math.sin(x*.62*sd+y*1.21)*.5+Math.cos(z*.83+x*.37*sd)*.3+Math.sin(z*1.6+y*.55*sd)*.2;
+  p.setXYZ(i,x+n*amt,y+n*amt*.75,z+n*amt*.5);
+ }
+ p.needsUpdate=true;g.computeVertexNormals();return g;
+}
+function M(g,mat){return new THREE.Mesh(g,mat||cortical2)}
+
+function vertBody(w,dA,dP,h){
+ const out=bodyOutline(w,dA,dP,54),st=[];
+ for(let i=0;i<=12;i++){const t=i/12;
+  let sc=1-.145*Math.sin(Math.PI*t);
+  if(t<.055||t>.945)sc=1.005;
+  st.push({z:t*h,sx:sc,cap:2.4});
+ }
+ return rough(loft(out,st),.55,1);
+}
+function taper(rx,ry,len,steps,fn){
+ const out=ell(rx,ry,18),st=[];
+ for(let i=0;i<=steps;i++){const t=i/steps,e=fn(t);
+  st.push({z:t*len,sx:e.s,sy:e.sy===undefined?e.s:e.sy,dx:e.dx||0,dy:e.dy||0,cap:1.2})}
+ return loft(out,st);
+}
+
+function vertebra(w,dA,dP,h,seed){
+ const ant=new THREE.Group(),post=new THREE.Group();
+ ant.add(M(vertBody(w,dA,dP,h),cortical));
+ const pz=dP+2,py=h*.3;
+ [-1,1].forEach(s=>{
+  const ped=M(rough(taper(5.4,7,17,7,t=>({s:1.18-.42*Math.sin(Math.PI*t),dy:t*t*3})),.3,seed+s));
+  ped.rotation.x=-Math.PI/2;ped.position.set(s*w*.63,pz,py);ant.add(ped);
+  const tp=M(rough(taper(6.5,3.4,26,7,t=>({s:1-.55*t,sy:1-.35*t,dy:-t*3.2})),.35,seed+2*s));
+  tp.rotation.y=s*Math.PI/2;tp.position.set(s*w*.72,pz+5,py+1);ant.add(tp);
+  const sap=M(rough(taper(3.6,8.2,15,6,t=>({s:1-.28*t,dx:-s*t*2.2,dy:t*1.5})),.28,seed+3*s));
+  sap.position.set(s*w*.7,pz+16,py-3);sap.scale.z=-1;ant.add(sap);
+ });
+ [-1,1].forEach(s=>{
+  const pars=M(rough(taper(3.4,7,11,4,t=>({s:1-.14*Math.sin(Math.PI*t)})),.22,seed+4*s),cortical2);
+  pars.position.set(s*w*.68,pz+18,py-2);post.add(pars);
+  const iap=M(rough(taper(3.8,8,15,6,t=>({s:1-.24*t,dx:s*t*2,dy:t*1.8})),.28,seed+5*s),cortical2);
+  iap.position.set(s*w*.66,pz+19,py+8);post.add(iap);
+  const lam=M(rough(taper(4.2,8.5,23,8,t=>({s:1-.3*t,sy:1-.12*t,dx:-s*w*.52*t*t,dy:t*4.5})),.3,seed+6*s),cortical2);
+  lam.rotation.x=-Math.PI/2;lam.position.set(s*w*.62,pz+18,py+2);post.add(lam);
+ });
+ const sp=M(rough(taper(2.6,9.5,30,8,t=>({s:1+.28*t-.5*t*t,sy:1+.5*t-.35*t*t,dy:t*t*7})),.32,seed+9),cortical2);
+ sp.rotation.x=-Math.PI/2;sp.position.set(0,dP+22,py+3);post.add(sp);
+ const g=new THREE.Group();g.add(ant,post);
+ g.userData={ant:ant,post:post,pars:post.children.filter((c,i)=>i%3===0)};
+ return g;
+}
+
+function sacrum(w,dA,dP,h){
+ const g=new THREE.Group();
+ const out=bodyOutline(w,dA,dP,54),st=[];
+ for(let i=0;i<=12;i++){const t=i/12;st.push({z:t*h,sx:1.02-.1*t-.06*Math.sin(Math.PI*t),dy:t*t*5,cap:2})}
+ g.add(M(rough(loft(out,st),.5,7),cortical));
+ [-1,1].forEach(s=>{
+  const ala=M(rough(taper(15,13,34,7,t=>({s:1-.42*t,sy:1-.3*t,dy:t*6})),.5,s*11),cortical2);
+  ala.rotation.y=s*Math.PI/2;ala.position.set(s*w*.85,dP-4,h*.16);g.add(ala);
+  const sap=M(rough(taper(3.8,8.4,15,6,t=>({s:1-.26*t,dx:-s*t*2})),.28,s*13),cortical2);
+  sap.position.set(s*w*.66,dP+16,2);sap.scale.z=-1;g.add(sap);
+  const ped=M(rough(taper(5.4,7,16,6,t=>({s:1.15-.35*Math.sin(Math.PI*t)})),.3,s*17),cortical2);
+  ped.rotation.x=-Math.PI/2;ped.position.set(s*w*.6,dP+1,h*.2);g.add(ped);
+ });
+ const cr=M(rough(taper(3,8,24,6,t=>({s:1-.35*t,dy:t*4})),.3,19),cortical2);
+ cr.rotation.x=-Math.PI/2;cr.position.set(0,dP+20,h*.2);g.add(cr);
+ return g;
+}
+
+function discMesh(w,dA,dP){
+ const out=bodyOutline(w,dA,dP,54),st=[];
+ for(let i=0;i<=6;i++){const t=i/6;st.push({z:t,sx:.985+.05*Math.sin(Math.PI*t),cap:.05})}
+ return new THREE.Mesh(loft(out,st),discGood.clone());
+}
+function nerve(sd){
+ const c=new THREE.CatmullRomCurve3([new THREE.Vector3(sd*8,3,19),new THREE.Vector3(sd*18,-3,14),new THREE.Vector3(sd*30,-13,5),new THREE.Vector3(sd*41,-29,-6)]);
+ return new THREE.Mesh(new THREE.TubeGeometry(c,30,2.7,10,false),nrvMat.clone());
+}
+
+const root=new THREE.Group();root.rotation.x=Math.PI/2;scene.add(root);
+const L4=vertebra(23,18,13,30,1),L5=vertebra(24,19,13,29,3),S1=sacrum(26,20,14,40);
+const D1=discMesh(23,18,13),D2=discMesh(24,19,13);
+const nerves=new THREE.Group();nerves.add(nerve(-1),nerve(1));nerves.rotation.x=-Math.PI/2;
+const cage=new THREE.Mesh(new THREE.BoxGeometry(32,1,24,2,2,2),hwMat);cage.visible=false;
+const hardware=new THREE.Group();hardware.visible=false;const screws=[];
+[-1,1].forEach(()=>{for(let i=0;i<3;i++){
+ const m=new THREE.Mesh(i===2?new THREE.CylinderGeometry(2.3,2.3,64,10):new THREE.CylinderGeometry(3.1,2.1,32,12),hwMat);
+ screws.push(m);hardware.add(m)}});
+const gapMarks=new THREE.Group();
+[-1,1].forEach(s=>{const m=new THREE.Mesh(new THREE.SphereGeometry(3.7,16,12),new THREE.MeshStandardMaterial({color:0xFF6E4E,emissive:0x561200,emissiveIntensity:.8,roughness:.4}));m.position.set(s*17,0,32);gapMarks.add(m)});
+gapMarks.rotation.x=-Math.PI/2;
+const holder=new THREE.Group();holder.add(L4,L5,S1,D1,D2);root.add(holder);
+scene.add(nerves,cage,hardware,gapMarks);
+
+let th=.62,ph=1.3,rad=290,spin=true,drag=false,px=0,py=0,pd=0,playing=false,ph2=0;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function place(){cam.position.set(rad*Math.sin(ph)*Math.sin(th),rad*Math.cos(ph),rad*Math.sin(ph)*Math.cos(th));cam.lookAt(0,-4,8)}
+function resize(){const w=vp.clientWidth,h=vp.clientHeight;rnd.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+addEventListener('resize',resize);
+vp.addEventListener('pointerdown',e=>{drag=true;spin=false;px=e.clientX;py=e.clientY;vp.setPointerCapture(e.pointerId)});
+vp.addEventListener('pointermove',e=>{if(!drag)return;th-=(e.clientX-px)*.008;ph=Math.max(.14,Math.min(3,ph-(e.clientY-py)*.008));px=e.clientX;py=e.clientY;place()});
+vp.addEventListener('pointerup',()=>{drag=false});
+vp.addEventListener('pointercancel',()=>{drag=false});
+vp.addEventListener('wheel',e=>{e.preventDefault();rad=Math.max(140,Math.min(560,rad+e.deltaY*.5));place()},{passive:false});
+vp.addEventListener('touchmove',e=>{if(e.touches.length===2){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);if(pd)rad=Math.max(140,Math.min(560,rad-(d-pd)*1.1));pd=d;place();e.preventDefault()}},{passive:false});
+vp.addEventListener('touchend',()=>{pd=0});
+
+let ST=null;
+function pose(k){
+ const s=ST;if(!s)return;
+ const d1=13.5,d2=Math.max(3.5,s.disc);
+ const y4=0,y1=y4+30,y5=y1+d1,y2=y5+29,ys=y2+d2;
+ L4.position.z=y4;D1.position.z=y1;D1.scale.z=d1;L5.position.z=y5;
+ D2.position.z=y2;D2.scale.z=d2;S1.position.z=ys;
+ holder.position.z=-46;
+ const base=s.healthy?0:(s.after?14:24);
+ const slip=s.healthy?0:base+(s.slip-base)*Math.abs(k);
+ const tw=s.twist*k, lat=s.lat*k, linked=s.healthy||s.after;
+ L5.userData.ant.position.set(lat,-slip,0);
+ L5.userData.ant.rotation.z=-tw*Math.PI/180;
+ L5.userData.post.position.set(linked?lat:0,linked?-slip:0,0);
+ L5.userData.post.rotation.z=linked?-tw*Math.PI/180:0;
+ L5.userData.pars.forEach(p=>{p.visible=linked});
+ gapMarks.visible=!linked;gapMarks.position.set(0,-(y5-46)-10,0);
+ D2.position.y=-slip*.5;D2.position.x=lat*.5;
+ D1.material.color.setHex(s.healthy?0x45D3BE:0xE8A93B);
+ D2.material.color.setHex(s.after?0xB9C8CC:(s.healthy?0x45D3BE:(d2>9?0xE8A93B:0xFF6E4E)));
+ cage.visible=s.after;cage.position.set(0,-(y2-46)-d2/2,-slip*.5-2);cage.scale.y=Math.max(1,d2-3);
+ hardware.visible=s.after;
+ screws.forEach((m,i)=>{const sd=i<3?-1:1,kk=i%3;
+  if(kk===0){m.rotation.set(Math.PI/2,0,0);m.position.set(sd*17,-(y5-46)-10,24-slip*.6)}
+  if(kk===1){m.rotation.set(Math.PI/2,0,0);m.position.set(sd*18,-(ys-46)-12,24)}
+  if(kk===2){m.rotation.set(0,0,0);m.position.set(sd*18,-((y5+ys)/2-46)-11,40)}});
+ const open=s.open,t=Math.max(.15,Math.min(1,open/16));
+ nerves.position.set(0,-(y2-46)+2,0);
+ nerves.children.forEach(n=>{n.scale.y=t;
+  n.material.color.setHex(open>=9?0x9BE8C8:(open>=5?0xFFCE7A:0xFF5A3C));
+  n.material.emissive.setHex(open>=5?0x2A2000:0x561200);
+  n.material.emissiveIntensity=open>=5?.3:.85});
+}
+
+window.spine3D={
+ cam(v){if(v!=='spin')spin=false;
+  if(v==='front'){th=0;ph=1.42}else if(v==='side'){th=Math.PI/2;ph=1.46}
+  else if(v==='top'){th=0;ph=.16}else if(v==='back'){th=Math.PI;ph=1.42}
+  else if(v==='spin'){spin=true}
+  place()},
+ playTwist(){playing=!playing;ph2=0;if(!playing)pose(1);return playing},
+ update(){ST=window.__spine;pose(playing?Math.sin(ph2):1)}
+};
+function loop(){
+ requestAnimationFrame(loop);
+ if(playing){ph2+=.026;pose(Math.sin(ph2))}
+ if(spin&&!drag&&!reduced){th+=.0024;place()}
+ rnd.render(scene,cam);
+}
+resize();place();window.spine3D.update();fb.remove();loop();
+</script>
+
+</body>
+</html>
