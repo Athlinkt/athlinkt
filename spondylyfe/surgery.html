@@ -84,16 +84,16 @@ footer p{max-width:64ch}
 
 <section>
 <div class="wrap">
-<h2>How I'll be positioned</h2>
+<h2>How I'll be positioned, and where the cuts are</h2>
 <div class="cards">
 <div class="card"><span class="tag">On my side</span><h3>Right side down</h3><p>Not face down, not on my back. I lie on my right side for the whole operation, which is what makes it a lateral approach.</p></div>
 <div class="card"><span class="tag">Tilted</span><h3>Rolled forward by the retractor system</h3><p>The table and the retractor system pull me forward so my sacroiliac joint is leaned over. That angle is what opens a line to the front of L5&ndash;S1 from the side.</p></div>
 <div class="card"><span class="tag">Fixed</span><h3>Left shoulder up and locked</h3><p>My left shoulder is triangulated toward my neck and held immobile, so nothing shifts once the corridor is set.</p></div>
 </div>
 <div class="stage">
-<svg viewBox="0 0 680 330" role="img" id="pos" aria-labelledby="post posd">
-<title id="post">Cross-section showing how I lie on the table</title>
-<desc id="posd">Looking along the body from the feet. The right side rests on the table, the left side is uppermost, and the whole body is rolled forward so the front tips toward the floor.</desc>
+<svg viewBox="0 0 680 470" role="img" id="pos" aria-labelledby="post posd">
+<title id="post">Where the three incisions are</title>
+<desc id="posd">Two body outlines. On the front view, one angled incision low on the left side of the abdomen. On the back view, two short vertical incisions low down, one either side of the midline.</desc>
 </svg>
 </div>
 </div>
@@ -123,7 +123,7 @@ footer p{max-width:64ch}
 <li><b>L5 gets pulled back</b>With the cage in front and the screws behind, the surgeon draws L5 back toward where it belongs. As much as it will safely go, which for a slip past halfway is usually a partial correction rather than a full one.</li>
 </ol>
 <div class="stage">
-<svg viewBox="0 0 680 400" role="img" aria-labelledby="axt axd">
+<svg viewBox="0 0 680 400" role="img" id="corridors" aria-labelledby="axt axd">
 <title id="axt">Cross-section through the torso showing both surgical corridors</title>
 <desc id="axd">Looking along the body with the patient on their right side. A corridor comes in obliquely from the front and lower side to reach the disc. Two shorter corridors come in from the back to reach the pedicles.</desc>
 </svg>
@@ -345,7 +345,7 @@ txt(sv,700,88,"MONITORING","#9AAFB6",10.5);
 
 /* ---------- axial cross-section, both corridors ---------- */
 (function(){
-var sv=document.querySelectorAll("svg")[1];
+var sv=document.getElementById("corridors"); if(!sv)return;
 E(sv,"rect",{x:60,y:318,width:560,height:22,rx:8,fill:"#20404C"});
 txt(sv,340,356,"THE TABLE. I AM ON MY RIGHT SIDE.","#5E777F",11);
 /* torso cross-section: anterior left, posterior right */
@@ -378,31 +378,52 @@ txt(sv,556,266,"2 to 3 in","#C9D3D6",12);
 txt(sv,330,40,"Looking along my body, from the feet up","#8FA5AC",12);
 })();
 
-/* ---------- how I lie on the table ---------- */
+/* ---------- where the incisions are ---------- */
 (function(){
 var sv=document.getElementById("pos"); if(!sv)return;
-E(sv,"rect",{x:70,y:266,width:540,height:20,rx:8,fill:"#20404C"});
-txt(sv,340,306,"THE TABLE","#5E777F",11);
-var g=E(sv,"g",{transform:"rotate(-19 340 168)"});
-E(g,"ellipse",{cx:340,cy:168,rx:150,ry:96,fill:"#2E6B78",opacity:".55",stroke:"#6FBAC9","stroke-width":2});
-E(g,"ellipse",{cx:340,cy:168,rx:150,ry:96,fill:"none",stroke:"#8FD3DF","stroke-width":1,opacity:".5"});
-E(g,"rect",{x:396,y:146,width:52,height:46,rx:9,fill:"#E9E0CC"});
-E(g,"rect",{x:452,y:140,width:18,height:18,rx:5,fill:"#DCD1BA"});
-E(g,"rect",{x:452,y:180,width:18,height:18,rx:5,fill:"#DCD1BA"});
-txt(g,422,174,"L5","#0B1A20",11);
-E(g,"path",{d:"M212 196 L262 172",stroke:"#D9483F","stroke-width":6,"stroke-linecap":"round"});
-E(g,"path",{d:"M486 132 L486 148 M486 188 L486 204",stroke:"#F2EDE3","stroke-width":6,"stroke-linecap":"round"});
-txt(sv,132,126,"LEFT, UP","#8FD3DF",11.5);
-txt(sv,548,224,"RIGHT, DOWN","#8FD3DF",11.5);
-txt(sv,150,250,"FRONT","#9AAFB6",11);
-txt(sv,548,96,"BACK","#9AAFB6",11);
-E(sv,"path",{d:"M196 78 q84 -34 158 -6",fill:"none",stroke:"#45D3BE","stroke-width":2.5,"marker-end":"url(#ah)"});
-var d2=E(sv,"defs",{});var mk=E(d2,"marker",{id:"ah",viewBox:"0 0 10 10",refX:"8",refY:"5",markerWidth:"6",markerHeight:"6",orient:"auto-start-reverse"});
-E(mk,"path",{d:"M0 0 L10 5 L0 10 z",fill:"#45D3BE"});
-txt(sv,264,58,"rolled forward by the retractor system","#45D3BE",12);
-E(sv,"rect",{x:100,y:196,width:74,height:12,rx:6,fill:"#2C5867"});
-txt(sv,137,226,"ARM SUPPORT","#5E777F",10);
-txt(sv,340,30,"Looking along my body from my feet","#8FA5AC",12.5);
+var SKIN="#E4D3B8",EDGE="#B79E7E",CUT="#D9483F";
+
+function body(cx,label,side){
+ var g=E(sv,"g",{});
+ E(g,"ellipse",{cx:cx,cy:66,rx:30,ry:34,fill:SKIN});
+ E(g,"rect",{x:cx-16,y:92,width:32,height:26,fill:SKIN});
+ E(g,"path",{d:"M"+(cx-76)+" 128 Q"+(cx-86)+" 176 "+(cx-70)+" 224 "+
+  "Q"+(cx-60)+" 262 "+(cx-66)+" 300 Q"+(cx-74)+" 348 "+(cx-62)+" 400 "+
+  "L"+(cx-18)+" 400 Q"+(cx-12)+" 348 "+cx+" 336 Q"+(cx+12)+" 348 "+(cx+18)+" 400 "+
+  "L"+(cx+62)+" 400 Q"+(cx+74)+" 348 "+(cx+66)+" 300 Q"+(cx+60)+" 262 "+(cx+70)+" 224 "+
+  "Q"+(cx+86)+" 176 "+(cx+76)+" 128 Q"+cx+" 110 "+(cx-76)+" 128 Z",fill:SKIN});
+ E(g,"ellipse",{cx:cx-78,cy:136,rx:17,ry:16,fill:SKIN});
+ E(g,"ellipse",{cx:cx+78,cy:136,rx:17,ry:16,fill:SKIN});
+ E(g,"path",{d:"M"+(cx-76)+" 128 Q"+cx+" 110 "+(cx+76)+" 128",fill:"none",stroke:EDGE,"stroke-width":2});
+ E(g,"path",{d:"M"+(cx-64)+" 246 Q"+cx+" 258 "+(cx+64)+" 246",fill:"none",stroke:EDGE,"stroke-width":1.6,opacity:".7"});
+ txt(sv,cx,432,label,"#C9D3D6",14);
+ /* my left and my right, which flip between the two views */
+ txt(sv,cx+(side*112),180,"MY LEFT","#8FD3DF",12);
+ txt(sv,cx-(side*112),180,"MY RIGHT","#8FD3DF",12);
+ return g;
+}
+
+txt(sv,340,26,"Three incisions. Two to three inches or less, each one.","#8FA5AC",13);
+
+/* front view: my left is on your right */
+body(178,"FRONT OF ME",1);
+E(sv,"line",{x1:214,y1:302,x2:262,y2:272,stroke:CUT,"stroke-width":8,"stroke-linecap":"round"});
+E(sv,"line",{x1:214,y1:302,x2:262,y2:272,stroke:"#FF9A88","stroke-width":3,"stroke-linecap":"round"});
+E(sv,"path",{d:"M268 268 L316 236",stroke:"#5E777F","stroke-width":1.4});
+txt(sv,344,230,"6 cm, angled","#FF8E7A",13);
+txt(sv,352,248,"low on my left","#8FA5AC",11.5);
+
+/* back view: my left is on your left */
+body(500,"BACK OF ME",-1);
+[-1,1].forEach(function(d){
+ E(sv,"line",{x1:500+d*26,y1:272,x2:500+d*26,y2:314,stroke:CUT,"stroke-width":8,"stroke-linecap":"round"});
+ E(sv,"line",{x1:500+d*26,y1:272,x2:500+d*26,y2:314,stroke:"#FF9A88","stroke-width":3,"stroke-linecap":"round"});
+});
+E(sv,"path",{d:"M534 288 L596 262",stroke:"#5E777F","stroke-width":1.4});
+txt(sv,620,254,"two, 2 to 3 in","#FF8E7A",13);
+txt(sv,614,272,"one each side","#8FA5AC",11.5);
+
+txt(sv,340,458,"The front one is for the cage. The back two are for the screws.","#5E777F",12);
 })();
 
 /* ---------- optional photographs ----------
